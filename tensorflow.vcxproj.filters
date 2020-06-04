@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\google">
+      <UniqueIdentifier>{30d12d92-798f-4fc1-8a8a-01c8b62bf215}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="array_slice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array_slice_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array4d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cleanup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core_status.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cpu_info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="default_logging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="edit_distance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="env_time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="errors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="index_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inlined_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="int_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="integral_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iterator_range.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="layout_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="layout_util_flags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="literal_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="manual_constructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="numbers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="optional.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="padding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="primitive_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="protobuf_default.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ptr_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="raw_coding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="reference_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="status.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="statusor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stl_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="str_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="strcat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stringpiece.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stringprintf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win_cpu_info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="window_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xla_data.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_arena.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_arenastring.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_atomic_sequence_num.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_atomicops.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_atomicops_internals_x86_msvc.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_callback.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_casts.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_common.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_fastmem.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_generated_message_util.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_has_bits.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_logging.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_macros.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_mutex.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_once.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_platform_macros.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_port.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_repeated_field.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_scoped_ptr.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_template_util.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="google\google_type_traits.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
+    <ClInclude Include="literal_test_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="casts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="arithmetic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="array1d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="client_library_test_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="computation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="computation_builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GradientDescentOptimizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="image_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="keras_model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nnet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="status_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tensor_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trainer_base_lr_sgd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vgg16.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="array2d.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="array2d_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="array3d_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="array4d_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bitmap.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="core_status.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu_info.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="default_logging.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="env_time.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hash.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="index_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="index_util_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="layout_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="layout_util_flags.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="literal_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="literal_util_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="numbers.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="padding.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="padding_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="primitive_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="reference_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_util_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="statusor.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="str_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="strcat.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stringpiece.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stringprintf.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_helpers.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xla_data.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_arena.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_arenastring.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_atomicops_internals_x86_msvc.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_common.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_generated_message_util.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_once.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="google\google_repeated_field.cc">
+      <Filter>Source Files\google</Filter>
+    </ClCompile>
+    <ClCompile Include="reference_util_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="literal_test_util.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="arithmetic.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="client_library_test_base.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="computation.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="computation_builder.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="convolution_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="convolution_variants_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="global_data.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image_loader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="keras_model.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nnet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pad_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="reduce_window_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pooling_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="reshape_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="select_and_scatter_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="status_macros.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vgg16.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math_util_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

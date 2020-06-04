@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{675F6394-9A0F-4784-A990-F1E6F8506CCC}</ProjectGuid>
+    <RootNamespace>tensorflow</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="arithmetic.h" />
+    <ClInclude Include="array1d.h" />
+    <ClInclude Include="array2d.h" />
+    <ClInclude Include="array3d.h" />
+    <ClInclude Include="array4d.h" />
+    <ClInclude Include="array_slice.h" />
+    <ClInclude Include="array_slice_internal.h" />
+    <ClInclude Include="base.h" />
+    <ClInclude Include="bitmap.h" />
+    <ClInclude Include="bits.h" />
+    <ClInclude Include="casts.h" />
+    <ClInclude Include="cleanup.h" />
+    <ClInclude Include="client_library_test_base.h" />
+    <ClInclude Include="computation.h" />
+    <ClInclude Include="computation_builder.h" />
+    <ClInclude Include="core_status.h" />
+    <ClInclude Include="cpu_info.h" />
+    <ClInclude Include="default_logging.h" />
+    <ClInclude Include="edit_distance.h" />
+    <ClInclude Include="env_time.h" />
+    <ClInclude Include="errors.h" />
+    <ClInclude Include="global_data.h" />
+    <ClInclude Include="google\google_arena.h" />
+    <ClInclude Include="google\google_arenastring.h" />
+    <ClInclude Include="google\google_atomicops.h" />
+    <ClInclude Include="google\google_atomicops_internals_x86_msvc.h" />
+    <ClInclude Include="google\google_atomic_sequence_num.h" />
+    <ClInclude Include="google\google_callback.h" />
+    <ClInclude Include="google\google_casts.h" />
+    <ClInclude Include="google\google_common.h" />
+    <ClInclude Include="google\google_fastmem.h" />
+    <ClInclude Include="google\google_generated_message_util.h" />
+    <ClInclude Include="google\google_has_bits.h" />
+    <ClInclude Include="google\google_logging.h" />
+    <ClInclude Include="google\google_macros.h" />
+    <ClInclude Include="google\google_mutex.h" />
+    <ClInclude Include="google\google_once.h" />
+    <ClInclude Include="google\google_platform_macros.h" />
+    <ClInclude Include="google\google_port.h" />
+    <ClInclude Include="google\google_repeated_field.h" />
+    <ClInclude Include="google\google_scoped_ptr.h" />
+    <ClInclude Include="google\google_template_util.h" />
+    <ClInclude Include="google\google_type_traits.h" />
+    <ClInclude Include="GradientDescentOptimizer.h" />
+    <ClInclude Include="hash.h" />
+    <ClInclude Include="image.h" />
+    <ClInclude Include="image_loader.h" />
+    <ClInclude Include="index_util.h" />
+    <ClInclude Include="inlined_vector.h" />
+    <ClInclude Include="integral_types.h" />
+    <ClInclude Include="int_type.h" />
+    <ClInclude Include="iterator_range.h" />
+    <ClInclude Include="keras_model.h" />
+    <ClInclude Include="layout_util.h" />
+    <ClInclude Include="layout_util_flags.h" />
+    <ClInclude Include="literal_test_util.h" />
+    <ClInclude Include="literal_util.h" />
+    <ClInclude Include="logging.h" />
+    <ClInclude Include="macros.h" />
+    <ClInclude Include="manual_constructor.h" />
+    <ClInclude Include="math_util.h" />
+    <ClInclude Include="mem.h" />
+    <ClInclude Include="nnet.h" />
+    <ClInclude Include="numbers.h" />
+    <ClInclude Include="optional.h" />
+    <ClInclude Include="padding.h" />
+    <ClInclude Include="platform.h" />
+    <ClInclude Include="primitive_util.h" />
+    <ClInclude Include="protobuf_default.h" />
+    <ClInclude Include="ptr_util.h" />
+    <ClInclude Include="raw_coding.h" />
+    <ClInclude Include="reference_util.h" />
+    <ClInclude Include="shape_util.h" />
+    <ClInclude Include="status.h" />
+    <ClInclude Include="statusor.h" />
+    <ClInclude Include="status_macros.h" />
+    <ClInclude Include="stl_util.h" />
+    <ClInclude Include="strcat.h" />
+    <ClInclude Include="stringpiece.h" />
+    <ClInclude Include="stringprintf.h" />
+    <ClInclude Include="str_util.h" />
+    <ClInclude Include="tensor_array.h" />
+    <ClInclude Include="test_helpers.h" />
+    <ClInclude Include="test_utils.h" />
+    <ClInclude Include="trainer_base_lr_sgd.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="util.h" />
+    <ClInclude Include="vgg16.h" />
+    <ClInclude Include="window_util.h" />
+    <ClInclude Include="win_cpu_info.h" />
+    <ClInclude Include="xla_data.pb.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="arithmetic.cc" />
+    <ClCompile Include="array2d.cc" />
+    <ClCompile Include="array2d_test.cc" />
+    <ClCompile Include="array3d_test.cc" />
+    <ClCompile Include="array4d_test.cc" />
+    <ClCompile Include="bitmap.cc" />
+    <ClCompile Include="client_library_test_base.cc" />
+    <ClCompile Include="computation.cc" />
+    <ClCompile Include="computation_builder.cc" />
+    <ClCompile Include="convolution_test.cc" />
+    <ClCompile Include="convolution_variants_test.cc" />
+    <ClCompile Include="core_status.cc" />
+    <ClCompile Include="cpu_info.cc" />
+    <ClCompile Include="default_logging.cc" />
+    <ClCompile Include="env_time.cc" />
+    <ClCompile Include="global_data.cc" />
+    <ClCompile Include="google\google_arena.cc" />
+    <ClCompile Include="google\google_arenastring.cc" />
+    <ClCompile Include="google\google_atomicops_internals_x86_msvc.cc" />
+    <ClCompile Include="google\google_common.cc" />
+    <ClCompile Include="google\google_generated_message_util.cc" />
+    <ClCompile Include="google\google_once.cc" />
+    <ClCompile Include="google\google_repeated_field.cc" />
+    <ClCompile Include="hash.cc" />
+    <ClCompile Include="image.cc" />
+    <ClCompile Include="image_loader.cc" />
+    <ClCompile Include="index_util.cc" />
+    <ClCompile Include="index_util_test.cc" />
+    <ClCompile Include="keras_model.cc" />
+    <ClCompile Include="layout_util.cc" />
+    <ClCompile Include="layout_util_flags.cc" />
+    <ClCompile Include="literal_test_util.cc" />
+    <ClCompile Include="literal_util.cc" />
+    <ClCompile Include="literal_util_test.cc" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="math_util_test.cc" />
+    <ClCompile Include="nnet.cpp" />
+    <ClCompile Include="numbers.cc" />
+    <ClCompile Include="padding.cc" />
+    <ClCompile Include="padding_test.cc" />
+    <ClCompile Include="pad_test.cc" />
+    <ClCompile Include="primitive_util.cc" />
+    <ClCompile Include="reduce_window_test.cc" />
+    <ClCompile Include="reference_util.cc" />
+    <ClCompile Include="pooling_test.cpp" />
+    <ClCompile Include="reference_util_test.cc" />
+    <ClCompile Include="reshape_test.cc" />
+    <ClCompile Include="select_and_scatter_test.cc" />
+    <ClCompile Include="shape_util.cc" />
+    <ClCompile Include="shape_util_test.cc" />
+    <ClCompile Include="statusor.cc" />
+    <ClCompile Include="status_macros.cc" />
+    <ClCompile Include="strcat.cc" />
+    <ClCompile Include="stringpiece.cc" />
+    <ClCompile Include="stringprintf.cc" />
+    <ClCompile Include="str_util.cc" />
+    <ClCompile Include="test_helpers.cc" />
+    <ClCompile Include="util.cc" />
+    <ClCompile Include="util_test.cc" />
+    <ClCompile Include="vgg16.cc" />
+    <ClCompile Include="window_util.cc" />
+    <ClCompile Include="xla_data.pb.cc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
