@@ -65,11 +65,6 @@
 
 // Forward-declare these so that we can make them friends.
 namespace google {
-namespace upb {
-namespace google_opensource {
-class GMR_Handlers;
-}  // namespace google_opensource
-}  // namespace upb
 
 namespace protobuf {
 
@@ -437,9 +432,6 @@ class LIBPROTOBUF_EXPORT RepeatedPtrFieldBase {
   // operate on RepeatedPtrField<MessageLite>.
   friend class MergePartialFromCodedStreamHelper;
 
-  // To parse directly into a proto2 generated class, the upb class GMR_Handlers
-  // needs to be able to modify a RepeatedPtrFieldBase directly.
-  friend class upb::google_opensource::GMR_Handlers;
 
   RepeatedPtrFieldBase();
   explicit RepeatedPtrFieldBase(::google::protobuf::Arena* arena);
@@ -1040,16 +1032,18 @@ class RepeatedPtrField PROTOBUF_FINAL : public internal::RepeatedPtrFieldBase {
 
 template <typename Element>
 inline RepeatedField<Element>::RepeatedField()
-  : current_size_(0),
-    total_size_(0),
-    rep_(NULL) {
+  : current_size_(0)
+  , total_size_(0)
+  , rep_(NULL)
+{
 }
 
 template <typename Element>
 inline RepeatedField<Element>::RepeatedField(Arena* arena)
-  : current_size_(0),
-    total_size_(0),
-    rep_(NULL) {
+  : current_size_(0)
+  , total_size_(0)
+  , rep_(NULL)
+{
   // In case arena is NULL, then we do not create rep_, as code has an invariant
   // `rep_ == NULL then arena == NULL`.
   if (arena != NULL) {
@@ -1061,10 +1055,12 @@ inline RepeatedField<Element>::RepeatedField(Arena* arena)
 
 template <typename Element>
 inline RepeatedField<Element>::RepeatedField(const RepeatedField& other)
-  : current_size_(0),
-    total_size_(0),
-    rep_(NULL) {
-  if (other.current_size_ != 0) {
+  : current_size_(0)
+  , total_size_(0)
+  , rep_(NULL)
+{
+  if (other.current_size_ != 0)
+  {
     Reserve(other.current_size_);
     CopyArray(rep_->elements,
               other.rep_->elements, other.current_size_);
@@ -1237,16 +1233,21 @@ inline void RepeatedField<Element>::CopyFrom(const RepeatedField& other) {
 
 template <typename Element>
 inline typename RepeatedField<Element>::iterator RepeatedField<Element>::erase(
-    const_iterator position) {
+    const_iterator position)
+{
   return erase(position, position + 1);
 }
 
 template <typename Element>
 inline typename RepeatedField<Element>::iterator RepeatedField<Element>::erase(
-    const_iterator first, const_iterator last) {
-  size_type first_offset = first - cbegin();
-  if (first != last) {
-    Truncate(protobuf::copy(last, cend(), begin() + first_offset) - cbegin());
+    const_iterator first, const_iterator last)
+{
+  int64 first_offset = first - cbegin();
+  if (first != last)
+  {
+    Truncate(static_cast<int>(
+       protobuf::copy(last, cend(), begin() + first_offset) - cbegin()
+       ));
   }
   return begin() + first_offset;
 }
