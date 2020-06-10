@@ -1,5 +1,5 @@
 
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8)
 
 project (tensorflow-prj-vs2015)
 
@@ -12,7 +12,10 @@ project (tensorflow-prj-vs2015)
 message ("cxx Flags: " ${CMAKE_CXX_FLAGS})
 
 # Sub-directories where more CMakeLists.txt exist
-add_subdirectory(google)
+add_subdirectory (google)
+
+# Set include-directory
+# include_directories(${GLIB_INCLUDE_DIRS})
 
 set (SOURCE_TENSOR_NN 
 
@@ -87,6 +90,7 @@ set (SOURCE_EXE
 
 add_executable (tensor_nn ${SOURCE_EXE})
 
-target_link_libraries (tensor_nn lib_tensor_nn)
-target_link_libraries (tensor_nn lib_google_protobuf)
-
+target_link_libraries (tensor_nn 
+   lib_tensor_nn
+   lib_google_protobuf
+   )
