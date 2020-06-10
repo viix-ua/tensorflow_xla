@@ -5,7 +5,7 @@ project (tensorflow-prj-vs2015)
 
 # Set compiler flags and options. 
 # Here it is setting the Visual Studio warning level to 4
-# set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
 
 # Command to output information to the console
 # Useful for displaying errors, warnings, and debugging
@@ -15,7 +15,7 @@ message ("cxx Flags: " ${CMAKE_CXX_FLAGS})
 add_subdirectory (google)
 
 # Set include-directory
-# include_directories(${GLIB_INCLUDE_DIRS})
+# include_directories(${INCLUDE_DIRS})
 
 set (SOURCE_TENSOR_NN 
 

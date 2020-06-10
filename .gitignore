@@ -2,3 +2,4 @@
 #folder build
 x64/
 build/
+*.user
