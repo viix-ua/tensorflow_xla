@@ -13,10 +13,12 @@ defaults to proprietary.
 
 # Build options
 
+```
 mkdir build
 cd build
 cmake --build . --config Debug --target tensor_nn
 make
+```
 
 # Build
 
