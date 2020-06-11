@@ -1,4 +1,4 @@
-tensorflow_xla-LIBRARY
+tensorflow_xla
 ===================
 Tensorflow_xla is c++ standalone library, that based on TensorFlow XLA.
 
