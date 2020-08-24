@@ -221,6 +221,7 @@
     <ClCompile Include="global_data.cc" />
     <ClCompile Include="google\google_arena.cc" />
     <ClCompile Include="google\google_arenastring.cc" />
+    <ClCompile Include="google\google_atomicops_internals_x86_gcc.cc" />
     <ClCompile Include="google\google_atomicops_internals_x86_msvc.cc" />
     <ClCompile Include="google\google_common.cc" />
     <ClCompile Include="google\google_generated_message_util.cc" />
