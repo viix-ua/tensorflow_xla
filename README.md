@@ -14,8 +14,8 @@ defaults to proprietary.
 # Build options
 
 ```
-mkdir tensorflow_xla-build
-cd tensorflow_xla-build
+mkdir tensorflow_xla_build
+cd tensorflow_xla_build
 cmake -DCMAKE_BUILD_TYPE=Debug ../tensorflow_xla
 cmake --build .
 ```
