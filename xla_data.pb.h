@@ -1953,7 +1953,7 @@ ProgramShape::mutable_parameter_names() {
 inline void ComputationHandle::clear_handle() {
    handle_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int64 ComputationHandle::handle() const {
+inline tensorflow::int64 ComputationHandle::handle() const {
    // @@protoc_insertion_point(field_get:xla.ComputationHandle.handle)
    return handle_;
 }
@@ -1987,11 +1987,11 @@ inline void GlobalDataHandle::set_handle(::google::protobuf::int64 value) {
 inline void ComputationDataHandle::clear_handle() {
   handle_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int64 ComputationDataHandle::handle() const {
+inline tensorflow::int64 ComputationDataHandle::handle() const {
   // @@protoc_insertion_point(field_get:xla.ComputationDataHandle.handle)
   return handle_;
 }
-inline void ComputationDataHandle::set_handle(::google::protobuf::int64 value) {
+inline void ComputationDataHandle::set_handle(tensorflow::int64 value) {
   
   handle_ = value;
   // @@protoc_insertion_point(field_set:xla.ComputationDataHandle.handle)

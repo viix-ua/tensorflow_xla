@@ -30,6 +30,7 @@ limitations under the License.
 #include "base.h"
 
 #include "tensor_array.h"
+#include "stringprintf.h"
 #include "ptr_util.h"
 
 //#include "tensorflow/compiler/xla/types.h"

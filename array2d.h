@@ -109,7 +109,6 @@ class Array2D : public TensorArray
     return values_[n1 * n2_ + n2];
   }
 
-  template <typename T> inline
   bool operator == (const Array2D<T>& rhs) const
   {
      bool result = (n1() == rhs.n1()) && (n2() == rhs.n2());

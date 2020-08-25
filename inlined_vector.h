@@ -43,7 +43,7 @@ limitations under the License.
 #include <vector>
 
 #include "manual_constructor.h"
-//#include "cpu_info.h"
+#include "cpu_info.h"
 #include "logging.h"
 #include "mem.h"
 #include "base.h"
