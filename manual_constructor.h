@@ -57,7 +57,9 @@ struct AlignType<0, size> {
   typedef char result[size];
 };
 
-#define COMPILER_MSVC
+#if defined(_MSC_VER)
+   #define COMPILER_MSVC
+#endif
 
 #if defined(COMPILER_MSVC)
 #define TF_LIB_GTL_ALIGN_ATTRIBUTE(X) __declspec(align(X))

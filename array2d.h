@@ -261,14 +261,6 @@ std::unique_ptr<Array2D<float>> MakeLinspaceArray2D(float from, float to,
                                                     int64 n1, int64 n2);
 
 template <typename T>
-std::unique_ptr<xla::Array2D<T>> MakeMatrixMul(const xla::Array2D<T>& lhs, const xla::Array2D<T>& rhs)
-{
-   std::unique_ptr<xla::Array2D<T>> result = xla::MakeUnique<xla::Array2D<T>>(lhs.n1(), rhs.n2());
-   xla::MatrixMul(lhs, rhs, *result);
-   return result;
-}
-
-template <typename T>
 void MatrixMul(const xla::Array2D<T>& lhs, const xla::Array2D<T>& rhs, xla::Array2D<T>& result)
 {
    // multiply lsh(p, r) * rhs(r, q) = result(p, q)
@@ -297,6 +289,15 @@ void MatrixMul(const xla::Array2D<T>& lhs, const xla::Array2D<T>& rhs, xla::Arra
       }
    }
 }
+
+template <typename T>
+std::unique_ptr<xla::Array2D<T>> MakeMatrixMul(const xla::Array2D<T>& lhs, const xla::Array2D<T>& rhs)
+{
+   std::unique_ptr<xla::Array2D<T>> result = xla::MakeUnique<xla::Array2D<T>>(lhs.n1(), rhs.n2());
+   xla::MatrixMul(lhs, rhs, *result);
+   return result;
+}
+
 
 template <typename T>
 std::unique_ptr<xla::Array2D<T>> Transpose(const xla::Array2D<T>& rhs)

@@ -101,7 +101,6 @@ class Array3D : public TensorArray
     return values_[n1 * n2_ * n3_ + n2 * n3_ + n3];
   }
 
-  template <typename T> inline
   bool operator == (const Array3D<T>& rhs) const
   {
      bool result = (n1() == rhs.n1()) && (n2() == rhs.n2()) && (n3() == rhs.n3());
@@ -183,16 +182,6 @@ class Array3D : public TensorArray
   std::vector<T> values_;
 };
 
-template <typename T>
-std::unique_ptr<xla::Array3D<T>> MakeMatrixMul(const xla::Array3D<T>& lhs, const xla::Array3D<T>& rhs)
-{
-   assert(lhs.n1() == rhs.n1());
-
-   std::unique_ptr<xla::Array3D<T>> result = xla::MakeUnique<xla::Array3D<T>>(lhs.n1(), lhs.n2(), rhs.n3());
-   xla::MatrixMul(lhs, rhs, *result);
-
-   return result;
-}
 
 template <typename T>
 void MatrixMul(const xla::Array3D<T>& lhs, const xla::Array3D<T>& rhs, xla::Array3D<T>& result)
@@ -230,6 +219,18 @@ void MatrixMul(const xla::Array3D<T>& lhs, const xla::Array3D<T>& rhs, xla::Arra
    }
 
 }
+
+template <typename T>
+std::unique_ptr<xla::Array3D<T>> MakeMatrixMul(const xla::Array3D<T>& lhs, const xla::Array3D<T>& rhs)
+{
+   assert(lhs.n1() == rhs.n1());
+
+   std::unique_ptr<xla::Array3D<T>> result = xla::MakeUnique<xla::Array3D<T>>(lhs.n1(), lhs.n2(), rhs.n3());
+   xla::MatrixMul(lhs, rhs, *result);
+
+   return result;
+}
+
 
 }  // namespace xla
 

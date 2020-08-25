@@ -156,7 +156,6 @@ class Array4D : public TensorArray
     return const_cast<Array4D*>(this)->operator()(plane, depth, height, width);
   }
 
-  template <typename T> inline
   bool operator == (const Array4D<T>& rhs) const
   {
      bool result = (num_elements() == rhs.num_elements());
@@ -380,18 +379,6 @@ class Array4D : public TensorArray
 
 
 template <typename T>
-std::unique_ptr<xla::Array4D<T>> MakeMatrixMul(const xla::Array4D<T>& lhs, const xla::Array4D<T>& rhs)
-{
-   assert(lhs.n1() == rhs.n1());
-   assert(lhs.n2() == rhs.n2());
-
-   std::unique_ptr<xla::Array4D<T>> result = xla::MakeUnique<xla::Array4D<T>>(lhs.n1(), lhs.n2(), lhs.n3(), rhs.n4());
-   xla::MatrixMul(lhs, rhs, *result);
-
-   return result;
-}
-
-template <typename T>
 void MatrixMul(const xla::Array4D<T>& lhs, const xla::Array4D<T>& rhs, xla::Array4D<T>& result)
 {
    // multiply lsh(b, d, p, r) * rhs(b, d, r, q) = result(b, d, p, q)
@@ -433,6 +420,17 @@ void MatrixMul(const xla::Array4D<T>& lhs, const xla::Array4D<T>& rhs, xla::Arra
    }
 }
 
+template <typename T>
+std::unique_ptr<xla::Array4D<T>> MakeMatrixMul(const xla::Array4D<T>& lhs, const xla::Array4D<T>& rhs)
+{
+   assert(lhs.n1() == rhs.n1());
+   assert(lhs.n2() == rhs.n2());
+
+   std::unique_ptr<xla::Array4D<T>> result = xla::MakeUnique<xla::Array4D<T>>(lhs.n1(), lhs.n2(), lhs.n3(), rhs.n4());
+   xla::MatrixMul(lhs, rhs, *result);
+
+   return result;
+}
 
 }  // namespace xla
 
