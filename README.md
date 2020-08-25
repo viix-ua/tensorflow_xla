@@ -14,9 +14,10 @@ defaults to proprietary.
 # Build options
 
 ```
-mkdir build
-cmake --build ./build --config Debug --target tensor_nn
-make
+mkdir tensorflow_xla-build
+cd tensorflow_xla-build
+cmake -DCMAKE_BUILD_TYPE=Debug ../tensorflow_xla
+cmake --build .
 ```
 
 # Build
