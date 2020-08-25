@@ -34,6 +34,7 @@ limitations under the License.
 
 #include "tensor_array.h"
 #include "array1d.h"
+#include "ptr_util.h"
 
 //#include "tensorflow/compiler/xla/types.h"
 //#include "tensorflow/core/lib/core/bits.h"

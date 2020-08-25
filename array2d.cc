@@ -14,7 +14,6 @@ limitations under the License.
 ==============================================================================*/
 
 #include "array2d.h"
-#include "ptr_util.h"
 
 //#include "tensorflow/compiler/xla/array2d.h"
 //#include "tensorflow/compiler/xla/ptr_util.h"
