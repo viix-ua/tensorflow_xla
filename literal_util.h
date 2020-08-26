@@ -880,11 +880,9 @@ template <typename NativeT>
 /* static */ void LiteralUtil::PopulateR2FromArray2DWithLayout(
     const Array2D<NativeT>& values, const Layout& layout, Literal* literal)
 {
-   const ::google::protobuf::RepeatedField< tensorflow::int64 >& field = layout.minor_to_major();
-
   *literal->mutable_shape() = ShapeUtil::MakeShapeWithLayout(
       primitive_util::NativeToPrimitiveType<NativeT>(),
-      {values.height(), values.width()}, AsInt64Slice(field));
+      {values.height(), values.width()}, AsInt64Slice(layout.minor_to_major()));
 
   const int64 dim1_size = values.width();
   const int64 dim0_size = values.height();
@@ -908,12 +906,10 @@ template <typename NativeT>
 /* static */ void LiteralUtil::PopulateR3FromArray3DWithLayout(
     const Array3D<NativeT>& values, const Layout& layout, Literal* literal) 
 {
-   const ::google::protobuf::RepeatedField< tensorflow::int64 >& field = layout.minor_to_major();
-
   *literal->mutable_shape() = ShapeUtil::MakeShapeWithLayout(
       primitive_util::NativeToPrimitiveType<NativeT>(),
       {values.n1(), values.n2(), values.n3()},
-      AsInt64Slice(field));
+      AsInt64Slice(layout.minor_to_major()));
 
   CHECK_EQ(values.n1(), literal->shape().dimensions(0));
   CHECK_EQ(values.n2(), literal->shape().dimensions(1));
