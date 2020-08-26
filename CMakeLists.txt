@@ -9,7 +9,13 @@ if (MSVC) # MSVC compiler (Win32 only)
     set (CMAKE_CXX_FLAGS "/W3")
 elseif (UNIX OR CMAKE_COMPILER_IS_GNUCXX) # Clang OR Gcc (Linux, Mac OS or Win32 with MingW)
     # Enable C++11 and displays all warnings
-    set (CMAKE_CXX_FLAGS "-Wall -std=c++14")
+    # C++ compiler flags
+    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+
+    set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS}")
+
     if (APPLE) # Clang / Mac OS only
         # Required on OSX to compile c++11
         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -mmacosx-version-min=10.7")
