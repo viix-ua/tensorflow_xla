@@ -291,6 +291,9 @@
     <ClInclude Include="vgg16.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="google\google_type_handler.h">
+      <Filter>Source Files\google</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="array2d.cc">

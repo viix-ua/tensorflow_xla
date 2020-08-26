@@ -1957,7 +1957,7 @@ inline tensorflow::int64 ComputationHandle::handle() const {
    // @@protoc_insertion_point(field_get:xla.ComputationHandle.handle)
    return handle_;
 }
-inline void ComputationHandle::set_handle(::google::protobuf::int64 value) {
+inline void ComputationHandle::set_handle(tensorflow::int64 value) {
 
    handle_ = value;
    // @@protoc_insertion_point(field_set:xla.ComputationHandle.handle)

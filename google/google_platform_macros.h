@@ -33,7 +33,7 @@
 
 #ifndef PROTOBUF_FINAL
 #if LANG_CXX11 && !defined(__NVCC__)
-#define PROTOBUF_FINAL final
+#define PROTOBUF_FINAL
 #else
 #define PROTOBUF_FINAL
 #endif

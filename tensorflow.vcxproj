@@ -152,6 +152,7 @@
     <ClInclude Include="google\google_repeated_field.h" />
     <ClInclude Include="google\google_scoped_ptr.h" />
     <ClInclude Include="google\google_template_util.h" />
+    <ClInclude Include="google\google_type_handler.h" />
     <ClInclude Include="google\google_type_traits.h" />
     <ClInclude Include="GradientDescentOptimizer.h" />
     <ClInclude Include="hash.h" />
