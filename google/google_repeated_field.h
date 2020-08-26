@@ -353,6 +353,46 @@ struct ElementCopier {
 
 namespace internal {
 
+// type-traits helper for RepeatedPtrFieldBase: we only want to invoke
+// arena-related "copy if on different arena" behavior if the necessary methods
+// exist on the contained type. In particular, we rely on MergeFrom() existing
+// as a general proxy for the fact that a copy will work, and we also provide a
+// specific override for string*.
+template <typename T>
+struct TypeImplementsMergeBehaviorProbeForMergeFrom {
+  typedef char HasMerge;
+  typedef long HasNoMerge;
+
+  // We accept either of:
+  // - void MergeFrom(const T& other)
+  // - bool MergeFrom(const T& other)
+  //
+  // We mangle these names a bit to avoid compatibility issues in 'unclean'
+  // include environments that may have, e.g., "#define test ..." (yes, this
+  // exists).
+  template<typename U, typename RetType, RetType (U::*)(const U& arg)>
+      struct CheckType;
+  template<typename U> static HasMerge Check(
+      CheckType<U, void, &U::MergeFrom>*);
+  template<typename U> static HasMerge Check(
+      CheckType<U, bool, &U::MergeFrom>*);
+  template<typename U> static HasNoMerge Check(...);
+
+  // Resovles to either google::protobuf::internal::true_type or google::protobuf::internal::false_type.
+  typedef google::protobuf::internal::integral_constant<bool,
+               (sizeof(Check<T>(0)) == sizeof(HasMerge))> type;
+};
+
+template <typename T, typename = void>
+struct TypeImplementsMergeBehavior :
+    TypeImplementsMergeBehaviorProbeForMergeFrom<T> {};
+
+
+template <>
+struct TypeImplementsMergeBehavior< ::std::string> {
+  typedef google::protobuf::internal::true_type type;
+};
+
 // This is the common base class for RepeatedPtrFields.  It deals only in void*
 // pointers.  Users should not use this interface directly.
 //
