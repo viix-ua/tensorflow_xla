@@ -42,7 +42,7 @@ set (SOURCE_TENSOR_NN
    computation.cc 
    computation_builder.cc 
    core_status.cc 
-   #cpu_info.cc 
+   cpu_info.cc 
    default_logging.cc 
    env_time.cc 
    global_data.cc 
