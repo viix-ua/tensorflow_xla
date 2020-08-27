@@ -65,6 +65,8 @@ public:
    void ReshapeIsBitcast_3x4_6x2();
    void ReshapeIsBitcast_3x2x2_6x2_Dim1IsMostMinor();
    void AlgebraicSimplifierTest_ReshapeIsBitcast_3x2x2_6x2_Dim0IsMostMinor();
+
+   void run();
 };
 
 void ShapeUtilTest::GetDimensionHelperCanNegativeIndex()
@@ -612,5 +614,45 @@ void ShapeUtilTest::AlgebraicSimplifierTest_ReshapeIsBitcast_3x2x2_6x2_Dim0IsMos
       ShapeUtil::MakeShapeWithLayout(F32, {6, 2}, {0, 1})));
 }
 
+void ShapeUtilTest::run()
+{
+   GetDimensionHelperCanNegativeIndex();
+   GetDimensionHelperExampleInDocumentationTest();
+   NegativeIndexOobFails();
+   Rank1DimensionIndexing();
+   Rank2DimensionIndexing();
+   Rank3DimensionIndexing();
+   Rank4DimensionIndexing();
+   ParseShapeStringR2F32();
+   CompatibleIdenticalShapes();
+   CompatibleNotIdenticalShapes();
+   IncompatibleDifferentElementShapes();
+   CompatibleTuples();
+   IncompatibleTuplesWithSwappedElements();
+   IncompatibleTuplesWithDifferentPrimitiveType();
+   IncompatibleTuplesWithDifferentDimensions();
+   EmptyLayoutEqualsMissingLayout();
+   CompareShapesWithPaddedDimensionsMismatch();
+   CompareShapesWithPaddingValueMismatch();
+   ScalarUnpopulatedLayoutEqualsScalarLayout();
+   ByteSizeOfWithoutPadding();
+   ByteSizeOfWithPadding();
+   NestedTuple();
+   ElementsIn();
+   HasZeroElements();
+   SameDimensions();
+   GetSubshape();
+   HumanString();
+   ForEachSubshapeArray();
+   ForEachSubshapeNestedTuple();
+   ForEachMutableSubshapeNestedTuple();
+   InsertedOrDeleted1SizedDimensions();
+   DimensionsUnmodifiedByReshape_1x1x1x1_to_1x1x1();
+   DimensionsUnmodifiedByReshape_1x1x1_to_1x1x1x1();
+   DimensionsUnmodifiedByReshape_4x1x3x5x6x7_to_2x6x1x5x1x42();
+   ReshapeIsBitcast_3x4_6x2();
+   ReshapeIsBitcast_3x2x2_6x2_Dim1IsMostMinor();
+   AlgebraicSimplifierTest_ReshapeIsBitcast_3x2x2_6x2_Dim0IsMostMinor();
+}
 }  // namespace
 }  // namespace xla
