@@ -216,7 +216,6 @@
     <ClCompile Include="convolution_test.cc" />
     <ClCompile Include="convolution_variants_test.cc" />
     <ClCompile Include="core_status.cc" />
-    <ClCompile Include="cpu_info.cc" />
     <ClCompile Include="default_logging.cc" />
     <ClCompile Include="env_time.cc" />
     <ClCompile Include="global_data.cc" />
