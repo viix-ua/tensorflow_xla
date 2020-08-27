@@ -921,7 +921,7 @@ class LIBPROTOBUF_EXPORT Arena {
                              // ptrs and cleanup methods.
 
   bool owns_first_block_;    // Indicates that arena owns the first block
-  mutable Mutex blocks_lock_;
+  //mutable Mutex blocks_lock_;
 
   void AddBlock(Block* b);
   // Access must be synchronized, either by blocks_lock_ or by being called from

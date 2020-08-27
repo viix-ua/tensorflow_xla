@@ -147,7 +147,7 @@ Arena::Block* Arena::NewBlock(void* me, Block* my_last_block, size_t n,
 }
 
 void Arena::AddBlock(Block* b) {
-  MutexLock l(&blocks_lock_);
+  //MutexLock l(&blocks_lock_);
   AddBlockInternal(b);
 }
 
@@ -227,7 +227,7 @@ void* Arena::SlowAlloc(size_t n) {
 }
 
 uint64 Arena::SpaceAllocated() const {
-  MutexLock l(&blocks_lock_);
+  //MutexLock l(&blocks_lock_);
   return space_allocated_;
 }
 
