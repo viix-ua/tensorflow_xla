@@ -79,6 +79,8 @@ class SelectAndScatterTest : public ClientLibraryTestBase {
   void R4F32RefValidRandomSmall();
   void R1F32OverlappingWindowMaxScatter();
   void R1F32OverlappingWindowMinScatter();
+
+  void run();
 };
 
 // Test for F32 1D array, with a zero-element input.
@@ -413,6 +415,30 @@ void SelectAndScatterTest::R1F32OverlappingWindowMinScatter()
                             /*window_strides=*/{1}, Padding::kValid, source,
                             builder_.ConstantR0<float>(max_float), min_f32_);
   ComputeAndCompareR1<float>(&builder_, expected, {}, ErrorSpec(1e-7f));
+}
+
+void SelectAndScatterTest::run()
+{
+   R1S0F32();
+   R1F32();
+   R1S32();
+   R1S32OverlappingWindow();
+   R2S32();
+   ReshapeR2S32();
+   R2S32OverlappingWindow();
+   R2S32SamePadding();
+   R2S32SamePaddingOverlappingWindow();
+   R2F32OverlappingR2Source();
+   R4F32Valid();
+   R4F32Overlap();
+   R4F32OverlapSmall();
+   R4F32RefValidFixedSmall();
+   R4F32RefSameRandom();
+   R4F32RefSameRandomFullyPadded();
+   R4F32RefValidRandom();
+   R4F32RefValidRandomSmall();
+   R1F32OverlappingWindowMaxScatter();
+   R1F32OverlappingWindowMinScatter();
 }
 
 }  // namespace
