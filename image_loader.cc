@@ -81,7 +81,7 @@ namespace xla
          {
             // figure out how the pixels are packed
             long padding;
-            if (header.bfSize - header.bfOffBits == info.biWidth*info.biHeight / 8)
+            if (header.bfSize - header.bfOffBits == static_cast<unsigned int>(info.biWidth*info.biHeight) / 8U)
             {
                padding = 0;
             }
@@ -163,7 +163,7 @@ namespace xla
          {
             // figure out how the pixels are packed
             long padding;
-            if (header.bfSize - header.bfOffBits == info.biWidth*info.biHeight / 2)
+            if (header.bfSize - header.bfOffBits == static_cast<unsigned int>(info.biWidth*info.biHeight) / 2U)
             {
                padding = 0;
             }
@@ -242,7 +242,7 @@ namespace xla
          {
             // figure out how the pixels are packed
             int padding = 0;
-            if (header.bfSize - header.bfOffBits == info.biWidth*info.biHeight)
+            if (header.bfSize - header.bfOffBits == static_cast<unsigned int>(info.biWidth*info.biHeight))
                padding = 0;
             else
                padding = 4 - info.biWidth % 4;
@@ -439,7 +439,7 @@ namespace xla
          {
             // figure out how the pixels are packed
             long padding;
-            if (header.bfSize - header.bfOffBits == info.biWidth * info.biHeight * 3)
+            if (header.bfSize - header.bfOffBits == static_cast<unsigned int>(info.biWidth * info.biHeight) * 3U)
             {
                padding = 0;
             }
