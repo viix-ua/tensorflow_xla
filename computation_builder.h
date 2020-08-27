@@ -906,7 +906,7 @@ void ComputationBuilder::Reshape(
    tensorflow::gtl::ArraySlice<int64> new_sizes
 )
 {
-   assert(tensor.rank() == dimensions.size());
+   assert(tensor.rank() == static_cast<int64>(dimensions.size()));
 
    std::vector<int64> dims(4, 0);
 

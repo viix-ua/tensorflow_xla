@@ -181,8 +181,8 @@ tensorflow::Status LayoutUtil::ValidateLayoutForShape(
   if (layout.minor_to_major_size() != ShapeUtil::Rank(shape)) {
      return InvalidArgument(
         "layout minor_to_major field contains %d elements, "
-        "but shape is rank %lld");// : {%s}; shape: %s",
-        //layout.minor_to_major_size(), ShapeUtil::Rank(shape),
+        "but shape is rank %d",
+        layout.minor_to_major_size(), ShapeUtil::Rank(shape));
         //tensorflow::str_util::Join(layout.minor_to_major(), ", ").c_str(),
         //shape.ShortDebugString().c_str());
   }
@@ -205,7 +205,7 @@ tensorflow::Status LayoutUtil::ValidateLayoutForShape(
   {
     if (layout.padded_dimensions_size() != ShapeUtil::Rank(shape)) {
       return InvalidArgument(
-          "layout has %d padded dimensions, but shape is rank %lld",
+          "layout has %d padded dimensions, but shape is rank %d",
           layout.padded_dimensions_size(), ShapeUtil::Rank(shape));
     }
     for (int i = 0; i < layout.padded_dimensions_size(); ++i) {

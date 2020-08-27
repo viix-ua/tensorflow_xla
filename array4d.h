@@ -97,7 +97,7 @@ class Array4D : public TensorArray
      width_(width),
      values_(input_array) 
   {
-     CHECK_EQ(planes * depth * height * width, input_array.size());
+     CHECK_EQ(planes * depth * height * width, static_cast<int64>(input_array.size()));
   }
 
   // Creates a 4D array, filled with values.

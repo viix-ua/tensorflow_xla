@@ -552,7 +552,7 @@ int ShapeUtil::GetDimensionNumber(const Shape& shape, int dimension_number)
   if (shape.element_type() == TUPLE) {
     // Tuple shape.
     if (ShapeUtil::Rank(shape) != 0) {
-      return InvalidArgument("tuples must be rank-0; got rank %lld",
+      return InvalidArgument("tuples must be rank-0; got rank %d",
                              ShapeUtil::Rank(shape));
     }
     if (shape.dimensions_size() != 0) {
@@ -574,7 +574,7 @@ int ShapeUtil::GetDimensionNumber(const Shape& shape, int dimension_number)
   }
   if (ShapeUtil::Rank(shape) != shape.dimensions_size()) {
     return InvalidArgument(
-        "shape's rank is mismatched with dimension count; rank=%lld "
+        "shape's rank is mismatched with dimension count; rank=%d "
         "dimensions_size=%d",
         ShapeUtil::Rank(shape), shape.dimensions_size());
   }
@@ -583,7 +583,7 @@ int ShapeUtil::GetDimensionNumber(const Shape& shape, int dimension_number)
     int64 dimension = shape.dimensions(i);
     if (dimension < 0) {
       return InvalidArgument(
-          "shape's dimensions must not be < 0; dimension at index %lld was "
+          "shape's dimensions must not be < 0; dimension at index %d was "
           "%lld",
           i, dimension);
     }

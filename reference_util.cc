@@ -46,7 +46,7 @@ namespace xla {
   CHECK_EQ(lhs.width(), rhs.height());
   int64 m = lhs.height();
   int64 n = rhs.width();
-  int64 k = lhs.width();
+  //int64 k = lhs.width();
   auto result = MakeUnique<Array2D<float>>(m, n);
 
   xla::MatrixMul<float>(lhs, rhs, *result);
@@ -59,7 +59,7 @@ namespace xla {
   CHECK_EQ(lhs.width(), rhs.height());
   int64 m = lhs.height();
   int64 n = rhs.width();
-  int64 k = lhs.width();
+  //int64 k = lhs.width();
   auto result = MakeUnique<Array2D<double>>(m, n);
 
   xla::MatrixMul<double>(lhs, rhs, *result);
