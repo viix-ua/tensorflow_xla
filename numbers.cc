@@ -168,7 +168,7 @@ char* DoubleToBuffer(double value, char* buffer) {
   bool full_precision_needed = true;
   if (std::abs(value) <= kDoublePrecisionCheckMax) {
     int snprintf_result =
-        _snprintf(buffer, kFastToBufferSize, "%.*g", DBL_DIG, value);
+        snprintf(buffer, kFastToBufferSize, "%.*g", DBL_DIG, value);
 
     // The snprintf should never overflow because the buffer is significantly
     // larger than the precision we asked for.
@@ -180,7 +180,7 @@ char* DoubleToBuffer(double value, char* buffer) {
 
   if (full_precision_needed) {
     int snprintf_result =
-        _snprintf(buffer, kFastToBufferSize, "%.*g", DBL_DIG + 2, value);
+        snprintf(buffer, kFastToBufferSize, "%.*g", DBL_DIG + 2, value);
 
     // Should never overflow; see above.
     DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
@@ -342,7 +342,7 @@ char* FloatToBuffer(float value, char* buffer) {
   static_assert(FLT_DIG < 10, "FLT_DIG is too big");
 
   int snprintf_result =
-      _snprintf(buffer, kFastToBufferSize, "%.*g", FLT_DIG, value);
+      snprintf(buffer, kFastToBufferSize, "%.*g", FLT_DIG, value);
 
   // The snprintf should never overflow because the buffer is significantly
   // larger than the precision we asked for.
@@ -351,7 +351,7 @@ char* FloatToBuffer(float value, char* buffer) {
   float parsed_value;
   if (!safe_strtof(buffer, &parsed_value) || parsed_value != value) {
     snprintf_result =
-        _snprintf(buffer, kFastToBufferSize, "%.*g", FLT_DIG + 2, value);
+        snprintf(buffer, kFastToBufferSize, "%.*g", FLT_DIG + 2, value);
 
     // Should never overflow; see above.
     DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
@@ -361,7 +361,7 @@ char* FloatToBuffer(float value, char* buffer) {
 
 string FpToString(Fprint fp) {
   char buf[17];
-  _snprintf(buf, sizeof(buf), "%016llx", static_cast<uint64>(fp));
+  snprintf(buf, sizeof(buf), "%016llx", static_cast<uint64>(fp));
   return string(buf);
 }
 
@@ -447,7 +447,7 @@ string HumanReadableNumBytes(int64 num_bytes) {
   if (num_bytes < 1024) {
     // No fractions for bytes.
     char buf[8];  // Longest possible string is '-XXXXB'
-    _snprintf(buf, sizeof(buf), "%s%lldB", neg_str,
+    snprintf(buf, sizeof(buf), "%s%lldB", neg_str,
              static_cast<int64>(num_bytes));
     return string(buf);
   }
@@ -462,7 +462,7 @@ string HumanReadableNumBytes(int64 num_bytes) {
 
   // We use SI prefixes.
   char buf[16];
-  _snprintf(buf, sizeof(buf), ((*unit == 'K') ? "%s%.1f%ciB" : "%s%.2f%ciB"),
+  snprintf(buf, sizeof(buf), ((*unit == 'K') ? "%s%.1f%ciB" : "%s%.2f%ciB"),
            neg_str, num_bytes / 1024.0, *unit);
   return string(buf);
 }

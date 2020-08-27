@@ -84,7 +84,7 @@ const wchar_t* wasctime()
    static wchar_t result[64];
 
    time_t rawtime;
-   std::tm timeinfo;
+   tm timeinfo;
 
    time(&rawtime);
 

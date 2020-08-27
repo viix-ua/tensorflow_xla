@@ -25,6 +25,8 @@ limitations under the License.
 #include <random>
 
 #include "types.h"
+#include "str_util.h"
+#include "strcat.h"
 #include "logging.h"
 #include "macros.h"
 #include "base.h"

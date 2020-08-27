@@ -811,8 +811,9 @@ ShapeUtil::InsertedOrDeleted1SizedDimensions(const Shape& shape_pre,
     auto unmodified_dim_pair =
         i < unmodified_dims.size()
             ? unmodified_dims[i]
-            : std::make_pair(ShapeUtil::Rank(shape_pre),
-                             ShapeUtil::Rank(shape_post));
+            : std::make_pair(int64(ShapeUtil::Rank(shape_pre)),
+                             int64(ShapeUtil::Rank(shape_post))
+                            );
     if (!check_modified_dims(prior_unmodified_dim_pair, unmodified_dim_pair)) {
       return nil;
     }

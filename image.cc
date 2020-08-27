@@ -64,7 +64,7 @@ namespace xla
    void apply_img_filter(const xla::Array4D<xla::UChar8>& original, const std::string& filename, const xla::Array2D<float>& kernel)
    {
       auto img = xla::MakeUnique<xla::Array4D<xla::UChar8>>(3, 1, original.height(), original.width(), original.flatten());
-      std::unique_ptr<xla::Array4D<float>>& img_float = img->convert<float>();
+      const std::unique_ptr<xla::Array4D<float>>& img_float = img->convert<float>();
 
       auto img_emboss_float = xla::ReferenceUtil::Conv2D<float>(*img_float, kernel, { 1, 1 }, xla::Padding::kSame);
 
