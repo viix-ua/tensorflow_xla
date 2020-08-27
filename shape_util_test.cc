@@ -24,40 +24,83 @@ limitations under the License.
 namespace xla {
 namespace {
 
-void GetDimensionHelperCanNegativeIndex() 
+class ShapeUtilTest /* : public ::testing::Test */
+{
+public:
+
+   void GetDimensionHelperCanNegativeIndex();
+   void GetDimensionHelperExampleInDocumentationTest();
+   void NegativeIndexOobFails();
+   void Rank1DimensionIndexing();
+   void Rank2DimensionIndexing();
+   void Rank3DimensionIndexing();
+   void Rank4DimensionIndexing();
+   void ParseShapeStringR2F32();
+   void CompatibleIdenticalShapes();
+   void CompatibleNotIdenticalShapes();
+   void IncompatibleDifferentElementShapes();
+   void CompatibleTuples();
+   void IncompatibleTuplesWithSwappedElements();
+   void IncompatibleTuplesWithDifferentPrimitiveType();
+   void IncompatibleTuplesWithDifferentDimensions();
+   void EmptyLayoutEqualsMissingLayout();
+   void CompareShapesWithPaddedDimensionsMismatch();
+   void CompareShapesWithPaddingValueMismatch();
+   void ScalarUnpopulatedLayoutEqualsScalarLayout();
+   void ByteSizeOfWithoutPadding();
+   void ByteSizeOfWithPadding();
+   void NestedTuple();
+   void ElementsIn();
+   void HasZeroElements();
+   void SameDimensions();
+   void GetSubshape();
+   void HumanString();
+   void ForEachSubshapeArray();
+   void ForEachSubshapeNestedTuple();
+   void ForEachMutableSubshapeNestedTuple();
+   void InsertedOrDeleted1SizedDimensions();
+   void DimensionsUnmodifiedByReshape_1x1x1x1_to_1x1x1();
+   void DimensionsUnmodifiedByReshape_1x1x1_to_1x1x1x1();
+   void DimensionsUnmodifiedByReshape_4x1x3x5x6x7_to_2x6x1x5x1x42();
+   void ReshapeIsBitcast_3x4_6x2();
+   void ReshapeIsBitcast_3x2x2_6x2_Dim1IsMostMinor();
+   void AlgebraicSimplifierTest_ReshapeIsBitcast_3x2x2_6x2_Dim0IsMostMinor();
+};
+
+void ShapeUtilTest::GetDimensionHelperCanNegativeIndex()
 {
   Shape matrix = ShapeUtil::MakeShape(F32, {2, 3});
   EXPECT_EQ(3, ShapeUtil::GetDimension(matrix, -1));
   EXPECT_EQ(2, ShapeUtil::GetDimension(matrix, -2));
 }
 
-void GetDimensionHelperExampleInDocumentationTest()
+void ShapeUtilTest::GetDimensionHelperExampleInDocumentationTest()
 {
   auto shape = ShapeUtil::MakeShape(F32, {1, 2, 3, 4});
   ASSERT_EQ(4, ShapeUtil::GetDimension(shape, -1));
 }
 
-void NegativeIndexOobFails() 
+void ShapeUtilTest::NegativeIndexOobFails()
 {
   Shape matrix = ShapeUtil::MakeShape(F32, {2, 3});
   // TODO:
   //ASSERT_DEATH(ShapeUtil::GetDimension(matrix, -3), "dimension_number >= 0");
 }
 
-void Rank1DimensionIndexing()
+void ShapeUtilTest::Rank1DimensionIndexing()
 {
   Shape shape = ShapeUtil::MakeShape(F32, {3});
   ASSERT_EQ(3, shape.dimensions(0));
 }
 
-void Rank2DimensionIndexing()
+void ShapeUtilTest::Rank2DimensionIndexing()
 {
   Shape shape = ShapeUtil::MakeShape(F32, {3, 2});
   ASSERT_EQ(2, shape.dimensions(1));
   ASSERT_EQ(3, shape.dimensions(0));
 }
 
-void Rank3DimensionIndexing()
+void ShapeUtilTest::Rank3DimensionIndexing()
 {
   Shape shape = ShapeUtil::MakeShape(F32, {3, 2, 7});
   ASSERT_EQ(7, shape.dimensions(2));
@@ -65,7 +108,7 @@ void Rank3DimensionIndexing()
   ASSERT_EQ(3, shape.dimensions(0));
 }
 
-void Rank4DimensionIndexing()
+void ShapeUtilTest::Rank4DimensionIndexing()
 {
   Shape shape = ShapeUtil::MakeShape(F32, {3, 2, 7, 8});
   ASSERT_EQ(8, shape.dimensions(3));
@@ -74,7 +117,7 @@ void Rank4DimensionIndexing()
   ASSERT_EQ(3, shape.dimensions(0));
 }
 
-void ParseShapeStringR2F32()
+void ShapeUtilTest::ParseShapeStringR2F32()
 {
    /*
   string shape_string = "f32[123,456]";
@@ -86,14 +129,14 @@ void ParseShapeStringR2F32()
    */
 }
 
-void CompatibleIdenticalShapes()
+void ShapeUtilTest::CompatibleIdenticalShapes()
 {
   Shape shape1 = ShapeUtil::MakeShape(F32, {3, 2});
   Shape shape2 = ShapeUtil::MakeShape(F32, {3, 2});
   ASSERT_TRUE(ShapeUtil::Compatible(shape1, shape2));
 }
 
-void CompatibleNotIdenticalShapes()
+void ShapeUtilTest::CompatibleNotIdenticalShapes()
 {
   Shape shape_1 = ShapeUtil::MakeShape(F32, {3, 2});
   auto layout_1 = shape_1.mutable_layout();
@@ -111,14 +154,14 @@ void CompatibleNotIdenticalShapes()
   EXPECT_TRUE(ShapeUtil::Compatible(shape_1, shape_2));
 }
 
-void IncompatibleDifferentElementShapes()
+void ShapeUtilTest::IncompatibleDifferentElementShapes()
 {
   Shape shape_1 = ShapeUtil::MakeShape(F32, {3, 2});
   Shape shape_2 = ShapeUtil::MakeShape(PRED, {3, 2});
   EXPECT_FALSE(ShapeUtil::Compatible(shape_1, shape_2));
 }
 
-void CompatibleTuples()
+void ShapeUtilTest::CompatibleTuples()
 {
   Shape tuple1 = ShapeUtil::MakeTupleShape(
       {ShapeUtil::MakeShape(F32, {3, 2}), ShapeUtil::MakeShape(PRED, {4, 5})});
@@ -127,7 +170,7 @@ void CompatibleTuples()
   EXPECT_TRUE(ShapeUtil::Compatible(tuple1, tuple2));
 }
 
-void IncompatibleTuplesWithSwappedElements()
+void ShapeUtilTest::IncompatibleTuplesWithSwappedElements()
 {
   Shape tuple1 = ShapeUtil::MakeTupleShape(
       {ShapeUtil::MakeShape(PRED, {4, 5}), ShapeUtil::MakeShape(F32, {3, 2})});
@@ -136,7 +179,7 @@ void IncompatibleTuplesWithSwappedElements()
   EXPECT_FALSE(ShapeUtil::Compatible(tuple1, tuple2));
 }
 
-void IncompatibleTuplesWithDifferentPrimitiveType()
+void ShapeUtilTest::IncompatibleTuplesWithDifferentPrimitiveType()
 {
   Shape tuple1 = ShapeUtil::MakeTupleShape(
       {ShapeUtil::MakeShape(PRED, {4, 5}), ShapeUtil::MakeShape(F32, {3, 2})});
@@ -145,7 +188,7 @@ void IncompatibleTuplesWithDifferentPrimitiveType()
   EXPECT_FALSE(ShapeUtil::Compatible(tuple1, tuple2));
 }
 
-void IncompatibleTuplesWithDifferentDimensions()
+void ShapeUtilTest::IncompatibleTuplesWithDifferentDimensions()
 {
   Shape tuple1 = ShapeUtil::MakeTupleShape(
       {ShapeUtil::MakeShape(PRED, {4, 5}), ShapeUtil::MakeShape(F32, {3, 2})});
@@ -154,7 +197,7 @@ void IncompatibleTuplesWithDifferentDimensions()
   EXPECT_FALSE(ShapeUtil::Compatible(tuple1, tuple2));
 }
 
-void EmptyLayoutEqualsMissingLayout()
+void ShapeUtilTest::EmptyLayoutEqualsMissingLayout()
 {
   // A shape with a missing layout should be equal to a shape with an empty
   // layout.
@@ -169,7 +212,7 @@ void EmptyLayoutEqualsMissingLayout()
   EXPECT_TRUE(ShapeUtil::Equal(scalar1, scalar2));
 }
 
-void CompareShapesWithPaddedDimensionsMismatch()
+void ShapeUtilTest::CompareShapesWithPaddedDimensionsMismatch()
 {
   Shape shape1 = ShapeUtil::MakeShape(F32, {20, 30});
   shape1.mutable_layout()->add_padded_dimensions(10);
@@ -180,7 +223,7 @@ void CompareShapesWithPaddedDimensionsMismatch()
   EXPECT_FALSE(ShapeUtil::Equal(shape1, shape2));
 }
 
-void CompareShapesWithPaddingValueMismatch()
+void ShapeUtilTest::CompareShapesWithPaddingValueMismatch()
 {
   Shape shape1 = ShapeUtil::MakeShape(F32, {20, 30});
   shape1.mutable_layout()->set_padding_value(ZERO_PAD);
@@ -191,7 +234,7 @@ void CompareShapesWithPaddingValueMismatch()
   EXPECT_FALSE(ShapeUtil::Equal(shape1, shape2));
 }
 
-void ScalarUnpopulatedLayoutEqualsScalarLayout()
+void ShapeUtilTest::ScalarUnpopulatedLayoutEqualsScalarLayout()
 {
   Shape scalar_unpopulated = ShapeUtil::MakeShape(F32, {});
   //scalar_unpopulated.clear_layout();
@@ -205,7 +248,7 @@ void ScalarUnpopulatedLayoutEqualsScalarLayout()
   EXPECT_TRUE(ShapeUtil::Equal(scalar_unpopulated, scalar_populated));
 }
 
-void ByteSizeOfWithoutPadding()
+void ShapeUtilTest::ByteSizeOfWithoutPadding()
 {
   EXPECT_EQ(4, ShapeUtil::ByteSizeOfPrimitiveType(F32));
   EXPECT_EQ(4, ShapeUtil::ByteSizeOf(ShapeUtil::MakeShape(F32, {})));
@@ -216,7 +259,7 @@ void ByteSizeOfWithoutPadding()
   EXPECT_EQ(1600, ShapeUtil::ByteSizeOf(ShapeUtil::MakeShape(F64, {10, 20})));
 }
 
-void ByteSizeOfWithPadding()
+void ShapeUtilTest::ByteSizeOfWithPadding()
 {
   EXPECT_EQ(4, ShapeUtil::ByteSizeOfPrimitiveType(F32));
   Shape shape = ShapeUtil::MakeShape(F32, {10, 20});
@@ -227,7 +270,7 @@ void ByteSizeOfWithPadding()
   EXPECT_EQ(15 * 21 * 4, ShapeUtil::ByteSizeOf(shape));
 }
 
-void NestedTuple()
+void ShapeUtilTest::NestedTuple()
 {
   EXPECT_FALSE(ShapeUtil::IsNestedTuple(ShapeUtil::MakeTupleShape({})));
   EXPECT_FALSE(ShapeUtil::IsNestedTuple(
@@ -244,7 +287,7 @@ void NestedTuple()
       {ShapeUtil::MakeTupleShape({}), ShapeUtil::MakeTupleShape({})})));
 }
 
-void ElementsIn()
+void ShapeUtilTest::ElementsIn()
 {
   EXPECT_EQ(1, ShapeUtil::ElementsIn(ShapeUtil::MakeShape(S32, {})));
   EXPECT_EQ(0, ShapeUtil::ElementsIn(ShapeUtil::MakeShape(S32, {0})));
@@ -259,7 +302,7 @@ void ElementsIn()
   EXPECT_EQ(221, ShapeUtil::ElementsIn(ShapeUtil::MakeShape(S32, {13, 17})));
 }
 
-void HasZeroElements()
+void ShapeUtilTest::HasZeroElements()
 {
   EXPECT_EQ(false, ShapeUtil::HasZeroElements(ShapeUtil::MakeShape(S32, {})));
   EXPECT_EQ(true, ShapeUtil::HasZeroElements(ShapeUtil::MakeShape(S32, {0})));
@@ -281,7 +324,7 @@ void HasZeroElements()
             ShapeUtil::HasZeroElements(ShapeUtil::MakeShape(S32, {13, 17})));
 }
 
-void SameDimensions()
+void ShapeUtilTest::SameDimensions()
 {
   EXPECT_TRUE(ShapeUtil::SameDimensions(ShapeUtil::MakeShape(S32, {}),
                                         ShapeUtil::MakeShape(S32, {})));
@@ -309,7 +352,7 @@ void SameDimensions()
                                          ShapeUtil::MakeShape(F32, {1, 2})));
 }
 
-void GetSubshape()
+void ShapeUtilTest::GetSubshape()
 {
   // Test array shape.
   Shape array_shape = ShapeUtil::MakeShape(F32, {42, 42, 123});
@@ -348,7 +391,7 @@ void GetSubshape()
                        ShapeUtil::GetSubshape(nested_tuple_shape, {2, 0})));
 }
 
-void HumanString()
+void ShapeUtilTest::HumanString()
 {
   Shape opaque = ShapeUtil::MakeOpaqueShape();
   Shape scalar = ShapeUtil::MakeShape(F32, {});
@@ -408,9 +451,9 @@ void HumanString()
    */
 }
 
-void ForEachSubshapeArray()
+void ShapeUtilTest::ForEachSubshapeArray()
 {
-   /*
+
   const Shape shape = ShapeUtil::MakeShape(F32, {2, 3});
   int calls = 0;
   EXPECT_IS_OK(ShapeUtil::ForEachSubshape(
@@ -421,16 +464,16 @@ void ForEachSubshapeArray()
         return tensorflow::Status::OK();
       }));
   EXPECT_EQ(1, calls);
-  */
+
 }
 
-void ForEachSubshapeNestedTuple()
+void ShapeUtilTest::ForEachSubshapeNestedTuple()
 {
   const Shape shape = ShapeUtil::MakeTupleShape(
       {ShapeUtil::MakeShape(F32, {42}),
        ShapeUtil::MakeTupleShape({ShapeUtil::MakeShape(F32, {101}),
                                   ShapeUtil::MakeShape(PRED, {33})})});
-  int calls = 0;/*
+  int calls = 0;
   EXPECT_IS_OK(ShapeUtil::ForEachSubshape(
       shape, [&calls, &shape](const Shape& subshape, const ShapeIndex& index) {
         EXPECT_TRUE(
@@ -445,16 +488,16 @@ void ForEachSubshapeNestedTuple()
         ++calls;
         return tensorflow::Status::OK();
       }));
-  EXPECT_EQ(5, calls);*/
+  EXPECT_EQ(5, calls);
 }
 
-void ForEachMutableSubshapeNestedTuple()
+void ShapeUtilTest::ForEachMutableSubshapeNestedTuple()
 {
   Shape shape = ShapeUtil::MakeTupleShape(
       {ShapeUtil::MakeShape(F32, {42}),
        ShapeUtil::MakeTupleShape({ShapeUtil::MakeShape(F32, {101}),
                                   ShapeUtil::MakeShape(PRED, {33})})});
-  int calls = 0;/*
+  int calls = 0;
   EXPECT_IS_OK(ShapeUtil::ForEachMutableSubshape(
       &shape, [&calls, &shape](const Shape* subshape, const ShapeIndex& index) {
         // Pointer values should be equal
@@ -469,10 +512,10 @@ void ForEachMutableSubshapeNestedTuple()
         ++calls;
         return tensorflow::Status::OK();
       }));
-  EXPECT_EQ(5, calls);*/
+  EXPECT_EQ(5, calls);
 }
 
-void InsertedOrDeleted1SizedDimensions()
+void ShapeUtilTest::InsertedOrDeleted1SizedDimensions()
 {
   Shape shape0 = ShapeUtil::MakeShape(S32, {9, 1, 4});
   Shape shape1 = ShapeUtil::MakeShape(S32, {1, 9, 4, 1});
@@ -483,7 +526,7 @@ void InsertedOrDeleted1SizedDimensions()
       ShapeUtil::InsertedOrDeleted1SizedDimensions(shape0, shape2)));
 }
 
-void DimensionsUnmodifiedByReshape_1x1x1x1_to_1x1x1()
+void ShapeUtilTest::DimensionsUnmodifiedByReshape_1x1x1x1_to_1x1x1()
 {
   // All output dimensions should be unmodified. One of the input dimensions is
   // modified because the input rank is larger by one.
@@ -494,7 +537,7 @@ void DimensionsUnmodifiedByReshape_1x1x1x1_to_1x1x1()
                 .size());
 }
 
-void DimensionsUnmodifiedByReshape_1x1x1_to_1x1x1x1()
+void ShapeUtilTest::DimensionsUnmodifiedByReshape_1x1x1_to_1x1x1x1()
 {
   // All input dimensions should be unmodified. One of the output dimensions is
   // modified because the output rank is larger by one.
@@ -505,7 +548,7 @@ void DimensionsUnmodifiedByReshape_1x1x1_to_1x1x1x1()
                 .size());
 }
 
-void DimensionsUnmodifiedByReshape_4x1x3x5x6x7_to_2x6x1x5x1x42()
+void ShapeUtilTest::DimensionsUnmodifiedByReshape_4x1x3x5x6x7_to_2x6x1x5x1x42()
 {
   // The only matching dimension is the one with size 5.
   // 4, 1, 3, 5, 6, 7
@@ -518,7 +561,7 @@ void DimensionsUnmodifiedByReshape_4x1x3x5x6x7_to_2x6x1x5x1x42()
                       std::vector<std::pair<int64, int64>>({{3, 3}})));
 }
 
-void ReshapeIsBitcast_3x4_6x2()
+void ShapeUtilTest::ReshapeIsBitcast_3x4_6x2()
 {
   for (bool input_is_row_major : {true, false}) 
   {
@@ -555,14 +598,14 @@ void ReshapeIsBitcast_3x4_6x2()
   }
 }
 
-void ReshapeIsBitcast_3x2x2_6x2_Dim1IsMostMinor()
+void ShapeUtilTest::ReshapeIsBitcast_3x2x2_6x2_Dim1IsMostMinor()
 {
   EXPECT_TRUE(ShapeUtil::ReshapeIsBitcast(
       ShapeUtil::MakeShapeWithLayout(F32, {3, 2, 2}, {1, 0, 2}),
       ShapeUtil::MakeShapeWithLayout(F32, {6, 2}, {0, 1})));
 }
 
-void AlgebraicSimplifierTest_ReshapeIsBitcast_3x2x2_6x2_Dim0IsMostMinor()
+void ShapeUtilTest::AlgebraicSimplifierTest_ReshapeIsBitcast_3x2x2_6x2_Dim0IsMostMinor()
 {
   EXPECT_FALSE(ShapeUtil::ReshapeIsBitcast(
       ShapeUtil::MakeShapeWithLayout(F32, {3, 2, 2}, {0, 1, 2}),
