@@ -47,16 +47,16 @@ limitations under the License.
 
 tensorflow::internal::LogMessage& LogMessage_check(const char* fname, int line, int severity, bool value);
 
-#define TF_CHECK_LOG(value, severity) LogMessage_check(__FILE__, __LINE__, tensorflow::##severity, value)
+#define TF_CHECK_LOG(value, severity) LogMessage_check(__FILE__, __LINE__, severity, value)
 
-#define ASSERT_TRUE(value)    TF_CHECK_LOG(value, FATAL)
-#define ASSERT_FALSE(value)   TF_CHECK_LOG(!value, FATAL)
-#define EXPECT_TRUE(value)    TF_CHECK_LOG(value, ERROR)
-#define EXPECT_FALSE(value)   TF_CHECK_LOG(!value, ERROR)
+#define ASSERT_TRUE(value)    TF_CHECK_LOG(value, tensorflow::FATAL)
+#define ASSERT_FALSE(value)   TF_CHECK_LOG(!value, tensorflow::FATAL)
+#define EXPECT_TRUE(value)    TF_CHECK_LOG(value, tensorflow::ERROR)
+#define EXPECT_FALSE(value)   TF_CHECK_LOG(!value, tensorflow::ERROR)
 // GTEST_TEST_BOOLEAN_ (...)
 
 // from <gtest/gtest.h>
-#define ASSERT_EQ(expected, actual) TF_CHECK_LOG((expected == actual), FATAL) //ASSERT_TRUE(expected==actual)
+#define ASSERT_EQ(expected, actual) TF_CHECK_LOG((expected == actual), tensorflow::FATAL) //ASSERT_TRUE(expected==actual)
 
 // TODO:
 #define EXPECT_NEAR(expected, actual, err_v) LOG(FATAL)
