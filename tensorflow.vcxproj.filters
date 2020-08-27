@@ -314,9 +314,6 @@
     <ClCompile Include="core_status.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cpu_info.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="default_logging.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
