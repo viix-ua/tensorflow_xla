@@ -219,7 +219,7 @@ void testMatMul1()
    {
       for (xla::int64 j = 0; j < rhs->width(); j++)
       {
-         const float rr = (*result)(i, j);
+         //const float rr = (*result)(i, j);
          assert((*result)(i, j) == (*result_success)(i, j));
       }
    }
@@ -276,7 +276,7 @@ void testMatMul2()
    {
       for (xla::int64 j = 0; j < rhs->width(); j++)
       {
-         const float rr = (*result)(i, j);
+         //const float rr = (*result)(i, j);
          assert((*result)(i, j) == (*result_success)(i, j));
       }
    }
@@ -322,7 +322,7 @@ void testMatMul3()
    {
       for (xla::int64 j = 0; j < rhs->width(); j++)
       {
-         const float rr = (*result)(i, j);
+         //const float rr = (*result)(i, j);
          assert((*result)(i, j) == (*result_success)(i, j));
       }
    }
@@ -360,7 +360,7 @@ void testMatMul4()
    {
       for (xla::int64 j = 0; j < rhs->width(); j++)
       {
-         const float rr = (*result)(i, j);
+         //const float rr = (*result)(i, j);
          assert((*result)(i, j) == (*result_success)(i, j));
       }
    }
@@ -418,7 +418,7 @@ void testMatMul_3D()
    {
       for (xla::int64 j = 0; j < rhs->Width(); j++)
       {
-         const float rr = (*result)(0, i, j);
+         //const float rr = (*result)(0, i, j);
          assert((*result)(0, i, j) == (*result_success)(0, i, j));
       }
    }
