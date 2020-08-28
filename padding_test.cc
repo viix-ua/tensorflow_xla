@@ -143,6 +143,7 @@ inline void test_array_convolution()
    auto cnt22 = xla::ReferenceUtil::WindowCount(4, 2, 2, xla::Padding::kSame);
 
    LOG_MSG("", window_cntr, cnt1, cnt2, cnt22);
+   LOG_MSG("", array_ops_valid, array_ops_same, array_ops_2);
 }
 
 

@@ -116,7 +116,7 @@ bool ComputationBuilder::MakeWindow(
 {
   const auto verify_size = [&](const int64 x, const char* x_name) 
   {
-    if (x == 0 || x == window_dimensions.size()) {
+    if (x == 0 || x == int64(window_dimensions.size())) {
       return true;
     } else {
       NoteError(InvalidArgument(

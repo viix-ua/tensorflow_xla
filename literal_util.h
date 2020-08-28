@@ -824,8 +824,8 @@ template <typename NativeT>
       ShapeUtil::MakeShape(primitive_util::NativeToPrimitiveType<NativeT>(),
                            {static_cast<int64>(values.size())});
   Reserve(values.size(), literal);
-  for (int i = 0; i < values.size(); ++i) {
-    Set(literal, {i}, values[i]);
+  for (typename tensorflow::gtl::ArraySlice<NativeT>::size_type i = 0; i < values.size(); ++i) {
+    Set(literal, { int64(i) }, values[i]);
   }
 }
 
@@ -834,8 +834,8 @@ template <typename NativeT>
   *literal->mutable_shape() =
       ShapeUtil::MakeShape(PRED, {static_cast<int64>(values.bits())});
   Reserve(values.bits(), literal);
-  for (int i = 0; i < values.bits(); ++i) {
-    Set(literal, {i}, values.get(i));
+  for (size_t i = 0; i < values.bits(); ++i) {
+    Set(literal, { int64(i) }, values.get(i));
   }
 }
 
