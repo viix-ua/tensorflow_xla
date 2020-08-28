@@ -57,6 +57,8 @@ std::pair<int64, int64> ComputeSamePadding(int padding_size)
 
       padding_low_high.first = pad_low;
       padding_low_high.second = pad_high;
+
+      LOG_MSG("", pad_low, pad_high);
    }
    //# if odd
    else
@@ -66,6 +68,8 @@ std::pair<int64, int64> ComputeSamePadding(int padding_size)
 
       padding_low_high.first = pad_low;
       padding_low_high.second = pad_high;
+
+      LOG_MSG("", pad_low, pad_high);
    }
    return padding_low_high;
 }
@@ -91,6 +95,7 @@ std::pair<int64, int64> getDimPadding(int input, int filter, int stride, xla::Pa
    else if (padding == xla::Padding::kValid)
    {
       int output = (int)ceil(float(input - filter + 1) / float(stride));
+      LOG_MSG("", output);
 
       return std::pair<int64, int64>(0, 0);
    }
@@ -136,6 +141,8 @@ inline void test_array_convolution()
    auto array_ops_2 = getDimPadding(2, 2, 2, xla::Padding::kSame);
 
    auto cnt22 = xla::ReferenceUtil::WindowCount(4, 2, 2, xla::Padding::kSame);
+
+   LOG_MSG("", window_cntr, cnt1, cnt2, cnt22);
 }
 
 

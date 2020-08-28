@@ -76,8 +76,8 @@ class LogFinisher;
 
 class LIBPROTOBUF_EXPORT LogMessage {
  public:
-  LogMessage(LogLevel level, const char* filename, int line);
-  ~LogMessage();
+  LogMessage(LogLevel level, const char* filename, int line);  // impl from google_common.cc
+  ~LogMessage();                                               // impl from google_common.cc
 
   LogMessage& operator<<(const std::string& value);
   LogMessage& operator<<(const char* value);
@@ -96,7 +96,7 @@ class LIBPROTOBUF_EXPORT LogMessage {
 
  private:
   friend class LogFinisher;
-  void Finish();
+  void Finish();                                               // impl from google_common.cc
 
   LogLevel level_;
   const char* filename_;
@@ -123,8 +123,7 @@ LogMessage& LogMessage::operator<<(const google::protobuf::StringPiece& value)
    return *this;
 }
 
-//LogMessage& LogMessage::operator<<(
-//    const ::google::protobuf::util::Status& status) 
+//LogMessage& LogMessage::operator<<(const ::google::protobuf::util::Status& status) 
 //{
 //  message_ += status.ToString();
 //  return *this;
@@ -138,20 +137,6 @@ LogMessage& LogMessage::operator<<(const uint128& value)
    //message_ += str.str();
    return *this;
 }
-
-//inline
-//LogMessage::LogMessage(LogLevel level, const char* filename, int line)
-//   : level_(level), filename_(filename), line_(line) 
-//{}
-//
-//inline
-//LogMessage::~LogMessage() {}
-//
-//inline
-//void LogMessage::Finish()
-//{
-//}
-
 
 // Used to make the entire "LOG(BLAH) << etc." expression have a void return
 // type and print a newline after each message.

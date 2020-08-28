@@ -48,20 +48,6 @@ void AppendToMessage(::tensorflow::Status* status, Args... args) {
     if (TF_PREDICT_FALSE(!_status.ok())) return _status; \
   } while (0)
 
-//#define TF_RETURN_WITH_CONTEXT_IF_ERROR(expr, ...)                  \
-//  do {                                                              \
-//    ::tensorflow::Status _status = (expr);                          \
-//    if (TF_PREDICT_FALSE(!_status.ok())) {                          \
-//      ::tensorflow::errors::AppendToMessage(&_status, __VA_ARGS__); \
-//      return _status;                                               \
-//    }                                                               \
-//  } while (0)
-
-// Convenience functions for generating and using error status.
-// Example usage:
-//   status.Update(errors::InvalidArgument("The ", foo, " isn't right."));
-//   if (errors::IsInvalidArgument(status)) { ... }
-//   switch (status.code()) { case error::INVALID_ARGUMENT: ... }
 
 #define DECLARE_ERROR(FUNC, CONST)                                       \
   template <typename... Args>                                            \

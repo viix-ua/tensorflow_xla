@@ -27,16 +27,52 @@ limitations under the License.
 //#include "tensorflow/core/platform/macros.h"
 //#include "tensorflow/core/platform/types.h"
 
+#include <stdarg.h> 
+
+static std::string LogMsgLevel(int level, const char* pFormat, ...)
+{
+   va_list arg;
+
+   va_start(arg, pFormat);
+      std::string outText;
+      const int size = vsnprintf(nullptr, 0, pFormat, arg);
+   va_end(arg);
+
+   outText.resize(size);
+
+   va_start(arg, pFormat);
+      vsnprintf(&outText[0], size + 1, pFormat, arg);
+   va_end(arg);
+   return outText;
+}
+
+#define LOG_HELPER_BODY(L) \
+    { \
+        va_list ptr; \
+        va_start(ptr, format); \
+        LogMsgLevel(static_cast<int>(L), format, ptr); \
+        va_end(ptr); \
+    }
+
+
+//////////////////////////////////////////////////////////////////////////////
 
 // TODO(mrry): Prevent this Windows.h #define from leaking out of our headers.
 #undef ERROR
 
 namespace tensorflow {
-const int INFO = 0;            // base_logging::INFO;
-const int WARNING = 1;         // base_logging::WARNING;
-const int ERROR = 2;           // base_logging::ERROR;
-const int FATAL = 3;           // base_logging::FATAL;
-const int NUM_SEVERITIES = 4;  // base_logging::NUM_SEVERITIES;
+   const int INFO = 0;            // base_logging::INFO;
+   const int WARNING = 1;         // base_logging::WARNING;
+   const int ERROR = 2;           // base_logging::ERROR;
+   const int FATAL = 3;           // base_logging::FATAL;
+   const int NUM_SEVERITIES = 4;  // base_logging::NUM_SEVERITIES;
+}
+
+static void LOG_MSG(const char *format, ...)       LOG_HELPER_BODY(tensorflow::INFO)
+static void LOG_WARNING(const char *format, ...)   LOG_HELPER_BODY(tensorflow::WARNING)
+static void LOG_ERROR(const char *format, ...)     LOG_HELPER_BODY(tensorflow::ERROR)
+
+namespace tensorflow {
 
 namespace internal {
 
