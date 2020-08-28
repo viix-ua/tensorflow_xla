@@ -30,6 +30,38 @@ limitations under the License.
 #include <stdlib.h>
 #include <time.h>
 
+static std::string LogMsgLevel(int level, const char* pFormat, ...)
+{
+   va_list arg;
+
+   va_start(arg, pFormat);
+   std::string outText;
+   const int size = vsnprintf(nullptr, 0, pFormat, arg);
+   va_end(arg);
+
+   outText.resize(size);
+
+   va_start(arg, pFormat);
+   vsnprintf(&outText[0], size + 1, pFormat, arg);
+   va_end(arg);
+   return outText;
+}
+
+#define LOG_HELPER_BODY(L) \
+    { \
+        va_list ptr; \
+        va_start(ptr, format); \
+        LogMsgLevel(static_cast<int>(L), format, ptr); \
+        va_end(ptr); \
+    }
+
+
+void LOG_MSG(const char *format, ...)       LOG_HELPER_BODY(tensorflow::INFO)
+void LOG_WARNING(const char *format, ...)   LOG_HELPER_BODY(tensorflow::WARNING)
+void LOG_ERROR(const char *format, ...)     LOG_HELPER_BODY(tensorflow::ERROR)
+
+//----------------------------------------------------------------------------
+
 namespace tensorflow {
 namespace internal {
 
