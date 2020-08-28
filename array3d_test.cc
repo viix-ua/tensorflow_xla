@@ -25,75 +25,75 @@ limitations under the License.
 
 namespace xla {
 namespace {
-      void UninitializedDimsCtor()
-      {
-         Array3D<int> uninit(2, 3, 4);
-         EXPECT_EQ(uninit.n1(), 2);
-         EXPECT_EQ(uninit.n2(), 3);
-         EXPECT_EQ(uninit.n3(), 4);
-         EXPECT_EQ(uninit.num_elements(), 24);
-      }
+void UninitializedDimsCtor()
+{
+   Array3D<int> uninit(2, 3, 4);
+   EXPECT_EQ(uninit.n1(), 2);
+   EXPECT_EQ(uninit.n2(), 3);
+   EXPECT_EQ(uninit.n3(), 4);
+   EXPECT_EQ(uninit.num_elements(), 24);
+}
 
-      void FillCtor( )
-      {
-         Array3D<int> fullof7(2, 3, 4, 7);
+void FillCtor( )
+{
+   Array3D<int> fullof7(2, 3, 4, 7);
 
-         EXPECT_EQ(fullof7.n1(), 2);
-         EXPECT_EQ(fullof7.n2(), 3);
-         EXPECT_EQ(fullof7.n3(), 4);
+   EXPECT_EQ(fullof7.n1(), 2);
+   EXPECT_EQ(fullof7.n2(), 3);
+   EXPECT_EQ(fullof7.n3(), 4);
 
-         for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
-            for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) {
-               for (int64 n3 = 0; n3 < fullof7.n3(); ++n3) {
-                  EXPECT_EQ(fullof7(n1, n2, n3), 7);
-               }
-            }
+   for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
+      for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) {
+         for (int64 n3 = 0; n3 < fullof7.n3(); ++n3) {
+            EXPECT_EQ(fullof7(n1, n2, n3), 7);
          }
       }
-
-      void InitializerListCtor( )
-      {
-         Array3D<int> arr = { { { 1, 2 },{ 3, 4 },{ 5, 6 },{ 7, 8 } },
-         { { 9, 10 },{ 11, 12 },{ 13, 14 },{ 15, 16 } },
-         { { 17, 18 },{ 19, 20 },{ 21, 22 },{ 23, 24 } } };
-
-         EXPECT_EQ(arr.n1(), 3);
-         EXPECT_EQ(arr.n2(), 4);
-         EXPECT_EQ(arr.n3(), 2);
-         EXPECT_EQ(arr.num_elements(), 24);
-
-         EXPECT_EQ(arr(0, 0, 0), 1);
-         EXPECT_EQ(arr(0, 0, 1), 2);
-         EXPECT_EQ(arr(0, 1, 0), 3);
-         EXPECT_EQ(arr(0, 3, 1), 8);
-         EXPECT_EQ(arr(1, 0, 0), 9);
-         EXPECT_EQ(arr(1, 1, 1), 12);
-         EXPECT_EQ(arr(2, 0, 0), 17);
-         EXPECT_EQ(arr(2, 1, 1), 20);
-         EXPECT_EQ(arr(2, 2, 0), 21);
-         EXPECT_EQ(arr(2, 3, 1), 24);
-      }
-
-      void Fill( )
-      {
-         Array3D<int> fullof7(2, 3, 4, 7);
-         for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
-            for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) {
-               for (int64 n3 = 0; n3 < fullof7.n3(); ++n3) {
-                  EXPECT_EQ(fullof7(n1, n2, n3), 7);
-               }
-            }
-         }
-
-         fullof7.Fill(11);
-         for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
-            for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) {
-               for (int64 n3 = 0; n3 < fullof7.n3(); ++n3) {
-                  EXPECT_EQ(fullof7(n1, n2, n3), 11);
-               }
-            }
-         }
-      }
-
    }
+}
+
+void InitializerListCtor( )
+{
+   Array3D<int> arr = { { { 1, 2 },{ 3, 4 },{ 5, 6 },{ 7, 8 } },
+   { { 9, 10 },{ 11, 12 },{ 13, 14 },{ 15, 16 } },
+   { { 17, 18 },{ 19, 20 },{ 21, 22 },{ 23, 24 } } };
+
+   EXPECT_EQ(arr.n1(), 3);
+   EXPECT_EQ(arr.n2(), 4);
+   EXPECT_EQ(arr.n3(), 2);
+   EXPECT_EQ(arr.num_elements(), 24);
+
+   EXPECT_EQ(arr(0, 0, 0), 1);
+   EXPECT_EQ(arr(0, 0, 1), 2);
+   EXPECT_EQ(arr(0, 1, 0), 3);
+   EXPECT_EQ(arr(0, 3, 1), 8);
+   EXPECT_EQ(arr(1, 0, 0), 9);
+   EXPECT_EQ(arr(1, 1, 1), 12);
+   EXPECT_EQ(arr(2, 0, 0), 17);
+   EXPECT_EQ(arr(2, 1, 1), 20);
+   EXPECT_EQ(arr(2, 2, 0), 21);
+   EXPECT_EQ(arr(2, 3, 1), 24);
+}
+
+void Fill( )
+{
+   Array3D<int> fullof7(2, 3, 4, 7);
+   for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
+      for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) {
+         for (int64 n3 = 0; n3 < fullof7.n3(); ++n3) {
+            EXPECT_EQ(fullof7(n1, n2, n3), 7);
+         }
+      }
+   }
+
+   fullof7.Fill(11);
+   for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
+      for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) {
+         for (int64 n3 = 0; n3 < fullof7.n3(); ++n3) {
+            EXPECT_EQ(fullof7(n1, n2, n3), 11);
+         }
+      }
+   }
+}
+
+}
 }  // namespace xla

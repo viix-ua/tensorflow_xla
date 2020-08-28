@@ -29,146 +29,168 @@ limitations under the License.
 namespace xla {
 namespace {
 
+class Array2dTest /* : public ::testing::Test */
+{
+public:
+   void DefaultCtor();
+   void UninitializedDimsCtor();
+   void FillCtor();
+   void InitializerListCtor();
+   void Accessors();
+   void IndexingReadWrite();
+   void IndexingReadWriteBool();
+   void Fill();
+   void DataPointer();
+   void Linspace();
+   void Stringification();
+   void testMatMul1();
+   void testMatMul2();
+   void testMatMul3();
+   void testMatMul4();
+   void testMatMul_3D();
 
-		void DefaultCtor() 
-		{
-		   Array2D<int> empty;
-		   EXPECT_EQ(empty.n1(), 0);
-		   EXPECT_EQ(empty.n2(), 0);
-		   EXPECT_EQ(empty.num_elements(), 0);
+   void run();
+};
+
+void Array2dTest::DefaultCtor()
+{
+	Array2D<int> empty;
+	EXPECT_EQ(empty.n1(), 0);
+	EXPECT_EQ(empty.n2(), 0);
+	EXPECT_EQ(empty.num_elements(), 0);
+}
+
+void Array2dTest::UninitializedDimsCtor()
+{
+	Array2D<int> uninit(2, 3);
+	EXPECT_EQ(uninit.n1(), 2);
+	EXPECT_EQ(uninit.n2(), 3);
+	EXPECT_EQ(uninit.num_elements(), 6);
+}
+
+void Array2dTest::FillCtor()
+{
+	Array2D<int> fullof7(2, 3, 7);
+
+	EXPECT_EQ(fullof7.n1(), 2);
+	EXPECT_EQ(fullof7.n2(), 3);
+
+	for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) 
+   {
+		for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) 
+      {
+		   EXPECT_EQ(fullof7(n1, n2), 7);
 		}
+	}
+}
 
-		void UninitializedDimsCtor() 
-		{
-		   Array2D<int> uninit(2, 3);
-		   EXPECT_EQ(uninit.n1(), 2);
-		   EXPECT_EQ(uninit.n2(), 3);
-		   EXPECT_EQ(uninit.num_elements(), 6);
+void Array2dTest::InitializerListCtor()
+{
+	Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
+
+	EXPECT_EQ(arr.n1(), 2);
+	EXPECT_EQ(arr.n2(), 3);
+
+	EXPECT_EQ(arr(0, 0), 1);
+	EXPECT_EQ(arr(0, 1), 2);
+	EXPECT_EQ(arr(0, 2), 3);
+	EXPECT_EQ(arr(1, 0), 4);
+	EXPECT_EQ(arr(1, 1), 5);
+	EXPECT_EQ(arr(1, 2), 6);
+}
+
+void Array2dTest::Accessors()
+{
+	Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
+
+	EXPECT_EQ(arr.n1(), 2);
+	EXPECT_EQ(arr.n2(), 3);
+	EXPECT_EQ(arr.height(), 2);
+	EXPECT_EQ(arr.width(), 3);
+	EXPECT_EQ(arr.num_elements(), 6);
+}
+
+void Array2dTest::IndexingReadWrite()
+{
+	Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
+
+	EXPECT_EQ(arr(1, 1), 5);
+	EXPECT_EQ(arr(1, 2), 6);
+	arr(1, 1) = 51;
+	arr(1, 2) = 61;
+	EXPECT_EQ(arr(1, 1), 51);
+	EXPECT_EQ(arr(1, 2), 61);
+}
+
+void Array2dTest::IndexingReadWriteBool()
+{
+   //  TODO:
+   /*
+	Array2D<bool> arr = {{false, true, false}, {true, true, false}};
+
+	EXPECT_EQ(arr(1, 1), true);
+	EXPECT_EQ(arr(1, 2), false);
+	arr(1, 1) = false;
+	arr(1, 2) = true;
+	EXPECT_EQ(arr(1, 1), false);
+	EXPECT_EQ(arr(1, 2), true);
+   */
+}
+
+void Array2dTest::Fill()
+{
+	Array2D<int> fullof7(2, 3, 7);
+	for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) 
+   {
+		for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) 
+      {
+		   EXPECT_EQ(fullof7(n1, n2), 7);
 		}
+	}
 
-		void FillCtor() 
-		{
-		   Array2D<int> fullof7(2, 3, 7);
-
-		   EXPECT_EQ(fullof7.n1(), 2);
-		   EXPECT_EQ(fullof7.n2(), 3);
-
-		   for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) 
-         {
-		      for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) 
-            {
-		         EXPECT_EQ(fullof7(n1, n2), 7);
-		      }
-		   }
+	fullof7.Fill(11);
+	for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) 
+   {
+		for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) 
+      {
+		   EXPECT_EQ(fullof7(n1, n2), 11);
 		}
+	}
+}
 
-		void InitializerListCtor() 
-		{
-		   Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
+void Array2dTest::DataPointer()
+{
+	Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
 
-		   EXPECT_EQ(arr.n1(), 2);
-		   EXPECT_EQ(arr.n2(), 3);
+	EXPECT_EQ(arr.data()[0], 1);
+}
 
-		   EXPECT_EQ(arr(0, 0), 1);
-		   EXPECT_EQ(arr(0, 1), 2);
-		   EXPECT_EQ(arr(0, 2), 3);
-		   EXPECT_EQ(arr(1, 0), 4);
-		   EXPECT_EQ(arr(1, 1), 5);
-		   EXPECT_EQ(arr(1, 2), 6);
-		}
+void Array2dTest::Linspace()
+{
+	auto arr = MakeLinspaceArray2D(1.0, 3.5, 3, 2);
 
-		void Accessors() 
-		{
-		   Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
+	EXPECT_EQ(arr->n1(), 3);
+	EXPECT_EQ(arr->n2(), 2);
 
-		   EXPECT_EQ(arr.n1(), 2);
-		   EXPECT_EQ(arr.n2(), 3);
-		   EXPECT_EQ(arr.height(), 2);
-		   EXPECT_EQ(arr.width(), 3);
-		   EXPECT_EQ(arr.num_elements(), 6);
-		}
+	EXPECT_FLOAT_EQ((*arr)(0, 0), 1.0);
+	EXPECT_FLOAT_EQ((*arr)(0, 1), 1.5);
+	EXPECT_FLOAT_EQ((*arr)(1, 0), 2.0);
+	EXPECT_FLOAT_EQ((*arr)(1, 1), 2.5);
+	EXPECT_FLOAT_EQ((*arr)(2, 0), 3.0);
+	EXPECT_FLOAT_EQ((*arr)(2, 1), 3.5);
+}
 
-		void IndexingReadWrite() 
-		{
-		   Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
-
-		   EXPECT_EQ(arr(1, 1), 5);
-		   EXPECT_EQ(arr(1, 2), 6);
-		   arr(1, 1) = 51;
-		   arr(1, 2) = 61;
-		   EXPECT_EQ(arr(1, 1), 51);
-		   EXPECT_EQ(arr(1, 2), 61);
-		}
-
-		void IndexingReadWriteBool() 
-		{
-         //  TODO:
-         /*
-		   Array2D<bool> arr = {{false, true, false}, {true, true, false}};
-
-		   EXPECT_EQ(arr(1, 1), true);
-		   EXPECT_EQ(arr(1, 2), false);
-		   arr(1, 1) = false;
-		   arr(1, 2) = true;
-		   EXPECT_EQ(arr(1, 1), false);
-		   EXPECT_EQ(arr(1, 2), true);
-         */
-		}
-
-		void Fill() 
-		{
-		   Array2D<int> fullof7(2, 3, 7);
-		   for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) 
-         {
-		      for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) 
-            {
-		         EXPECT_EQ(fullof7(n1, n2), 7);
-		      }
-		   }
-
-		   fullof7.Fill(11);
-		   for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) 
-         {
-		      for (int64 n2 = 0; n2 < fullof7.n2(); ++n2) 
-            {
-		         EXPECT_EQ(fullof7(n1, n2), 11);
-		      }
-		   }
-		}
-
-		void DataPointer()
-		{
-		   Array2D<int> arr = {{1, 2, 3}, {4, 5, 6}};
-
-		   EXPECT_EQ(arr.data()[0], 1);
-		}
-
-		void Linspace() 
-		{
-		   auto arr = MakeLinspaceArray2D(1.0, 3.5, 3, 2);
-
-		   EXPECT_EQ(arr->n1(), 3);
-		   EXPECT_EQ(arr->n2(), 2);
-
-		   EXPECT_FLOAT_EQ((*arr)(0, 0), 1.0);
-		   EXPECT_FLOAT_EQ((*arr)(0, 1), 1.5);
-		   EXPECT_FLOAT_EQ((*arr)(1, 0), 2.0);
-		   EXPECT_FLOAT_EQ((*arr)(1, 1), 2.5);
-		   EXPECT_FLOAT_EQ((*arr)(2, 0), 3.0);
-		   EXPECT_FLOAT_EQ((*arr)(2, 1), 3.5);
-		}
-
-		void Stringification() 
-		{
-		   auto arr = MakeLinspaceArray2D(1.0, 3.5, 3, 2);
-		   const string expected = R"([[1, 1.5],
-		   [2, 2.5],
-		   [3, 3.5]])";
-		   EXPECT_EQ(expected, arr->ToString());
-		}
+void Array2dTest::Stringification()
+{
+	auto arr = MakeLinspaceArray2D(1.0, 3.5, 3, 2);
+	const string expected = R"([[1, 1.5],
+	[2, 2.5],
+	[3, 3.5]])";
+	EXPECT_EQ(expected, arr->ToString());
+}
 
 
-void testMatMul1()
+void Array2dTest::testMatMul1()
 {
    auto lhs = xla::MakeUnique<xla::Array2D<float>>(2, 3);
    auto rhs = xla::MakeUnique<xla::Array2D<float>>(3, 4);
@@ -225,7 +247,7 @@ void testMatMul1()
    }
 }
 
-void testMatMul2()
+void Array2dTest::testMatMul2()
 {
    auto lhs = xla::MakeUnique<xla::Array2D<float>>(3, 2);
    auto rhs = xla::MakeUnique<xla::Array2D<float>>(2, 4);
@@ -282,7 +304,7 @@ void testMatMul2()
    }
 }
 
-void testMatMul3()
+void Array2dTest::testMatMul3()
 {
    auto lhs = xla::MakeUnique<xla::Array2D<float>>(3, 1);
    auto rhs = xla::MakeUnique<xla::Array2D<float>>(1, 3);
@@ -328,7 +350,7 @@ void testMatMul3()
    }
 }
 
-void testMatMul4()
+void Array2dTest::testMatMul4()
 {
    auto lhs = xla::MakeUnique<xla::Array2D<float>>(1, 3);
    auto rhs = xla::MakeUnique<xla::Array2D<float>>(3, 1);
@@ -367,7 +389,7 @@ void testMatMul4()
 }
 
 
-void testMatMul_3D()
+void Array2dTest::testMatMul_3D()
 {
    auto lhs = xla::MakeUnique<xla::Array3D<float>>(1, 3, 2);
    auto rhs = xla::MakeUnique<xla::Array3D<float>>(1, 2, 4);
@@ -448,6 +470,25 @@ xla::Array2D<T> MatrixCrossMul(const xla::Array2D<T>& lhs, const xla::Array2D<T>
 }
 */
 
+void Array2dTest::run()
+{
+   DefaultCtor();
+   UninitializedDimsCtor();
+   FillCtor();
+   InitializerListCtor();
+   Accessors();
+   IndexingReadWrite();
+   IndexingReadWriteBool();
+   Fill();
+   DataPointer();
+   Linspace();
+   Stringification();
+   testMatMul1();
+   testMatMul2();
+   testMatMul3();
+   testMatMul4();
+   testMatMul_3D();
+}
 
 }  // namespace
 }  // namespace xla
