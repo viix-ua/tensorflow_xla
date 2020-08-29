@@ -73,7 +73,7 @@ class Array2D : public TensorArray
      : TensorArray(n1, n2)
      , n1_(n1), n2_(n2), values_(input_array)
   {
-     CHECK_EQ(n1 * n2, input_array.size());
+     CHECK_EQ(n1 * n2, int64(input_array.size()));
   }
 
   // Creates an array from the given nested initializer list. The outer

@@ -227,6 +227,9 @@ string* MakeCheckOpString(const T1& v1, const T2& v2, const char* exprtext) {
   inline string* name##Impl(int v1, int v2, const char* exprtext) {       \
     return name##Impl<int, int>(v1, v2, exprtext);                        \
   }                                                                       \
+  inline string* name##Impl(int64 v1, int64 v2, const char* exprtext) {   \
+    return name##Impl<int64, int64>(v1, v2, exprtext);                    \
+  }                                                                       \
   inline string* name##Impl(const size_t v1, const int v2, const char* exprtext) {       \
     if (TF_PREDICT_FALSE(v2 < 0)) {                                       \
        return ::tensorflow::internal::MakeCheckOpString(v1, v2, exprtext);\

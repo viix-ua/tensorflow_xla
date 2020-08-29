@@ -1464,7 +1464,7 @@ void ConvolutionVariantsTest::BackwardInputLowPaddingLessThanHighPadding()
   builder.ConvWithGeneralPadding(gradients, mirrored_weights,
                                  /*window_strides=*/{1, 1},
                                  /*padding=*/{{0, 0}, {1, 0}});
-  ComputeAndCompareR4<float>(&builder, {{{{5, 16, 27}}}}, {}, error_spec_);
+  ComputeAndCompareR4<float>(&builder, {{{{5.f, 16.f, 27.f}}}}, {}, error_spec_);
 }
 
 // XLA:GPU fuses
