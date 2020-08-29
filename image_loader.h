@@ -88,7 +88,8 @@ namespace xla
       UChar8 blue;
    };
 
-   static unsigned short read_u16(std::streambuf& in)
+   inline
+   unsigned short read_u16(std::streambuf& in)
    {
       UChar8 b0, b1;
 
@@ -99,7 +100,8 @@ namespace xla
    }
 
 
-   static unsigned int read_u32(std::streambuf& in)
+   inline
+   unsigned int read_u32(std::streambuf& in)
    {
       UChar8 b0, b1, b2, b3;
 
