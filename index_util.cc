@@ -40,7 +40,7 @@ namespace xla {
   // Padding and nested layouts not supported yet.
   CHECK_EQ(0, shape.layout().padded_dimensions_size());
 
-  for (int i = 0; i < multi_index.size(); ++i) {
+  for (size_t i = 0; i < multi_index.size(); ++i) {
     CHECK_GE(multi_index[i], 0);
     CHECK_LT(multi_index[i], shape.dimensions(i))
        << "indexing beyond extent in dimension " << i << ":"

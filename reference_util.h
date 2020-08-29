@@ -306,6 +306,29 @@ class ReferenceUtil {
   }
 
   template <typename T>
+  static std::unique_ptr<Array3D<T>> Slice3D(const Array3D<T>& input,
+     std::array<int64, 3> starts,
+     std::array<int64, 3> limits) {
+     CHECK_LE(starts[0], input.n1());
+     CHECK_LE(starts[1], input.n2());
+     CHECK_LE(starts[2], input.n3());
+     CHECK_LE(limits[0], input.n1());
+     CHECK_LE(limits[1], input.n2());
+     CHECK_LE(limits[2], input.n3());
+     auto result = MakeUnique<Array3D<T>>(
+        limits[0] - starts[0], limits[1] - starts[1], limits[2] - starts[2]);
+     for (int64 i0 = 0; i0 < result->n1(); ++i0) {
+        for (int64 i1 = 0; i1 < result->n2(); ++i1) {
+           for (int64 i2 = 0; i2 < result->n3(); ++i2) {
+              (*result)(i0, i1, i2) =
+                 input(starts[0] + i0, starts[1] + i1, starts[2] + i2);
+           }
+        }
+     }
+     return result;
+  }
+
+  template <typename T>
   static std::unique_ptr<Array4D<T>> Slice4D(const Array4D<T>& input,
                                              std::array<int64, 4> starts,
                                              std::array<int64, 4> limits) {
@@ -327,29 +350,6 @@ class ReferenceUtil {
             (*result)(i0, i1, i2, i3) = input(starts[0] + i0, starts[1] + i1,
                                               starts[2] + i2, starts[3] + i3);
           }
-        }
-      }
-    }
-    return result;
-  }
-
-  template <typename T>
-  static std::unique_ptr<Array3D<T>> Slice3D(const Array3D<T>& input,
-                                             std::array<int64, 3> starts,
-                                             std::array<int64, 3> limits) {
-    CHECK_LE(starts[0], input.n1());
-    CHECK_LE(starts[1], input.n2());
-    CHECK_LE(starts[2], input.n3());
-    CHECK_LE(limits[0], input.n1());
-    CHECK_LE(limits[1], input.n2());
-    CHECK_LE(limits[2], input.n3());
-    auto result = MakeUnique<Array3D<T>>(
-        limits[0] - starts[0], limits[1] - starts[1], limits[2] - starts[2]);
-    for (int64 i0 = 0; i0 < result->n1(); ++i0) {
-      for (int64 i1 = 0; i1 < result->n2(); ++i1) {
-        for (int64 i2 = 0; i2 < result->n3(); ++i2) {
-          (*result)(i0, i1, i2) =
-              input(starts[0] + i0, starts[1] + i1, starts[2] + i2);
         }
       }
     }
