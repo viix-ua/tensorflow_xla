@@ -42,7 +42,7 @@ namespace xla {
 
   for (size_t i = 0; i < multi_index.size(); ++i) {
     CHECK_GE(multi_index[i], 0);
-    CHECK_LT(multi_index[i], shape.dimensions(i))
+    CHECK_LT(multi_index[i], shape.dimensions(int(i)))
        << "indexing beyond extent in dimension " << i << ":"
        << "\n\tindex: " << tensorflow::str_util::Join(multi_index, ",");
         //<< "\n\tshape: " << ShapeUtil::HumanString(shape);

@@ -51,7 +51,6 @@ class ReferenceUtil {
   static std::unique_ptr<Array2D<double>> Array2DF32ToF64(
       const Array2D<float>& input);
 
-
   // Returns the result of a convolution `lhs <conv> rhs`, with the default
   // convolution dimension numbers returned from
   // ComputationBuilder::CreateDefaultConvDimensionNumbers().
@@ -74,6 +73,20 @@ class ReferenceUtil {
       std::pair<int64, int64> lhs_dilation,
       std::pair<int64, int64> rhs_dilation, ConvolutionDimensionNumbers dnums);
 
+  // Returns the result of a convolution `lhs <conv> rhs`, with the default
+  // convolution dimension numbers returned from
+  // ComputationBuilder::CreateDefaultConvDimensionNumbers().
+  static std::unique_ptr<Array3D<float>> ConvArray3D(const Array3D<float>& lhs,
+                                                     const Array3D<float>& rhs,
+                                                     int64 kernel_stride,
+                                                     Padding padding);
+
+  // Returns the result of a convolution `lhs <conv> rhs`.
+  static std::unique_ptr<Array3D<float>> ConvArray3DGeneralDimensionsDilated(
+      const Array3D<float>& lhs, const Array3D<float>& rhs, int64 kernel_stride,
+      Padding padding, int64 lhs_dilation, int64 rhs_dilation,
+      const ConvolutionDimensionNumbers& dnums);
+
   // Returns the result of a separable  convolution with the given parameters.
   // kernel_stride and padding applies to the depthwise convolution during
   // the separable convolution. pointwise_weights.depth() must be equal to
@@ -88,21 +101,21 @@ class ReferenceUtil {
   // to apply for each reduction step.
   static std::unique_ptr<std::vector<float>> ReduceToColArray2D(
       const Array2D<float>& matrix, float init,
-      std::function<float(float, float)> reduce_function);
+      const std::function<float(float, float)>& reduce_function);
 
   // Returns the result of reducing a matrix to a row vector. init is the
   // initial value for the reduce operation, and reduce_function is the function
   // to apply for each reduction step.
   static std::unique_ptr<std::vector<float>> ReduceToRowArray2D(
       const Array2D<float>& matrix, float init,
-      std::function<float(float, float)> reduce_function);
+      const std::function<float(float, float)>& reduce_function);
 
   // Performs a R2=>R1 reduction by reducing away the dimension specified in
   // 'dimension_to_reduce'.
   template <typename T>
   static std::vector<T> ReduceR2ToR1(const Array2D<T>& input,
                                      int dimension_to_reduce, T init,
-                                     std::function<T(T, T)> freduce) {
+                                     const std::function<T(T, T)>& freduce) {
     std::vector<T> result(dimension_to_reduce == 0 ? input.n2() : input.n1(),
                           init);
     for (int i0 = 0; i0 < input.n1(); ++i0) {
@@ -119,14 +132,19 @@ class ReferenceUtil {
   static std::vector<float> Reduce4DTo1D(
       const Array4D<float>& array, float init,
       tensorflow::gtl::ArraySlice<int64> dims,
-      std::function<float(float, float)> reduce_function);
+      const std::function<float(float, float)>& reduce_function);
+
+  // Broadcast 1D dimension to 4D, from the dimension `broadcast_from_dim`.
+  static std::unique_ptr<Array4D<float>> Broadcast1DTo4D(
+      const std::vector<float>& array, const std::vector<int64>& bounds,
+      int64 broadcast_from_dim);
 
   // Returns the result of reducing the 3D array to a 2D array, reducing away
   // the dimensions specified in dims.
   static std::unique_ptr<Array2D<float>> Reduce3DTo2D(
       const Array3D<float>& array, float init,
       tensorflow::gtl::ArraySlice<int64> dims,
-      std::function<float(float, float)> reduce_function);
+      const std::function<float(float, float)>& reduce_function);
 
   // Applies map_function to each element in the input (2D array) and returns
   // the result.
@@ -170,6 +188,12 @@ class ReferenceUtil {
       const Array4D<float>& operand, float init,
       const tensorflow::gtl::ArraySlice<int64>& window,
       const tensorflow::gtl::ArraySlice<int64>& stride, Padding padding);
+
+  // Batch normalize data.
+  static std::unique_ptr<Array4D<float>> BatchNorm4D(
+      const Array4D<float>& input, const Array4D<float>& mean,
+      const Array4D<float>& var, const Array4D<float>& scale,
+      const Array4D<float>& offset, float epsilon);
 
   // Performs select and scatter with Greater Than or equal as the select, plus
   // as the scatter, and Same Padding.
@@ -398,10 +422,56 @@ class ReferenceUtil {
     return result;
   }
 
+  // Applies map_function to each pair of elements in the input lhs and rhs
+  // (4D array) and returns the result.
+  template <typename F>
+  static std::unique_ptr<Array4D<float>> MapArray4D(const Array4D<float>& lhs,
+                                                    const Array4D<float>& rhs,
+                                                    F&& map_function) {
+    return MapWithIndexArray4D(
+        lhs, rhs, [&](float lhs, float rhs, int64, int64, int64, int64) {
+          return map_function(lhs, rhs);
+        });
+  }
+
+  // Applies map_function to each pair of element in lhs and rhs (4D array) and
+  // returns the result.
+  // (plane, depth, height, width) index of each element is also provided as
+  // arguments to map_function.
+  template <typename F>
+  static std::unique_ptr<Array4D<float>> MapWithIndexArray4D(
+      const Array4D<float>& lhs, const Array4D<float>& rhs, F&& map_function) {
+    auto result = MakeUnique<Array4D<float>>(lhs.planes(), lhs.depth(),
+                                             lhs.height(), lhs.width());
+    for (int64 plane = 0; plane < lhs.planes(); ++plane) {
+      for (int64 depth = 0; depth < lhs.depth(); ++depth) {
+        for (int64 height = 0; height < lhs.height(); ++height) {
+          for (int64 width = 0; width < lhs.width(); ++width) {
+            (*result)(plane, depth, height, width) = map_function(
+                lhs(plane, depth, height, width),
+                rhs(plane, depth, height, width), plane, depth, height, width);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
   // Returns the result of a 2D pad on an input matrix.
   static std::unique_ptr<Array2D<float>> PadArray2D(
       const Array2D<float>& operand, const PaddingConfig& padding,
       const float pad);
+
+  // Returns the result of a 3D pad on an input matrix.
+  static Array3D<float> PadArray3D(const Array3D<float>& operand,
+                                   const PaddingConfig& padding,
+                                   const float pad);
+
+  // Returns the result of a 4D pad on an input array.
+  static Array4D<float> PadArray4D(const Array4D<float>& operand,
+                                   const PaddingConfig& padding,
+                                   const float pad);
+
 
   template <typename NativeT>
   static std::unique_ptr<Array4D<NativeT>> ReLu(const xla::Array4D<NativeT>& input)
