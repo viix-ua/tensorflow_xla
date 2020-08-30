@@ -136,7 +136,7 @@ static inline tensorflow::gtl::ArraySlice<uint64> AsUInt64Slice(
 // operator==. Like std::equal, but forces size equality.
 template <typename Container1T, typename Container2T>
 bool ContainersEqual(const Container1T& c1, const Container2T& c2) {
-  return ((c1.size() == c2.size()) &&
+  return ((int64(c1.size()) == int64(c2.size())) &&
           std::equal(std::begin(c1), std::end(c1), std::begin(c2), std::end(c2)));
 }
 
@@ -146,7 +146,7 @@ bool ContainersEqual(const Container1T& c1, const Container2T& c2) {
 template <typename Container1T, typename Container2T, class PredicateT>
 bool ContainersEqual(const Container1T& c1, const Container2T& c2,
                      PredicateT p) {
-  return ((c1.size() == c2.size()) &&
+  return ((int64(c1.size()) == int64(c2.size())) &&
           std::equal(std::begin(c1), std::end(c1), std::begin(c2), std::end(c2), p));
 }
 
