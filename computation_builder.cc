@@ -791,10 +791,11 @@ ComputationDataHandle ComputationBuilder::ConvGeneralDilated(
 
   std::vector<int64> window_dimensions(
       dimension_numbers.kernel_spatial_dimensions_size());
-  for (int i = 0; i < window_dimensions.size(); ++i) 
+  for (size_t i = 0; i < window_dimensions.size(); ++i) 
   {
-    window_dimensions[i] =
-        rhs_shape->dimensions(static_cast<int>(dimension_numbers.kernel_spatial_dimensions(i)));
+     const int id = (int)dimension_numbers.kernel_spatial_dimensions(int(i));
+    
+     window_dimensions[i] = rhs_shape->dimensions(id);
   }
 
   //ConvolveRequest request;
