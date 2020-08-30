@@ -121,13 +121,13 @@ class Array4D : public TensorArray
                 values.begin()->begin()->begin()->size()) {
     int64 plane = 0;
     for (const auto values_in_plane : values) {
-      DCHECK_EQ(values_in_plane.size(), depth_);
+      DCHECK_EQ(int64(values_in_plane.size()), depth_);
       int64 depth = 0;
       for (const auto values_in_depth : values_in_plane) {
-        DCHECK_EQ(values_in_depth.size(), height_);
+        DCHECK_EQ(int64(values_in_depth.size()), height_);
         int64 height = 0;
         for (const auto values_in_height : values_in_depth) {
-          DCHECK_EQ(values_in_height.size(), width_);
+          DCHECK_EQ(int64(values_in_height.size()), width_);
           int64 width = 0;
           for (const auto element_value : values_in_height) {
             (*this)(plane, depth, height, width) = element_value;

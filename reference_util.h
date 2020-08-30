@@ -586,7 +586,7 @@ class ReferenceUtil {
   template <typename TType>
   static void Bias_Add(xla::Array4D<TType>& input, const std::vector<TType>& bias)
   {
-     CHECK_EQ(input.size(3), bias.size());
+     CHECK_EQ(input.size(3), int64(bias.size()));
 
      for (int64 i0 = 0; i0 < input.size(0); i0++)
      {
