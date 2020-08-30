@@ -667,7 +667,7 @@ int ShapeUtil::GetDimensionNumber(const Shape& shape, int dimension_number)
   // The dimensions in minor_to_major need to be renumbered to account for the
   // degenerate dimensions which have removed. Decrement each dimension number
   // once for each degenerate dimension which has a smaller number.
-  for (int i = 0; i < minor_to_major.size(); ++i) {
+  for (size_t i = 0; i < minor_to_major.size(); ++i) {
     int adjustment = 0;
     for (int64 dim : degenerate_dimensions) {
       if (minor_to_major[i] > dim) {

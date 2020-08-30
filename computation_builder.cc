@@ -466,7 +466,7 @@ ComputationDataHandle ComputationBuilder::Collapse(
 
   // Don't support out-of-order collapse here.
   // Checks that the collapsed dimensions are in order and consecutive.
-  for (int i = 1; i < dims_to_collapse.size(); ++i) {
+  for (size_t i = 1; i < dims_to_collapse.size(); ++i) {
     if (dims_to_collapse[i] - 1 != dims_to_collapse[i - 1]) {
       NoteError(InvalidArgument(
           "Collapsed dimensions are not in order and consecutive."));
