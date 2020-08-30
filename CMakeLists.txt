@@ -80,6 +80,7 @@ set (SOURCE_TESTS
    array2d_test.cc 
    array3d_test.cc 
    array4d_test.cc 
+   array_test.cc 
    convolution_test.cc 
    convolution_variants_test.cc 
    index_util_test.cc 
