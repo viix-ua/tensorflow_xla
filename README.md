@@ -1,6 +1,6 @@
 tensorflow_xla
 ===================
-Tensorflow_xla is c++ standalone library, that based on TensorFlow XLA (linear-algebra level).
+Tensorflow_xla is C++ standalone library for linear algebra & scientific computing. Port of tensorflow-xla (linear-algebra level) from tensorflow-framework.
 
 License and Copyright
 ---------------------
