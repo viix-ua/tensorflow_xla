@@ -59,6 +59,8 @@ public:
     dimension3->set_edge_padding_low(0);
     dimension3->set_edge_padding_high(0);
     dimension3->set_interior_padding(0);
+
+    run();
   }
 
   void Pad1DS0ToS0Array();

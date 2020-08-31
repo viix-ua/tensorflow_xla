@@ -32,6 +32,9 @@ namespace {
 class Array2dTest /* : public ::testing::Test */
 {
 public:
+
+   Array2dTest() { run(); }
+
    void DefaultCtor();
    void UninitializedDimsCtor();
    void FillCtor();

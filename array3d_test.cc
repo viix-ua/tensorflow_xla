@@ -25,7 +25,22 @@ limitations under the License.
 
 namespace xla {
 namespace {
-void UninitializedDimsCtor()
+
+class Array3dTest
+{
+public:
+
+   Array3dTest() { run(); }
+
+   void UninitializedDimsCtor();
+   void FillCtor();
+   void InitializerListCtor();
+   void Fill();
+
+   void run();
+};
+
+void Array3dTest::UninitializedDimsCtor()
 {
    Array3D<int> uninit(2, 3, 4);
    EXPECT_EQ(uninit.n1(), 2);
@@ -34,7 +49,7 @@ void UninitializedDimsCtor()
    EXPECT_EQ(uninit.num_elements(), 24);
 }
 
-void FillCtor( )
+void Array3dTest::FillCtor( )
 {
    Array3D<int> fullof7(2, 3, 4, 7);
 
@@ -51,7 +66,7 @@ void FillCtor( )
    }
 }
 
-void InitializerListCtor( )
+void Array3dTest::InitializerListCtor( )
 {
    Array3D<int> arr = { { { 1, 2 },{ 3, 4 },{ 5, 6 },{ 7, 8 } },
    { { 9, 10 },{ 11, 12 },{ 13, 14 },{ 15, 16 } },
@@ -74,7 +89,7 @@ void InitializerListCtor( )
    EXPECT_EQ(arr(2, 3, 1), 24);
 }
 
-void Fill( )
+void Array3dTest::Fill( )
 {
    Array3D<int> fullof7(2, 3, 4, 7);
    for (int64 n1 = 0; n1 < fullof7.n1(); ++n1) {
@@ -93,6 +108,14 @@ void Fill( )
          }
       }
    }
+}
+
+void Array3dTest::run()
+{
+   UninitializedDimsCtor();
+   FillCtor();
+   InitializerListCtor();
+   Fill();
 }
 
 }

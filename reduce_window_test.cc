@@ -43,7 +43,9 @@ class ReduceWindowTest : public ClientLibraryTestBase
 {
  public:
   ReduceWindowTest() : builder_(TestName()) 
-  {}
+  {
+     run();
+  }
 
   void ReduceWindowAdd(xla::ComputationDataHandle input,
                        tensorflow::gtl::ArraySlice<int64> window_dimensions,

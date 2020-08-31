@@ -79,6 +79,8 @@ class LiteralUtilTest
     literal_r4_2x2x3x3_dim0minor_ =
         LiteralUtil::CreateR4FromArray4DWithLayout<float>(arr4d,
                                                           layout_r4_dim0minor_);
+
+    run();
   }
 
   Layout layout_r2_dim0major_;
@@ -126,10 +128,10 @@ public:
    void PopulateWithValueR1S64();
    void PopulateWithValueR2U64();
 
-   void start();
+   void run();
 };
 
-void LiteralUtilTest::start()
+void LiteralUtilTest::run()
 {
    LiteralScalarToString();
    LiteralVectorToString();

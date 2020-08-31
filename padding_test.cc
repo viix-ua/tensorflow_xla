@@ -162,7 +162,7 @@ inline void test_array_convolution()
 class PaddingTest : public ClientLibraryTestBase
 {
 public:
-   PaddingTest() {}
+   PaddingTest() { run(); }
 
    void ValidPaddingWithStrideOne();
    void ValidPaddingWithStrideThree();

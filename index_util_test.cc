@@ -36,6 +36,8 @@ class IndexUtilTest
 {
 public:
 
+   IndexUtilTest() { run(); }
+
    void VectorIndexing();
    void MatrixIndexingRowMajor();
    void MatrixIndexingColumnMajor();

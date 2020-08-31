@@ -28,6 +28,8 @@ class ShapeUtilTest /* : public ::testing::Test */
 {
 public:
 
+   ShapeUtilTest() { run(); }
+
    void GetDimensionHelperCanNegativeIndex();
    void GetDimensionHelperExampleInDocumentationTest();
    void NegativeIndexOobFails();

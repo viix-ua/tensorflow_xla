@@ -25,6 +25,19 @@ limitations under the License.
 namespace xla {
 namespace {
 
+class UtilTest
+{
+public:
+
+   UtilTest() { run(); }
+
+   void ContainersEqualDefault();
+   void ContainersEqualPredicate();
+   void ContainersEqualDifferentContainerTypes();
+
+   void run();
+};
+
 // Verifies that, even with a different number of leading spaces, the
 // Reindent routine turns them into a uniform number of leading spaces.
 //
@@ -42,7 +55,7 @@ namespace {
 
 // Some smoke tests for ContainersEqual. Keeping it simple since these are just
 // basic wrappers around std::equal.
-void ContainersEqualDefault() 
+void UtilTest::ContainersEqualDefault()
 {
   std::vector<int> c1 = {1, 2, 3, 4};
   std::vector<int> c2 = {1, 2, 3};
@@ -63,7 +76,7 @@ void ContainersEqualDefault()
   EXPECT_FALSE(ContainersEqual(c6, c1));
 }
 
-void ContainersEqualPredicate() 
+void UtilTest::ContainersEqualPredicate()
 {
   std::vector<int> c1 = {1, 2, 3, 4};
   std::vector<int> c2 = {10, 20, 30, 40};
@@ -74,7 +87,7 @@ void ContainersEqualPredicate()
       c1, c2, [](const int& i1, const int& i2) { return i1 > i2; }));
 }
 
-void ContainersEqualDifferentContainerTypes() 
+void UtilTest::ContainersEqualDifferentContainerTypes()
 {
   std::vector<int> c1 = {1, 2, 3, 4};
   std::list<int> c2 = {1, 2, 3, 4};
@@ -112,6 +125,13 @@ void ContainersEqualDifferentContainerTypes()
 //                                CommonFactors(test_case.a, test_case.b)));
 //  }
 //}
+
+void UtilTest::run()
+{
+   ContainersEqualDefault();
+   ContainersEqualPredicate();
+   ContainersEqualDifferentContainerTypes();
+}
 
 }  // namespace
 }  // namespace xla

@@ -50,95 +50,97 @@ class ConvolutionVariantsTest : public ClientLibraryTestBase
   ErrorSpec error_spec_ = ErrorSpec(1e-4f, 1e-2f);
 #endif
 
-  void Minimal();
-  void MinimalWithBatch();
+   ConvolutionVariantsTest() { run(); }
 
-  void Flat1x1();
-  void Deep1x1();
+   void Minimal();
+   void MinimalWithBatch();
 
-  void Filter1x2in1x2();
-  void Filter1x2in1x3();
-  void Filter1x2in2x2();
-  void Filter2x1in2x2();
-  void Filter2x2in2x2();
+   void Flat1x1();
+   void Deep1x1();
 
-  void Filter1x2in2x3WithDepthAndBatch();
+   void Filter1x2in1x2();
+   void Filter1x2in1x3();
+   void Filter1x2in2x2();
+   void Filter2x1in2x2();
+   void Filter2x2in2x2();
 
-  void Filter1x1stride1x2in1x4();
+   void Filter1x2in2x3WithDepthAndBatch();
 
-  void Filter1x1stride1x2in1x5();
+   void Filter1x1stride1x2in1x4();
 
-  void Filter1x3stride1x2in1x4();
+   void Filter1x1stride1x2in1x5();
 
-  void Filter1x3stride1x2in1x5();
+   void Filter1x3stride1x2in1x4();
 
-  void Filter1x1stride2x2in3x3();
+   void Filter1x3stride1x2in1x5();
 
-  void Filter3x1in1x1Padded();
-  void Filter5x1in3x1Padded();
-  void Filter3x3in2x2Padded();
+   void Filter1x1stride2x2in3x3();
 
-  void Filter1x1in2x1WithPaddingAndDepth();
+   void Filter3x1in1x1Padded();
+   void Filter5x1in3x1Padded();
+   void Filter3x3in2x2Padded();
 
-  void Filter2x2Stride1x1Input3x3();
+   void Filter1x1in2x1WithPaddingAndDepth();
 
-  void Filter1x2Stride1x1Input1x3();
+   void Filter2x2Stride1x1Input3x3();
 
-  void Filter2x1x8x8Input1x1x8x8();
+   void Filter1x2Stride1x1Input1x3();
 
-  void Filter1x1x1x1Input16x1x1x1();
-  void Filter1x1x2x2Input16x1x2x2();
+   void Filter2x1x8x8Input1x1x8x8();
 
-  void Filter1x1x2x2Input3x1x2x2();
+   void Filter1x1x1x1Input16x1x1x1();
+   void Filter1x1x2x2Input16x1x2x2();
 
-  void Filter1x1x8x8Input16x1x8x8();
+   void Filter1x1x2x2Input3x1x2x2();
 
-  void Filter2x2x8x8Input1x2x8x8();
-  void Filter2x2x8x8Input2x2x8x8();
-  void Filter2x2x8x8Input32x2x8x8();
-  void Filter16x16x1x1Input16x16x1x1();
+   void Filter1x1x8x8Input16x1x8x8();
 
-  void FlatRhsDilation();
-  void FlatLhsDilation1D();
-  void FlatLhsDilation();
+   void Filter2x2x8x8Input1x2x8x8();
+   void Filter2x2x8x8Input2x2x8x8();
+   void Filter2x2x8x8Input32x2x8x8();
+   void Filter16x16x1x1Input16x16x1x1();
 
-  void NegativePaddingOnBothEnds();
-  void NegativePaddingLowAndPositivePaddingHigh();
-  void PositivePaddingLowAndNegativePaddingHigh();
-  void PositivePaddingAndDilation();
-  void NegativePaddingAndDilation();
+   void FlatRhsDilation();
+   void FlatLhsDilation1D();
+   void FlatLhsDilation();
 
-  void RandomData_Input1x1x2x3_Filter2x1x1x2();
-  void RandomData_Input1x16x1x1_Filter1x16x1x1();
+   void NegativePaddingOnBothEnds();
+   void NegativePaddingLowAndPositivePaddingHigh();
+   void PositivePaddingLowAndNegativePaddingHigh();
+   void PositivePaddingAndDilation();
+   void NegativePaddingAndDilation();
 
-  void RandomData_Input16x16x1x1_Filter1x16x1x1();
+   void RandomData_Input1x1x2x3_Filter2x1x1x2();
+   void RandomData_Input1x16x1x1_Filter1x16x1x1();
 
-  void RandomData_Input16x16x1x1_Filter16x16x1x1();
+   void RandomData_Input16x16x1x1_Filter1x16x1x1();
 
-  void RandomData_Input16x16x16x16_Filter16x16x16x16();
+   void RandomData_Input16x16x1x1_Filter16x16x1x1();
 
-  void Filter1x2x1x1Input1x2x3x1GeneralPadding();
+   void RandomData_Input16x16x16x16_Filter16x16x16x16();
 
-  void Filter1x1x1x1Input1x2x3x1GeneralPadding();
+   void Filter1x2x1x1Input1x2x3x1GeneralPadding();
 
-  void Filter1x1x1x1Input1x2x3x1NoPadding();
-  void Filter1x1x2x3Input1x2x3x2NoPadding();
+   void Filter1x1x1x1Input1x2x3x1GeneralPadding();
 
-  void BackwardInputLowPaddingLessThanHighPadding();
+   void Filter1x1x1x1Input1x2x3x1NoPadding();
+   void Filter1x1x2x3Input1x2x3x2NoPadding();
 
-  void BackwardInputLowPaddingGreaterThanHighPadding();
+   void BackwardInputLowPaddingLessThanHighPadding();
 
-  void BackwardInputEvenPadding();
+   void BackwardInputLowPaddingGreaterThanHighPadding();
 
-  void BackwardInputWithNegativePaddingHigh();
-  void BackwardFilterLowPaddingLessThanHighPadding();
+   void BackwardInputEvenPadding();
 
-  void BackwardFilterLowPaddingGreaterThanHighPadding();
-  void BackwardFilterEvenPadding();
+   void BackwardInputWithNegativePaddingHigh();
+   void BackwardFilterLowPaddingLessThanHighPadding();
 
-  //////////////////////////////////////
+   void BackwardFilterLowPaddingGreaterThanHighPadding();
+   void BackwardFilterEvenPadding();
 
-  void run();
+   //////////////////////////////////////
+
+   void run();
 
 };
 

@@ -34,6 +34,9 @@ namespace {
 class Array4dTest
 {
 public:
+
+   Array4dTest() { run(); }
+
    void UninitializedDimsCtor();
    void FillCtor();
    void ContainerCtor();

@@ -40,47 +40,50 @@ namespace xla {
 namespace {
 
 class SelectAndScatterTest : public ClientLibraryTestBase {
- public:
-  SelectAndScatterTest() : builder_(TestName()) {
-    // Create S32 GE and ADD computations for select and scatter respectively.
-    ge_s32_ = CreateScalarGeComputation(S32, &builder_);
-    add_s32_ = CreateScalarAddComputation(S32, &builder_);
-    ge_f32_ = CreateScalarGeComputation(F32, &builder_);
-    add_f32_ = CreateScalarAddComputation(F32, &builder_);
-    max_f32_ = CreateScalarMaxComputation(F32, &builder_);
-    min_f32_ = CreateScalarMinComputation(F32, &builder_);
-  }
+   public:
 
-  ComputationBuilder builder_;
-  Computation ge_s32_;
-  Computation add_s32_;
-  Computation ge_f32_;
-  Computation add_f32_;
-  Computation max_f32_;
-  Computation min_f32_;
+   SelectAndScatterTest() : builder_(TestName()) {
+      // Create S32 GE and ADD computations for select and scatter respectively.
+      ge_s32_ = CreateScalarGeComputation(S32, &builder_);
+      add_s32_ = CreateScalarAddComputation(S32, &builder_);
+      ge_f32_ = CreateScalarGeComputation(F32, &builder_);
+      add_f32_ = CreateScalarAddComputation(F32, &builder_);
+      max_f32_ = CreateScalarMaxComputation(F32, &builder_);
+      min_f32_ = CreateScalarMinComputation(F32, &builder_);
 
-  void R1S0F32();
-  void R1F32();
-  void R1S32();
-  void R1S32OverlappingWindow();
-  void R2S32();
-  void ReshapeR2S32();
-  void R2S32OverlappingWindow();
-  void R2S32SamePadding();
-  void R2S32SamePaddingOverlappingWindow();
-  void R2F32OverlappingR2Source();
-  void R4F32Valid();
-  void R4F32Overlap();
-  void R4F32OverlapSmall();
-  void R4F32RefValidFixedSmall();
-  void R4F32RefSameRandom();
-  void R4F32RefSameRandomFullyPadded();
-  void R4F32RefValidRandom();
-  void R4F32RefValidRandomSmall();
-  void R1F32OverlappingWindowMaxScatter();
-  void R1F32OverlappingWindowMinScatter();
+      run();
+   }
 
-  void run();
+   ComputationBuilder builder_;
+   Computation ge_s32_;
+   Computation add_s32_;
+   Computation ge_f32_;
+   Computation add_f32_;
+   Computation max_f32_;
+   Computation min_f32_;
+
+   void R1S0F32();
+   void R1F32();
+   void R1S32();
+   void R1S32OverlappingWindow();
+   void R2S32();
+   void ReshapeR2S32();
+   void R2S32OverlappingWindow();
+   void R2S32SamePadding();
+   void R2S32SamePaddingOverlappingWindow();
+   void R2F32OverlappingR2Source();
+   void R4F32Valid();
+   void R4F32Overlap();
+   void R4F32OverlapSmall();
+   void R4F32RefValidFixedSmall();
+   void R4F32RefSameRandom();
+   void R4F32RefSameRandomFullyPadded();
+   void R4F32RefValidRandom();
+   void R4F32RefValidRandomSmall();
+   void R1F32OverlappingWindowMaxScatter();
+   void R1F32OverlappingWindowMinScatter();
+
+   void run();
 };
 
 // Test for F32 1D array, with a zero-element input.
