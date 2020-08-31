@@ -31,6 +31,21 @@ using namespace std;
 namespace xla {
 namespace {
 
+class Array4dTest
+{
+public:
+   void UninitializedDimsCtor();
+   void FillCtor();
+   void ContainerCtor();
+   void InitializerListCtor();
+   void Fill();
+   void FillWithMultiples();
+   void FillRasterDimensionDepthOne();
+   void FillWithPzTestDepthOne();
+
+   void run();
+};
+
 // Given an Array4D and a 4-tuple index, computes the linear index into the
 // array idx represents.
 template <typename T>
@@ -41,7 +56,7 @@ int64 Array4DLinearIndex(const Array4D<T>& arr,
           idx[0] * arr.n2() * arr.n3() * arr.n4());
 }
 
-void UninitializedDimsCtor()
+void Array4dTest::UninitializedDimsCtor()
 {
   Array4D<int> empty(2, 3, 4, 5);
   EXPECT_EQ(empty.n1(), 2);
@@ -51,7 +66,7 @@ void UninitializedDimsCtor()
   EXPECT_EQ(empty.num_elements(), 120);
 }
 
-void FillCtor()
+void Array4dTest::FillCtor()
 {
   Array4D<int> fullof7(2, 3, 4, 5, 7);
 
@@ -65,7 +80,7 @@ void FillCtor()
   });
 }
 
-void ContainerCtor()
+void Array4dTest::ContainerCtor()
 {
   // Fill an Array4D with a linear vector of [0..119] according to the default
   // row-major ordering.
@@ -84,7 +99,7 @@ void ContainerCtor()
   });
 }
 
-void InitializerListCtor()
+void Array4dTest::InitializerListCtor()
 {
   Array4D<int> arr = {{{{1}, {2}}, {{3}, {4}}, {{5}, {6}}, {{7}, {8}}},
                       {{{9}, {10}}, {{11}, {12}}, {{13}, {14}}, {{15}, {16}}},
@@ -108,7 +123,7 @@ void InitializerListCtor()
   EXPECT_EQ(arr(2, 3, 1, 0), 24);
 }
 
-void Fill()
+void Array4dTest::Fill()
 {
   Array4D<int> fullof7(2, 3, 4, 5, 7);
   fullof7.Each([](tensorflow::gtl::ArraySlice<int64> idx, int* cell) {
@@ -121,7 +136,7 @@ void Fill()
   });
 }
 
-void FillWithMultiples()
+void Array4dTest::FillWithMultiples()
 {
   Array4D<float> arr(2, 3, 4, 5);
   arr.FillWithMultiples(2.0f);
@@ -131,7 +146,7 @@ void FillWithMultiples()
   });
 }
 
-void FillRasterDimensionDepthOne()
+void Array4dTest::FillRasterDimensionDepthOne()
 {
   Array4D<float> array(1, 1, 128, 128);
   Array2D<float> raster(128, 128);
@@ -162,7 +177,7 @@ void FillRasterDimensionDepthOne()
   EXPECT_FLOAT_EQ(127127, array(0, 0, 127, 127));
 }
 
-void FillWithPzTestDepthOne()
+void Array4dTest::FillWithPzTestDepthOne()
 {
   Array2D<float> matrix(3, 2);
   std::initializer_list<std::initializer_list<float>> values = {
@@ -189,6 +204,18 @@ void FillWithPzTestDepthOne()
 
   EXPECT_FLOAT_EQ(3, actual(2, 0, 0, 0));
   EXPECT_FLOAT_EQ(0.2, actual(2, 1, 0, 0));
+}
+
+void Array4dTest::run()
+{
+   UninitializedDimsCtor();
+   FillCtor();
+   ContainerCtor();
+   InitializerListCtor();
+   Fill();
+   FillWithMultiples();
+   FillRasterDimensionDepthOne();
+   FillWithPzTestDepthOne();
 }
 
 }  // namespace

@@ -32,6 +32,21 @@ limitations under the License.
 namespace xla {
 namespace {
 
+class IndexUtilTest
+{
+public:
+
+   void VectorIndexing();
+   void MatrixIndexingRowMajor();
+   void MatrixIndexingColumnMajor();
+   void ThreeDArrayIndexing210();
+   void ThreeDArrayIndexing120();
+   void FourDArrayIndexing3210();
+   void LinearToMultiToLinear();
+
+   void run();
+};
+
 void SetMinorToMajorLayout(Shape* shape,
                            std::initializer_list<int64> dimensions) {
   shape->mutable_layout()->clear_minor_to_major();
@@ -40,7 +55,7 @@ void SetMinorToMajorLayout(Shape* shape,
   }
 }
 
-void VectorIndexing() {
+void IndexUtilTest::VectorIndexing() {
   // Vectors are trivially laid out and the linear index should always be the
   // same as the "multidimensional" index.
   Shape vector_shape = ShapeUtil::MakeShape(F32, {100});
@@ -52,7 +67,7 @@ void VectorIndexing() {
   EXPECT_EQ(42, multi_index[0]);
 }
 
-void MatrixIndexingRowMajor() {
+void IndexUtilTest::MatrixIndexingRowMajor() {
   // Set layout to [0, 1]. That is, row major.
   Shape matrix_shape_01 = ShapeUtil::MakeShape(F32, {10, 20});
   SetMinorToMajorLayout(&matrix_shape_01, {0, 1});
@@ -68,7 +83,7 @@ void MatrixIndexingRowMajor() {
             IndexUtil::LinearIndexToMultidimensionalIndex(matrix_shape_01, 53));
 }
 
-void MatrixIndexingColumnMajor() {
+void IndexUtilTest::MatrixIndexingColumnMajor() {
   // Set layout to [1, 0]. That is, column major.
   Shape matrix_shape_10 = ShapeUtil::MakeShape(F32, {10, 20});
   SetMinorToMajorLayout(&matrix_shape_10, {1, 0});
@@ -84,7 +99,7 @@ void MatrixIndexingColumnMajor() {
             IndexUtil::LinearIndexToMultidimensionalIndex(matrix_shape_10, 65));
 }
 
-void ThreeDArrayIndexing210() {
+void IndexUtilTest::ThreeDArrayIndexing210() {
   // Set layout to [2, 1, 0]. That is, column major.
   Shape shape_210 = ShapeUtil::MakeShape(F32, {10, 20, 30});
   SetMinorToMajorLayout(&shape_210, {2, 1, 0});
@@ -97,7 +112,7 @@ void ThreeDArrayIndexing210() {
                                                                 {8, 15, 27}));
 }
 
-void ThreeDArrayIndexing120() {
+void IndexUtilTest::ThreeDArrayIndexing120() {
   // Set layout to [1, 2, 0]
   Shape shape_120 = ShapeUtil::MakeShape(F32, {10, 20, 30});
   SetMinorToMajorLayout(&shape_120, {1, 2, 0});
@@ -110,7 +125,7 @@ void ThreeDArrayIndexing120() {
                                                                 {8, 15, 27}));
 }
 
-void FourDArrayIndexing3210() {
+void IndexUtilTest::FourDArrayIndexing3210() {
   // Set layout to [3, 2, 1,0]. That is, column major.
   Shape shape_3210 = ShapeUtil::MakeShape(F32, {10, 20, 30, 40});
   SetMinorToMajorLayout(&shape_3210, {3, 2, 1, 0});
@@ -123,7 +138,7 @@ void FourDArrayIndexing3210() {
                         shape_3210, {8, 15, 27, 33}));
 }
 
-void LinearToMultiToLinear() {
+void IndexUtilTest::LinearToMultiToLinear() {
   // Verify that converting a linear index to a multidimensional index and back
   // always returns the same value for different crazy shapes.  Shape has
   // 1440000000 elements. Inputs are randomly-ish selected.
@@ -163,6 +178,17 @@ void BumpIndices2x2() {
   EXPECT_FALSE(IndexUtil::BumpIndices(shape, &indices));
 }
 */
+
+void IndexUtilTest::run()
+{
+   VectorIndexing();
+   MatrixIndexingRowMajor();
+   MatrixIndexingColumnMajor();
+   ThreeDArrayIndexing210();
+   ThreeDArrayIndexing120();
+   FourDArrayIndexing3210();
+   LinearToMultiToLinear();
+}
 
 }  // namespace
 }  // namespace xla
