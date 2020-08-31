@@ -10,12 +10,7 @@
 #include "types.h"
 
 
-//#define GOOGLE_PREDICT_FALSE(x) x
-
-//#define GOOGLE_PREDICT_TRUE(x) x
-
 //#include "google/common.h"
-
 //#include <google/protobuf/io/coded_stream.h>
 
 #include "google/google_repeated_field.h"
@@ -47,10 +42,6 @@ extern ComputationHandleDefaultTypeInternal _ComputationHandle_default_instance_
 class ConvolutionDimensionNumbers;
 class ConvolutionDimensionNumbersDefaultTypeInternal;
 extern ConvolutionDimensionNumbersDefaultTypeInternal _ConvolutionDimensionNumbers_default_instance_;
-
-//class ExecutionHandle;
-//class ExecutionHandleDefaultTypeInternal;
-//extern ExecutionHandleDefaultTypeInternal _ExecutionHandle_default_instance_;
 
 class GlobalDataHandle;
 class GlobalDataHandleDefaultTypeInternal;
@@ -89,22 +80,6 @@ extern WindowDimensionDefaultTypeInternal _WindowDimension_default_instance_;
 
 namespace xla {
 
-/*
-namespace protobuf_xla_5fdata_2eproto {
-// Internal implementation detail -- do not call these.
-struct TableStruct {
-  static const ::google::protobuf::internal::ParseTableField entries[];
-  static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[];
-  static const tensorflow::uint32 offsets[];
-  static void InitDefaultsImpl();
-  static void Shutdown();
-};
-void AddDescriptors();
-void InitDefaults();
-}  // namespace protobuf_xla_5fdata_2eproto
-*/
-
 enum PrimitiveType {
   PRIMITIVE_TYPE_INVALID = 0,
   PRED = 1,
@@ -125,22 +100,6 @@ enum PrimitiveType {
   PrimitiveType_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
 
-bool PrimitiveType_IsValid(int value);
-const PrimitiveType PrimitiveType_MIN = PRIMITIVE_TYPE_INVALID;
-const PrimitiveType PrimitiveType_MAX = OPAQUE;
-const int PrimitiveType_ARRAYSIZE = PrimitiveType_MAX + 1;
-
-//const ::google::protobuf::EnumDescriptor* PrimitiveType_descriptor();
-//inline const ::std::string& PrimitiveType_Name(PrimitiveType value) {
-//  return ::google::protobuf::internal::NameOfEnum(
-//    PrimitiveType_descriptor(), value);
-//}
-//inline bool PrimitiveType_Parse(
-//    const ::std::string& name, PrimitiveType* value) {
-//  return ::google::protobuf::internal::ParseNamedEnum<PrimitiveType>(
-//    PrimitiveType_descriptor(), name, value);
-//}
-
 enum PaddingValue {
   INVALID_PAD = 0,
   ZERO_PAD = 1,
@@ -151,21 +110,6 @@ enum PaddingValue {
   PaddingValue_INT_MIN_SENTINEL_DO_NOT_USE_ = tensorflow::kint32min,
   PaddingValue_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
-bool PaddingValue_IsValid(int value);
-const PaddingValue PaddingValue_MIN = INVALID_PAD;
-const PaddingValue PaddingValue_MAX = UNKNOWN_PAD;
-const int PaddingValue_ARRAYSIZE = PaddingValue_MAX + 1;
-//
-//const ::google::protobuf::EnumDescriptor* PaddingValue_descriptor();
-//inline const ::std::string& PaddingValue_Name(PaddingValue value) {
-//  return ::google::protobuf::internal::NameOfEnum(
-//    PaddingValue_descriptor(), value);
-//}
-//inline bool PaddingValue_Parse(
-//    const ::std::string& name, PaddingValue* value) {
-//  return ::google::protobuf::internal::ParseNamedEnum<PaddingValue>(
-//    PaddingValue_descriptor(), name, value);
-//}
 
 enum UnaryOperation {
   UNOP_INVALID = 0,
@@ -182,21 +126,7 @@ enum UnaryOperation {
   UnaryOperation_INT_MIN_SENTINEL_DO_NOT_USE_ = tensorflow::kint32min,
   UnaryOperation_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
-bool UnaryOperation_IsValid(int value);
-const UnaryOperation UnaryOperation_MIN = UNOP_INVALID;
-const UnaryOperation UnaryOperation_MAX = UNOP_SIGN;
-const int UnaryOperation_ARRAYSIZE = UnaryOperation_MAX + 1;
 
-//const ::google::protobuf::EnumDescriptor* UnaryOperation_descriptor();
-//inline const ::std::string& UnaryOperation_Name(UnaryOperation value) {
-//  return ::google::protobuf::internal::NameOfEnum(
-//    UnaryOperation_descriptor(), value);
-//}
-//inline bool UnaryOperation_Parse(
-//    const ::std::string& name, UnaryOperation* value) {
-//  return ::google::protobuf::internal::ParseNamedEnum<UnaryOperation>(
-//    UnaryOperation_descriptor(), name, value);
-//}
 enum BinaryOperation {
   BINOP_INVALID = 0,
   BINOP_ADD = 1,
@@ -220,11 +150,6 @@ enum BinaryOperation {
   BinaryOperation_INT_MIN_SENTINEL_DO_NOT_USE_ = tensorflow::kint32min,
   BinaryOperation_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
-bool BinaryOperation_IsValid(int value);
-const BinaryOperation BinaryOperation_MIN = BINOP_INVALID;
-const BinaryOperation BinaryOperation_MAX = BINOP_LOGICAL_OR;
-const int BinaryOperation_ARRAYSIZE = BinaryOperation_MAX + 1;
-//
 
 enum RandomDistribution {
   RNG_INVALID = 0,
@@ -234,11 +159,6 @@ enum RandomDistribution {
   RandomDistribution_INT_MIN_SENTINEL_DO_NOT_USE_ = tensorflow::kint32min,
   RandomDistribution_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
-bool RandomDistribution_IsValid(int value);
-const RandomDistribution RandomDistribution_MIN = RNG_INVALID;
-const RandomDistribution RandomDistribution_MAX = RNG_BERNOULLI;
-const int RandomDistribution_ARRAYSIZE = RandomDistribution_MAX + 1;
-
 
 enum TernaryOperation {
   TRIOP_INVALID = 0,
@@ -248,11 +168,6 @@ enum TernaryOperation {
   TernaryOperation_INT_MIN_SENTINEL_DO_NOT_USE_ = tensorflow::kint32min,
   TernaryOperation_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
-bool TernaryOperation_IsValid(int value);
-const TernaryOperation TernaryOperation_MIN = TRIOP_INVALID;
-const TernaryOperation TernaryOperation_MAX = TRIOP_CLAMP;
-const int TernaryOperation_ARRAYSIZE = TernaryOperation_MAX + 1;
-
 
 enum VariadicOperation {
   VAROP_INVALID = 0,
@@ -260,21 +175,7 @@ enum VariadicOperation {
   VariadicOperation_INT_MIN_SENTINEL_DO_NOT_USE_ = tensorflow::kint32min,
   VariadicOperation_INT_MAX_SENTINEL_DO_NOT_USE_ = tensorflow::kint32max
 };
-bool VariadicOperation_IsValid(int value);
-const VariadicOperation VariadicOperation_MIN = VAROP_INVALID;
-const VariadicOperation VariadicOperation_MAX = VAROP_TUPLE;
-const int VariadicOperation_ARRAYSIZE = VariadicOperation_MAX + 1;
-//
-//const ::google::protobuf::EnumDescriptor* VariadicOperation_descriptor();
-//inline const ::std::string& VariadicOperation_Name(VariadicOperation value) {
-//  return ::google::protobuf::internal::NameOfEnum(
-//    VariadicOperation_descriptor(), value);
-//}
-//inline bool VariadicOperation_Parse(
-//    const ::std::string& name, VariadicOperation* value) {
-//  return ::google::protobuf::internal::ParseNamedEnum<VariadicOperation>(
-//    VariadicOperation_descriptor(), name, value);
-//}
+
 // ===================================================================
 
 class PaddingConfig_PaddingConfigDimension 
@@ -291,14 +192,12 @@ class PaddingConfig_PaddingConfigDimension
     return *this;
   }
 
-  //static const ::google::protobuf::Descriptor* descriptor();
   static const PaddingConfig_PaddingConfigDimension& default_instance();
 
   static inline const PaddingConfig_PaddingConfigDimension* internal_default_instance() {
     return reinterpret_cast<const PaddingConfig_PaddingConfigDimension*>(
                &_PaddingConfig_PaddingConfigDimension_default_instance_);
   }
-  //static PROTOBUF_CONSTEXPR int const kIndexInFileMessages = 0;
 
   void Swap(PaddingConfig_PaddingConfigDimension* other);
 
@@ -307,20 +206,12 @@ class PaddingConfig_PaddingConfigDimension
   inline PaddingConfig_PaddingConfigDimension* New() const PROTOBUF_FINAL { return New(NULL); }
 
   PaddingConfig_PaddingConfigDimension* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  //void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  //void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+
   void CopyFrom(const PaddingConfig_PaddingConfigDimension& from);
   void MergeFrom(const PaddingConfig_PaddingConfigDimension& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  //bool MergePartialFromCodedStream(
-  //    ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  //void SerializeWithCachedSizes(
-  //    ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  //::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-  //    bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
   int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
@@ -342,21 +233,17 @@ class PaddingConfig_PaddingConfigDimension
 
   // accessors -------------------------------------------------------
 
-  // int64 edge_padding_low = 1;
   void clear_edge_padding_low();
-  //static const int kEdgePaddingLowFieldNumber = 1;
   ::google::protobuf::int64 edge_padding_low() const;
   void set_edge_padding_low(::google::protobuf::int64 value);
 
-  // int64 edge_padding_high = 2;
+
   void clear_edge_padding_high();
-  //static const int kEdgePaddingHighFieldNumber = 2;
   ::google::protobuf::int64 edge_padding_high() const;
   void set_edge_padding_high(::google::protobuf::int64 value);
 
-  // int64 interior_padding = 3;
+
   void clear_interior_padding();
-  //static const int kInteriorPaddingFieldNumber = 3;
   ::google::protobuf::int64 interior_padding() const;
   void set_interior_padding(::google::protobuf::int64 value);
 
@@ -368,7 +255,6 @@ class PaddingConfig_PaddingConfigDimension
   ::google::protobuf::int64 edge_padding_high_;
   ::google::protobuf::int64 interior_padding_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -386,7 +272,6 @@ class PaddingConfig
     return *this;
   }
 
-  //static const ::google::protobuf::Descriptor* descriptor();
   static const PaddingConfig& default_instance();
 
   static inline const PaddingConfig* internal_default_instance()
@@ -409,13 +294,6 @@ class PaddingConfig
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-  //bool MergePartialFromCodedStream(
-  //    ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  //void SerializeWithCachedSizes(
-  //    ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  //::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-  //    bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
   int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
   private:
   void SharedCtor();
@@ -439,7 +317,6 @@ class PaddingConfig
 
   // accessors -------------------------------------------------------
 
-  // repeated .xla.PaddingConfig.PaddingConfigDimension dimensions = 1;
   int dimensions_size() const;
   void clear_dimensions();
 
@@ -457,7 +334,6 @@ class PaddingConfig
   //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::xla::PaddingConfig_PaddingConfigDimension > dimensions_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 
 
@@ -496,8 +372,6 @@ class Layout
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-
   private:
   void SharedCtor();
   void SharedDtor();
@@ -518,10 +392,9 @@ class Layout
 
   // accessors -------------------------------------------------------
 
-  // repeated int64 minor_to_major = 1;
   int minor_to_major_size() const;
   void clear_minor_to_major();
-  static const int kMinorToMajorFieldNumber = 1;
+
   tensorflow::int64 minor_to_major(int index) const;
   void set_minor_to_major(int index, tensorflow::int64 value);
   void add_minor_to_major(tensorflow::int64 value);
@@ -530,10 +403,9 @@ class Layout
   ::google::protobuf::RepeatedField< tensorflow::int64 >*
       mutable_minor_to_major();
 
-  // repeated int64 padded_dimensions = 2;
   int padded_dimensions_size() const;
   void clear_padded_dimensions();
-  static const int kPaddedDimensionsFieldNumber = 2;
+
   tensorflow::int64 padded_dimensions(int index) const;
   void set_padded_dimensions(int index, tensorflow::int64 value);
   void add_padded_dimensions(tensorflow::int64 value);
@@ -542,13 +414,12 @@ class Layout
   ::google::protobuf::RepeatedField< tensorflow::int64 >*
       mutable_padded_dimensions();
 
-  // .xla.PaddingValue padding_value = 3;
+
   void clear_padding_value();
-  static const int kPaddingValueFieldNumber = 3;
+
   ::xla::PaddingValue padding_value() const;
   void set_padding_value(::xla::PaddingValue value);
 
-  // @@protoc_insertion_point(class_scope:xla.Layout)
  private:
 
   //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -558,7 +429,6 @@ class Layout
   mutable int _padded_dimensions_cached_byte_size_;
   int padding_value_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -596,8 +466,6 @@ class Shape
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-
   private:
   void SharedCtor();
   void SharedDtor();
@@ -612,16 +480,14 @@ class Shape
   }
   public:
 
-   
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // repeated int64 dimensions = 3;
   int dimensions_size() const;
   void clear_dimensions();
-  static const int kDimensionsFieldNumber = 3;
+
   tensorflow::int64 dimensions(int index) const;
   void set_dimensions(int index, tensorflow::int64 value);
   void add_dimensions(tensorflow::int64 value);
@@ -630,10 +496,10 @@ class Shape
   ::google::protobuf::RepeatedField< tensorflow::int64 >*
       mutable_dimensions();
 
-  // repeated .xla.Shape tuple_shapes = 4;
+
   int tuple_shapes_size() const;
   void clear_tuple_shapes();
-  static const int kTupleShapesFieldNumber = 4;
+
   const ::xla::Shape& tuple_shapes(int index) const;
   ::xla::Shape* mutable_tuple_shapes(int index);
   ::xla::Shape* add_tuple_shapes();
@@ -642,18 +508,18 @@ class Shape
   const ::google::protobuf::RepeatedPtrField< ::xla::Shape >&
       tuple_shapes() const;
 
-  // .xla.Layout layout = 5;
+
   bool has_layout() const;
   void clear_layout();
-  static const int kLayoutFieldNumber = 5;
+
   const ::xla::Layout& layout() const;
   ::xla::Layout* mutable_layout();
   ::xla::Layout* release_layout();
   void set_allocated_layout(::xla::Layout* layout);
 
-  // .xla.PrimitiveType element_type = 2;
+
   void clear_element_type();
-  static const int kElementTypeFieldNumber = 2;
+
   ::xla::PrimitiveType element_type() const;
   void set_element_type(::xla::PrimitiveType value);
 
@@ -667,7 +533,6 @@ class Shape
   ::xla::Layout* layout_;
   int element_type_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -705,8 +570,6 @@ class ProgramShape
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-
   private:
   void SharedCtor();
   void SharedDtor();
@@ -721,16 +584,14 @@ class ProgramShape
   }
   public:
 
-   
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // repeated .xla.Shape parameters = 1;
   int parameters_size() const;
   void clear_parameters();
-  static const int kParametersFieldNumber = 1;
+
   const ::xla::Shape& parameters(int index) const;
   ::xla::Shape* mutable_parameters(int index);
   ::xla::Shape* add_parameters();
@@ -739,10 +600,10 @@ class ProgramShape
   const ::google::protobuf::RepeatedPtrField< ::xla::Shape >&
       parameters() const;
 
-  // repeated string parameter_names = 3;
+
   int parameter_names_size() const;
   void clear_parameter_names();
-  static const int kParameterNamesFieldNumber = 3;
+
   const ::std::string& parameter_names(int index) const;
   ::std::string* mutable_parameter_names(int index);
   void set_parameter_names(int index, const ::std::string& value);
@@ -761,10 +622,10 @@ class ProgramShape
   const ::google::protobuf::RepeatedPtrField< ::std::string>& parameter_names() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_parameter_names();
 
-  // .xla.Shape result = 2;
+
   bool has_result() const;
   void clear_result();
-  static const int kResultFieldNumber = 2;
+
   const ::xla::Shape& result() const;
   ::xla::Shape* mutable_result();
   ::xla::Shape* release_result();
@@ -778,7 +639,6 @@ class ProgramShape
   ::google::protobuf::RepeatedPtrField< ::std::string> parameter_names_;
   ::xla::Shape* result_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -816,8 +676,6 @@ class ComputationHandle
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-
   private:
   void SharedCtor();
   void SharedDtor();
@@ -832,15 +690,13 @@ class ComputationHandle
   }
   public:
 
-   
-
+  
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // int64 handle = 1;
   void clear_handle();
-  static const int kHandleFieldNumber = 1;
+
   tensorflow::int64 handle() const;
   void set_handle(tensorflow::int64 value);
 
@@ -850,7 +706,6 @@ class ComputationHandle
   //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   tensorflow::int64 handle_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 
 // -------------------------------------------------------------------
@@ -875,7 +730,6 @@ public:
       return reinterpret_cast<const GlobalDataHandle*>(
          &_GlobalDataHandle_default_instance_);
    }
-   //static PROTOBUF_CONSTEXPR int const kIndexInFileMessages = 9;
 
    void Swap(GlobalDataHandle* other);
 
@@ -884,20 +738,12 @@ public:
    inline GlobalDataHandle* New() const PROTOBUF_FINAL { return New(NULL); }
 
    GlobalDataHandle* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-   //void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-   //void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+
    void CopyFrom(const GlobalDataHandle& from);
    void MergeFrom(const GlobalDataHandle& from);
    void Clear() PROTOBUF_FINAL;
    bool IsInitialized() const PROTOBUF_FINAL;
 
-   //size_t ByteSizeLong() const PROTOBUF_FINAL;
-   //bool MergePartialFromCodedStream(
-   //   ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-   //void SerializeWithCachedSizes(
-   //   ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-   //::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-   //   bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
    int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
 private:
    void SharedCtor();
@@ -913,15 +759,12 @@ private:
    }
 public:
 
-   //::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
    // nested types ----------------------------------------------------
 
    // accessors -------------------------------------------------------
 
-   // int64 handle = 1;
    void clear_handle();
-   static const int kHandleFieldNumber = 1;
+
    ::google::protobuf::int64 handle() const;
    void set_handle(::google::protobuf::int64 value);
 
@@ -931,7 +774,6 @@ private:
    //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
    ::google::protobuf::int64 handle_;
    mutable int _cached_size_;
-   //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // ------------------------------------------------------------------- 
 
@@ -969,7 +811,6 @@ class ComputationDataHandle
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
 
   private:
   void SharedCtor();
@@ -991,9 +832,8 @@ class ComputationDataHandle
 
   // accessors -------------------------------------------------------
 
-  // int64 handle = 1;
   void clear_handle();
-  static const int kHandleFieldNumber = 1;
+
   tensorflow::int64 handle() const;
   void set_handle(tensorflow::int64 value);
 
@@ -1003,7 +843,6 @@ class ComputationDataHandle
   //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   tensorflow::int64 handle_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 
 // -------------------------------------------------------------------
@@ -1033,33 +872,26 @@ class Literal
 
   void Swap(Literal* other);
 
-  // implements Message ----------------------------------------------
-
   inline Literal* New() const PROTOBUF_FINAL { return New(NULL); }
 
   Literal* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  //void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  //void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+
   void CopyFrom(const Literal& from);
   void MergeFrom(const Literal& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-
-  //bool MergePartialFromCodedStream(
-  //    ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  //void SerializeWithCachedSizes(
-  //    ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  //::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-  //    bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
   int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
+
+private:
+
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Literal* other);
-  private:
+
+private:
+
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
   }
@@ -1068,16 +900,13 @@ class Literal
   }
   public:
 
-  //::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // repeated bool preds = 2;
   int preds_size() const;
   void clear_preds();
-  static const int kPredsFieldNumber = 2;
+
   bool preds(int index) const;
   void set_preds(int index, bool value);
   void add_preds(bool value);
@@ -1086,10 +915,10 @@ class Literal
   ::google::protobuf::RepeatedField< bool >*
       mutable_preds();
 
-  // repeated int32 s32s = 4;
+
   int s32s_size() const;
   void clear_s32s();
-  static const int kS32SFieldNumber = 4;
+
   ::google::protobuf::int32 s32s(int index) const;
   void set_s32s(int index, ::google::protobuf::int32 value);
   void add_s32s(::google::protobuf::int32 value);
@@ -1098,7 +927,6 @@ class Literal
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_s32s();
 
-  // repeated int64 s64s = 5;
   int s64s_size() const;
   void clear_s64s();
 
@@ -1110,10 +938,9 @@ class Literal
   ::google::protobuf::RepeatedField< ::google::protobuf::int64 >*
       mutable_s64s();
 
-  // repeated uint32 u32s = 6;
   int u32s_size() const;
   void clear_u32s();
-  static const int kU32SFieldNumber = 6;
+
   ::google::protobuf::uint32 u32s(int index) const;
   void set_u32s(int index, ::google::protobuf::uint32 value);
   void add_u32s(::google::protobuf::uint32 value);
@@ -1122,7 +949,7 @@ class Literal
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_u32s();
 
-  // repeated uint64 u64s = 7;
+
   int u64s_size() const;
   void clear_u64s();
 
@@ -1134,10 +961,10 @@ class Literal
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
       mutable_u64s();
 
-  // repeated float f32s = 8;
+
   int f32s_size() const;
   void clear_f32s();
-  static const int kF32SFieldNumber = 8;
+
   float f32s(int index) const;
   void set_f32s(int index, float value);
   void add_f32s(float value);
@@ -1146,10 +973,10 @@ class Literal
   ::google::protobuf::RepeatedField< float >*
       mutable_f32s();
 
-  // repeated double f64s = 9;
+
   int f64s_size() const;
   void clear_f64s();
-  static const int kF64SFieldNumber = 9;
+
   double f64s(int index) const;
   void set_f64s(int index, double value);
   void add_f64s(double value);
@@ -1158,10 +985,9 @@ class Literal
   ::google::protobuf::RepeatedField< double >*
       mutable_f64s();
 
-  // repeated .xla.Literal tuple_literals = 10;
   int tuple_literals_size() const;
   void clear_tuple_literals();
-  static const int kTupleLiteralsFieldNumber = 10;
+
   const ::xla::Literal& tuple_literals(int index) const;
   ::xla::Literal* mutable_tuple_literals(int index);
   ::xla::Literal* add_tuple_literals();
@@ -1170,10 +996,9 @@ class Literal
   const ::google::protobuf::RepeatedPtrField< ::xla::Literal >&
       tuple_literals() const;
 
-  // bytes u8s = 3;
 
   void clear_u8s();
-  static const int kU8SFieldNumber = 3;
+
   const ::std::string& u8s() const;
   void set_u8s(const ::std::string& value);
   #if LANG_CXX11
@@ -1186,10 +1011,9 @@ class Literal
   void set_allocated_u8s(::std::string* u8s);
 
 
-  // .xla.Shape shape = 1;
   bool has_shape() const;
   void clear_shape();
-  static const int kShapeFieldNumber = 1;
+
   const ::xla::Shape& shape() const;
   ::xla::Shape* mutable_shape();
   ::xla::Shape* release_shape();
@@ -1217,7 +1041,6 @@ class Literal
   ::google::protobuf::internal::ArenaStringPtr u8s_;
   ::xla::Shape* shape_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -1255,7 +1078,6 @@ class WindowDimension
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
 
   private:
   void SharedCtor();
@@ -1270,46 +1092,33 @@ class WindowDimension
     return NULL;
   }
   public:
-
-   
+  
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // int64 size = 1;
   void clear_size();
-  static const int kSizeFieldNumber = 1;
   tensorflow::int64 size() const;
   void set_size(tensorflow::int64 value);
 
-  // int64 stride = 2;
   void clear_stride();
-  static const int kStrideFieldNumber = 2;
   tensorflow::int64 stride() const;
   void set_stride(tensorflow::int64 value);
 
-  // int64 padding_low = 3;
   void clear_padding_low();
-  static const int kPaddingLowFieldNumber = 3;
   tensorflow::int64 padding_low() const;
   void set_padding_low(tensorflow::int64 value);
 
-  // int64 padding_high = 4;
   void clear_padding_high();
-  static const int kPaddingHighFieldNumber = 4;
   tensorflow::int64 padding_high() const;
   void set_padding_high(tensorflow::int64 value);
 
-  // int64 window_dilation = 5;
   void clear_window_dilation();
-  static const int kWindowDilationFieldNumber = 5;
   tensorflow::int64 window_dilation() const;
   void set_window_dilation(tensorflow::int64 value);
 
-  // int64 base_dilation = 6;
   void clear_base_dilation();
-  static const int kBaseDilationFieldNumber = 6;
   tensorflow::int64 base_dilation() const;
   void set_base_dilation(tensorflow::int64 value);
 
@@ -1324,7 +1133,6 @@ class WindowDimension
   tensorflow::int64 window_dilation_;
   tensorflow::int64 base_dilation_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -1356,38 +1164,37 @@ class Window
 
   Window* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
  
- 
   void CopyFrom(const Window& from);
   void MergeFrom(const Window& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
-  //size_t ByteSizeLong() const PROTOBUF_FINAL;
-
   private:
+
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
   void InternalSwap(Window* other);
+
   private:
+
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
   }
+
   inline void* MaybeArenaPtr() const {
     return NULL;
   }
-  public:
 
-   
+  public:
 
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
 
-  // repeated .xla.WindowDimension dimensions = 1;
   int dimensions_size() const;
   void clear_dimensions();
-  static const int kDimensionsFieldNumber = 1;
+
   const ::xla::WindowDimension& dimensions(int index) const;
   ::xla::WindowDimension* mutable_dimensions(int index);
   ::xla::WindowDimension* add_dimensions();
@@ -1402,7 +1209,6 @@ class Window
   //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::xla::WindowDimension > dimensions_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
@@ -1460,10 +1266,9 @@ class ConvolutionDimensionNumbers
 
   // accessors -------------------------------------------------------
 
-  // repeated int64 spatial_dimensions = 5;
+
   int spatial_dimensions_size() const;
   void clear_spatial_dimensions();
-  static const int kSpatialDimensionsFieldNumber = 5;
   tensorflow::int64 spatial_dimensions(int index) const;
   void set_spatial_dimensions(int index, tensorflow::int64 value);
   void add_spatial_dimensions(tensorflow::int64 value);
@@ -1472,10 +1277,9 @@ class ConvolutionDimensionNumbers
   ::google::protobuf::RepeatedField< tensorflow::int64 >*
       mutable_spatial_dimensions();
 
-  // repeated int64 kernel_spatial_dimensions = 6;
+
   int kernel_spatial_dimensions_size() const;
   void clear_kernel_spatial_dimensions();
-  static const int kKernelSpatialDimensionsFieldNumber = 6;
   tensorflow::int64 kernel_spatial_dimensions(int index) const;
   void set_kernel_spatial_dimensions(int index, tensorflow::int64 value);
   void add_kernel_spatial_dimensions(tensorflow::int64 value);
@@ -1484,27 +1288,22 @@ class ConvolutionDimensionNumbers
   ::google::protobuf::RepeatedField< tensorflow::int64 >*
       mutable_kernel_spatial_dimensions();
 
-  // int64 batch_dimension = 1;
+
   void clear_batch_dimension();
-  static const int kBatchDimensionFieldNumber = 1;
   tensorflow::int64 batch_dimension() const;
   void set_batch_dimension(tensorflow::int64 value);
 
-  // int64 feature_dimension = 2;
+
   void clear_feature_dimension();
-  static const int kFeatureDimensionFieldNumber = 2;
   tensorflow::int64 feature_dimension() const;
   void set_feature_dimension(tensorflow::int64 value);
 
-  // int64 kernel_input_feature_dimension = 3;
+
   void clear_kernel_input_feature_dimension();
-  static const int kKernelInputFeatureDimensionFieldNumber = 3;
   tensorflow::int64 kernel_input_feature_dimension() const;
   void set_kernel_input_feature_dimension(tensorflow::int64 value);
 
-  // int64 kernel_output_feature_dimension = 4;
   void clear_kernel_output_feature_dimension();
-  static const int kKernelOutputFeatureDimensionFieldNumber = 4;
   tensorflow::int64 kernel_output_feature_dimension() const;
   void set_kernel_output_feature_dimension(tensorflow::int64 value);
 
@@ -1521,17 +1320,13 @@ class ConvolutionDimensionNumbers
   tensorflow::int64 kernel_input_feature_dimension_;
   tensorflow::int64 kernel_output_feature_dimension_;
   mutable int _cached_size_;
-  //friend struct protobuf_xla_5fdata_2eproto::TableStruct;
 };
-// -------------------------------------------------------------------
-// -------------------------------------------------------------------
 
 // ===================================================================
 
 #if !PROTOBUF_INLINE_NOT_IN_HEADERS
 // PaddingConfig_PaddingConfigDimension
 
-// int64 edge_padding_low = 1;
 inline void PaddingConfig_PaddingConfigDimension::clear_edge_padding_low() {
    edge_padding_low_ = GOOGLE_LONGLONG(0);
 }
@@ -1545,7 +1340,6 @@ inline void PaddingConfig_PaddingConfigDimension::set_edge_padding_low(::google:
    // @@protoc_insertion_point(field_set:xla.PaddingConfig.PaddingConfigDimension.edge_padding_low)
 }
 
-// int64 edge_padding_high = 2;
 inline void PaddingConfig_PaddingConfigDimension::clear_edge_padding_high() {
    edge_padding_high_ = GOOGLE_LONGLONG(0);
 }
@@ -1559,7 +1353,6 @@ inline void PaddingConfig_PaddingConfigDimension::set_edge_padding_high(::google
    // @@protoc_insertion_point(field_set:xla.PaddingConfig.PaddingConfigDimension.edge_padding_high)
 }
 
-// int64 interior_padding = 3;
 inline void PaddingConfig_PaddingConfigDimension::clear_interior_padding() {
    interior_padding_ = GOOGLE_LONGLONG(0);
 }
@@ -1577,7 +1370,6 @@ inline void PaddingConfig_PaddingConfigDimension::set_interior_padding(::google:
 
 // PaddingConfig
 
-// repeated .xla.PaddingConfig.PaddingConfigDimension dimensions = 1;
 inline int PaddingConfig::dimensions_size() const {
    return dimensions_.size();
 }
@@ -1611,7 +1403,6 @@ PaddingConfig::dimensions() const {
 
 // Layout
 
-// repeated int64 minor_to_major = 1;
 inline int Layout::minor_to_major_size() const {
   return minor_to_major_.size();
 }
@@ -1641,7 +1432,6 @@ Layout::mutable_minor_to_major() {
   return &minor_to_major_;
 }
 
-// repeated int64 padded_dimensions = 2;
 inline int Layout::padded_dimensions_size() const {
   return padded_dimensions_.size();
 }
@@ -1671,7 +1461,6 @@ Layout::mutable_padded_dimensions() {
   return &padded_dimensions_;
 }
 
-// .xla.PaddingValue padding_value = 3;
 inline void Layout::clear_padding_value() {
   padding_value_ = 0;
 }
@@ -1689,7 +1478,6 @@ inline void Layout::set_padding_value(::xla::PaddingValue value) {
 
 // Shape
 
-// .xla.PrimitiveType element_type = 2;
 inline void Shape::clear_element_type() {
   element_type_ = 0;
 }
@@ -1703,7 +1491,6 @@ inline void Shape::set_element_type(::xla::PrimitiveType value) {
   // @@protoc_insertion_point(field_set:xla.Shape.element_type)
 }
 
-// repeated int64 dimensions = 3;
 inline int Shape::dimensions_size() const {
   return dimensions_.size();
 }
@@ -1733,7 +1520,6 @@ Shape::mutable_dimensions() {
   return &dimensions_;
 }
 
-// repeated .xla.Shape tuple_shapes = 4;
 inline int Shape::tuple_shapes_size() const {
   return tuple_shapes_.size();
 }
@@ -1763,7 +1549,6 @@ Shape::tuple_shapes() const {
   return tuple_shapes_;
 }
 
-// .xla.Layout layout = 5;
 inline bool Shape::has_layout() const {
   return this != internal_default_instance() && layout_ != NULL;
 }
@@ -1806,7 +1591,6 @@ inline void Shape::set_allocated_layout(::xla::Layout* layout) {
 
 // ProgramShape
 
-// repeated .xla.Shape parameters = 1;
 inline int ProgramShape::parameters_size() const {
   return parameters_.size();
 }
@@ -1836,7 +1620,6 @@ ProgramShape::parameters() const {
   return parameters_;
 }
 
-// .xla.Shape result = 2;
 inline bool ProgramShape::has_result() const {
   return this != internal_default_instance() && result_ != NULL;
 }
@@ -1876,7 +1659,6 @@ inline void ProgramShape::set_allocated_result(::xla::Shape* result) {
   // @@protoc_insertion_point(field_set_allocated:xla.ProgramShape.result)
 }
 
-// repeated string parameter_names = 3;
 inline int ProgramShape::parameter_names_size() const {
   return parameter_names_.size();
 }
@@ -1949,7 +1731,6 @@ ProgramShape::mutable_parameter_names() {
 
 // ComputationHandle
 
-// int64 handle = 1;
 inline void ComputationHandle::clear_handle() {
    handle_ = GOOGLE_LONGLONG(0);
 }
@@ -1966,7 +1747,6 @@ inline void ComputationHandle::set_handle(tensorflow::int64 value) {
 
 // GlobalDataHandle
 
-// int64 handle = 1;
 inline void GlobalDataHandle::clear_handle() {
    handle_ = GOOGLE_LONGLONG(0);
 }
@@ -1983,7 +1763,6 @@ inline void GlobalDataHandle::set_handle(::google::protobuf::int64 value) {
 // -------------------------------------------------------------------
 // ComputationDataHandle
 
-// int64 handle = 1;
 inline void ComputationDataHandle::clear_handle() {
   handle_ = GOOGLE_LONGLONG(0);
 }
@@ -2002,7 +1781,6 @@ inline void ComputationDataHandle::set_handle(tensorflow::int64 value) {
 
 // Literal
 
-// .xla.Shape shape = 1;
 inline bool Literal::has_shape() const {
    return this != internal_default_instance() && shape_ != NULL;
 }
@@ -2072,7 +1850,6 @@ Literal::mutable_preds() {
    return &preds_;
 }
 
-// bytes u8s = 3;
 
 inline void Literal::clear_u8s() {
    u8s_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2580,58 +2357,10 @@ ConvolutionDimensionNumbers::mutable_kernel_spatial_dimensions() {
   return &kernel_spatial_dimensions_;
 }
 
-// -------------------------------------------------------------------
-
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 
 }  // namespace xla
-
-/*
-#ifndef SWIG
-namespace google {
-namespace protobuf {
-
-template <> struct is_proto_enum< ::xla::PrimitiveType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::PrimitiveType>() {
-  return ::xla::PrimitiveType_descriptor();
-}
-template <> struct is_proto_enum< ::xla::PaddingValue> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::PaddingValue>() {
-  return ::xla::PaddingValue_descriptor();
-}
-template <> struct is_proto_enum< ::xla::UnaryOperation> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::UnaryOperation>() {
-  return ::xla::UnaryOperation_descriptor();
-}
-template <> struct is_proto_enum< ::xla::BinaryOperation> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::BinaryOperation>() {
-  return ::xla::BinaryOperation_descriptor();
-}
-template <> struct is_proto_enum< ::xla::RandomDistribution> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::RandomDistribution>() {
-  return ::xla::RandomDistribution_descriptor();
-}
-template <> struct is_proto_enum< ::xla::TernaryOperation> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::TernaryOperation>() {
-  return ::xla::TernaryOperation_descriptor();
-}
-template <> struct is_proto_enum< ::xla::VariadicOperation> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::xla::VariadicOperation>() {
-  return ::xla::VariadicOperation_descriptor();
-}
-
-}  // namespace protobuf
-}  // namespace google
-#endif  // SWIG
-*/
 
 // @@protoc_insertion_point(global_scope)
 
