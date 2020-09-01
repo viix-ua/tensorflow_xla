@@ -482,5 +482,8 @@
     <ClCompile Include="google\google_atomicops_internals_x86_gcc.cc">
       <Filter>Source Files\google</Filter>
     </ClCompile>
+    <ClCompile Include="nnet_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

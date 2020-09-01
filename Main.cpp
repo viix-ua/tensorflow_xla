@@ -124,48 +124,6 @@ namespace xla
 
 int main()
 {
-   xla::NNet conv_net;
-
-   auto img_224x224 = xla::MakeUnique<xla::Array4D<float>>(1, 3, 224, 224);
-
-   xla::LayerBase* input   = conv_net.AddLayer(img_224x224.get());
-
-   xla::LayerBase* conv1_1 = conv_net.AddLayer(input, new xla::ConvLayer("conv1_1"));
-   xla::LayerBase* conv1_2 = conv_net.AddLayer(conv1_1, new xla::ConvLayer("conv1_2"));
-   xla::LayerBase* pool1   = conv_net.AddLayer(conv1_2, new xla::MaxPoolLayer("pool1"));
-
-   xla::LayerBase* conv2_1 = conv_net.AddLayer(pool1, new xla::ConvLayer("conv2_1"));
-   xla::LayerBase* conv2_2 = conv_net.AddLayer(conv2_1, new xla::ConvLayer("conv2_2"));
-   xla::LayerBase* pool2   = conv_net.AddLayer(conv2_2, new xla::MaxPoolLayer("pool2"));
-
-   xla::LayerBase* conv3_1 = conv_net.AddLayer(pool2, new xla::ConvLayer("conv3_1"));
-   xla::LayerBase* conv3_2 = conv_net.AddLayer(conv3_1, new xla::ConvLayer("conv3_2"));
-   xla::LayerBase* conv3_3 = conv_net.AddLayer(conv3_2, new xla::ConvLayer("conv3_3"));
-   xla::LayerBase* pool3   = conv_net.AddLayer(conv3_3, new xla::MaxPoolLayer("pool3"));
-   
-   xla::LayerBase* conv4_1 = conv_net.AddLayer(pool3, new xla::ConvLayer("conv4_1"));
-   xla::LayerBase* conv4_2 = conv_net.AddLayer(conv4_1, new xla::ConvLayer("conv4_2"));
-   xla::LayerBase* conv4_3 = conv_net.AddLayer(conv4_2, new xla::ConvLayer("conv4_3"));
-   xla::LayerBase* pool4   = conv_net.AddLayer(conv4_3, new xla::MaxPoolLayer("pool4"));
-
-   xla::LayerBase* conv5_1 = conv_net.AddLayer(pool4, new xla::ConvLayer("conv5_1"));
-   xla::LayerBase* conv5_2 = conv_net.AddLayer(conv5_1, new xla::ConvLayer("conv5_2"));
-   xla::LayerBase* conv5_3 = conv_net.AddLayer(conv5_2, new xla::ConvLayer("conv5_3"));
-   xla::LayerBase* pool5   = conv_net.AddLayer(conv5_3, new xla::MaxPoolLayer("pool5"));
-
-   xla::LayerBase* fc6     = conv_net.AddLayer(pool5, new xla::FullyConnLayer("fc6"));
-
-   xla::LayerBase* relu6   = conv_net.AddLayer(fc6, new xla::ReLuLayer("relu6"));
-
-   xla::LayerBase* fc7     = conv_net.AddLayer(relu6, new xla::FullyConnLayer("fc7"));
-   xla::LayerBase* relu7   = conv_net.AddLayer(fc7, new xla::ReLuLayer("relu7"));
-
-   xla::LayerBase* fc8     = conv_net.AddLayer(relu7, new xla::FullyConnLayer("fc8"));
-
-   xla::LayerBase* prob    = conv_net.AddLayer(fc8, new xla::SoftMaxLayer("prob"));
-
-   ////////////////////////////////////////////////////////////////////////
-
    xla::Array2D<double> x = { { 5.0, 6.0, 4.0 } };          // matrix (n_classes, n_features)
    xla::Array2D<double> w = { { 1.0 }, { 2.0 }, { 3.0 } };  // matrix (n_features, n_classes)
 
@@ -175,7 +133,7 @@ int main()
 
    auto y = *mmul + b;
 
-   LOG_MSG("", y, *prob);
+   LOG_MSG("", y);
 
    ////////////////////////////////////////
 
