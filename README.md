@@ -27,6 +27,7 @@ Build dependencies
 
 ```
 cmake -H. -Bbuild
+cmake --build build
 ```
 
 
