@@ -288,9 +288,6 @@
     <ClInclude Include="trainer_base_lr_sgd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vgg16.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="google\google_type_handler.h">
       <Filter>Source Files\google</Filter>
     </ClInclude>
@@ -471,9 +468,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util_test.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vgg16.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="math_util_test.cc">

@@ -198,7 +198,6 @@
     <ClInclude Include="trainer_base_lr_sgd.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="util.h" />
-    <ClInclude Include="vgg16.h" />
     <ClInclude Include="window_util.h" />
     <ClInclude Include="win_cpu_info.h" />
     <ClInclude Include="xla_data.pb.h" />
@@ -264,7 +263,6 @@
     <ClCompile Include="test_helpers.cc" />
     <ClCompile Include="util.cc" />
     <ClCompile Include="util_test.cc" />
-    <ClCompile Include="vgg16.cc" />
     <ClCompile Include="window_util.cc" />
     <ClCompile Include="xla_data.pb.cc" />
   </ItemGroup>
