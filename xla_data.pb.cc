@@ -26,40 +26,51 @@
 // @@protoc_insertion_point(includes)
 
 namespace xla {
-class PaddingConfig_PaddingConfigDimensionDefaultTypeInternal// : public ::google::protobuf::internal::ExplicitlyConstructed<PaddingConfig_PaddingConfigDimension> 
+class PaddingConfig_PaddingConfigDimensionDefaultTypeInternal
 {
 } _PaddingConfig_PaddingConfigDimension_default_instance_;
-class PaddingConfigDefaultTypeInternal// : public ::google::protobuf::internal::ExplicitlyConstructed<PaddingConfig> 
+
+class PaddingConfigDefaultTypeInternal
 {
 } _PaddingConfig_default_instance_;
-class LayoutDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<Layout> 
+
+class LayoutDefaultTypeInternal
 {
 } _Layout_default_instance_;
-class ShapeDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<Shape> 
+
+class ShapeDefaultTypeInternal 
 {
 } _Shape_default_instance_;
-class ProgramShapeDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<ProgramShape> 
+
+class ProgramShapeDefaultTypeInternal
 {
 } _ProgramShape_default_instance_;
-class ComputationHandleDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<ComputationHandle> 
+
+class ComputationHandleDefaultTypeInternal
 {
 } _ComputationHandle_default_instance_;
-class GlobalDataHandleDefaultTypeInternal // : public ::google::protobuf::internal::ExplicitlyConstructed<GlobalDataHandle> 
+
+class GlobalDataHandleDefaultTypeInternal
 {
 } _GlobalDataHandle_default_instance_;
-class ComputationDataHandleDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<ComputationDataHandle> 
+
+class ComputationDataHandleDefaultTypeInternal
 {
 } _ComputationDataHandle_default_instance_;
-class LiteralDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<Literal> 
+
+class LiteralDefaultTypeInternal
 {
 } _Literal_default_instance_;
-class WindowDimensionDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<WindowDimension> 
+
+class WindowDimensionDefaultTypeInternal
 {
 } _WindowDimension_default_instance_;
-class WindowDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<Window> 
+
+class WindowDefaultTypeInternal
 {
 } _Window_default_instance_;
-class ConvolutionDimensionNumbersDefaultTypeInternal //: public ::google::protobuf::internal::ExplicitlyConstructed<ConvolutionDimensionNumbers> 
+
+class ConvolutionDimensionNumbersDefaultTypeInternal
 {
 } _ConvolutionDimensionNumbers_default_instance_;
 
@@ -195,7 +206,6 @@ PaddingConfig_PaddingConfigDimension::PaddingConfig_PaddingConfigDimension(const
   : 
       _cached_size_(0) 
 {
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&edge_padding_low_, &from.edge_padding_low_,
     reinterpret_cast<char*>(&interior_padding_) -
     reinterpret_cast<char*>(&edge_padding_low_) + sizeof(interior_padding_));
@@ -217,9 +227,9 @@ void PaddingConfig_PaddingConfigDimension::SharedDtor() {
 }
 
 void PaddingConfig_PaddingConfigDimension::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  //GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  //GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 
 const PaddingConfig_PaddingConfigDimension& PaddingConfig_PaddingConfigDimension::default_instance() {
@@ -244,7 +254,7 @@ void PaddingConfig_PaddingConfigDimension::Clear() {
 void PaddingConfig_PaddingConfigDimension::MergeFrom(const PaddingConfig_PaddingConfigDimension& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.PaddingConfig.PaddingConfigDimension)
   GOOGLE_DCHECK_NE(&from, this);
- // _internal_metadata_.MergeFrom(from._internal_metadata_);
+
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -293,7 +303,6 @@ void PaddingConfig_PaddingConfigDimension::InternalSwap(PaddingConfig_PaddingCon
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PaddingConfig_PaddingConfigDimension
 
-// int64 edge_padding_low = 1;
 void PaddingConfig_PaddingConfigDimension::clear_edge_padding_low() {
   edge_padding_low_ = GOOGLE_LONGLONG(0);
 }
@@ -307,7 +316,6 @@ void PaddingConfig_PaddingConfigDimension::set_edge_padding_low(::google::protob
   // @@protoc_insertion_point(field_set:xla.PaddingConfig.PaddingConfigDimension.edge_padding_low)
 }
 
-// int64 edge_padding_high = 2;
 void PaddingConfig_PaddingConfigDimension::clear_edge_padding_high() {
   edge_padding_high_ = GOOGLE_LONGLONG(0);
 }
@@ -321,7 +329,6 @@ void PaddingConfig_PaddingConfigDimension::set_edge_padding_high(::google::proto
   // @@protoc_insertion_point(field_set:xla.PaddingConfig.PaddingConfigDimension.edge_padding_high)
 }
 
-// int64 interior_padding = 3;
 void PaddingConfig_PaddingConfigDimension::clear_interior_padding() {
   interior_padding_ = GOOGLE_LONGLONG(0);
 }
@@ -348,8 +355,8 @@ PaddingConfig::PaddingConfig()
 PaddingConfig::PaddingConfig(const PaddingConfig& from)
   : 
       dimensions_(from.dimensions_),
-      _cached_size_(0) {
-
+      _cached_size_(0)
+{
   // @@protoc_insertion_point(copy_constructor:xla.PaddingConfig)
 }
 
@@ -366,9 +373,9 @@ void PaddingConfig::SharedDtor() {
 }
 
 void PaddingConfig::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  //GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  //GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 
 const PaddingConfig& PaddingConfig::default_instance() {
@@ -393,7 +400,6 @@ void PaddingConfig::MergeFrom(const PaddingConfig& from)
 {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.PaddingConfig)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -476,8 +482,8 @@ Layout::Layout(const Layout& from)
   :
       minor_to_major_(from.minor_to_major_),
       padded_dimensions_(from.padded_dimensions_),
-      _cached_size_(0) {
-//  _internal_metadata_.MergeFrom(from._internal_metadata_);
+      _cached_size_(0)
+{
   padding_value_ = from.padding_value_;
   // @@protoc_insertion_point(copy_constructor:xla.Layout)
 }
@@ -526,7 +532,6 @@ void Layout::Clear() {
 void Layout::MergeFrom(const Layout& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.Layout)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -564,7 +569,6 @@ void Layout::InternalSwap(Layout* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Layout
 
-// repeated int64 minor_to_major = 1;
 int Layout::minor_to_major_size() const {
   return minor_to_major_.size();
 }
@@ -594,7 +598,6 @@ Layout::mutable_minor_to_major() {
   return &minor_to_major_;
 }
 
-// repeated int64 padded_dimensions = 2;
 int Layout::padded_dimensions_size() const {
   return padded_dimensions_.size();
 }
@@ -624,7 +627,6 @@ Layout::mutable_padded_dimensions() {
   return &padded_dimensions_;
 }
 
-// .xla.PaddingValue padding_value = 3;
 void Layout::clear_padding_value() {
   padding_value_ = 0;
 }
@@ -652,8 +654,8 @@ Shape::Shape(const Shape& from)
  :
       dimensions_(from.dimensions_),
       tuple_shapes_(from.tuple_shapes_),
-      _cached_size_(0) {
-//  _internal_metadata_.MergeFrom(from._internal_metadata_);
+      _cached_size_(0)
+{
   if (from.has_layout()) {
     layout_ = new ::xla::Layout(*from.layout_);
   } else {
@@ -715,7 +717,6 @@ void Shape::Clear() {
 void Shape::MergeFrom(const Shape& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.Shape)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -758,7 +759,6 @@ void Shape::InternalSwap(Shape* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Shape
 
-// .xla.PrimitiveType element_type = 2;
 void Shape::clear_element_type() {
   element_type_ = 0;
 }
@@ -772,7 +772,6 @@ void Shape::set_element_type(::xla::PrimitiveType value) {
   // @@protoc_insertion_point(field_set:xla.Shape.element_type)
 }
 
-// repeated int64 dimensions = 3;
 int Shape::dimensions_size() const {
   return dimensions_.size();
 }
@@ -802,7 +801,6 @@ Shape::mutable_dimensions() {
   return &dimensions_;
 }
 
-// repeated .xla.Shape tuple_shapes = 4;
 int Shape::tuple_shapes_size() const {
   return tuple_shapes_.size();
 }
@@ -832,7 +830,6 @@ Shape::tuple_shapes() const {
   return tuple_shapes_;
 }
 
-// .xla.Layout layout = 5;
 bool Shape::has_layout() const {
   return this != internal_default_instance() && layout_ != NULL;
 }
@@ -885,8 +882,8 @@ ProgramShape::ProgramShape(const ProgramShape& from)
   :
       parameters_(from.parameters_),
       parameter_names_(from.parameter_names_),
-      _cached_size_(0) {
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
+      _cached_size_(0)
+{
   if (from.has_result()) {
     result_ = new ::xla::Shape(*from.result_);
   } else {
@@ -945,7 +942,6 @@ void ProgramShape::Clear() {
 void ProgramShape::MergeFrom(const ProgramShape& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.ProgramShape)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -983,7 +979,6 @@ void ProgramShape::InternalSwap(ProgramShape* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ProgramShape
 
-// repeated .xla.Shape parameters = 1;
 int ProgramShape::parameters_size() const {
   return parameters_.size();
 }
@@ -1013,7 +1008,6 @@ ProgramShape::parameters() const {
   return parameters_;
 }
 
-// .xla.Shape result = 2;
 bool ProgramShape::has_result() const {
   return this != internal_default_instance() && result_ != NULL;
 }
@@ -1052,7 +1046,6 @@ void ProgramShape::set_allocated_result(::xla::Shape* result) {
   // @@protoc_insertion_point(field_set_allocated:xla.ProgramShape.result)
 }
 
-// repeated string parameter_names = 3;
 int ProgramShape::parameter_names_size() const {
   return parameter_names_.size();
 }
@@ -1133,7 +1126,6 @@ ComputationHandle::ComputationHandle()
 
 ComputationHandle::ComputationHandle(const ComputationHandle& from)
 {
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   handle_ = from.handle_;
   // @@protoc_insertion_point(copy_constructor:xla.ComputationHandle)
 }
@@ -1172,12 +1164,10 @@ void ComputationHandle::Clear() {
   handle_ = GOOGLE_LONGLONG(0);
 }
 
-
 void ComputationHandle::MergeFrom(const ComputationHandle& from) 
 {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.ComputationHandle)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1210,7 +1200,6 @@ void ComputationHandle::InternalSwap(ComputationHandle* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ComputationHandle
 
-// int64 handle = 1;
 void ComputationHandle::clear_handle() {
   handle_ = GOOGLE_LONGLONG(0);
 }
@@ -1259,9 +1248,9 @@ void GlobalDataHandle::SharedDtor()
 
 void GlobalDataHandle::SetCachedSize(int size) const 
 {
-   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+   //GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
    _cached_size_ = size;
-   GOOGLE_SAFE_CONCURRENT_WRITES_END();
+   //GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 
 const GlobalDataHandle& GlobalDataHandle::default_instance() 
@@ -1288,7 +1277,6 @@ void GlobalDataHandle::MergeFrom(const GlobalDataHandle& from)
 {
    // @@protoc_insertion_point(class_specific_merge_from_start:xla.GlobalDataHandle)
    GOOGLE_DCHECK_NE(&from, this);
-   //_internal_metadata_.MergeFrom(from._internal_metadata_);
    ::google::protobuf::uint32 cached_has_bits = 0;
    (void)cached_has_bits;
 
@@ -1327,7 +1315,6 @@ void GlobalDataHandle::InternalSwap(GlobalDataHandle* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GlobalDataHandle
 
-// int64 handle = 1;
 void GlobalDataHandle::clear_handle() {
    handle_ = GOOGLE_LONGLONG(0);
 }
@@ -1351,8 +1338,8 @@ ComputationDataHandle::ComputationDataHandle()
   // @@protoc_insertion_point(constructor:xla.ComputationDataHandle)
 }
 ComputationDataHandle::ComputationDataHandle(const ComputationDataHandle& from)
-  : _cached_size_(0) {
-
+  : _cached_size_(0)
+{
   handle_ = from.handle_;
   // @@protoc_insertion_point(copy_constructor:xla.ComputationDataHandle)
 }
@@ -1362,7 +1349,8 @@ void ComputationDataHandle::SharedCtor() {
   _cached_size_ = 0;
 }
 
-ComputationDataHandle::~ComputationDataHandle() {
+ComputationDataHandle::~ComputationDataHandle()
+{
   // @@protoc_insertion_point(destructor:xla.ComputationDataHandle)
   SharedDtor();
 }
@@ -1398,7 +1386,6 @@ void ComputationDataHandle::Clear() {
 void ComputationDataHandle::MergeFrom(const ComputationDataHandle& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.ComputationDataHandle)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1433,7 +1420,6 @@ void ComputationDataHandle::InternalSwap(ComputationDataHandle* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ComputationDataHandle
 
-// int64 handle = 1;
 void ComputationDataHandle::clear_handle() {
   handle_ = GOOGLE_LONGLONG(0);
 }
@@ -1466,8 +1452,8 @@ Literal::Literal(const Literal& from)
       f32s_(from.f32s_),
       f64s_(from.f64s_),
       tuple_literals_(from.tuple_literals_),
-      _cached_size_(0) {
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
+      _cached_size_(0)
+{
   u8s_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.u8s().size() > 0) {
     u8s_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.u8s_);
@@ -1499,9 +1485,9 @@ void Literal::SharedDtor() {
 }
 
 void Literal::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  //GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  //GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 
 const Literal& Literal::default_instance() {
@@ -1538,7 +1524,6 @@ void Literal::Clear() {
 void Literal::MergeFrom(const Literal& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.Literal)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1598,7 +1583,6 @@ void Literal::InternalSwap(Literal* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Literal
 
-// .xla.Shape shape = 1;
 bool Literal::has_shape() const {
   return this != internal_default_instance() && shape_ != NULL;
 }
@@ -1637,7 +1621,6 @@ void Literal::set_allocated_shape(::xla::Shape* shape) {
   // @@protoc_insertion_point(field_set_allocated:xla.Literal.shape)
 }
 
-// repeated bool preds = 2;
 int Literal::preds_size() const {
   return preds_.size();
 }
@@ -1667,7 +1650,6 @@ Literal::mutable_preds() {
   return &preds_;
 }
 
-// bytes u8s = 3;
 void Literal::clear_u8s() {
   u8s_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1720,7 +1702,6 @@ void Literal::set_allocated_u8s(::std::string* u8s) {
   // @@protoc_insertion_point(field_set_allocated:xla.Literal.u8s)
 }
 
-// repeated int32 s32s = 4;
 int Literal::s32s_size() const {
   return s32s_.size();
 }
@@ -1750,7 +1731,6 @@ Literal::mutable_s32s() {
   return &s32s_;
 }
 
-// repeated int64 s64s = 5;
 int Literal::s64s_size() const {
   return s64s_.size();
 }
@@ -1780,7 +1760,6 @@ Literal::mutable_s64s() {
   return &s64s_;
 }
 
-// repeated uint32 u32s = 6;
 int Literal::u32s_size() const {
   return u32s_.size();
 }
@@ -1810,7 +1789,6 @@ Literal::mutable_u32s() {
   return &u32s_;
 }
 
-// repeated uint64 u64s = 7;
 int Literal::u64s_size() const {
   return u64s_.size();
 }
@@ -1840,7 +1818,6 @@ Literal::mutable_u64s() {
   return &u64s_;
 }
 
-// repeated float f32s = 8;
 int Literal::f32s_size() const {
   return f32s_.size();
 }
@@ -1870,7 +1847,6 @@ Literal::mutable_f32s() {
   return &f32s_;
 }
 
-// repeated double f64s = 9;
 int Literal::f64s_size() const {
   return f64s_.size();
 }
@@ -1900,7 +1876,6 @@ Literal::mutable_f64s() {
   return &f64s_;
 }
 
-// repeated .xla.Literal tuple_literals = 10;
 int Literal::tuple_literals_size() const {
   return tuple_literals_.size();
 }
@@ -1989,11 +1964,9 @@ void WindowDimension::Clear() {
     reinterpret_cast<char*>(&size_) + sizeof(base_dilation_));
 }
 
-
 void WindowDimension::MergeFrom(const WindowDimension& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.WindowDimension)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2048,7 +2021,6 @@ void WindowDimension::InternalSwap(WindowDimension* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // WindowDimension
 
-// int64 size = 1;
 void WindowDimension::clear_size() {
   size_ = GOOGLE_LONGLONG(0);
 }
@@ -2062,7 +2034,6 @@ void WindowDimension::set_size(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.size)
 }
 
-// int64 stride = 2;
 void WindowDimension::clear_stride() {
   stride_ = GOOGLE_LONGLONG(0);
 }
@@ -2076,7 +2047,6 @@ void WindowDimension::set_stride(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.stride)
 }
 
-// int64 padding_low = 3;
 void WindowDimension::clear_padding_low() {
   padding_low_ = GOOGLE_LONGLONG(0);
 }
@@ -2090,7 +2060,6 @@ void WindowDimension::set_padding_low(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.padding_low)
 }
 
-// int64 padding_high = 4;
 void WindowDimension::clear_padding_high() {
   padding_high_ = GOOGLE_LONGLONG(0);
 }
@@ -2104,7 +2073,6 @@ void WindowDimension::set_padding_high(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.padding_high)
 }
 
-// int64 window_dilation = 5;
 void WindowDimension::clear_window_dilation() {
   window_dilation_ = GOOGLE_LONGLONG(0);
 }
@@ -2118,7 +2086,6 @@ void WindowDimension::set_window_dilation(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.window_dilation)
 }
 
-// int64 base_dilation = 6;
 void WindowDimension::clear_base_dilation() {
   base_dilation_ = GOOGLE_LONGLONG(0);
 }
@@ -2145,7 +2112,8 @@ Window::Window()
 Window::Window(const Window& from)
    :
       dimensions_(from.dimensions_),
-      _cached_size_(0) {
+      _cached_size_(0)
+{
   // @@protoc_insertion_point(copy_constructor:xla.Window)
 }
 
@@ -2190,7 +2158,6 @@ void Window::Clear() {
 void Window::MergeFrom(const Window& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.Window)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2222,7 +2189,6 @@ void Window::InternalSwap(Window* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // Window
 
-// repeated .xla.WindowDimension dimensions = 1;
 int Window::dimensions_size() const {
   return dimensions_.size();
 }
@@ -2316,11 +2282,10 @@ void ConvolutionDimensionNumbers::Clear() {
     reinterpret_cast<char*>(&batch_dimension_) + sizeof(kernel_output_feature_dimension_));
 }
 
-
 void ConvolutionDimensionNumbers::MergeFrom(const ConvolutionDimensionNumbers& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:xla.ConvolutionDimensionNumbers)
   GOOGLE_DCHECK_NE(&from, this);
-  //_internal_metadata_.MergeFrom(from._internal_metadata_);
+
   tensorflow::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2340,7 +2305,6 @@ void ConvolutionDimensionNumbers::MergeFrom(const ConvolutionDimensionNumbers& f
   }
 }
 
-
 void ConvolutionDimensionNumbers::CopyFrom(const ConvolutionDimensionNumbers& from) {
 // @@protoc_insertion_point(class_specific_copy_from_start:xla.ConvolutionDimensionNumbers)
   if (&from == this) return;
@@ -2356,6 +2320,7 @@ void ConvolutionDimensionNumbers::Swap(ConvolutionDimensionNumbers* other) {
   if (other == this) return;
   InternalSwap(other);
 }
+
 void ConvolutionDimensionNumbers::InternalSwap(ConvolutionDimensionNumbers* other) {
   spatial_dimensions_.InternalSwap(&other->spatial_dimensions_);
   kernel_spatial_dimensions_.InternalSwap(&other->kernel_spatial_dimensions_);
@@ -2370,7 +2335,6 @@ void ConvolutionDimensionNumbers::InternalSwap(ConvolutionDimensionNumbers* othe
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ConvolutionDimensionNumbers
 
-// int64 batch_dimension = 1;
 void ConvolutionDimensionNumbers::clear_batch_dimension() {
   batch_dimension_ = GOOGLE_LONGLONG(0);
 }
@@ -2384,7 +2348,6 @@ void ConvolutionDimensionNumbers::set_batch_dimension(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.batch_dimension)
 }
 
-// int64 feature_dimension = 2;
 void ConvolutionDimensionNumbers::clear_feature_dimension() {
   feature_dimension_ = GOOGLE_LONGLONG(0);
 }
@@ -2398,7 +2361,6 @@ void ConvolutionDimensionNumbers::set_feature_dimension(tensorflow::int64 value)
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.feature_dimension)
 }
 
-// repeated int64 spatial_dimensions = 5;
 int ConvolutionDimensionNumbers::spatial_dimensions_size() const {
   return spatial_dimensions_.size();
 }
@@ -2428,7 +2390,6 @@ ConvolutionDimensionNumbers::mutable_spatial_dimensions() {
   return &spatial_dimensions_;
 }
 
-// int64 kernel_input_feature_dimension = 3;
 void ConvolutionDimensionNumbers::clear_kernel_input_feature_dimension() {
   kernel_input_feature_dimension_ = GOOGLE_LONGLONG(0);
 }
@@ -2442,7 +2403,6 @@ void ConvolutionDimensionNumbers::set_kernel_input_feature_dimension(tensorflow:
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.kernel_input_feature_dimension)
 }
 
-// int64 kernel_output_feature_dimension = 4;
 void ConvolutionDimensionNumbers::clear_kernel_output_feature_dimension() {
   kernel_output_feature_dimension_ = GOOGLE_LONGLONG(0);
 }
@@ -2456,7 +2416,6 @@ void ConvolutionDimensionNumbers::set_kernel_output_feature_dimension(tensorflow
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.kernel_output_feature_dimension)
 }
 
-// repeated int64 kernel_spatial_dimensions = 6;
 int ConvolutionDimensionNumbers::kernel_spatial_dimensions_size() const {
   return kernel_spatial_dimensions_.size();
 }

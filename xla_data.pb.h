@@ -35,6 +35,7 @@ namespace xla {
 class ComputationDataHandle;
 class ComputationDataHandleDefaultTypeInternal;
 extern ComputationDataHandleDefaultTypeInternal _ComputationDataHandle_default_instance_;
+
 class ComputationHandle;
 class ComputationHandleDefaultTypeInternal;
 extern ComputationHandleDefaultTypeInternal _ComputationHandle_default_instance_;
@@ -50,18 +51,23 @@ extern GlobalDataHandleDefaultTypeInternal _GlobalDataHandle_default_instance_;
 class Layout;
 class LayoutDefaultTypeInternal;
 extern LayoutDefaultTypeInternal _Layout_default_instance_;
+
 class Literal;
 class LiteralDefaultTypeInternal;
 extern LiteralDefaultTypeInternal _Literal_default_instance_;
+
 class PaddingConfig;
 class PaddingConfigDefaultTypeInternal;
 extern PaddingConfigDefaultTypeInternal _PaddingConfig_default_instance_;
+
 class PaddingConfig_PaddingConfigDimension;
 class PaddingConfig_PaddingConfigDimensionDefaultTypeInternal;
 extern PaddingConfig_PaddingConfigDimensionDefaultTypeInternal _PaddingConfig_PaddingConfigDimension_default_instance_;
+
 class ParameterRequest;
 class ParameterRequestDefaultTypeInternal;
 extern ParameterRequestDefaultTypeInternal _ParameterRequest_default_instance_;
+
 class ProgramShape;
 class ProgramShapeDefaultTypeInternal;
 extern ProgramShapeDefaultTypeInternal _ProgramShape_default_instance_;
@@ -73,6 +79,7 @@ extern ShapeDefaultTypeInternal _Shape_default_instance_;
 class Window;
 class WindowDefaultTypeInternal;
 extern WindowDefaultTypeInternal _Window_default_instance_;
+
 class WindowDimension;
 class WindowDimensionDefaultTypeInternal;
 extern WindowDimensionDefaultTypeInternal _WindowDimension_default_instance_;
@@ -227,8 +234,6 @@ class PaddingConfig_PaddingConfigDimension
   }
   public:
 
-  //::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
@@ -250,7 +255,6 @@ class PaddingConfig_PaddingConfigDimension
   // @@protoc_insertion_point(class_scope:xla.PaddingConfig.PaddingConfigDimension)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::int64 edge_padding_low_;
   ::google::protobuf::int64 edge_padding_high_;
   ::google::protobuf::int64 interior_padding_;
@@ -307,9 +311,8 @@ class PaddingConfig
   inline void* MaybeArenaPtr() const {
     return NULL;
   }
-  public:
 
-  //::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+  public:
 
   // nested types ----------------------------------------------------
 
@@ -331,7 +334,6 @@ class PaddingConfig
   // @@protoc_insertion_point(class_scope:xla.PaddingConfig)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::xla::PaddingConfig_PaddingConfigDimension > dimensions_;
   mutable int _cached_size_;
 };
@@ -422,7 +424,6 @@ class Layout
 
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedField< tensorflow::int64 > minor_to_major_;
   mutable int _minor_to_major_cached_byte_size_;
   ::google::protobuf::RepeatedField< tensorflow::int64 > padded_dimensions_;
@@ -526,7 +527,6 @@ class Shape
   // @@protoc_insertion_point(class_scope:xla.Shape)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedField< tensorflow::int64 > dimensions_;
   mutable int _dimensions_cached_byte_size_;
   ::google::protobuf::RepeatedPtrField< ::xla::Shape > tuple_shapes_;
@@ -634,7 +634,6 @@ class ProgramShape
   // @@protoc_insertion_point(class_scope:xla.ProgramShape)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::xla::Shape > parameters_;
   ::google::protobuf::RepeatedPtrField< ::std::string> parameter_names_;
   ::xla::Shape* result_;
@@ -703,7 +702,6 @@ class ComputationHandle
   // @@protoc_insertion_point(class_scope:xla.ComputationHandle)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   tensorflow::int64 handle_;
   mutable int _cached_size_;
 };
@@ -722,7 +720,6 @@ public:
       return *this;
    }
 
-   //static const ::google::protobuf::Descriptor* descriptor();
    static const GlobalDataHandle& default_instance();
 
    static inline const GlobalDataHandle* internal_default_instance() 
@@ -771,7 +768,6 @@ public:
    // @@protoc_insertion_point(class_scope:xla.GlobalDataHandle)
 private:
 
-   //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
    ::google::protobuf::int64 handle_;
    mutable int _cached_size_;
 };
@@ -826,7 +822,6 @@ class ComputationDataHandle
   }
   public:
 
-   
 
   // nested types ----------------------------------------------------
 
@@ -840,7 +835,6 @@ class ComputationDataHandle
   // @@protoc_insertion_point(class_scope:xla.ComputationDataHandle)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   tensorflow::int64 handle_;
   mutable int _cached_size_;
 };
@@ -861,7 +855,6 @@ class Literal
     return *this;
   }
 
-  //static const ::google::protobuf::Descriptor* descriptor();
   static const Literal& default_instance();
 
   static inline const Literal* internal_default_instance() {
@@ -1022,7 +1015,6 @@ private:
   // @@protoc_insertion_point(class_scope:xla.Literal)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedField< bool > preds_;
   mutable int _preds_cached_byte_size_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > s32s_;
@@ -1125,7 +1117,6 @@ class WindowDimension
   // @@protoc_insertion_point(class_scope:xla.WindowDimension)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   tensorflow::int64 size_;
   tensorflow::int64 stride_;
   tensorflow::int64 padding_low_;
@@ -1206,7 +1197,6 @@ class Window
   // @@protoc_insertion_point(class_scope:xla.Window)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::xla::WindowDimension > dimensions_;
   mutable int _cached_size_;
 };
@@ -1310,7 +1300,6 @@ class ConvolutionDimensionNumbers
   // @@protoc_insertion_point(class_scope:xla.ConvolutionDimensionNumbers)
  private:
 
-  //::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedField< tensorflow::int64 > spatial_dimensions_;
   mutable int _spatial_dimensions_cached_byte_size_;
   ::google::protobuf::RepeatedField< tensorflow::int64 > kernel_spatial_dimensions_;
