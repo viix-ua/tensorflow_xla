@@ -131,6 +131,33 @@ std::function<float(float)> fn[] = {
    xla::Tanh<float>
 };
 
+template <typename T>
+class ObjFunction
+{
+public:
+
+   explicit ObjFunction(std::function<T(T)>& fun)
+      : mFn(fun)
+      , mSumm(T(0))
+   {}
+
+   T operator ()(T x)
+   {
+      mSumm += x;
+      return mFn(x);
+   }
+
+   operator T() const
+   {
+      return mSumm;
+   }
+
+private:
+
+   std::function<T(T)> mFn;
+   T mSumm;
+};
+
 }  // xla
 
 namespace xla {
@@ -145,6 +172,18 @@ void nnet_test_fn()
       img_in->flatten().end(),
       img_out->flatten().begin(),
       fn[eLinear]);
+
+   xla::ObjFunction<float> obj(fn[eLinear]);
+
+
+   float summ = 0.f;
+   std::transform(
+      img_in->flatten().begin(),
+      img_in->flatten().end(),
+      img_out->flatten().begin(),
+      obj);
+
+   summ = obj;
 }
 
 }  //xla
