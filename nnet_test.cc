@@ -116,46 +116,47 @@ enum ActivationType {
    eTanh
 };
 
-std::function<float(float)> fn[] = {
-   xla::Elu<float>,
-   xla::Exponential<float>,
-   xla::HardSigmoid<float>,
-   xla::Linear<float>,
-   xla::Relu<float>,
-   xla::Selu<float>,
-   xla::Sigmoid<float>,
-   xla::SigmoidSign<float>,
-   xla::SoftPlus<float>,
-   xla::SoftSign<float>,
-   xla::Swish<float>,
-   xla::Tanh<float>
-};
 
 template <typename T>
-class ObjFunction
+class Activation
 {
 public:
 
-   explicit ObjFunction(std::function<T(T)>& fun)
-      : mFn(fun)
-      , mSumm(T(0))
+   explicit Activation(ActivationType activation)
+      : mType(activation)
+      , mValue(T(0))
    {}
 
    T operator ()(T x)
    {
-      mSumm += x;
-      return mFn(x);
+      static std::function<T(T)> fn[] = {
+         xla::Elu<T>,
+         xla::Exponential<T>,
+         xla::HardSigmoid<T>,
+         xla::Linear<T>,
+         xla::Relu<T>,
+         xla::Selu<T>,
+         xla::Sigmoid<T>,
+         xla::SigmoidSign<T>,
+         xla::SoftPlus<T>,
+         xla::SoftSign<T>,
+         xla::Swish<T>,
+         xla::Tanh<T>
+      };
+
+      mValue += x;
+      return fn[mType](x);
    }
 
    operator T() const
    {
-      return mSumm;
+      return mValue;
    }
 
 private:
 
-   std::function<T(T)> mFn;
-   T mSumm;
+   ActivationType mType;
+   T mValue;
 };
 
 }  // xla
@@ -171,9 +172,9 @@ void nnet_test_fn()
       img_in->flatten().begin(),
       img_in->flatten().end(),
       img_out->flatten().begin(),
-      fn[eLinear]);
+      xla::Linear<float>);
 
-   xla::ObjFunction<float> obj(fn[eLinear]);
+   xla::Activation<float> obj(eLinear);
 
 
    float summ = 0.f;
