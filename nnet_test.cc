@@ -180,15 +180,11 @@ void nnet_test_fn()
 
    xla::Activation<float> obj(eLinear);
 
-
-   float summ = 0.f;
    std::transform(
       img_in->flatten().begin(),
       img_in->flatten().end(),
       img_out->flatten().begin(),
       obj);
-
-   summ = obj;
 }
 
 }  //xla
