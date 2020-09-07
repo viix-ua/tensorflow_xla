@@ -16,21 +16,12 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_ARRAY2D_H_
 #define TENSORFLOW_COMPILER_XLA_ARRAY2D_H_
 
-#include <algorithm>
-#include <functional>
-#include <initializer_list>
-#include <iterator>
-#include <memory>
-#include <random>
-#include <vector>
-
 #include "types.h"
 #include "bits.h"
 #include "str_util.h"
 #include "strcat.h"
 #include "logging.h"
 #include "macros.h"
-#include "base.h"
 
 #include "tensor_array.h"
 #include "array1d.h"

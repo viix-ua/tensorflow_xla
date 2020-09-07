@@ -189,7 +189,7 @@ void nnet_test_fn()
 
 }  //xla
 
-/* Layers v1:
+/* Layers tf.v1:
 https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Conv2D
 https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Dense
 https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Dropout
@@ -206,6 +206,11 @@ https://www.tensorflow.org/hub/tutorials/image_feature_vector
 https://www.tensorflow.org/guide/intro_to_modules
 */
 
+
+// TODO:
+/* Udacity courses examples:
+https://github.com/tensorflow/examples/tree/master/courses/udacity_deep_learning
+*/
 
 void nnet_run()
 {

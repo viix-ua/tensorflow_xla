@@ -18,6 +18,16 @@ limitations under the License.
 
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <functional>
+#include <initializer_list>
+#include <iterator>
+#include <memory>
+#include <numeric>
+#include <random>
+#include <string>
+#include <vector>
+
 #include "platform.h"
 
 // Include appropriate platform-dependent implementations
