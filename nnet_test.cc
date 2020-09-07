@@ -8,6 +8,9 @@
 
 namespace xla
 {
+/* functions:
+https://www.tensorflow.org/api_docs/python/tf/nn/
+*/
 
 template <typename T>
 T Elu(T x)
@@ -98,7 +101,8 @@ T Swish(T x)
 template <typename T>
 T Tanh(T x)
 {
-   return (std::exp(x) - std::exp(-x)) / (std::exp(x) + std::exp(-x));
+   //return (std::exp(x) - std::exp(-x)) / (std::exp(x) + std::exp(-x));
+   return std::tanh(x);
 }
 
 enum ActivationType {
@@ -188,6 +192,24 @@ void nnet_test_fn()
 }
 
 }  //xla
+
+/* Layers v1:
+https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Conv2D
+https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Dense
+https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Dropout
+https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/MaxPooling2D
+https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/MaxPooling3D
+https://www.tensorflow.org/api_docs/python/tf/compat/v1/layers/Flatten
+
+actual version:
+https://www.tensorflow.org/api_docs/python/tf/keras/layers/
+*/
+
+/* Examples:
+https://www.tensorflow.org/hub/tutorials/image_feature_vector
+https://www.tensorflow.org/guide/intro_to_modules
+*/
+
 
 void nnet_run()
 {

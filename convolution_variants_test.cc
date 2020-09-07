@@ -162,6 +162,13 @@ void ConvolutionVariantsTest::Minimal()
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
 
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
+
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
 
@@ -183,6 +190,13 @@ void ConvolutionVariantsTest::MinimalWithBatch()
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
 
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
+
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
 
@@ -203,8 +217,16 @@ void ConvolutionVariantsTest::Flat1x1()
 
   expected.FillWithMultiples(2.3f);
 
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -248,6 +270,13 @@ void ConvolutionVariantsTest::Filter1x2in1x2()
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
 
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
+
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
 
@@ -268,6 +297,13 @@ void ConvolutionVariantsTest::Filter1x2in1x3()
 
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -290,6 +326,13 @@ void ConvolutionVariantsTest::Filter1x2in2x2()
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
 
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
+
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
 
@@ -311,6 +354,13 @@ void ConvolutionVariantsTest::Filter2x1in2x2()
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
 
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
+
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
 
@@ -331,6 +381,13 @@ void ConvolutionVariantsTest::Filter2x2in2x2()
 
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -376,9 +433,16 @@ void ConvolutionVariantsTest::Filter1x1stride1x2in1x4()
 
   Array4D<float> expected(1, 1, 1, 2, {10, 30});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 2 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 2 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -397,9 +461,16 @@ void ConvolutionVariantsTest::Filter1x1stride1x2in1x5()
 
   Array4D<float> expected(1, 1, 1, 3, {10, 30, 50});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 2 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 2 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -418,9 +489,16 @@ void ConvolutionVariantsTest::Filter1x3stride1x2in1x4()
 
   Array4D<float> expected(1, 1, 1, 1, {123});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 2 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 2 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -439,9 +517,16 @@ void ConvolutionVariantsTest::Filter1x3stride1x2in1x5()
 
   Array4D<float> expected(1, 1, 1, 2, {123, 345});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 2 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 2 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -460,9 +545,16 @@ void ConvolutionVariantsTest::Filter1x1stride2x2in3x3()
 
   Array4D<float> expected(1, 1, 2, 2, {10, 30, 70, 90});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 2, 2 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 2, 2 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -481,7 +573,7 @@ void ConvolutionVariantsTest::Filter3x1in1x1Padded()
 
   Array4D<float> expected(1, 1, 1, 1, {20});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kSame);
   ASSERT_TRUE(*conv4d == expected);
 
@@ -502,7 +594,7 @@ void ConvolutionVariantsTest::Filter5x1in3x1Padded()
 
   Array4D<float> expected(1, 1, 1, 3, {123, 1230, 12300});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kSame);
   ASSERT_TRUE(*conv4d == expected);
 
@@ -525,7 +617,7 @@ void ConvolutionVariantsTest::Filter3x3in2x2Padded()
 
   Array4D<float> expected(1, 1, 2, 2, {104, 230, 2300, 10400});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kSame);
   ASSERT_TRUE(*conv4d == expected);
 
@@ -546,7 +638,7 @@ void ConvolutionVariantsTest::Filter1x1in2x1WithPaddingAndDepth()
 
   Array4D<float> expected(1, 1, 1, 2, {13, 24});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kSame);
   ASSERT_TRUE(*conv4d == expected);
 
@@ -567,9 +659,16 @@ void ConvolutionVariantsTest::Filter2x2Stride1x1Input3x3()
 
   Array4D<float> expected(1, 1, 2, 2, {216, 276, 396, 456});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -588,9 +687,16 @@ void ConvolutionVariantsTest::Filter1x2Stride1x1Input1x3()
 
   Array4D<float> expected(1, 1, 1, 2, {33, 53});
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -641,9 +747,16 @@ void ConvolutionVariantsTest::Filter1x1x1x1Input16x1x1x1()
                                       9, 10, 11, 12, 13, 14, 15, 16};
   Array4D<float> expected(16, 1, 1, 1, expected_data);
 
-  // TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -680,9 +793,16 @@ void ConvolutionVariantsTest::Filter1x1x2x2Input16x1x2x2()
   }
   Array4D<float> expected(bs, 1, 1, 1, expected_data);
 
-  //TODO:
+
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
@@ -719,6 +839,13 @@ void ConvolutionVariantsTest::Filter1x1x2x2Input3x1x2x2()
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
 
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array,
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()),
+     { 1, 1 },
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
+
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
 
@@ -751,6 +878,13 @@ void ConvolutionVariantsTest::Filter1x1x8x8Input16x1x8x8()
 
   auto conv4d = ReferenceUtil::ConvArray4D(input_array, filter_array, { 1, 1 }, Padding::kValid);
   ASSERT_TRUE(*conv4d == expected);
+
+  auto conv2d = ReferenceUtil::Conv2D(
+     input_array, 
+     Array2D<float>(filter_array.height(), filter_array.width(), filter_array.flatten()), 
+     { 1, 1 }, 
+     Padding::kValid);
+  ASSERT_TRUE(*conv2d == expected);
 
   ComputeAndCompareR4<float>(&builder, expected, {}, error_spec_);
 }
