@@ -59,7 +59,7 @@ T Selu(T x)
    const T alpha = 1.67326324f;
    const T scale = 1.05070098f;
 
-   return (x > 0.f) ? (scale * x) : Elu(x);
+   return (x > 0.f) ? (scale * x) : (scale * alpha * (std::exp(x) - T(1.f)));
 }
 
 template <typename T>
