@@ -74,18 +74,6 @@ class ClientLibraryTestBase // : public ::testing::Test
       tensorflow::gtl::ArraySlice<GlobalData*> arguments,
       const Shape* shape_with_output_layout = nullptr);
 
-  // Convenience OrDie variants of above methods.
-  std::unique_ptr<GlobalData> ExecuteOrDie(
-      ComputationBuilder* builder,
-      tensorflow::gtl::ArraySlice<GlobalData*> arguments);
-  std::unique_ptr<Literal> ExecuteAndTransferOrDie(
-      ComputationBuilder* builder,
-      tensorflow::gtl::ArraySlice<GlobalData*> arguments);
-
-  // Run a computation and return its value as a string. If an error
-  // occurs, then instead return the error as a string.
-  string ExecuteToString(ComputationBuilder* builder,
-                         tensorflow::gtl::ArraySlice<GlobalData*> arguments);
 
   // Convenience methods for building and running a computation, transferring
   // the result, and comparing it to the expected value(s). Methods are

@@ -161,7 +161,6 @@
     <ClInclude Include="index_util.h" />
     <ClInclude Include="inlined_vector.h" />
     <ClInclude Include="integral_types.h" />
-    <ClInclude Include="int_type.h" />
     <ClInclude Include="iterator_range.h" />
     <ClInclude Include="keras_model.h" />
     <ClInclude Include="layout_util.h" />

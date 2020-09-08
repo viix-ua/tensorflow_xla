@@ -72,9 +72,6 @@
     <ClInclude Include="inlined_vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="int_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="integral_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>

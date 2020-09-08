@@ -35,25 +35,10 @@ limitations under the License.
 //namespace se = ::perftools::gputools;
 
 namespace xla {
-namespace {
-// Wrapper function that creates a nicer error message (than a bare
-// ValueOrDie()) if the platform we intend to test is not available.
-//Client* GetOrCreateLocalClientOrDie(se::Platform* platform) {
-//  StatusOr<Client*> result = ClientLibrary::GetOrCreateLocalClient(platform);
-//  TF_CHECK_OK(result.status()) << "could not create local client for testing";
-//  return result.ValueOrDie();
-//}
-}  // namespace
 
 ClientLibraryTestBase::ClientLibraryTestBase(
-    /*se::Platform* platform,*/
-    tensorflow::gtl::ArraySlice<string> disabled_pass_names)
-    /*: client_(GetOrCreateLocalClientOrDie(platform))*/ 
+   tensorflow::gtl::ArraySlice<string> disabled_pass_names)
 {
-  /*legacy_flags::HloPassPipelineFlags* flags =
-      legacy_flags::GetHloPassPipelineFlags();
-  flags->xla_disable_hlo_passes =
-      tensorflow::str_util::Join(disabled_pass_names, ",");*/
 }
 
 string ClientLibraryTestBase::TestName() const 
@@ -89,40 +74,6 @@ StatusOr<std::unique_ptr<Literal>> ClientLibraryTestBase::ExecuteAndTransfer(
   //                                   &execution_options);
 
   return StatusOr<std::unique_ptr<Literal>>(nullptr);
-}
-
-std::unique_ptr<GlobalData> ClientLibraryTestBase::ExecuteOrDie(
-    ComputationBuilder* builder,
-    tensorflow::gtl::ArraySlice<GlobalData*> arguments) 
-{
-  return Execute(builder, arguments).ConsumeValueOrDie();
-}
-
-std::unique_ptr<Literal> ClientLibraryTestBase::ExecuteAndTransferOrDie(
-    ComputationBuilder* builder,
-    tensorflow::gtl::ArraySlice<GlobalData*> arguments) 
-{
-  return ExecuteAndTransfer(builder, arguments).ConsumeValueOrDie();
-}
-
-string ClientLibraryTestBase::ExecuteToString(
-    ComputationBuilder* builder,
-    tensorflow::gtl::ArraySlice<GlobalData*> arguments) 
-{
-  //StatusOr<Computation> computation_status = builder->Build();
-  //if (!computation_status.ok()) {
-  //  return computation_status.status().ToString();
-  //}
-  //Computation computation = computation_status.ConsumeValueOrDie();
-
-  //auto result =
-  //    client_->ExecuteAndTransfer(computation, arguments, &execution_options_);
-  //if (!result.ok()) {
-  //  return result.status().ToString();
-  //} else {
-  //  return LiteralUtil::ToString(*result.ValueOrDie());
-  //}
-  return string();
 }
 
 void ClientLibraryTestBase::ComputeAndCompareR1(

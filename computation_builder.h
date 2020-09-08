@@ -16,12 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_CLIENT_COMPUTATION_BUILDER_H_
 #define TENSORFLOW_COMPILER_XLA_CLIENT_COMPUTATION_BUILDER_H_
 
-#include <functional>
-#include <initializer_list>
-#include <memory>
-#include <string>
-#include <utility>
-
 #include "array2d.h"
 #include "array3d.h"
 #include "array4d.h"

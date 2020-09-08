@@ -16,8 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_PLATFORM_TYPES_H_
 #define TENSORFLOW_PLATFORM_TYPES_H_
 
-#include <string>
-#include <vector>
 #include <algorithm>
 #include <functional>
 #include <initializer_list>
@@ -26,6 +24,7 @@ limitations under the License.
 #include <numeric>
 #include <random>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "platform.h"
