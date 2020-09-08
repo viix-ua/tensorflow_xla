@@ -58,13 +58,6 @@ class ClientLibraryTestBase // : public ::testing::Test
   // Returns the name of the test currently being run.
   string TestName() const;
 
-  void SetFastMathDisabled(bool disabled) 
-  {
-    //execution_options_.set_disable_fast_math(disabled);
-  }
-
-  // TODO(b/25566808): Add helper that populates a literal from a testdata file.
-
   // Convenience methods for building and running a computation from a builder.
   StatusOr<std::unique_ptr<GlobalData>> Execute(
       ComputationBuilder* builder,
