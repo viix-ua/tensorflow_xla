@@ -76,7 +76,7 @@ class MathUtil {
 template <typename IntegralType, bool ceil>
 IntegralType MathUtil::CeilOrFloorOfRatio(IntegralType numerator,
                                           IntegralType denominator) {
-  DCHECK_NE(0, denominator) << "Division by zero is not supported.";
+  DCHECK_NE((IntegralType)0, denominator) << "Division by zero is not supported.";
 
   const IntegralType rounded_toward_zero = numerator / denominator;
   const IntegralType intermediate_product = rounded_toward_zero * denominator;
