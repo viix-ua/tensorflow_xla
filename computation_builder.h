@@ -185,23 +185,23 @@ class ComputationBuilder {
      tensorflow::gtl::ArraySlice<int64> new_sizes
   );
 
-  //template <typename NativeT>
-  //std::unique_ptr <std::vector<NativeT>> Reshape(
-  //   const xla::Array2D<NativeT>& input_data,
-  //   tensorflow::gtl::ArraySlice<int64> dimensions,
-  //   tensorflow::gtl::ArraySlice<int64> new_sizes);
+  template <typename NativeT>
+  std::unique_ptr <std::vector<NativeT>> Reshape(
+     const xla::Array2D<NativeT>& input_data,
+     tensorflow::gtl::ArraySlice<int64> dimensions,
+     tensorflow::gtl::ArraySlice<int64> new_sizes);
 
-  //template <typename NativeT>
-  //std::unique_ptr <std::vector<NativeT>> Reshape(
-  //   const xla::Array3D<NativeT>& input_data,
-  //   tensorflow::gtl::ArraySlice<int64> dimensions,
-  //   tensorflow::gtl::ArraySlice<int64> new_sizes);
+  template <typename NativeT>
+  std::unique_ptr <std::vector<NativeT>> Reshape(
+     const xla::Array3D<NativeT>& input_data,
+     tensorflow::gtl::ArraySlice<int64> dimensions,
+     tensorflow::gtl::ArraySlice<int64> new_sizes);
 
-  //template <typename NativeT>
-  //std::unique_ptr <std::vector<NativeT>> Reshape(
-  //   const xla::Array4D<NativeT>& input_data,
-  //   tensorflow::gtl::ArraySlice<int64> dimensions,
-  //   tensorflow::gtl::ArraySlice<int64> new_sizes);
+  template <typename NativeT>
+  std::unique_ptr <std::vector<NativeT>> Reshape(
+     const xla::Array4D<NativeT>& input_data,
+     tensorflow::gtl::ArraySlice<int64> dimensions,
+     tensorflow::gtl::ArraySlice<int64> new_sizes);
 
   // Wrapper for Reshape.
   // Enqueues an operation to collapse the provided dimensions; e.g. an

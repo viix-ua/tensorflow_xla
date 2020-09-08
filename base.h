@@ -17,6 +17,7 @@ limitations under the License.
 #define TENSORFLOW_PLATFORM_TYPES_H_
 
 #include <algorithm>
+#include <array>
 #include <functional>
 #include <initializer_list>
 #include <iterator>

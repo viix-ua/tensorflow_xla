@@ -15,9 +15,6 @@ limitations under the License.
 
 #include "reference_util.h"
 
-#include <array>
-#include <algorithm>
-
 #include "window_util.h"
 #include "xla_data.pb.h"
 #include "math_util.h"
@@ -173,7 +170,8 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4D(
 }
 
 /* static */
-std::unique_ptr<Array4D<float>> ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
+std::unique_ptr<Array4D<float>> ReferenceUtil::SeparableConvArray4D(
+   const Array4D<float>& input,
    const Array4D<float>& depthwise_weights,
    const Array4D<float>& pointwise_weights,
    std::pair<int64, int64> kernel_stride,

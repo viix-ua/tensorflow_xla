@@ -1710,55 +1710,55 @@ ComputationBuilder::CreateConvDimensionNumbers(
 }
 
 
-//template <typename NativeT>
-//std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
-//   const xla::Array2D<NativeT>& input_array,
-//   tensorflow::gtl::ArraySlice<int64> dimensions,
-//   tensorflow::gtl::ArraySlice<int64> new_sizes)
-//{
-//   std::unique_ptr <std::vector<NativeT>> output_vector = new std::vector<NativeT>();
-//
-//   Reshape<NativeT>(
-//      input_array.data(),
-//      { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
-//      new_size,
-//      *output_vector);
-//
-//   return output_vector;
-//}
-//
-//template <typename NativeT>
-//std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
-//   const xla::Array3D<NativeT>& input_array,
-//   tensorflow::gtl::ArraySlice<int64> dimensions,
-//   tensorflow::gtl::ArraySlice<int64> new_sizes)
-//{
-//   std::unique_ptr <std::vector<NativeT>> output_vector = new std::vector<NativeT>();
-//
-//   Reshape<NativeT>(
-//      input_array.data(), 
-//      { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
-//      new_size, 
-//      *output_vector);
-//
-//   return output_vector;
-//}
-//
-//template <typename NativeT>
-//std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
-//   const xla::Array4D<NativeT>& input_array,
-//   tensorflow::gtl::ArraySlice<int64> dimensions,
-//   tensorflow::gtl::ArraySlice<int64> new_sizes)
-//{
-//   std::unique_ptr <std::vector<NativeT>> output_vector = new std::vector<NativeT>();
-//
-//   Reshape<NativeT>(
-//      input_array.data(),
-//      { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
-//      new_size,
-//      *output_vector);
-//
-//   return output_vector;
-//}
+template <typename NativeT>
+std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
+   const xla::Array2D<NativeT>& input_array,
+   tensorflow::gtl::ArraySlice<int64> dimensions,
+   tensorflow::gtl::ArraySlice<int64> new_sizes)
+{
+   std::unique_ptr <std::vector<NativeT>> output_vector = new std::vector<NativeT>();
+
+   Reshape<NativeT>(
+      input_array.data(),
+      { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
+      new_size,
+      *output_vector);
+
+   return output_vector;
+}
+
+template <typename NativeT>
+std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
+   const xla::Array3D<NativeT>& input_array,
+   tensorflow::gtl::ArraySlice<int64> dimensions,
+   tensorflow::gtl::ArraySlice<int64> new_sizes)
+{
+   std::unique_ptr <std::vector<NativeT>> output_vector = new std::vector<NativeT>();
+
+   Reshape<NativeT>(
+      input_array.data(), 
+      { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
+      new_size, 
+      *output_vector);
+
+   return output_vector;
+}
+
+template <typename NativeT>
+std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
+   const xla::Array4D<NativeT>& input_array,
+   tensorflow::gtl::ArraySlice<int64> dimensions,
+   tensorflow::gtl::ArraySlice<int64> new_sizes)
+{
+   std::unique_ptr <std::vector<NativeT>> output_vector = new std::vector<NativeT>();
+
+   Reshape<NativeT>(
+      input_array.data(),
+      { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
+      new_size,
+      *output_vector);
+
+   return output_vector;
+}
 
 }  // namespace xla

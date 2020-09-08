@@ -16,12 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_REFERENCE_UTIL_H_
 #define TENSORFLOW_COMPILER_XLA_REFERENCE_UTIL_H_
 
-#include <array>
-#include <functional>
-#include <memory>
-#include <utility>
-#include <vector>
-
 #include "array2d.h"
 #include "array3d.h"
 #include "array4d.h"
