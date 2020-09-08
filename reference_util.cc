@@ -18,8 +18,6 @@ limitations under the License.
 #include <array>
 #include <algorithm>
 
-//#include "computation_builder.h"
-//#include "runtime_single_threaded_matmul.h"
 #include "window_util.h"
 #include "xla_data.pb.h"
 #include "math_util.h"
@@ -27,7 +25,8 @@ limitations under the License.
 
 namespace xla {
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::TransposeArray2D(const Array2D<float>& operand) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::TransposeArray2D(const Array2D<float>& operand) 
 {
   auto result = MakeUnique<Array2D<float>>(operand.width(), operand.height());
   for (int64 w = 0; w < operand.width(); ++w) {
@@ -40,8 +39,10 @@ namespace xla {
 }
 
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::MatmulArray2D(
-    const Array2D<float>& lhs, const Array2D<float>& rhs) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::MatmulArray2D(
+   const Array2D<float>& lhs,
+   const Array2D<float>& rhs)
 {
   CHECK_EQ(lhs.width(), rhs.height());
   int64 m = lhs.height();
@@ -53,8 +54,10 @@ namespace xla {
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<double>> ReferenceUtil::MatmulArray2D(
-    const Array2D<double>& lhs, const Array2D<double>& rhs) 
+/* static */
+std::unique_ptr<Array2D<double>> ReferenceUtil::MatmulArray2D(
+   const Array2D<double>& lhs,
+   const Array2D<double>& rhs)
 {
   CHECK_EQ(lhs.width(), rhs.height());
   int64 m = lhs.height();
@@ -66,8 +69,9 @@ namespace xla {
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<double>> ReferenceUtil::Array2DF32ToF64(
-    const Array2D<float>& input) 
+/* static */
+std::unique_ptr<Array2D<double>> ReferenceUtil::Array2DF32ToF64(
+    const Array2D<float>& input)
 {
   auto result = MakeUnique<Array2D<double>>(input.height(), input.width());
   for (int64 rowno = 0; rowno < input.height(); ++rowno) {
@@ -78,8 +82,8 @@ namespace xla {
   return result;
 }
 
-/* static */ ConvolutionDimensionNumbers
-/*ComputationBuilder::*/ CreateDefaultConvDimensionNumbers(int num_spatial_dims = 2)
+/* static */
+ConvolutionDimensionNumbers CreateDefaultConvDimensionNumbers(int num_spatial_dims = 2)
 {
    // Default dimension numbers used for a 2D convolution.
    const int64 /*ComputationBuilder::*/ kConvBatchDimension = 0;
@@ -101,20 +105,27 @@ namespace xla {
    return dimension_numbers;
 }
 
-/*  static */ std::unique_ptr<Array3D<float>> ReferenceUtil::ConvArray3D(
-    const Array3D<float>& lhs, const Array3D<float>& rhs, int64 kernel_stride,
-    Padding padding)
+/* static */
+std::unique_ptr<Array3D<float>> ReferenceUtil::ConvArray3D(
+   const Array3D<float>& lhs,
+   const Array3D<float>& rhs,
+   int64 kernel_stride,
+   Padding padding)
 {
   return ConvArray3DGeneralDimensionsDilated(
       lhs, rhs, kernel_stride, padding, 1, 1,
       CreateDefaultConvDimensionNumbers(1));
 }
 
-/*static*/ std::unique_ptr<Array3D<float>>
-ReferenceUtil::ConvArray3DGeneralDimensionsDilated(
-    const Array3D<float>& lhs, const Array3D<float>& rhs, int64 kernel_stride,
-    Padding padding, int64 lhs_dilation, int64 rhs_dilation,
-    const ConvolutionDimensionNumbers& dnums)
+/* static */
+std::unique_ptr<Array3D<float>> ReferenceUtil::ConvArray3DGeneralDimensionsDilated(
+   const Array3D<float>& lhs,
+   const Array3D<float>& rhs,
+   int64 kernel_stride,
+   Padding padding,
+   int64 lhs_dilation,
+   int64 rhs_dilation,
+   const ConvolutionDimensionNumbers& dnums)
 {
   CHECK_EQ(dnums.spatial_dimensions_size(), 1);
   // Reuse the code for Array4D-convolution by extending the 3D input into a 4D
@@ -150,22 +161,23 @@ ReferenceUtil::ConvArray3DGeneralDimensionsDilated(
   return convr3;
 }
 
-/* static */ std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4D(
-    const Array4D<float>& lhs, const Array4D<float>& rhs,
-    std::pair<int64, int64> kernel_stride, Padding padding) 
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4D(
+   const Array4D<float>& lhs,
+   const Array4D<float>& rhs,
+   std::pair<int64, int64> kernel_stride,
+   Padding padding)
 {
-   // TODO: ComputationBuilder::CreateDefaultConvDimensionNumbers() instead..
   return ConvArray4DGeneralDimensions(
-      lhs, rhs, kernel_stride, padding,
-      /*ComputationBuilder::*/CreateDefaultConvDimensionNumbers());
+      lhs, rhs, kernel_stride, padding, CreateDefaultConvDimensionNumbers());
 }
 
-/* static */ std::unique_ptr<Array4D<float>>
-ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
-                                    const Array4D<float>& depthwise_weights,
-                                    const Array4D<float>& pointwise_weights,
-                                    std::pair<int64, int64> kernel_stride,
-                                    Padding padding) 
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
+   const Array4D<float>& depthwise_weights,
+   const Array4D<float>& pointwise_weights,
+   std::pair<int64, int64> kernel_stride,
+   Padding padding)
 {
   const int64 depth_multiplier = depthwise_weights.planes();
   CHECK_EQ(pointwise_weights.depth(), input.depth() * depth_multiplier);
@@ -193,9 +205,12 @@ ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
   return ConvArray4D(input, weights, kernel_stride, padding);
 }
 
-/* static */ int64 ReferenceUtil::WindowCount(int64 unpadded_width,
-                                              int64 window_len, int64 stride,
-                                              Padding padding) 
+/* static */
+int64 ReferenceUtil::WindowCount(
+   int64 unpadded_width,
+   int64 window_len,
+   int64 stride,
+   Padding padding)
 {
   if (padding == Padding::kValid) 
   {
@@ -204,10 +219,13 @@ ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
   return tensorflow::MathUtil::CeilOfRatio(unpadded_width, stride);
 }
 
-/* static  */ std::unique_ptr<Array4D<float>> ReferenceUtil::ReduceWindow4DAdd(
-   const Array4D<float>& operand, float init,
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::ReduceWindow4DAdd(
+   const Array4D<float>& operand,
+   float init,
    const tensorflow::gtl::ArraySlice<int64>& window,
-   const tensorflow::gtl::ArraySlice<int64>& stride, Padding padding)
+   const tensorflow::gtl::ArraySlice<int64>& stride,
+   Padding padding)
 {
    std::vector<int64> dim_lengths{ operand.n1(), operand.n2(), operand.n3(),
       operand.n4() };
@@ -262,10 +280,12 @@ ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
    return result;
 }
 
-/* static  */ std::unique_ptr<Array3D<float>> ReferenceUtil::ReduceWindow3D(
-    const Array3D<float>& operand, 
-    const tensorflow::gtl::ArraySlice<int64>& window,
-    const tensorflow::gtl::ArraySlice<int64>& stride, Padding padding) 
+/* static */
+std::unique_ptr<Array3D<float>> ReferenceUtil::ReduceWindow3D(
+   const Array3D<float>& operand,
+   const tensorflow::gtl::ArraySlice<int64>& window,
+   const tensorflow::gtl::ArraySlice<int64>& stride,
+   Padding padding)
 {
   std::vector<int64> dim_lengths{operand.n1(), operand.n2(), operand.n3()};
 
@@ -313,10 +333,12 @@ ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
   return result;
 }
 
-/* static  */ std::unique_ptr<Array2D<float>> ReferenceUtil::ReduceWindow2D(
-    const Array2D<float>& operand, 
-    const tensorflow::gtl::ArraySlice<int64>& window,
-    const tensorflow::gtl::ArraySlice<int64>& stride, Padding padding) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::ReduceWindow2D(
+   const Array2D<float>& operand,
+   const tensorflow::gtl::ArraySlice<int64>& window,
+   const tensorflow::gtl::ArraySlice<int64>& stride,
+   Padding padding)
 {
   std::vector<int64> dim_lengths{operand.n1(), operand.n2()};
 
@@ -357,10 +379,14 @@ ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
   return result;
 }
 
-/* static */ std::unique_ptr<Array4D<float>> ReferenceUtil::BatchNorm4D(
-    const Array4D<float>& input, const Array4D<float>& mean,
-    const Array4D<float>& var, const Array4D<float>& scale,
-    const Array4D<float>& offset, float epsilon)
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::BatchNorm4D(
+   const Array4D<float>& input,
+   const Array4D<float>& mean,
+   const Array4D<float>& var,
+   const Array4D<float>& scale,
+   const Array4D<float>& offset,
+   float epsilon)
 {
   auto normalized =
       *MapArray4D(input, mean, [](float a, float b) { return a - b; });
@@ -372,11 +398,14 @@ ReferenceUtil::SeparableConvArray4D(const Array4D<float>& input,
   return MapArray4D(normalized, offset, [](float a, float b) { return a + b; });
 }
 
-/* static  */ std::unique_ptr<Array4D<float>>
-ReferenceUtil::SelectAndScatter4DGePlus(
-    const Array4D<float>& operand, const Array4D<float>& source, float init,
-    const tensorflow::gtl::ArraySlice<int64>& window,
-    const tensorflow::gtl::ArraySlice<int64>& stride, bool same_padding) 
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::SelectAndScatter4DGePlus(
+   const Array4D<float>& operand,
+   const Array4D<float>& source,
+   float init,
+   const tensorflow::gtl::ArraySlice<int64>& window,
+   const tensorflow::gtl::ArraySlice<int64>& stride,
+   bool same_padding)
 {
   Padding padding = same_padding ? Padding::kSame : Padding::kValid;
   auto result = MakeUnique<Array4D<float>>(operand.n1(), operand.n2(),
@@ -449,22 +478,27 @@ ReferenceUtil::SelectAndScatter4DGePlus(
   return result;
 }
 
-/* static */ std::unique_ptr<Array4D<float>>
-ReferenceUtil::ConvArray4DGeneralDimensions(
-    const Array4D<float>& lhs, const Array4D<float>& rhs,
-    std::pair<int64, int64> kernel_stride, Padding padding,
-    ConvolutionDimensionNumbers dimension_numbers) 
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensions(
+   const Array4D<float>& lhs,
+   const Array4D<float>& rhs,
+   std::pair<int64, int64> kernel_stride,
+   Padding padding,
+   ConvolutionDimensionNumbers dimension_numbers)
 {
   return ConvArray4DGeneralDimensionsDilated(lhs, rhs, kernel_stride, padding,
                                              {1, 1}, {1, 1}, dimension_numbers);
 }
 
-/* static */ std::unique_ptr<Array4D<float>>
-ReferenceUtil::ConvArray4DGeneralDimensionsDilated(
-    const Array4D<float>& lhs, const Array4D<float>& rhs,
-    std::pair<int64, int64> kernel_stride, Padding padding,
-    std::pair<int64, int64> lhs_dilation, std::pair<int64, int64> rhs_dilation,
-    ConvolutionDimensionNumbers dnums) 
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensionsDilated(
+   const Array4D<float>& lhs,
+   const Array4D<float>& rhs,
+   std::pair<int64, int64> kernel_stride,
+   Padding padding,
+   std::pair<int64, int64> lhs_dilation,
+   std::pair<int64, int64> rhs_dilation,
+   ConvolutionDimensionNumbers dnums)
 {
   std::array<int64, 4> lhs_dimensions{{lhs.n1(), lhs.n2(), lhs.n3(), lhs.n4()}};
   std::array<int64, 4> rhs_dimensions{{rhs.n1(), rhs.n2(), rhs.n3(), rhs.n4()}};
@@ -592,10 +626,11 @@ ReferenceUtil::ConvArray4DGeneralDimensionsDilated(
   return result;
 }
 
-/* static */ std::unique_ptr<std::vector<float>>
-ReferenceUtil::ReduceToColArray2D(
-    const Array2D<float>& matrix, float init,
-    const std::function<float(float, float)>& reduce_function)
+/* static */
+std::unique_ptr<std::vector<float>> ReferenceUtil::ReduceToColArray2D(
+   const Array2D<float>& matrix,
+   float init,
+   const std::function<float(float, float)>& reduce_function)
 {
   int64 rows = matrix.height();
   int64 cols = matrix.width();
@@ -610,10 +645,11 @@ ReferenceUtil::ReduceToColArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<std::vector<float>>
-ReferenceUtil::ReduceToRowArray2D(
-    const Array2D<float>& matrix, float init,
-    const std::function<float(float, float)>& reduce_function)
+/* static */
+std::unique_ptr<std::vector<float>> ReferenceUtil::ReduceToRowArray2D(
+   const Array2D<float>& matrix,
+   float init,
+   const std::function<float(float, float)>& reduce_function)
 {
   int64 rows = matrix.height();
   int64 cols = matrix.width();
@@ -630,10 +666,12 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/*static*/ std::vector<float> ReferenceUtil::Reduce4DTo1D(
-    const Array4D<float>& array, float init,
-    tensorflow::gtl::ArraySlice<int64> dims,
-    const std::function<float(float, float)>& reduce_function)
+/* static */
+std::vector<float> ReferenceUtil::Reduce4DTo1D(
+   const Array4D<float>& array,
+   float init,
+   tensorflow::gtl::ArraySlice<int64> dims,
+   const std::function<float(float, float)>& reduce_function)
 {
   std::vector<float> result;
   CHECK_EQ(dims.size(), 3);
@@ -670,9 +708,12 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<Array4D<float>> ReferenceUtil::Broadcast1DTo4D(
-    const std::vector<float>& array, const std::vector<int64>& bounds,
-    int64 broadcast_from_dim) {
+/* static */
+std::unique_ptr<Array4D<float>> ReferenceUtil::Broadcast1DTo4D(
+   const std::vector<float>& array,
+   const std::vector<int64>& bounds,
+   int64 broadcast_from_dim)
+{
   auto result =
       MakeUnique<Array4D<float>>(bounds[0], bounds[1], bounds[2], bounds[3]);
   for (int64 i = 0; i < result->n1(); ++i) {
@@ -702,10 +743,12 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::Reduce3DTo2D(
-    const Array3D<float>& array, float init,
-    tensorflow::gtl::ArraySlice<int64> dims,
-    const std::function<float(float, float)>& reduce_function)
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::Reduce3DTo2D(
+   const Array3D<float>& array,
+   float init,
+   tensorflow::gtl::ArraySlice<int64> dims,
+   const std::function<float(float, float)>& reduce_function)
 {
   CHECK_EQ(dims.size(), 1);
   int64 rows = dims[0] == 0 ? array.n2() : array.n1();
@@ -725,9 +768,10 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::MapArray2D(
-    const Array2D<float>& matrix, 
-    const std::function<float(float)>& map_function) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::MapArray2D(
+   const Array2D<float>& matrix,
+   const std::function<float(float)>& map_function)
 {
   int64 rows = matrix.height();
   int64 cols = matrix.width();
@@ -740,9 +784,11 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::MapArray2D(
-    const Array2D<float>& lhs, const Array2D<float>& rhs,
-    const std::function<float(float, float)>& map_function) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::MapArray2D(
+   const Array2D<float>& lhs,
+   const Array2D<float>& rhs,
+   const std::function<float(float, float)>& map_function)
 {
   CHECK_EQ(lhs.height(), rhs.height());
   CHECK_EQ(lhs.width(), rhs.width());
@@ -759,9 +805,10 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::MapWithIndexArray2D(
-    const Array2D<float>& matrix,
-    const std::function<float(float, int64, int64)>& map_function) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::MapWithIndexArray2D(
+   const Array2D<float>& matrix,
+   const std::function<float(float, int64, int64)>& map_function)
 {
   int64 rows = matrix.height();
   int64 cols = matrix.width();
@@ -776,9 +823,11 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ std::unique_ptr<Array2D<float>> ReferenceUtil::PadArray2D(
-    const Array2D<float>& operand, const PaddingConfig& padding,
-    const float pad) 
+/* static */
+std::unique_ptr<Array2D<float>> ReferenceUtil::PadArray2D(
+   const Array2D<float>& operand,
+   const PaddingConfig& padding,
+   const float pad)
 {
   int64 in0 = operand.n1();
   int64 high_padding0 = padding.dimensions(0).edge_padding_high();
@@ -813,9 +862,12 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ Array3D<float> ReferenceUtil::PadArray3D(
-    const Array3D<float>& operand, const PaddingConfig& padding,
-    const float pad) {
+/* static */
+Array3D<float> ReferenceUtil::PadArray3D(
+   const Array3D<float>& operand,
+   const PaddingConfig& padding,
+   const float pad)
+{
   CHECK_EQ(padding.dimensions_size(), 3);
 
   const std::vector<int64> input_bounds = {operand.n1(), operand.n2(),
@@ -868,9 +920,12 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
-/* static */ Array4D<float> ReferenceUtil::PadArray4D(
-    const Array4D<float>& operand, const PaddingConfig& padding,
-    const float pad) {
+/* static */
+Array4D<float> ReferenceUtil::PadArray4D(
+   const Array4D<float>& operand,
+   const PaddingConfig& padding,
+   const float pad)
+{
   CHECK_EQ(padding.dimensions_size(), 4);
 
   const std::vector<int64> input_bounds = {operand.n1(), operand.n2(),
@@ -913,10 +968,11 @@ ReferenceUtil::ReduceToRowArray2D(
   return result;
 }
 
+/* static */
 std::unique_ptr<xla::Array4D<float>> ReferenceUtil::Max_Pool(
    const xla::Array4D<float>& operand,
    const tensorflow::gtl::ArraySlice<tensorflow::int64>& window_in,
-   const tensorflow::gtl::ArraySlice<tensorflow::int64>& stride_in, 
+   const tensorflow::gtl::ArraySlice<tensorflow::int64>& stride_in,
    xla::Padding padding)
 {
    CHECK_EQ(window_in.size(), 2);
