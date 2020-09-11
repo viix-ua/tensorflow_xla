@@ -122,6 +122,12 @@ namespace xla
    }
 }
 
+/*
+// https://www.pico.net/kb/what-is-the-difference-between-same-and-valid-padding-in-tf-nn-max-pool-of-tensorflow
+// https://stackoverflow.com/questions/37674306/what-is-the-difference-between-same-and-valid-padding-in-tf-nn-max-pool-of-t
+// https://www.tensorflow.org/api_docs/python/tf/nn/convolution
+*/
+
 int main()
 {
    std::vector<float> input_data = {
@@ -142,7 +148,10 @@ int main()
       xla::Array4D<float>(1, 1, 5, 7, input_data), 
       xla::Array4D<float>(1, 1, 3, 2, (kernel)), 
       { 1, 1 }, 
-      xla::Padding::kValid);
+      xla::Padding::kSame);
+
+   printf("convValid=%s\n", convValid->ToString().c_str());
+
 
    //auto convSame = xla::ReferenceUtil::ConvArray4D(
    //   xla::Array4D<float>(1, 1, 5, 8, input_data),
