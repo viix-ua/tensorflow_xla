@@ -22,10 +22,12 @@ cmake --build .
 
 # Build
 
-Build dependencies
+Build all
 - 
 
 ```
+git clone https://github.com/diixo/tensorflow_xla.git
+cd tensorflow_xla
 cmake -H. -Bbuild
 cmake --build build
 ```
