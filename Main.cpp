@@ -124,6 +124,32 @@ namespace xla
 
 int main()
 {
+   std::vector<float> input_data = {
+      1, 1, 1, 1,  1,  1, 1,  //
+      1, 1, 1, 1,  1,  1, 1,  //
+      1, 1, 2, 4,  6,  1, 1,  //
+      1, 1, 8, 10, 12, 1, 1,  //
+      1, 1, 1, 1,  1,  1, 1   //
+   };
+
+   std::vector<float> kernel = {
+      1, 1,
+      1, 1,
+      1, 1
+   };
+
+   auto convValid = xla::ReferenceUtil::ConvArray4D(
+      xla::Array4D<float>(1, 1, 5, 7, input_data), 
+      xla::Array4D<float>(1, 1, 3, 2, (kernel)), 
+      { 1, 1 }, 
+      xla::Padding::kValid);
+
+   //auto convSame = xla::ReferenceUtil::ConvArray4D(
+   //   xla::Array4D<float>(1, 1, 5, 8, input_data),
+   //   xla::Array4D<float>(1, 1, 3, 2, (kernel)),
+   //   { 2, 2 },
+   //   xla::Padding::kSame);
+
    xla::Array2D<double> x = { { 5.0, 6.0, 4.0 } };          // matrix (n_classes, n_features)
    xla::Array2D<double> w = { { 1.0 }, { 2.0 }, { 3.0 } };  // matrix (n_features, n_classes)
 
