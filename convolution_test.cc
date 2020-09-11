@@ -109,7 +109,7 @@ void ConvolutionTest::ForwardPassConvolution_3x3x256_256_OutputZ_Iota()
   builder.Conv(lhs, rhs, {1, 1}, Padding::kValid);
 
   std::unique_ptr<Array4D<float>> aexpected =
-      ReferenceUtil::ConvArray4D(*alhs, *arhs, {1, 1}, Padding::kValid);
+      ReferenceUtil::Conv4D(*alhs, *arhs, {1, 1}, Padding::kValid);
 
    ComputeAndCompareR4<float>(&builder, *aexpected, {}, error_spec_);
 }
@@ -135,7 +135,7 @@ void ConvolutionTest::Convolve_1x1x1x2_1x1x1x2_Valid()
   }));
 
   std::unique_ptr<Array4D<float>> aexpected =
-      ReferenceUtil::ConvArray4D(input, filter, {1, 1}, Padding::kValid);
+      ReferenceUtil::Conv4D(input, filter, {1, 1}, Padding::kValid);
 
   //auto input_literal =
   //    client_->TransferToServer(*LiteralUtil::CreateR4FromArray4D(input))
@@ -177,7 +177,7 @@ void ConvolutionTest::Convolve_1x1x4x4_1x1x2x2_Valid()
   // clang-format on
 
   std::unique_ptr<Array4D<float>> aexpected =
-      ReferenceUtil::ConvArray4D(input, filter, {1, 1}, Padding::kValid);
+      ReferenceUtil::Conv4D(input, filter, {1, 1}, Padding::kValid);
 
   //auto input_literal =
   //    client_->TransferToServer(*LiteralUtil::CreateR4FromArray4D(input))
@@ -219,7 +219,7 @@ void ConvolutionTest::Convolve_1x1x4x4_1x1x2x2_Same()
   // clang-format on
 
   std::unique_ptr<Array4D<float>> aexpected =
-      ReferenceUtil::ConvArray4D(input, filter, {1, 1}, Padding::kSame);
+      ReferenceUtil::Conv4D(input, filter, {1, 1}, Padding::kSame);
 
   //auto input_literal =
   //    client_->TransferToServer(*LiteralUtil::CreateR4FromArray4D(input))
@@ -263,7 +263,7 @@ void ConvolutionTest::Convolve_1x1x4x4_1x1x3x3_Same()
   // clang-format on
 
   std::unique_ptr<Array4D<float>> aexpected =
-      ReferenceUtil::ConvArray4D(input, filter, {1, 1}, Padding::kSame);
+      ReferenceUtil::Conv4D(input, filter, {1, 1}, Padding::kSame);
 
   //auto input_literal =
   //    client_->TransferToServer(*LiteralUtil::CreateR4FromArray4D(input))

@@ -159,7 +159,7 @@ std::unique_ptr<Array3D<float>> ReferenceUtil::ConvArray3DGeneralDimensionsDilat
 }
 
 /* static */
-std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4D(
+std::unique_ptr<Array4D<float>> ReferenceUtil::Conv4D(
    const Array4D<float>& lhs,
    const Array4D<float>& rhs,
    std::pair<int64, int64> kernel_stride,
@@ -200,7 +200,7 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::SeparableConvArray4D(
     }
   }
 
-  return ConvArray4D(input, weights, kernel_stride, padding);
+  return Conv4D(input, weights, kernel_stride, padding);
 }
 
 /* static */

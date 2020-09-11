@@ -144,7 +144,7 @@ int main()
       1, 1
    };
 
-   auto convValid = xla::ReferenceUtil::ConvArray4D(
+   auto convValid = xla::ReferenceUtil::Conv4D(
       xla::Array4D<float>(1, 1, 5, 7, input_data), 
       xla::Array4D<float>(1, 1, 3, 2, (kernel)), 
       { 1, 1 }, 

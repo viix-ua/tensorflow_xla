@@ -48,7 +48,7 @@ class ReferenceUtil {
   // Returns the result of a convolution `lhs <conv> rhs`, with the default
   // convolution dimension numbers returned from
   // ComputationBuilder::CreateDefaultConvDimensionNumbers().
-  static std::unique_ptr<Array4D<float>> ConvArray4D(
+  static std::unique_ptr<Array4D<float>> Conv4D(
       const Array4D<float>& lhs, const Array4D<float>& rhs,
       std::pair<int64, int64> kernel_stride, Padding padding);
 
