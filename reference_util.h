@@ -518,6 +518,12 @@ class ReferenceUtil {
      return xla::Sum<NativeT>(input.flatten());
   }
 
+  /*
+  // https://www.pico.net/kb/what-is-the-difference-between-same-and-valid-padding-in-tf-nn-max-pool-of-tensorflow
+  // https://stackoverflow.com/questions/37674306/what-is-the-difference-between-same-and-valid-padding-in-tf-nn-max-pool-of-t
+  // https://www.tensorflow.org/api_docs/python/tf/nn/convolution
+  // http://deeplearning.net/software/theano/tutorial/conv_arithmetic.html
+  */
   // more faster version of ConvArray4D
   template <typename TType>
   static std::unique_ptr<Array4D<TType>> Conv2D(

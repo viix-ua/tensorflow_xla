@@ -488,6 +488,34 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensions(
                                              {1, 1}, {1, 1}, dimension_numbers);
 }
 
+
+/************************************************************************
+Using SAME padding:
+
+out_height = ceil(float(in_height) / float(strides[1]))
+out_width = ceil(float(in_width) / float(strides[2]))
+
+and the padding on the top and left are computed as :
+
+pad_along_height = max((out_height - 1) * strides[1] +
+                   filter_height - in_height, 0)
+pad_along_width = max((out_width - 1) * strides[2] +
+                  filter_width - in_width, 0)
+pad_top = pad_along_height // 2
+pad_bottom = pad_along_height - pad_top
+pad_left = pad_along_width // 2
+pad_right = pad_along_width - pad_left
+
+Using VALID padding:
+
+out_height = ceil(float(in_height - filter_height + 1) / float(strides[1]))
+out_width = ceil(float(in_width - filter_width + 1) / float(strides[2]))
+
+and the padding values are always zero.
+
+getDimPadding(..) == MakePadding(..)
+*************************************************************************/
+
 /* static */
 std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensionsDilated(
    const Array4D<float>& lhs,
@@ -538,11 +566,11 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensionsDilat
     CHECK_EQ(1, ksx);
   }
 
-  const int64 ox = padding == (Padding::kSame) ?
+  const int64 ox = (padding == Padding::kSame) ?
      ix :
      window_util::StridedBound(ix, kx, ksx);
 
-  const int64 oy = padding == (Padding::kSame) ?
+  const int64 oy = (padding == Padding::kSame) ?
      iy :
      window_util::StridedBound(iy, ky, ksy);
 

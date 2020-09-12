@@ -73,6 +73,11 @@ class ConvolutionTest : public ClientLibraryTestBase
   void Conv2D_2x2x2x2_2x2_Same();
   void Conv2D_1x1x4x4_3x3_SameValid();
 
+  void Conv2D_1x1x5x7_3x2_Same();
+  void Conv2D_1x1x5x7_2x3_Same();
+  void Conv2D_1x1x6x8_3x2_Same();
+  void Conv2D_1x1x6x8_2x3_Same();
+
   void run();
 };
 
@@ -373,6 +378,11 @@ void ConvolutionTest::run()
    Conv2D_1x2x2x2_2x2_Same();
    Conv2D_2x2x2x2_2x2_Same();
    Conv2D_1x1x4x4_3x3_SameValid();
+
+   Conv2D_1x1x5x7_3x2_Same();
+   Conv2D_1x1x5x7_2x3_Same();
+   Conv2D_1x1x6x8_3x2_Same();
+   Conv2D_1x1x6x8_2x3_Same();
 }
 
 void ConvolutionTest::Conv2D_1x2x2x2_2x2_Same()
@@ -546,15 +556,214 @@ void ConvolutionTest::Conv2D_1x1x4x4_3x3_SameValid()
    ASSERT_EQ(expect_2_2_valid, *conv_2_2_valid);
 }
 
+/*
+
+x = tf.constant([
+[1., 1., 1., 1.,  1.,  1., 1.],
+[1., 2., 1., 1.,  1.,  1., 1.],
+[1., 1., 2., 4.,  6.,  1., 1.],
+[1., 1., 8., 10., 12., 1., 1.],
+[1., 1., 1., 1.,  1.,  1., 1.],
+])
+x = tf.reshape(x, [1, 5, 7, 1])
+
+kernel = tf.constant([[1., 1., 1., 1., 1., 1.]])
+kernel = tf.reshape(kernel, [3, 2, 1, 1])
+
+convSame_2x2 = tf.nn.conv2d(x, kernel, [1, 2, 2, 1], padding = 'SAME');
+
+with tf.Session() as sess:
+  print(convSame_2x2.eval(), [convSame_2x2])
+
+*/
+void ConvolutionTest::Conv2D_1x1x5x7_3x2_Same()
+{
+   std::vector<float> input_data = {
+      1, 1, 1, 1,  1,  1, 1,  //
+      1, 2, 1, 1,  1,  1, 1,  //
+      1, 1, 2, 4,  6,  1, 1,  //
+      1, 1, 8, 10, 12, 1, 1,  //
+      1, 1, 1, 1,  1,  1, 1   //
+   };
+
+   std::vector<float> kernel = { 1, 1, 1, 1, 1, 1 };  // 3x2
+
+   auto result = xla::ReferenceUtil::Conv2D(
+      xla::Array4D<float>(1, 1, 5, 7, input_data),
+      xla::Array2D<float>(3, 2, (kernel)),
+      { 2, 2 },
+      xla::Padding::kSame);
+
+   std::vector<float> out_data = {
+      5, 4,  4,  2,
+      7, 26, 22, 3,
+      4, 20, 15, 2
+   };
+
+   ASSERT_EQ(xla::Array4D<float>(1, 1, 3, 4, out_data), *result);
+
+   //printf("%s result=%s\n", __FUNCTION__, result->ToString().c_str());
+}
+
+/*
+
+x = tf.constant([
+[1., 1., 1., 1.,  1.,  1., 1.],
+[1., 2., 1., 1.,  1.,  1., 1.],
+[1., 1., 2., 4.,  6.,  1., 1.],
+[1., 1., 8., 10., 12., 1., 1.],
+[1., 1., 1., 1.,  1.,  1., 1.],
+])
+x = tf.reshape(x, [1, 5, 7, 1])
+
+kernel = tf.constant([[1., 1., 1., 1., 1., 1.]])
+kernel = tf.reshape(kernel, [2, 3, 1, 1])
+
+convSame_2x2 = tf.nn.conv2d(x, kernel, [1, 2, 2, 1], padding = 'SAME');
+
+with tf.Session() as sess:
+  print(convSame_2x2.eval(), [convSame_2x2])
+
+*/
+void ConvolutionTest::Conv2D_1x1x5x7_2x3_Same()
+{
+   std::vector<float> input_data = {
+      1, 1, 1, 1,  1,  1, 1,  //
+      1, 2, 1, 1,  1,  1, 1,  //
+      1, 1, 2, 4,  6,  1, 1,  //
+      1, 1, 8, 10, 12, 1, 1,  //
+      1, 1, 1, 1,  1,  1, 1   //
+   };
+
+   std::vector<float> kernel = { 1, 1, 1, 1, 1, 1 };  // 2x3
+
+   auto result = xla::ReferenceUtil::Conv2D(
+      xla::Array4D<float>(1, 1, 5, 7, input_data),
+      xla::Array2D<float>(2, 3, (kernel)),
+      { 2, 2 },
+      xla::Padding::kSame);
+
+   std::vector<float> out_data = {
+      5, 7,  6,  4,
+      4, 26, 34, 4,
+      2, 3,  3,  2
+   };
+
+   ASSERT_EQ(xla::Array4D<float>(1, 1, 3, 4, out_data), *result);
+
+   //printf("%s result=%s\n", __FUNCTION__, result->ToString().c_str());
+}
+
+/*
+
+x = tf.constant([
+[1., 1., 1., 1.,  1.,  1., 1., 1.],
+[1., 2., 1., 1.,  1.,  1., 1., 1.],
+[1., 1., 2., 4.,  6.,  1., 1., 1.],
+[1., 1., 8., 10., 12., 1., 1., 1.],
+[1., 1., 1., 1.,  1.,  1., 2., 1.],
+[1., 1., 1., 1.,  1.,  1., 1., 1.],
+])
+x = tf.reshape(x, [1, 6, 8, 1])
+
+kernel = tf.constant([[1., 1., 1., 1., 1., 1.]])
+kernel = tf.reshape(kernel, [3, 2, 1, 1])
+
+convSame_2x2 = tf.nn.conv2d(x, kernel, [1, 2, 2, 1], padding = 'SAME');
+
+with tf.Session() as sess:
+  print(convSame_2x2.eval(), [convSame_2x2])
+
+*/
+void ConvolutionTest::Conv2D_1x1x6x8_3x2_Same()
+{
+   std::vector<float> input_data = {
+      1, 1, 1, 1,  1,  1, 1, 1, //
+      1, 2, 1, 1,  1,  1, 1, 1, //
+      1, 1, 2, 4,  6,  1, 1, 1, //
+      1, 1, 8, 10, 12, 1, 1, 1, //
+      1, 1, 1, 1,  1,  1, 2, 1, //
+      1, 1, 1, 1,  1,  1, 1, 1  //
+   };
+
+   std::vector<float> kernel = { 1, 1, 1, 1, 1, 1 };  // 3x2
+
+   auto result = xla::ReferenceUtil::Conv2D(
+      xla::Array4D<float>(1, 1, 6, 8, input_data),
+      xla::Array2D<float>(3, 2, (kernel)),
+      { 2, 2 },
+      xla::Padding::kSame);
+
+   std::vector<float> out_data = {
+      7, 10, 11, 6,
+      6, 26, 22, 7,
+      4, 4,  4,  5
+   };
+
+   ASSERT_EQ(xla::Array4D<float>(1, 1, 3, 4, out_data), *result);
+
+   //printf("%s result=%s\n", __FUNCTION__, result->ToString().c_str());
+}
+
+/*
+
+x = tf.constant([
+[1., 1., 1., 1.,  1.,  1., 1., 1.],
+[1., 2., 1., 1.,  1.,  1., 1., 1.],
+[1., 1., 2., 4.,  6.,  1., 1., 1.],
+[1., 1., 8., 10., 12., 1., 1., 1.],
+[1., 1., 1., 1.,  1.,  1., 2., 1.],
+[1., 1., 1., 1.,  1.,  1., 1., 1.],
+])
+x = tf.reshape(x, [1, 6, 8, 1])
+
+kernel = tf.constant([[1., 1., 1., 1., 1., 1.]])
+kernel = tf.reshape(kernel, [2, 3, 1, 1])
+
+convSame_2x2 = tf.nn.conv2d(x, kernel, [1, 2, 2, 1], padding = 'SAME');
+
+with tf.Session() as sess:
+  print(convSame_2x2.eval(), [convSame_2x2])
+
+*/
+void ConvolutionTest::Conv2D_1x1x6x8_2x3_Same()
+{
+   std::vector<float> input_data = {
+      1, 1, 1, 1,  1,  1, 1, 1, //
+      1, 2, 1, 1,  1,  1, 1, 1, //
+      1, 1, 2, 4,  6,  1, 1, 1, //
+      1, 1, 8, 10, 12, 1, 1, 1, //
+      1, 1, 1, 1,  1,  1, 2, 1, //
+      1, 1, 1, 1,  1,  1, 1, 1  //
+   };
+
+   std::vector<float> kernel = { 1, 1, 1, 1, 1, 1 };  // 2x3
+
+   auto result = xla::ReferenceUtil::Conv2D(
+      xla::Array4D<float>(1, 1, 6, 8, input_data),
+      xla::Array2D<float>(2, 3, (kernel)),
+      { 2, 2 },
+      xla::Padding::kSame);
+
+   std::vector<float> out_data = {
+      7,  6,  6,  4,
+      14, 42, 22, 4,
+      6,  6,  7,  5
+   };
+
+   ASSERT_EQ(xla::Array4D<float>(1, 1, 3, 4, out_data), *result);
+
+   //printf("%s result=%s\n", __FUNCTION__, result->ToString().c_str());
+}
+
 }  // namespace
 }  // namespace xla
 
 
 /*
-int main(int argc, char** argv) {
-  std::vector<tensorflow::Flag> flag_list;
-  xla::legacy_flags::AppendCpuCompilerFlags(&flag_list);
-  xla::string usage = tensorflow::Flags::Usage(argv[0], flag_list);
+int main(int argc, char** argv)
+{
+   // TODO:
   const bool parse_result = tensorflow::Flags::Parse(&argc, argv, flag_list);
   if (!parse_result) {
     LOG(ERROR) << "\n" << usage;
