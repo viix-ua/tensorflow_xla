@@ -121,7 +121,6 @@
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="bits.h" />
     <ClInclude Include="casts.h" />
-    <ClInclude Include="cleanup.h" />
     <ClInclude Include="client_library_test_base.h" />
     <ClInclude Include="computation.h" />
     <ClInclude Include="computation_builder.h" />
