@@ -1721,7 +1721,7 @@ std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
    Reshape<NativeT>(
       input_array.data(),
       { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
-      new_size,
+      new_sizes,
       *output_vector);
 
    return output_vector;
@@ -1738,7 +1738,7 @@ std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
    Reshape<NativeT>(
       input_array.data(), 
       { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
-      new_size, 
+      new_sizes, 
       *output_vector);
 
    return output_vector;
@@ -1755,7 +1755,7 @@ std::unique_ptr <std::vector<NativeT>> ComputationBuilder::Reshape(
    Reshape<NativeT>(
       input_array.data(),
       { 0, 0, input_array.size(dimensions[0]), input_array.size(dimensions[0]) },
-      new_size,
+      new_sizes,
       *output_vector);
 
    return output_vector;
