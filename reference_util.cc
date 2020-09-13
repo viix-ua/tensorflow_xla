@@ -159,7 +159,7 @@ std::unique_ptr<Array3D<float>> ReferenceUtil::ConvArray3DGeneralDimensionsDilat
 }
 
 /* static */
-std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4D(
+std::unique_ptr<Array4D<float>> ReferenceUtil::Conv4D(
    const Array4D<float>& lhs,
    const Array4D<float>& rhs,
    std::pair<int64, int64> kernel_stride,
@@ -200,7 +200,7 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::SeparableConvArray4D(
     }
   }
 
-  return ConvArray4D(input, weights, kernel_stride, padding);
+  return Conv4D(input, weights, kernel_stride, padding);
 }
 
 /* static */
@@ -488,6 +488,34 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensions(
                                              {1, 1}, {1, 1}, dimension_numbers);
 }
 
+
+/************************************************************************
+Using SAME padding:
+
+out_height = ceil(float(in_height) / float(strides[1]))
+out_width = ceil(float(in_width) / float(strides[2]))
+
+and the padding on the top and left are computed as :
+
+pad_along_height = max((out_height - 1) * strides[1] +
+                   filter_height - in_height, 0)
+pad_along_width = max((out_width - 1) * strides[2] +
+                  filter_width - in_width, 0)
+pad_top = pad_along_height // 2
+pad_bottom = pad_along_height - pad_top
+pad_left = pad_along_width // 2
+pad_right = pad_along_width - pad_left
+
+Using VALID padding:
+
+out_height = ceil(float(in_height - filter_height + 1) / float(strides[1]))
+out_width = ceil(float(in_width - filter_width + 1) / float(strides[2]))
+
+and the padding values are always zero.
+
+getDimPadding(..) == MakePadding(..)
+*************************************************************************/
+
 /* static */
 std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensionsDilated(
    const Array4D<float>& lhs,
@@ -538,30 +566,39 @@ std::unique_ptr<Array4D<float>> ReferenceUtil::ConvArray4DGeneralDimensionsDilat
     CHECK_EQ(1, ksx);
   }
 
-  const int64 ox =
-      padding == Padding::kSame ? ix : window_util::StridedBound(ix, kx, ksx);
-  const int64 oy =
-      padding == Padding::kSame ? iy : window_util::StridedBound(iy, ky, ksy);
-  const int64 istartx =
-      padding == Padding::kValid ? 0 : kx % 2 == 0 ? -(kx / 2 - 1) : -kx / 2;
-  const int64 istarty =
-      padding == Padding::kValid ? 0 : ky % 2 == 0 ? -(ky / 2 - 1) : -ky / 2;
+  const int64 ox = (padding == Padding::kSame) ?
+     ix :
+     window_util::StridedBound(ix, kx, ksx);
+
+  const int64 oy = (padding == Padding::kSame) ?
+     iy :
+     window_util::StridedBound(iy, ky, ksy);
+
+  const int64 istartx = (padding == Padding::kValid) ?
+     0 :
+     (kx % 2 == 0) ? -(kx / 2 - 1) : -kx / 2;
+
+  const int64 istarty = (padding == Padding::kValid) ?
+     0 :
+     (ky % 2 == 0) ? -(ky / 2 - 1) : -ky / 2;
+
   // Create the output result array and reset the values to 0.
   std::array<int64, 4> result_dimensions;
   result_dimensions[dnums.batch_dimension()] = samples;
   result_dimensions[dnums.feature_dimension()] = oz;
   result_dimensions[dnums.spatial_dimensions(0)] = oy;
   result_dimensions[dnums.spatial_dimensions(1)] = ox;
-  auto result =
-      MakeUnique<Array4D<float>>(result_dimensions[0], result_dimensions[1],
-                                 result_dimensions[2], result_dimensions[3]);
+  
+  auto result = MakeUnique<Array4D<float>>(result_dimensions[0], result_dimensions[1],
+                                           result_dimensions[2], result_dimensions[3]);
   result->Fill(0.0);
 
   // Lambda to access the lhs operand at the given 4D index.
   const auto lhs_element = [&](int64 batch, int64 feature, int64 height,
                                int64 width) 
   {
-    if (height % dy != 0 || width % dx != 0) {
+    if (height % dy != 0 || width % dx != 0)
+    {
       return 0.0f;
     }
 

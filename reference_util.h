@@ -48,7 +48,7 @@ class ReferenceUtil {
   // Returns the result of a convolution `lhs <conv> rhs`, with the default
   // convolution dimension numbers returned from
   // ComputationBuilder::CreateDefaultConvDimensionNumbers().
-  static std::unique_ptr<Array4D<float>> ConvArray4D(
+  static std::unique_ptr<Array4D<float>> Conv4D(
       const Array4D<float>& lhs, const Array4D<float>& rhs,
       std::pair<int64, int64> kernel_stride, Padding padding);
 
@@ -518,6 +518,12 @@ class ReferenceUtil {
      return xla::Sum<NativeT>(input.flatten());
   }
 
+  /*
+  // https://www.pico.net/kb/what-is-the-difference-between-same-and-valid-padding-in-tf-nn-max-pool-of-tensorflow
+  // https://stackoverflow.com/questions/37674306/what-is-the-difference-between-same-and-valid-padding-in-tf-nn-max-pool-of-t
+  // https://www.tensorflow.org/api_docs/python/tf/nn/convolution
+  // http://deeplearning.net/software/theano/tutorial/conv_arithmetic.html
+  */
   // more faster version of ConvArray4D
   template <typename TType>
   static std::unique_ptr<Array4D<TType>> Conv2D(

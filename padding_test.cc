@@ -84,13 +84,10 @@ std::pair<int64, int64> getDimPadding(int input, int filter, int stride, xla::Pa
    {
       int output = (int)ceil(float(input) / float(stride));
 
-
       int padding_size = ((output - 1) * stride + filter - input);
-
 
       //// now get padding
       return ComputeSamePadding(padding_size);
-
    }
    else if (padding == xla::Padding::kValid)
    {
@@ -104,6 +101,14 @@ std::pair<int64, int64> getDimPadding(int input, int filter, int stride, xla::Pa
       assert(false);
       return std::pair<int64, int64>(0, 0);
    }
+}
+
+// A convenience function to test padding for a single dimension.
+inline std::pair<int64, int64> ComputePadding(int64 input_dimension,
+   int64 window_dimension,
+   int64 window_stride, Padding padding)
+{
+   return MakePadding({ input_dimension }, { window_dimension }, { window_stride }, padding)[0];
 }
 
 inline void test_array_convolution()
@@ -148,15 +153,6 @@ inline void test_array_convolution()
 
 
 // Tests MakePadding utility function for various cases.
-
-  // A convenience function to test padding for a single dimension.
-  inline std::pair<int64, int64> ComputePadding(int64 input_dimension,
-                                         int64 window_dimension,
-                                         int64 window_stride, Padding padding)
-  {
-    return MakePadding({input_dimension}, {window_dimension}, {window_stride},
-                       padding)[0];
-  }
 
 
 class PaddingTest : public ClientLibraryTestBase

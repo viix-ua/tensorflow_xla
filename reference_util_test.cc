@@ -312,7 +312,7 @@ void ReferenceUtilTest::ConvWithSamePadding()
   }));
   // clang-format on
   std::unique_ptr<Array4D<float>> actual =
-      ReferenceUtil::ConvArray4D(input, weights, {1, 1}, Padding::kSame);
+      ReferenceUtil::Conv4D(input, weights, {1, 1}, Padding::kSame);
   Array4D<float> expected(1, 1, 4, 4);
   // clang-format off
   expected.FillWithYX(Array2D<float>({
@@ -348,7 +348,7 @@ void ReferenceUtilTest::ConvWithValidPadding()
   }));
   // clang-format on
   std::unique_ptr<Array4D<float>> actual =
-      ReferenceUtil::ConvArray4D(input, weights, {1, 1}, Padding::kValid);
+      ReferenceUtil::Conv4D(input, weights, {1, 1}, Padding::kValid);
   Array4D<float> expected(1, 1, 3, 3);
   // clang-format off
   expected.FillWithYX(Array2D<float>({

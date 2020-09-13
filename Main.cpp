@@ -122,6 +122,7 @@ namespace xla
    }
 }
 
+
 int main()
 {
    xla::Array2D<double> x = { { 5.0, 6.0, 4.0 } };          // matrix (n_classes, n_features)

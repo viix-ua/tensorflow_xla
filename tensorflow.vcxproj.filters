@@ -42,9 +42,6 @@
     <ClInclude Include="bits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cleanup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="core_status.h">
       <Filter>Header Files</Filter>
     </ClInclude>
