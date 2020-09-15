@@ -240,9 +240,6 @@
     <ClInclude Include="arithmetic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="array1d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="client_library_test_base.h">
       <Filter>Header Files</Filter>
     </ClInclude>

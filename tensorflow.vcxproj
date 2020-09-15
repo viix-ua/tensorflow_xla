@@ -111,7 +111,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="arithmetic.h" />
-    <ClInclude Include="array1d.h" />
     <ClInclude Include="array2d.h" />
     <ClInclude Include="array3d.h" />
     <ClInclude Include="array4d.h" />

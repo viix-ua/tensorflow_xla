@@ -491,7 +491,8 @@ class ReferenceUtil {
   template <typename NativeT>
   static NativeT ReduceMean(const xla::Array4D<NativeT>& input)
   {
-     NativeT result = xla::Sum<NativeT>(input.flatten());
+     NativeT result = std::accumulate(
+        input.flatten().begin(), input.flatten().end(), decltype(input.flatten())::value_type(0));
 
      if (input.num_elements() > 0)
      {
@@ -503,7 +504,8 @@ class ReferenceUtil {
   template <typename NativeT>
   static NativeT ReduceMean(const xla::Array2D<NativeT>& input)
   {
-     NativeT result = xla::Sum<NativeT>(input.flatten());
+     NativeT result = std::accumulate(
+        input.flatten().begin(), input.flatten().end(), decltype(input.flatten())::value_type(0));
 
      if (input.num_elements() > 0)
      {
@@ -639,7 +641,12 @@ class ReferenceUtil {
 
      xla::ReferenceUtil::SoftMax(calc);
 
-     xla::Log(calc.flatten());
+     std::transform(
+        calc.flatten().begin(),
+        calc.flatten().end(),
+        calc.flatten().begin(),
+        [&](TType elem) { return std::log(elem); });
+     // or: std::transform(calc.flatten().begin(), calc.flatten().end(), calc.flatten().begin(), static_cast<TType(*)(TType)>(std::log));
 
      // -tf.reduce_sum(y_true * tf.log(y_hat_softmax), 1)   // axis = y-axis
      calc * logics;

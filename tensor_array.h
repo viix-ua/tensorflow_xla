@@ -55,14 +55,12 @@ public:
       dimensions_.push_back(n4);
    }
 
-   inline
    int64 rank() const
    {
       return dimensions_.size();
    }
 
    // return size of specified dimension
-   inline
    int64 size(int64 dim) const
    {
       if (dim < int64(dimensions_.size()) && (dim >= 0))
@@ -75,31 +73,26 @@ public:
       }
    }
 
-   inline
    const std::vector<int64>& dimensions() const
    {
       return dimensions_;
    }
 
-   inline
    int64 Height() const
    {
       return size(rank() - 2);
    }
 
-   inline
    int64 Width() const
    {
       return size(rank() - 1);
    }
 
-   inline
    int64 Depth() const
    {
       return size(rank() - 3);
    }
 
-   inline
    int64 Batch() const
    {
       return size(rank() - 4);
