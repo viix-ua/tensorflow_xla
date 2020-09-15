@@ -44,7 +44,7 @@ limitations under the License.
 
 
 namespace xla {
-//namespace {
+namespace {
 
 class ReshapeTest : public ClientLibraryTestBase 
 {
@@ -1067,7 +1067,7 @@ void ReshapeTest::run()
 }
 
 
-//}  // namespace
+}  // namespace
 }  // namespace xla
 
 //int main(int argc, char** argv) {

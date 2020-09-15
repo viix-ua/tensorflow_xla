@@ -29,7 +29,7 @@ limitations under the License.
 namespace xla {
 namespace {
 
-class Array2dTest /* : public ::testing::Test */
+class Array2dTest
 {
 public:
 

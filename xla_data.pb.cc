@@ -203,8 +203,7 @@ PaddingConfig_PaddingConfigDimension::PaddingConfig_PaddingConfigDimension()
 }
 
 PaddingConfig_PaddingConfigDimension::PaddingConfig_PaddingConfigDimension(const PaddingConfig_PaddingConfigDimension& from)
-  : 
-      _cached_size_(0) 
+  : _cached_size_(0) 
 {
   ::memcpy(&edge_padding_low_, &from.edge_padding_low_,
     reinterpret_cast<char*>(&interior_padding_) -
@@ -1223,8 +1222,7 @@ GlobalDataHandle::GlobalDataHandle()
 }
 
 GlobalDataHandle::GlobalDataHandle(const GlobalDataHandle& from)
-   : 
-   _cached_size_(0) 
+   : _cached_size_(0) 
 {
    handle_ = from.handle_;
    // @@protoc_insertion_point(copy_constructor:xla.GlobalDataHandle)
@@ -1917,7 +1915,8 @@ WindowDimension::WindowDimension()
 }
 
 WindowDimension::WindowDimension(const WindowDimension& from)
-  : _cached_size_(0) {
+  : _cached_size_(0)
+{
   ::memcpy(&size_, &from.size_,
     reinterpret_cast<char*>(&base_dilation_) -
     reinterpret_cast<char*>(&size_) + sizeof(base_dilation_));

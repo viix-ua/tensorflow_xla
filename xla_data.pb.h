@@ -1809,7 +1809,6 @@ inline void Literal::set_allocated_shape(::xla::Shape* shape) {
    // @@protoc_insertion_point(field_set_allocated:xla.Literal.shape)
 }
 
-// repeated bool preds = 2;
 inline int Literal::preds_size() const {
    return preds_.size();
 }
@@ -1893,7 +1892,6 @@ inline void Literal::set_allocated_u8s(::std::string* u8s) {
    // @@protoc_insertion_point(field_set_allocated:xla.Literal.u8s)
 }
 
-// repeated int32 s32s = 4;
 inline int Literal::s32s_size() const {
    return s32s_.size();
 }
@@ -1923,7 +1921,6 @@ Literal::mutable_s32s() {
    return &s32s_;
 }
 
-// repeated int64 s64s = 5;
 inline int Literal::s64s_size() const {
    return s64s_.size();
 }
@@ -1953,7 +1950,6 @@ Literal::mutable_s64s() {
    return &s64s_;
 }
 
-// repeated uint32 u32s = 6;
 inline int Literal::u32s_size() const {
    return u32s_.size();
 }
@@ -1983,7 +1979,6 @@ Literal::mutable_u32s() {
    return &u32s_;
 }
 
-// repeated uint64 u64s = 7;
 inline int Literal::u64s_size() const {
    return u64s_.size();
 }
@@ -2013,7 +2008,6 @@ Literal::mutable_u64s() {
    return &u64s_;
 }
 
-// repeated float f32s = 8;
 inline int Literal::f32s_size() const {
    return f32s_.size();
 }
@@ -2043,7 +2037,6 @@ Literal::mutable_f32s() {
    return &f32s_;
 }
 
-// repeated double f64s = 9;
 inline int Literal::f64s_size() const {
    return f64s_.size();
 }
@@ -2073,7 +2066,6 @@ Literal::mutable_f64s() {
    return &f64s_;
 }
 
-// repeated .xla.Literal tuple_literals = 10;
 inline int Literal::tuple_literals_size() const {
    return tuple_literals_.size();
 }
@@ -2108,7 +2100,6 @@ Literal::tuple_literals() const {
 
 // WindowDimension
 
-// int64 size = 1;
 inline void WindowDimension::clear_size() {
   size_ = tensorflow::int64(0);
 }
@@ -2122,7 +2113,6 @@ inline void WindowDimension::set_size(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.size)
 }
 
-// int64 stride = 2;
 inline void WindowDimension::clear_stride() {
   stride_ = tensorflow::int64(0);
 }
@@ -2136,7 +2126,6 @@ inline void WindowDimension::set_stride(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.stride)
 }
 
-// int64 padding_low = 3;
 inline void WindowDimension::clear_padding_low() {
   padding_low_ = tensorflow::int64(0);
 }
@@ -2150,7 +2139,6 @@ inline void WindowDimension::set_padding_low(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.padding_low)
 }
 
-// int64 padding_high = 4;
 inline void WindowDimension::clear_padding_high() {
   padding_high_ = tensorflow::int64(0);
 }
@@ -2164,7 +2152,6 @@ inline void WindowDimension::set_padding_high(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.padding_high)
 }
 
-// int64 window_dilation = 5;
 inline void WindowDimension::clear_window_dilation() {
   window_dilation_ = tensorflow::int64(0);
 }
@@ -2178,7 +2165,6 @@ inline void WindowDimension::set_window_dilation(tensorflow::int64 value) {
   // @@protoc_insertion_point(field_set:xla.WindowDimension.window_dilation)
 }
 
-// int64 base_dilation = 6;
 inline void WindowDimension::clear_base_dilation() {
   base_dilation_ = tensorflow::int64(0);
 }
@@ -2196,7 +2182,6 @@ inline void WindowDimension::set_base_dilation(tensorflow::int64 value) {
 
 // Window
 
-// repeated .xla.WindowDimension dimensions = 1;
 inline int Window::dimensions_size() const {
   return dimensions_.size();
 }
@@ -2230,7 +2215,6 @@ Window::dimensions() const {
 
 // ConvolutionDimensionNumbers
 
-// int64 batch_dimension = 1;
 inline void ConvolutionDimensionNumbers::clear_batch_dimension() {
   batch_dimension_ = tensorflow::int64(0);
 }
@@ -2244,7 +2228,6 @@ inline void ConvolutionDimensionNumbers::set_batch_dimension(tensorflow::int64 v
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.batch_dimension)
 }
 
-// int64 feature_dimension = 2;
 inline void ConvolutionDimensionNumbers::clear_feature_dimension() {
   feature_dimension_ = tensorflow::int64(0);
 }
@@ -2258,7 +2241,6 @@ inline void ConvolutionDimensionNumbers::set_feature_dimension(tensorflow::int64
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.feature_dimension)
 }
 
-// repeated int64 spatial_dimensions = 5;
 inline int ConvolutionDimensionNumbers::spatial_dimensions_size() const {
   return spatial_dimensions_.size();
 }
@@ -2288,7 +2270,6 @@ ConvolutionDimensionNumbers::mutable_spatial_dimensions() {
   return &spatial_dimensions_;
 }
 
-// int64 kernel_input_feature_dimension = 3;
 inline void ConvolutionDimensionNumbers::clear_kernel_input_feature_dimension() {
   kernel_input_feature_dimension_ = tensorflow::int64(0);
 }
@@ -2302,7 +2283,6 @@ inline void ConvolutionDimensionNumbers::set_kernel_input_feature_dimension(tens
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.kernel_input_feature_dimension)
 }
 
-// int64 kernel_output_feature_dimension = 4;
 inline void ConvolutionDimensionNumbers::clear_kernel_output_feature_dimension() {
   kernel_output_feature_dimension_ = tensorflow::int64(0);
 }
@@ -2316,7 +2296,6 @@ inline void ConvolutionDimensionNumbers::set_kernel_output_feature_dimension(ten
   // @@protoc_insertion_point(field_set:xla.ConvolutionDimensionNumbers.kernel_output_feature_dimension)
 }
 
-// repeated int64 kernel_spatial_dimensions = 6;
 inline int ConvolutionDimensionNumbers::kernel_spatial_dimensions_size() const {
   return kernel_spatial_dimensions_.size();
 }

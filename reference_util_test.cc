@@ -26,6 +26,7 @@ limitations under the License.
 #include "literal_test_util.h"
 #include "xla_data.pb.h"
 //#include "test.h"
+#include "array_slice.h"
 
 namespace xla {
 namespace {
@@ -102,6 +103,8 @@ void ReferenceUtilTest::TransposeArray2D()
   auto result_literal = LiteralUtil::CreateR2FromArray2D(*result);
   LiteralTestUtil::ExpectR2Near<float>({{1.f, 4.f}, {2.f, 5.f}, {3.f, 6.f}},
                                        *result_literal, ErrorSpec(0.0001f));
+
+  ASSERT_EQ(*result, Array2D<float>({{1.f, 4.f}, {2.f, 5.f}, {3.f, 6.f}}));
 }
 
 void ReferenceUtilTest::MatmulArray2D() 
@@ -115,6 +118,8 @@ void ReferenceUtilTest::MatmulArray2D()
   auto result_literal = LiteralUtil::CreateR2FromArray2D(*result);
   LiteralTestUtil::ExpectR2Near<float>({{58.f, 64.f}, {139.f, 154.f}},
                                        *result_literal, ErrorSpec(0.0001f));
+
+  ASSERT_EQ(*result, Array2D<float>({{58.f, 64.f}, {139.f, 154.f}}));
 }
 
 void ReferenceUtilTest::ReduceToColArray2D() 
@@ -124,6 +129,8 @@ void ReferenceUtilTest::ReduceToColArray2D()
   auto result_literal = LiteralUtil::CreateR1<float>(*result);
   LiteralTestUtil::ExpectR1Near<float>({6.f, 15.f}, *result_literal,
                                        ErrorSpec(0.0001f));
+
+  ASSERT_EQ(tensorflow::gtl::ArraySlice<float>(*result), tensorflow::gtl::ArraySlice<float>({ 6.f, 15.f }));
 }
 
 void ReferenceUtilTest::ReduceToRowArray2D() 
@@ -133,6 +140,8 @@ void ReferenceUtilTest::ReduceToRowArray2D()
   auto result_literal = LiteralUtil::CreateR1<float>(*result);
   LiteralTestUtil::ExpectR1Near<float>({5.f, 7.f, 9.f}, *result_literal,
                                        ErrorSpec(0.0001f));
+
+  ASSERT_EQ(tensorflow::gtl::ArraySlice<float>(*result), tensorflow::gtl::ArraySlice<float>({ 5.f, 7.f, 9.f }));
 }
 
 void ReferenceUtilTest::MapArray2D() 
@@ -153,6 +162,8 @@ void ReferenceUtilTest::MapWithIndexArray2D()
   auto result_literal = LiteralUtil::CreateR2FromArray2D(*result);
   LiteralTestUtil::ExpectR2Near<float>({{1.f, 3.f, 5.f}, {5.f, 7.f, 9.f}},
                                        *result_literal, ErrorSpec(0.0001f));
+
+  ASSERT_EQ(*result, Array2D<float>({{1.f, 3.f, 5.f}, {5.f, 7.f, 9.f}}));
 }
 
 void ReferenceUtilTest::MapArray4D() 
@@ -273,6 +284,8 @@ void ReferenceUtilTest::ConvArray3DWithSamePadding()
       ReferenceUtil::ConvArray3D(input, weights, 1, Padding::kSame);
   Array3D<float> expected = {{{17, 28, 39, 20}}};
 
+  ASSERT_EQ(*actual, expected);
+
   auto actual_literal = LiteralUtil::CreateR3FromArray3D(*actual);
 
   LiteralTestUtil::ExpectR3NearArray3D<float>(expected, *actual_literal,
@@ -286,6 +299,8 @@ void ReferenceUtilTest::ConvArray3DWithValidPadding()
   std::unique_ptr<Array3D<float>> actual =
       ReferenceUtil::ConvArray3D(input, weights, 1, Padding::kValid);
   Array3D<float> expected = {{{17, 28, 39}}};
+
+  ASSERT_EQ(*actual, expected);
 
   auto actual_literal = LiteralUtil::CreateR3FromArray3D(*actual);
 
@@ -323,6 +338,8 @@ void ReferenceUtilTest::ConvWithSamePadding()
   }));
   // clang-format on
 
+  ASSERT_EQ(*actual, expected);
+
   auto actual_literal = LiteralUtil::CreateR4FromArray4D(*actual);
 
   LiteralTestUtil::ExpectR4NearArray4D<float>(expected, *actual_literal,
@@ -357,6 +374,8 @@ void ReferenceUtilTest::ConvWithValidPadding()
     {308, 334, 11*5+12*6+15*7+16*8},
   }));
   // clang-format on
+
+  ASSERT_EQ(*actual, expected);
 
   auto actual_literal = LiteralUtil::CreateR4FromArray4D(*actual);
 
@@ -411,6 +430,8 @@ void ReferenceUtilTest::ConvGeneralDimensionsWithSamePadding()
   }});
   // clang-format on
 
+  ASSERT_EQ(*actual, expected);
+
   auto actual_literal = LiteralUtil::CreateR4FromArray4D(*actual);
 
   LiteralTestUtil::ExpectR4NearArray4D<float>(expected, *actual_literal,
@@ -460,6 +481,8 @@ void ReferenceUtilTest::ConvGeneralDimensionsWithValidPadding()
   // Result dimensions: [feature=1, height=1, batch=1, width=2]
   Array4D<float> expected({{{{2514, 2685}}}});
   // clang-format on
+
+  ASSERT_EQ(*actual, expected);
 
   auto actual_literal = LiteralUtil::CreateR4FromArray4D(*actual);
 
