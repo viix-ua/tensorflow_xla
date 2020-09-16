@@ -702,7 +702,7 @@ class ComputationBuilder {
 
      }
 
-     TensorArray* tensor = 0;
+     TensorArray<NativeT>* tensor = 0;
      if (dimensions.size() == 3)
      {
         xla::Array3D<NativeT>* array3d = new xla::Array3D<NativeT>(sizes[dimensions[0]], sizes[dimensions[1]], sizes[dimensions[2]], input_array);
