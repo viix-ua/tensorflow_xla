@@ -58,7 +58,7 @@ class Array4D : public TensorArray<T>
 {
  public:
 
-  // Creates a 4D array, unitialized values.
+  // Creates a 4D array, uninitialized values.
   Array4D(int64 planes, int64 depth, int64 height, int64 width)
      : TensorArray<T>({ planes, depth, height, width })
       , planes_(planes),
@@ -67,20 +67,20 @@ class Array4D : public TensorArray<T>
         width_(width),
         values_(planes * depth * height * width) {}
 
-  // Creates a 4D array, initalized to value.
+  // Creates a 4D array, initialized to value.
   Array4D(int64 planes, int64 depth, int64 height, int64 width, T value)
-     : TensorArray<T>({ planes, depth, height, width })
+     : TensorArray<T>({ planes, depth, height, width }, value)
      , planes_(planes),
         depth_(depth),
         height_(height),
         width_(width),
         values_(planes * depth * height * width, value) {}
 
-  // Creates a 4D array, initalized by specified array.
+  // Creates a 4D array, initialized by specified array.
   // precondition: array.size = planes*depth*height*width
   // tf.reshape(channel, z, y, x)
   Array4D(int64 planes, int64 depth, int64 height, int64 width, const std::vector<T>& input_array)
-     : TensorArray<T>({ planes, depth, height, width })
+     : TensorArray<T>({ planes, depth, height, width }, input_array)
      , planes_(planes),
      depth_(depth),
      height_(height),
@@ -328,7 +328,8 @@ class Array4D : public TensorArray<T>
   template<typename U>
   std::unique_ptr<xla::Array4D<U>> convert() const
   {
-     std::unique_ptr<xla::Array4D<U>> result(new xla::Array4D<U>(size(0), size(1), size(2), size(3)));
+     std::unique_ptr<xla::Array4D<U>> result(new xla::Array4D<U>(
+        this->size(0), this->size(1), this->size(2), this->size(3)));
 
      std::vector<U>& to = result->flatten();
 

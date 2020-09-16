@@ -59,13 +59,13 @@ class Array2D : public TensorArray<T>
 
   // Creates an array of dimensions n1 x n2, initialized to value.
   Array2D(const int64 n1, const int64 n2, const T value)
-     : TensorArray<T>({ n1, n2 })
+     : TensorArray<T>({ n1, n2 }, value)
      , n1_(n1), n2_(n2)
      , values_(n1 * n2, value)
   {}
 
   Array2D(const int64 n1, const int64 n2, const std::vector<T>& input_array)
-     : TensorArray<T>({ n1, n2 })
+     : TensorArray<T>({ n1, n2 }, input_array)
      , n1_(n1), n2_(n2)
      , values_(input_array)
   {

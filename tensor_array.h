@@ -48,7 +48,17 @@ public:
    using value_type = T;
 
    explicit TensorArray(const std::vector<int64>& sizes)
-      :dimensions_(sizes.begin(), sizes.end())
+      : dimensions_(sizes.begin(), sizes.end())
+   {
+   }
+
+   explicit TensorArray(const std::vector<int64>& sizes, T value)
+      : dimensions_(sizes.begin(), sizes.end())
+   {
+   }
+
+   explicit TensorArray(const std::vector<int64>& sizes, const std::vector<T>& input_array)
+      : dimensions_(sizes.begin(), sizes.end())
    {
    }
 
