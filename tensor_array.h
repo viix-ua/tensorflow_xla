@@ -24,6 +24,8 @@ limitations under the License.
 
 namespace xla {
 
+// General N dimensional array class with arbitrary value type.
+template <typename T>
 class TensorArray
 {
    TensorArray();
@@ -34,27 +36,23 @@ class TensorArray
 
 public:
 
-   TensorArray(const int64 n1, const int64 n2)
+   // Type inference can have a hard time parsing very deep initializer list
+   // nests, especially if one or more dimensions is one as the compiler just
+   // sees a single-element integer initializer. These typedefs allow casting
+   // explicitly with less typing.
+   using InitializerList1D = std::initializer_list<T>;
+   using InitializerList2D = std::initializer_list<InitializerList1D>;
+   using InitializerList3D = std::initializer_list<InitializerList2D>;
+   using InitializerList4D = std::initializer_list<InitializerList3D>;
+
+   using value_type = T;
+
+   explicit TensorArray(const std::vector<int64>& sizes)
+      :dimensions_(sizes.begin(), sizes.end())
    {
-      dimensions_.push_back(n1);
-      dimensions_.push_back(n2);
    }
 
-   TensorArray(const int64 n1, const int64 n2, const int64 n3)
-   {
-      dimensions_.push_back(n1);
-      dimensions_.push_back(n2);
-      dimensions_.push_back(n3);
-   }
-
-   TensorArray(const int64 n1, const int64 n2, const int64 n3, const int64 n4)
-   {
-      dimensions_.push_back(n1);
-      dimensions_.push_back(n2);
-      dimensions_.push_back(n3);
-      dimensions_.push_back(n4);
-   }
-
+   // return num_dimension
    int64 rank() const
    {
       return dimensions_.size();

@@ -37,22 +37,28 @@ namespace xla {
 //
 // The data layout in major-to-minor order is: n1, n2, n3.
 template <typename T>
-class Array3D : public TensorArray
+class Array3D : public TensorArray<T>
 {
  public:
+
   // Creates an array of dimensions n1 x n2 x n3, uninitialized values.
   Array3D(const int64 n1, const int64 n2, const int64 n3)
-      : TensorArray(n1, n2, n3)
-     , n1_(n1), n2_(n2), n3_(n3), values_(n1 * n2 * n3) {}
+     : TensorArray<T>({ n1, n2, n3 })
+     , n1_(n1), n2_(n2), n3_(n3)
+     , values_(n1 * n2 * n3)
+  {}
 
   // Creates an array of dimensions n1 x n2 x n3, initialized to value.
   Array3D(const int64 n1, const int64 n2, const int64 n3, const T value)
-      : TensorArray(n1, n2, n3)
-     , n1_(n1), n2_(n2), n3_(n3), values_(n1 * n2 * n3, value) {}
+     : TensorArray<T>({ n1, n2, n3 })
+     , n1_(n1), n2_(n2), n3_(n3)
+     , values_(n1 * n2 * n3, value)
+  {}
 
   Array3D(const int64 n1, const int64 n2, const int64 n3, const std::vector<T>& input_array)
-     : TensorArray(n1, n2, n3)
-     , n1_(n1), n2_(n2), n3_(n3), values_(input_array)
+     : TensorArray<T>({ n1, n2, n3 })
+     , n1_(n1), n2_(n2), n3_(n3)
+     , values_(input_array)
   {
      CHECK_EQ(n1 * n2 * n3, input_array.size());
   }

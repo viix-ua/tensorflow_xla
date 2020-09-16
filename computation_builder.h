@@ -179,7 +179,7 @@ class ComputationBuilder {
 
   template <typename NativeT>
   void Reshape(
-     const xla::TensorArray& tensor,
+     const xla::TensorArray<NativeT>& tensor,
      const NativeT* input_data,
      tensorflow::gtl::ArraySlice<int64> dimensions,
      tensorflow::gtl::ArraySlice<int64> new_sizes
@@ -894,7 +894,7 @@ ComputationDataHandle ComputationBuilder::ConstantR4FromArray4D(
 
 template <typename NativeT> inline
 void ComputationBuilder::Reshape(
-   const xla::TensorArray& tensor,
+   const xla::TensorArray<NativeT>& tensor,
    const NativeT* input_data,
    tensorflow::gtl::ArraySlice<int64> dimensions,
    tensorflow::gtl::ArraySlice<int64> new_sizes

@@ -54,12 +54,13 @@ namespace xla {
 // more than one name is given above. See operator() for the exact
 // calculation of 1d indices from 4d indices.
 template <typename T>
-class Array4D : public TensorArray
+class Array4D : public TensorArray<T>
 {
  public:
+
   // Creates a 4D array, unitialized values.
   Array4D(int64 planes, int64 depth, int64 height, int64 width)
-      : TensorArray(planes, depth, height, width)
+     : TensorArray<T>({ planes, depth, height, width })
       , planes_(planes),
         depth_(depth),
         height_(height),
@@ -68,7 +69,7 @@ class Array4D : public TensorArray
 
   // Creates a 4D array, initalized to value.
   Array4D(int64 planes, int64 depth, int64 height, int64 width, T value)
-     : TensorArray(planes, depth, height, width)
+     : TensorArray<T>({ planes, depth, height, width })
      , planes_(planes),
         depth_(depth),
         height_(height),
@@ -79,7 +80,7 @@ class Array4D : public TensorArray
   // precondition: array.size = planes*depth*height*width
   // tf.reshape(channel, z, y, x)
   Array4D(int64 planes, int64 depth, int64 height, int64 width, const std::vector<T>& input_array)
-     : TensorArray(planes, depth, height, width)
+     : TensorArray<T>({ planes, depth, height, width })
      , planes_(planes),
      depth_(depth),
      height_(height),

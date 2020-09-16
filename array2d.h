@@ -40,28 +40,34 @@ namespace xla {
 //
 // The data layout in major-to-minor order is: n1, n2.
 template <typename T>
-class Array2D : public TensorArray
+class Array2D : public TensorArray<T>
 {
  public:
+
   // Creates an empty array.
   Array2D()
-     : TensorArray(0, 0)
+     : TensorArray<T>({ 0, 0 })
      , n1_(0), n2_(0) 
   {}
 
   // Creates an array of dimensions n1 x n2, uninitialized values.
   Array2D(const int64 n1, const int64 n2)
-      : TensorArray(n1, n2)
-     , n1_(n1), n2_(n2), values_(n1 * n2) {}
+     : TensorArray<T>({ n1, n2 })
+     , n1_(n1), n2_(n2)
+     , values_(n1 * n2)
+  {}
 
   // Creates an array of dimensions n1 x n2, initialized to value.
   Array2D(const int64 n1, const int64 n2, const T value)
-      : TensorArray(n1, n2)
-     , n1_(n1), n2_(n2), values_(n1 * n2, value) {}
+     : TensorArray<T>({ n1, n2 })
+     , n1_(n1), n2_(n2)
+     , values_(n1 * n2, value)
+  {}
 
   Array2D(const int64 n1, const int64 n2, const std::vector<T>& input_array)
-     : TensorArray(n1, n2)
-     , n1_(n1), n2_(n2), values_(input_array)
+     : TensorArray<T>({ n1, n2 })
+     , n1_(n1), n2_(n2)
+     , values_(input_array)
   {
      CHECK_EQ(n1 * n2, int64(input_array.size()));
   }
