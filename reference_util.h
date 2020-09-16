@@ -517,7 +517,7 @@ class ReferenceUtil {
   template <typename NativeT>
   static NativeT ReduceSum(const xla::Array4D<NativeT>& input)
   {
-     return xla::Sum<NativeT>(input.flatten());
+     return std::accumulate(input.flatten().begin(), input.flatten().end(), (NativeT)0);
   }
 
   /*
