@@ -108,7 +108,10 @@ namespace xla
          grad_loss->mul(learn_rate);
          _x = _x - (*grad_loss);
 
-         TType loss = ReferenceUtil::ReduceMean(xla::Square(*MakeMatrixMul(_a, _x) - _b));
+         auto mmul = MakeMatrixMul(_a, _x) - _b;
+         mmul->Transform(xla::Square);
+
+         TType loss = ReferenceUtil::ReduceMean(*mmul);
 
          if (loss < 0.0001f)
          {

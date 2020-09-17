@@ -127,6 +127,11 @@ public:
       return values_;
    }
 
+   void Transform(std::function<T(T)> fn)
+   {
+      std::transform(values_.begin(), values_.end(), values_.begin(), fn);
+   }
+
    void mul(T scalar)
    {
       for (int64 i = 0; i < num_elements(); ++i)

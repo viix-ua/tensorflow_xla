@@ -5,105 +5,13 @@
 #include <algorithm>
 
 #include "default_logging.h"
+#include "arithmetic.h"
 
 namespace xla
 {
 /* functions:
 https://www.tensorflow.org/api_docs/python/tf/nn/
 */
-
-template <typename T>
-T Elu(T x)
-{
-   const T alpha = 1.f;
-   return (x < T(0.f)) ? (alpha * (std::exp(x) - T(1.f))) : x;
-}
-
-template <typename T>
-T Exponential(T x)
-{
-   return std::exp(x);
-}
-
-template <typename T>
-T HardSigmoid(T x)
-{
-   const T y = (x * T(0.2f)) + T(0.5f);
-
-   if (y <= 0.f) {
-      return 0.f;
-   }
-   else if (y >= T(1.f)) {
-      return 1.f;
-   }
-   else {
-      return x;
-   }
-}
-
-template <typename T>
-T Linear(T x)
-{
-   return x;
-}
-
-template <typename T>
-T Relu(T x)
-{
-   return std::max(x, T(0.f));
-}
-
-template <typename T>
-T Selu(T x)
-{
-   const T alpha = 1.67326324f;
-   const T scale = 1.05070098f;
-
-   return (x > 0.f) ? (scale * x) : (scale * alpha * (std::exp(x) - T(1.f)));
-}
-
-template <typename T>
-T Sigmoid(T x)
-{
-   return T(1.f) / (T(1.f) + std::exp(-x));
-}
-
-template <typename T>
-T SigmoidSign(T x)
-{
-   if (x >= 0) {
-      return Sigmoid(x);
-   }
-   else {
-      const T z = std::exp(x);
-      return z / (T(1.f) + z);
-   }
-}
-
-template <typename T>
-T SoftPlus(T x)
-{
-   return std::log(T(1.f) + std::exp(x));
-}
-
-template <typename T>
-T SoftSign(T x)
-{
-   return x / (std::abs(x) + T(1.f));
-}
-
-template <typename T>
-T Swish(T x)
-{
-   return x * Sigmoid(x);
-}
-
-template <typename T>
-T Tanh(T x)
-{
-   //return (std::exp(x) - std::exp(-x)) / (std::exp(x) + std::exp(-x));
-   return std::tanh(x);
-}
 
 enum ActivationType {
    eElu,

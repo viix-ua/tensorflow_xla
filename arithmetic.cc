@@ -17,6 +17,7 @@ limitations under the License.
 
 #include <string>
 
+#include "computation.h"
 #include "computation_builder.h"
 #include "shape_util.h"
 #include "types.h"
