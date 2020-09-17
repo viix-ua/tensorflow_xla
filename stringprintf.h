@@ -29,9 +29,6 @@ limitations under the License.
 #include "macros.h"
 #include "base.h"
 
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace tensorflow {
 namespace strings {
 

@@ -25,11 +25,6 @@ limitations under the License.
 #include "strcat.h"
 #include "base.h"
 
-//#include "tensorflow/core/lib/core/stringpiece.h"
-//#include "tensorflow/core/lib/gtl/array_slice.h"
-//#include "tensorflow/core/lib/strings/strcat.h"
-//#include "tensorflow/core/platform/types.h"
-
 // Basic string utility routines
 namespace tensorflow {
 namespace str_util {

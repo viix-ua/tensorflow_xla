@@ -18,7 +18,6 @@ limitations under the License.
 #include <stdint.h>
 #include "base.h"
 #include <time.h>
-//#include "tensorflow/core/platform/types.h"
 
 namespace tensorflow {
 

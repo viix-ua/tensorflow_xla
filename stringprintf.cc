@@ -14,7 +14,6 @@ limitations under the License.
 ==============================================================================*/
 
 #include "stringprintf.h"
-//#include "tensorflow/core/lib/strings/stringprintf.h"
 
 #include <errno.h>
 #include <stdarg.h>  // For va_list and related operations

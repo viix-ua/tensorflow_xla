@@ -25,7 +25,6 @@ limitations under the License.
 #include "ptr_util.h"
 #include "literal_test_util.h"
 #include "xla_data.pb.h"
-//#include "test.h"
 #include "array_slice.h"
 
 namespace xla {

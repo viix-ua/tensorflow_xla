@@ -17,10 +17,6 @@ limitations under the License.
 #include "env_time.h"
 #include "macros.h"
 
-//#include "tensorflow/core/platform/default/logging.h"
-//#include "tensorflow/core/platform/env_time.h"
-//#include "tensorflow/core/platform/macros.h"
-
 #if defined(PLATFORM_POSIX_ANDROID)
 #include <android/log.h>
 #include <iostream>

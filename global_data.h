@@ -16,8 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_CLIENT_GLOBAL_DATA_H_
 #define TENSORFLOW_COMPILER_XLA_CLIENT_GLOBAL_DATA_H_
 
-//#include "tensorflow/compiler/xla/service_interface.h"
-//#include "tensorflow/compiler/xla/xla.pb.h"
 #include "xla_data.pb.h"
 #include "macros.h"
 

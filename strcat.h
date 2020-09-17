@@ -27,11 +27,6 @@ limitations under the License.
 #include "macros.h"
 #include "base.h"
 
-//#include "tensorflow/core/lib/core/stringpiece.h"
-//#include "tensorflow/core/lib/strings/numbers.h"
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace Eigen {
 typedef float half;
 }

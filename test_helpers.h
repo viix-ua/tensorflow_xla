@@ -23,26 +23,9 @@ limitations under the License.
 
 #include "types.h"
 
-//#include "test.h"
-//{
-//#include "macros.h"
-//#include "platform.h"
-//#include "base.h"
-//}
-
-
 #include "xla_data.pb.h"
-
 #include "protobuf_default.h" // convert namespaces follow by <tensorflow/core/platform/protobuf.h>
-
 #include "statusor.h"
-//#include "tensorflow/compiler/xla/types.h"
-//#include "tensorflow/core/lib/core/stringpiece.h"
-//#include "tensorflow/core/platform/protobuf.h"
-//#include "tensorflow/core/platform/regexp.h"
-//#include "tensorflow/core/platform/test.h"
-
-//#include "google/gtest-message.h"
 #include "default_logging.h"
 
 tensorflow::internal::LogMessage& LogMessage_check(const char* fname, int line, int severity, bool value);

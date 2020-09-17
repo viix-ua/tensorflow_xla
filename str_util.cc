@@ -21,9 +21,6 @@ limitations under the License.
 #include "numbers.h"
 #include "stringprintf.h"
 
-//#include "tensorflow/core/lib/strings/numbers.h"
-//#include "tensorflow/core/lib/strings/stringprintf.h"
-
 namespace tensorflow {
 namespace str_util {
 

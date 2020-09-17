@@ -25,15 +25,11 @@ limitations under the License.
 
 #include "array4d.h"
 #include "computation_builder.h"
-//#include "tensorflow/compiler/xla/client/local_client.h"
 #include "padding.h"
-//#include "tensorflow/compiler/xla/legacy_flags/cpu_compiler_flags.h"
 #include "reference_util.h"
 #include "client_library_test_base.h"
 #include "literal_test_util.h"
-//#include "tensorflow/compiler/xla/tests/test_macros.h"
 #include "xla_data.pb.h"
-//#include "test.h"
 #include "base.h"
 
 namespace xla {

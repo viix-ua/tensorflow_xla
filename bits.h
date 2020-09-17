@@ -20,9 +20,6 @@ limitations under the License.
 #include "logging.h"
 #include "base.h"
 
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace tensorflow {
 
 // Return floor(log2(n)) for positive integer n.  Returns -1 iff n == 0.

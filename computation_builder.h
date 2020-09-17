@@ -19,7 +19,6 @@ limitations under the License.
 #include "array2d.h"
 #include "array3d.h"
 #include "array4d.h"
-//#include "tensorflow/compiler/xla/client/client.h"
 #include "computation.h"
 #include "global_data.h"
 #include "padding.h"
@@ -31,7 +30,6 @@ limitations under the License.
 #include "stringpiece.h"
 #include "array_slice.h"
 #include "macros.h"
-//#include "tensorflow/core/platform/stacktrace.h"
 #include "base.h"
 
 namespace xla {

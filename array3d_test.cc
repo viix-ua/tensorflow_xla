@@ -15,13 +15,7 @@ limitations under the License.
 
 #include "array3d.h"
 
-#include <initializer_list>
-
-//#include "tensorflow/compiler/xla/test.h"
-//#include "test.h"
-
 #include "test_helpers.h"
-
 
 namespace xla {
 namespace {

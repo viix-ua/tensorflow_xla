@@ -21,9 +21,6 @@ limitations under the License.
 #include "cpu_info.h"
 #include "base.h"
 
-//#include "tensorflow/core/platform/cpu_info.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace tensorflow {
 namespace core {
 

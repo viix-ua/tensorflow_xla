@@ -42,28 +42,7 @@ limitations under the License.
 #include "array_slice.h"
 #include "logging.h"
 #include "macros.h"
-//#include "protobuf.h"
 #include "base.h"
-
-//#include "tensorflow/compiler/xla/array2d.h"
-//#include "tensorflow/compiler/xla/array3d.h"
-//#include "tensorflow/compiler/xla/array4d.h"
-//#include "tensorflow/compiler/xla/index_util.h"
-//#include "tensorflow/compiler/xla/layout_util.h"
-//#include "tensorflow/compiler/xla/primitive_util.h"
-//#include "tensorflow/compiler/xla/ptr_util.h"
-//#include "tensorflow/compiler/xla/shape_util.h"
-//#include "tensorflow/compiler/xla/types.h"
-//#include "tensorflow/compiler/xla/util.h"
-//#include "tensorflow/compiler/xla/xla_data.pb.h"
-//#include "tensorflow/core/lib/core/bitmap.h"
-//#include "tensorflow/core/lib/core/status.h"
-//#include "tensorflow/core/lib/core/stringpiece.h"
-//#include "tensorflow/core/lib/gtl/array_slice.h"
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/protobuf.h"
-//#include "tensorflow/core/platform/types.h"
 
 namespace xla {
 

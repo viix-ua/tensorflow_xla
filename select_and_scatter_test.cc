@@ -22,18 +22,14 @@ limitations under the License.
 #include "computation.h"
 #include "computation_builder.h"
 #include "arithmetic.h"
-//#include "local_client.h"
 #include "padding.h"
 #include "layout_util.h"
-//#include "cpu_compiler_flags.h"
 #include "literal_util.h"
 #include "reference_util.h"
 #include "status_macros.h"
 #include "client_library_test_base.h"
 #include "literal_test_util.h"
-//#include "test_macros.h"
 #include "xla_data.pb.h"
-//#include "test.h"
 #include "types.h"
 
 namespace xla {

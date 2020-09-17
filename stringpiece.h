@@ -33,7 +33,6 @@ limitations under the License.
 #include <string>
 
 #include "base.h"
-//#include "tensorflow/core/platform/types.h"
 
 namespace tensorflow {
 

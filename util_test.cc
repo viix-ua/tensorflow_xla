@@ -18,8 +18,6 @@ limitations under the License.
 #include <list>
 
 #include "types.h"
-//#include "test.h"
-
 #include "test_helpers.h"
 
 namespace xla {

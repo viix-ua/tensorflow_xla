@@ -29,7 +29,6 @@ limitations under the License.
 #include "xla_data.pb.h"
 #include "array_slice.h"
 #include "macros.h"
-//#include "test.h"
 #include "base.h"
 
 namespace xla {

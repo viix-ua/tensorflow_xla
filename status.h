@@ -19,9 +19,6 @@ limitations under the License.
 #include "core_status.h"
 #include "macros.h"
 
-//#include "tensorflow/core/lib/core/status.h"
-//#include "tensorflow/core/platform/macros.h"
-
 namespace xla {
 
 #if defined(__clang__)

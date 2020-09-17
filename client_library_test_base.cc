@@ -17,10 +17,7 @@ limitations under the License.
 
 #include <string>
 
-//#include "tensorflow/compiler/xla/client/client_library.h"
 #include "computation.h"
-//#include "tensorflow/compiler/xla/client/local_client.h"
-//#include "tensorflow/compiler/xla/legacy_flags/hlo_pass_pipeline_flags.h"
 #include "literal_util.h"
 #include "ptr_util.h"
 #include "shape_util.h"
@@ -28,7 +25,6 @@ limitations under the License.
 #include "statusor.h"
 #include "test_helpers.h"
 #include "str_util.h"
-//#include "tensorflow/core/platform/logging.h"
 #include "default_logging.h"
 #include "base.h"
 

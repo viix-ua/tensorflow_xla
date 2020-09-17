@@ -15,11 +15,6 @@ limitations under the License.
 
 #include "computation.h"
 
-//#include "ptr_util.h"
-//#include "tensorflow/compiler/xla/status_macros.h"
-//#include "status_macros.h"
-//#include "tensorflow/core/lib/core/errors.h"
-
 namespace xla {
 
 Computation::Computation() 

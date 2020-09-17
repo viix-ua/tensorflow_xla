@@ -18,13 +18,7 @@ limitations under the License.
 
 #include "macros.h"
 #include "core_status.h"
-
 #include "strcat.h"
-
-//#include "tensorflow/core/lib/core/status.h"
-//#include "tensorflow/core/lib/strings/strcat.h"
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/macros.h"
 
 namespace tensorflow {
 namespace errors {

@@ -101,9 +101,6 @@ limitations under the License.
 #include "array_slice_internal.h"
 #include "inlined_vector.h"
 
-//#include "tensorflow/core/lib/gtl/array_slice_internal.h"
-//#include "tensorflow/core/lib/gtl/inlined_vector.h"
-
 namespace tensorflow {
 namespace gtl {
 

@@ -21,16 +21,10 @@ limitations under the License.
 
 #include "xla_data.pb.h"
 
-//#include "tensorflow/compiler/xla/legacy_flags/util_flags.h"
-//#include "types.h"
 #include "errors.h"
-//#include "tensorflow/core/lib/core/errors.h"
-//#include "numbers.h"
 #include "str_util.h"
 #include "strcat.h"
 #include "stringprintf.h"
-//#include "tensorflow/core/platform/env.h"
-//#include "tensorflow/core/platform/stacktrace.h"
 
 namespace xla {
 namespace {

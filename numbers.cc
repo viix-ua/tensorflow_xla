@@ -16,8 +16,6 @@ limitations under the License.
 
 #include "numbers.h"
 
-//#include "tensorflow/core/lib/strings/numbers.h"
-
 #include <ctype.h>
 #include <float.h>
 #include <stdio.h>
@@ -31,11 +29,6 @@ limitations under the License.
 #include "logging.h"
 #include "macros.h"
 #include "base.h"
-
-//#include "tensorflow/core/lib/strings/stringprintf.h"
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/types.h"
 
 namespace tensorflow {
 

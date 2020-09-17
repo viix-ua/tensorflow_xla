@@ -20,9 +20,7 @@ limitations under the License.
 
 #include <vector>
 
-//#include "tensorflow/core/platform/types.h"
 #include "base.h"
-//#include "tensorflow/core/util/command_line_flags.h"
 
 namespace xla {
 namespace legacy_flags {

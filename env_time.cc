@@ -13,7 +13,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 #include "env_time.h"
-//#include "tensorflow/core/platform/env_time.h"
 
 namespace tensorflow {
 

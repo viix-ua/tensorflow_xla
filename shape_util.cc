@@ -23,7 +23,6 @@ limitations under the License.
 #include "index_util.h"
 #include "layout_util.h"
 #include "primitive_util.h"
-//#include "status_macros.h"
 #include "types.h"
 #include "util.h"
 #include "errors.h"
@@ -33,8 +32,6 @@ limitations under the License.
 #include "str_util.h"
 #include "strcat.h"
 #include "logging.h"
-//#include "tensorflow/core/platform/protobuf.h"
-//#include "tensorflow/core/platform/regexp.h"
 
 using namespace tensorflow::errors;
 

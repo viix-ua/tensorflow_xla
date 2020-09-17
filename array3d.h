@@ -26,11 +26,6 @@ limitations under the License.
 #include "stringprintf.h"
 #include "ptr_util.h"
 
-//#include "tensorflow/compiler/xla/types.h"
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace xla {
 
 // Simple 3D array structure.

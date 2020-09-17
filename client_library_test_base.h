@@ -21,24 +21,10 @@ limitations under the License.
 #include <type_traits>
 #include <vector>
 
-#include "array2d.h"
-#include "array3d.h"
-#include "array4d.h"
-#include "computation.h"
 #include "computation_builder.h"
-#include "global_data.h"
-#include "literal_util.h"
 #include "ptr_util.h"
-//#include "tensorflow/compiler/xla/statusor.h"
 #include "literal_test_util.h"
 #include "test_utils.h"
-#include "xla_data.pb.h"
-#include "bitmap.h"
-#include "stringpiece.h"
-#include "array_slice.h"
-//#include "tensorflow/core/platform/stream_executor_no_cuda.h"
-//#include "tensorflow/core/platform/test.h"
-//#include "base.h"
 
 namespace xla {
 

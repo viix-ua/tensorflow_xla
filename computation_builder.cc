@@ -26,11 +26,9 @@ limitations under the License.
 #include "status_macros.h"
 #include "types.h"
 #include "util.h"
-//#include "tensorflow/compiler/xla/xla.pb.h"
 #include "errors.h"
 #include "strcat.h"
 #include "logging.h"
-//#include "tensorflow/core/platform/protobuf.h"
 
 namespace xla {
 

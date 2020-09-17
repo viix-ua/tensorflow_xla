@@ -14,15 +14,7 @@ limitations under the License.
 ==============================================================================*/
 
 #include "padding.h"
-
-//#include "test.h"
-
 #include "test_helpers.h"
-
-//#include "tensorflow/compiler/xla/client/padding.h"
-
-//#include "tensorflow/core/platform/test.h"
-
 #include "window_util.h"
 #include "reference_util.h"
 

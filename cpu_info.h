@@ -20,7 +20,6 @@ limitations under the License.
 
 #if defined(PLATFORM_WINDOWS)
 #include "win_cpu_info.h"
-//#include "tensorflow/core/platform/windows/cpu_info.h"
 #endif
 
 namespace tensorflow {

@@ -31,7 +31,6 @@ limitations under the License.
 #include <vector>
 
 #include "logging.h"
-//#include "tensorflow/core/platform/logging.h"
 
 namespace tensorflow {
 namespace gtl {

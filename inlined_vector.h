@@ -48,12 +48,6 @@ limitations under the License.
 #include "mem.h"
 #include "base.h"
 
-//#include "tensorflow/core/lib/gtl/manual_constructor.h"
-//#include "tensorflow/core/platform/cpu_info.h"
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/mem.h"
-//#include "tensorflow/core/platform/types.h"
-
 #include <initializer_list>  // NOLINT(build/include_order)
 
 namespace tensorflow {

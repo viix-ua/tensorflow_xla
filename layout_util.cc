@@ -24,26 +24,14 @@ limitations under the License.
 #include <vector>
 
 #include "layout_util_flags.h"
-//#include "tensorflow/compiler/xla/protobuf_util.h"
 #include "shape_util.h"
-//#include "tensorflow/compiler/xla/status_macros.h"
 #include "types.h"
 #include "util.h"
 #include "errors.h"
-
-
-//#include "tensorflow/compiler/xla/legacy_flags/layout_util_flags.h"
-//#include "tensorflow/compiler/xla/protobuf_util.h"
-//#include "tensorflow/compiler/xla/shape_util.h"
-//#include "tensorflow/compiler/xla/status_macros.h"
-//#include "tensorflow/compiler/xla/types.h"
-//#include "tensorflow/compiler/xla/util.h"
-//#include "tensorflow/core/lib/core/errors.h"
 #include "numbers.h"
 #include "str_util.h"
 #include "strcat.h"
 #include "logging.h"
-//#include "tensorflow/core/platform/protobuf.h"
 
 using namespace tensorflow::errors;
 

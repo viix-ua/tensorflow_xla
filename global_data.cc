@@ -19,7 +19,6 @@ limitations under the License.
 
 #include "types.h"
 #include "logging.h"
-//#include "tensorflow/core/platform/logging.h"
 
 namespace xla {
 

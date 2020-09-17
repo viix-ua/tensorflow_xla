@@ -25,7 +25,6 @@ limitations under the License.
 #include "ptr_util.h"
 #include "literal_test_util.h"
 #include "xla_data.pb.h"
-//#include "test.h"
 
 // https://www.tensorflow.org/api_guides/python/nn#Convolution
 // https://www.tensorflow.org/api_guides/python/nn#Notes_on_SAME_Convolution_Padding

@@ -16,7 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_TYPES_H_
 #define TENSORFLOW_COMPILER_XLA_TYPES_H_
 
-//#include "half.h"
 #include "base.h"
 
 namespace Eigen {

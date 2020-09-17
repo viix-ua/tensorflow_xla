@@ -20,6 +20,7 @@ limitations under the License.
 #include <array>
 #include <functional>
 #include <initializer_list>
+#include <iostream>
 #include <iterator>
 #include <memory>
 #include <numeric>

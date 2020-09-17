@@ -15,10 +15,6 @@ limitations under the License.
 
 #include "statusor.h"
 #include "logging.h"
-//#include "tensorflow/compiler/xla/statusor.h"
-
-//#include "tensorflow/core/lib/core/errors.h"
-//#include "tensorflow/core/platform/logging.h"
 
 namespace xla {
 namespace internal {

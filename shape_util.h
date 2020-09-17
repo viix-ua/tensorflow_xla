@@ -30,13 +30,6 @@ limitations under the License.
 #include "macros.h"
 #include "base.h"
 
-//#include "tensorflow/compiler/xla/statusor.h"
-//#include "tensorflow/compiler/xla/types.h"
-//#include "tensorflow/compiler/xla/xla_data.pb.h"
-//#include "tensorflow/core/lib/gtl/array_slice.h"
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace xla {
 
 // An index for specifying a particular nested subshape within a shape. Used in

@@ -19,12 +19,6 @@ limitations under the License.
 #include <vector>
 
 #include "layout_util_flags.h"
-//#include "tensorflow/compiler/xla/legacy_flags/parse_flags_from_env.h"
-//#include "tensorflow/compiler/xla/types.h"
-//#include "tensorflow/core/lib/strings/numbers.h"
-//#include "tensorflow/core/lib/strings/str_util.h"
-//#include "tensorflow/core/platform/types.h"
-//#include "tensorflow/core/util/command_line_flags.h"
 
 namespace xla {
 namespace legacy_flags {

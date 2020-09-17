@@ -20,9 +20,6 @@ limitations under the License.
 #include "types.h"
 #include "base.h"
 
-//#include "tensorflow/core/platform/logging.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace tensorflow {
 
 class MathUtil {

@@ -23,7 +23,6 @@ limitations under the License.
 #include <utility>
 
 #include "logging.h"
-//#include "tensorflow/core/platform/logging.h"
 
 namespace tensorflow {
 namespace gtl {

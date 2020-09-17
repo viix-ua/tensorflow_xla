@@ -15,13 +15,10 @@ limitations under the License.
 
 #include "status_macros.h"
 
-#include <algorithm>
-
 #include "types.h"
 #include "str_util.h"
 #include "strcat.h"
 #include "logging.h"
-//#include "tensorflow/core/platform/stacktrace.h"
 
 namespace xla {
 namespace status_macros {

@@ -22,12 +22,6 @@ limitations under the License.
 #include "shape_util.h"
 #include "test_helpers.h"
 #include "xla_data.pb.h"
-//#include "test.h"
-
-//#include "tensorflow/compiler/xla/shape_util.h"
-//#include "tensorflow/compiler/xla/test_helpers.h"
-//#include "tensorflow/compiler/xla/xla_data.pb.h"
-//#include "tensorflow/core/platform/test.h"
 
 namespace xla {
 namespace {

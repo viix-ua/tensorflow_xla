@@ -13,22 +13,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "strcat.h"
-
-//#include "tensorflow/core/lib/strings/strcat.h"
-
 #include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
-//#include "third_party/eigen3/Eigen/Core"
+#include "strcat.h"
 #include "stl_util.h"
 #include "logging.h"
-
-//#include "third_party/eigen3/Eigen/Core"
-//#include "tensorflow/core/lib/gtl/stl_util.h"
-//#include "tensorflow/core/platform/logging.h"
 
 namespace tensorflow {
 namespace strings {

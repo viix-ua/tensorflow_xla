@@ -21,9 +21,6 @@ limitations under the License.
 #include "stringpiece.h"
 #include "base.h"
 
-//#include "tensorflow/core/lib/core/stringpiece.h"
-//#include "tensorflow/core/platform/types.h"
-
 namespace tensorflow {
 namespace strings {
 

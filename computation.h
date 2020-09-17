@@ -18,10 +18,7 @@ limitations under the License.
 
 #include <memory>
 
-//#include "tensorflow/compiler/xla/service/session.pb.h"
-//#include "tensorflow/compiler/xla/service_interface.h"
 #include "statusor.h"
-//#include "tensorflow/compiler/xla/xla.pb.h"
 #include "xla_data.pb.h"
 #include "macros.h"
 

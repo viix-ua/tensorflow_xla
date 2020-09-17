@@ -14,12 +14,6 @@ limitations under the License.
 ==============================================================================*/
 
 #include "stringpiece.h"
-
-//#include "tensorflow/core/lib/core/stringpiece.h"
-
-#include <algorithm>
-#include <iostream>
-//#include "tensorflow/core/lib/hash/hash.h"
 #include "hash.h"
 
 namespace tensorflow {

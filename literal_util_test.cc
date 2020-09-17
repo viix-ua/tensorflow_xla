@@ -23,11 +23,7 @@ limitations under the License.
 #include "shape_util.h"
 #include "test_helpers.h"
 #include "types.h"
-//#include "test.h"
-
 #include "base.h"
-//#include "tensorflow/core/platform/types.h"
-
 
 namespace xla {
 namespace {

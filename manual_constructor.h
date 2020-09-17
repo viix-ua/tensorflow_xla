@@ -32,9 +32,6 @@ limitations under the License.
 #include "macros.h"
 #include "mem.h"
 
-//#include "tensorflow/core/platform/macros.h"
-//#include "tensorflow/core/platform/mem.h"
-
 namespace tensorflow {
 namespace gtl {
 namespace internal {

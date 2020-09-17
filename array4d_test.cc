@@ -15,16 +15,8 @@ limitations under the License.
 
 #include "array4d.h"
 
-#include <initializer_list>
-#include <numeric>
-
-//#include "tensorflow/compiler/xla/test.h"
-//#include "test.h"
-
 #include "test_helpers.h"
-
 #include "array_slice.h"
-//#include "tensorflow/core/lib/gtl/array_slice.h"
 
 using namespace std;
 
