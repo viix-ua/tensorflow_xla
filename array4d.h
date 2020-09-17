@@ -60,6 +60,7 @@ class Array4D : public TensorArray<T>
 
    using TensorArray<T>::values_;
    using TensorArray<T>::num_elements;
+   using TensorArray<T>::size;
 
   // Creates a 4D array, uninitialized values.
   Array4D(int64 planes, int64 depth, int64 height, int64 width)
