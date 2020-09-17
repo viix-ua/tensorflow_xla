@@ -41,6 +41,11 @@ class Array3D : public TensorArray<T>
 {
  public:
 
+   // to avoid: No arguments that depend on a template parameter
+   using TensorArray<T>::values_;
+   using TensorArray<T>::num_elements;
+
+
   // Creates an array of dimensions n1 x n2 x n3, uninitialized values.
   Array3D(const int64 n1, const int64 n2, const int64 n3)
      : TensorArray<T>({ n1, n2, n3 }, (n1 * n2 * n3))
@@ -119,28 +124,6 @@ class Array3D : public TensorArray<T>
   int64 n3() const { return n3_; }
 
   const T* data() const { return const_cast<Array3D*>(this)->values_.data(); }
-
-  // Fills the array with the given value.
-  void Fill(const T& value) {
-    std::fill(values_.begin(), values_.end(), value);
-  }
-
-  // Fills the array with sequentially increasing values.
-  void FillIota(const T& value) {
-    std::iota(values_.begin(), values_.end(), value);
-  }
-
-  // Fills the array with random normal values with a mean of 0 and standard
-  // deviation of value.
-  void FillRandom(const T& value, const double mean = 0.0,
-                  const int seed = 12345) {
-    std::mt19937 g(seed);
-    std::normal_distribution<double> distribution(mean,
-                                                  static_cast<double>(value));
-    for (auto& v : values_) {
-      v = static_cast<T>(distribution(g));
-    }
-  }
 
   string ToString() const 
   {

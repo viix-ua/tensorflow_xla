@@ -58,6 +58,10 @@ class Array4D : public TensorArray<T>
 {
  public:
 
+   // to avoid: No arguments that depend on a template parameter
+   using TensorArray<T>::values_;
+   using TensorArray<T>::num_elements;
+
   // Creates a 4D array, uninitialized values.
   Array4D(int64 planes, int64 depth, int64 height, int64 width)
      : TensorArray<T>({ planes, depth, height, width }, (planes * depth * height * width))
@@ -185,28 +189,6 @@ class Array4D : public TensorArray<T>
     CHECK_EQ(std::distance(std::begin(container), std::end(container)),
              num_elements());
     values_.assign(std::begin(container), std::end(container));
-  }
-
-  // Fills the array with the given value.
-  void Fill(const T& value) {
-    std::fill(values_.begin(), values_.end(), value);
-  }
-
-  // Fills the array with iota.
-  void FillIota(const T& value) {
-    std::iota(values_.begin(), values_.end(), value);
-  }
-
-  // Fills the array with random variable with a deviation of value and a mean
-  // of mean.
-  void FillRandom(const T& value, const double mean = 0.0,
-                  const int seed = 12345) {
-    std::mt19937 g(seed);
-    std::normal_distribution<double> distribution(mean,
-                                                  static_cast<double>(value));
-    for (auto& v : values_) {
-      v = static_cast<T>(distribution(g));
-    }
   }
 
   // Fills values with the sequence i*multiplier for i=0,1,...

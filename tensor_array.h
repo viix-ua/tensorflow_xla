@@ -117,6 +117,28 @@ public:
 
    int64 num_elements() const { return values_.size(); }
 
+   // Fills the array with the given value.
+   void Fill(const T& value) {
+      std::fill(values_.begin(), values_.end(), value);
+   }
+
+   // Fills the array with sequentially increasing values.
+   void FillIota(const T& value) {
+      std::iota(values_.begin(), values_.end(), value);
+   }
+
+   // Fills the array with random normal values with a mean of 0 and standard
+   // deviation of value.
+   void FillRandom(const T& value, const double mean = 0.0,
+      const int seed = 12345) {
+      std::mt19937 g(seed);
+      std::normal_distribution<double> distribution(mean,
+         static_cast<double>(value));
+      for (auto& v : values_) {
+         v = static_cast<T>(distribution(g));
+      }
+   }
+
    const std::vector<T>& flatten() const
    {
       return values_;
