@@ -58,7 +58,6 @@ class Array4D : public TensorArray<T>
 {
  public:
 
-   // to avoid: No arguments that depend on a template parameter
    using TensorArray<T>::values_;
    using TensorArray<T>::num_elements;
 
@@ -290,8 +289,7 @@ class Array4D : public TensorArray<T>
   template<typename U>
   std::unique_ptr<xla::Array4D<U>> convert() const
   {
-     std::unique_ptr<xla::Array4D<U>> result(new xla::Array4D<U>(
-        this->size(0), this->size(1), this->size(2), this->size(3)));
+     std::unique_ptr<xla::Array4D<U>> result(new xla::Array4D<U>(size(0), size(1), size(2), size(3)));
 
      std::vector<U>& to = result->flatten();
 

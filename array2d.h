@@ -42,7 +42,6 @@ class Array2D : public TensorArray<T>
 {
  public:
 
-   // to avoid: No arguments that depend on a template parameter
    using TensorArray<T>::values_;
    using TensorArray<T>::num_elements;
 
@@ -131,7 +130,6 @@ class Array2D : public TensorArray<T>
   // Low-level accessor for stuff like memcmp, handle with care. Returns pointer
   // to the underlying storage of the array (similarly to std::vector::data()).
   T* data() const { return const_cast<Array2D*>(this)->values_.data(); }
-
 
   // Applies f to all cells in this array, in row-major order.
   void Each(std::function<void(int64, int64, T*)> f) {

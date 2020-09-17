@@ -41,7 +41,6 @@ class Array3D : public TensorArray<T>
 {
  public:
 
-   // to avoid: No arguments that depend on a template parameter
    using TensorArray<T>::values_;
    using TensorArray<T>::num_elements;
 
