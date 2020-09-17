@@ -16,8 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_CLIENT_COMPUTATION_H_
 #define TENSORFLOW_COMPILER_XLA_CLIENT_COMPUTATION_H_
 
-#include <memory>
-
 #include "statusor.h"
 #include "xla_data.pb.h"
 #include "macros.h"

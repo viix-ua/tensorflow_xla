@@ -29,45 +29,6 @@ namespace legacy_flags {
 //static std::vector<tensorflow::Flag>* flag_list;
 static std::once_flag raw_flags_init;
 
-// Allocate *raw_flag.  Called via call_once(&raw_flags_init,...).
-/*
-static void AllocateRawFlag() {
-  raw_flag = new string;
-  flag_list = new std::vector<tensorflow::Flag>({
-      tensorflow::Flag(
-          "xla_default_layout", raw_flag,
-          "Default layout for Shapes in XLA. Valid values are: "
-          "'minor2major', 'major2minor', 'random', 'random:<seed>'. "
-          "For debugging purposes. If no seed (or 0) is given, a seed from "
-          "random_device is used."),
-  });
-  ParseFlagsFromEnv(*flag_list);
-}
-
-
-// Parse text into *layout.
-static bool ParseDefaultLayout(const string& text, DefaultLayout* layout) {
-  bool result = true;
-  std::vector<string> field = tensorflow::str_util::Split(text, ':');
-  if (field.size() > 0) {
-    if (field[0] == "random") {
-      layout->dimension_order = DefaultLayout::DimensionOrder::kRandom;
-      if (field.size() > 1) {
-        uint64 seed = 0;
-        result = tensorflow::strings::safe_strtou64(field[1], &seed);
-        layout->seed = seed;
-      }
-    } else if (field[0] == "minor2major") {
-      layout->dimension_order = DefaultLayout::DimensionOrder::kMinorToMajor;
-    } else if (field[0] == "major2minor") {
-      layout->dimension_order = DefaultLayout::DimensionOrder::kMajorToMinor;
-    } else {
-      result = false;
-    }
-  }
-  return result;
-}
-*/
 
 // Pointer to the parsed value of the flags, initialized via flags_init.
 static LayoutUtilFlags* flags;
@@ -85,13 +46,6 @@ static void AllocateFlags() {
   //  flags = nullptr;
   }
 }
-
-// Append to *append_to the flag definitions associated with XLA's layout_util
-// module.
-//void AppendLayoutUtilFlags(std::vector<tensorflow::Flag>* append_to) {
-//  std::call_once(raw_flags_init, &AllocateRawFlag);
-//  append_to->insert(append_to->end(), flag_list->begin(), flag_list->end());
-//}
 
 // Return a pointer to the LayoutUtilFlags struct;
 // repeated calls return the same pointer.

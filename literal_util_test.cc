@@ -15,7 +15,6 @@ limitations under the License.
 
 #include "literal_util.h"
 
-#include <vector>
 
 #include "array3d.h"
 #include "array4d.h"
@@ -23,7 +22,6 @@ limitations under the License.
 #include "shape_util.h"
 #include "test_helpers.h"
 #include "types.h"
-#include "base.h"
 
 namespace xla {
 namespace {

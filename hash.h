@@ -21,8 +21,6 @@ limitations under the License.
 #include <stddef.h>
 #include <stdint.h>
 
-#include <string>
-
 #include "base.h"
 
 namespace tensorflow {

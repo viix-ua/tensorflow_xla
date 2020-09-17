@@ -15,9 +15,6 @@ limitations under the License.
 
 // Tests the select-and-scatter XLA operation.
 
-#include <memory>
-#include <vector>
-
 #include "array2d.h"
 #include "computation.h"
 #include "computation_builder.h"
@@ -30,7 +27,6 @@ limitations under the License.
 #include "client_library_test_base.h"
 #include "literal_test_util.h"
 #include "xla_data.pb.h"
-#include "types.h"
 
 namespace xla {
 namespace {

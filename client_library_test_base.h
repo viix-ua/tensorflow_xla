@@ -16,10 +16,7 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_TESTS_CLIENT_LIBRARY_TEST_BASE_H_
 #define TENSORFLOW_COMPILER_XLA_TESTS_CLIENT_LIBRARY_TEST_BASE_H_
 
-#include <memory>
-#include <string>
 #include <type_traits>
-#include <vector>
 
 #include "computation_builder.h"
 #include "ptr_util.h"

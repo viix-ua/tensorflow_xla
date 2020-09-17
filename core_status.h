@@ -16,9 +16,8 @@ limitations under the License.
 #ifndef TENSORFLOW_CORE_LIB_CORE_STATUS_H_
 #define TENSORFLOW_CORE_LIB_CORE_STATUS_H_
 
-#include <functional>
 #include <iosfwd>
-#include <string>
+
 #include "stringpiece.h"
 #include "logging.h"
 

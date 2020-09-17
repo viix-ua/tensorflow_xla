@@ -16,10 +16,6 @@ limitations under the License.
 #ifndef TENSORFLOW_COMPILER_XLA_LEGACY_FLAGS_LAYOUT_UTIL_FLAGS_H_
 #define TENSORFLOW_COMPILER_XLA_LEGACY_FLAGS_LAYOUT_UTIL_FLAGS_H_
 
-// Legacy flags for the XLA's layout_util module.
-
-#include <vector>
-
 #include "base.h"
 
 namespace xla {

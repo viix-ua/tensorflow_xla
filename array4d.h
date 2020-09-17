@@ -24,7 +24,6 @@ limitations under the License.
 #include "stringprintf.h"
 #include "logging.h"
 #include "macros.h"
-#include "tensor_array.h"
 
 namespace xla {
 

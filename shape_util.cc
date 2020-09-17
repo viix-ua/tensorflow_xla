@@ -15,11 +15,6 @@ limitations under the License.
 
 #include "shape_util.h"
 
-#include <algorithm>
-#include <functional>
-#include <numeric>
-#include <vector>
-
 #include "index_util.h"
 #include "layout_util.h"
 #include "primitive_util.h"

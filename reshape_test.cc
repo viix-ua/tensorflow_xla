@@ -14,11 +14,6 @@ limitations under the License.
 ==============================================================================*/
 
 
-#include <memory>
-#include <numeric>
-#include <random>
-#include <vector>
-
 #include "array2d.h"
 #include "array4d.h"
 #include "computation.h"

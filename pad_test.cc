@@ -13,10 +13,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include <memory>
-#include <vector>
-
-#include "array2d.h"
 #include "array4d.h"
 #include "computation_builder.h"
 #include "arithmetic.h"
@@ -25,7 +21,6 @@ limitations under the License.
 #include "client_library_test_base.h"
 #include "literal_test_util.h"
 #include "xla_data.pb.h"
-#include "base.h"
 
 namespace xla {
 namespace {

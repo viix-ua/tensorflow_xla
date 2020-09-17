@@ -36,19 +36,14 @@ limitations under the License.
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
-#include <algorithm>
-#include <iterator>
-#include <memory>
+
 #include <type_traits>
-#include <vector>
 
 #include "manual_constructor.h"
 #include "cpu_info.h"
 #include "logging.h"
 #include "mem.h"
 #include "base.h"
-
-#include <initializer_list>  // NOLINT(build/include_order)
 
 namespace tensorflow {
 namespace gtl {
