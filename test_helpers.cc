@@ -14,11 +14,8 @@ limitations under the License.
 ==============================================================================*/
 
 #include "test_helpers.h"
-#include "types.h"
 
 #include "default_logging.h"
-
-//#include "tensorflow/core/platform/regexp.h"  // need for ContainsRegex, HasSubstr
 
 tensorflow::internal::LogMessage& LogMessage_check(const char* fname, int line, int severity, bool value)
 {
@@ -68,34 +65,6 @@ AssertionResult& AssertionResult::operator=(const AssertionResult& ar) {
 AssertionResult AssertionFailure() { return AssertionResult(false); }
 
 AssertionResult AssertionSuccess() { return AssertionResult(true); }
-
-// TODO:
-//std::function<bool(tensorflow::StringPiece)> ContainsRegex(
-//    const tensorflow::StringPiece regex) 
-//{
-//  return [regex](const tensorflow::StringPiece to_test) 
-//  {
-//    if (RE2::PartialMatch(
-//            tensorflow::RegexpStringPiece(to_test.data(), to_test.size()),
-//            tensorflow::RegexpStringPiece(regex.data(), regex.size()))) 
-//    {
-//      return true;
-//    } 
-//    else 
-//    {
-//      LOG(ERROR) << "Expected to find " << regex << " in " << to_test;
-//      return false;
-//    }
-//  };
-//}
-//
-//std::function<bool(tensorflow::StringPiece)> HasSubstr(
-//    const tensorflow::StringPiece part) 
-//{
-//  return [part](const tensorflow::StringPiece whole) {
-//    return whole.contains(part);
-//  };
-//}
 
 }  // namespace testing
 }  // namespace xla
