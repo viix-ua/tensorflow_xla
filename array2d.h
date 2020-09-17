@@ -46,28 +46,25 @@ class Array2D : public TensorArray<T>
 
   // Creates an empty array.
   Array2D()
-     : TensorArray<T>({ 0, 0 })
+     : TensorArray<T>({ 0, 0 }, 0)
      , n1_(0), n2_(0) 
   {}
 
   // Creates an array of dimensions n1 x n2, uninitialized values.
   Array2D(const int64 n1, const int64 n2)
-     : TensorArray<T>({ n1, n2 })
+     : TensorArray<T>({ n1, n2 }, (n1 * n2))
      , n1_(n1), n2_(n2)
-     , values_(n1 * n2)
   {}
 
   // Creates an array of dimensions n1 x n2, initialized to value.
   Array2D(const int64 n1, const int64 n2, const T value)
-     : TensorArray<T>({ n1, n2 }, value)
+     : TensorArray<T>({ n1, n2 }, (n1 * n2), value)
      , n1_(n1), n2_(n2)
-     , values_(n1 * n2, value)
   {}
 
   Array2D(const int64 n1, const int64 n2, const std::vector<T>& input_array)
      : TensorArray<T>({ n1, n2 }, input_array)
      , n1_(n1), n2_(n2)
-     , values_(input_array)
   {
      CHECK_EQ(n1 * n2, int64(input_array.size()));
   }
@@ -127,7 +124,6 @@ class Array2D : public TensorArray<T>
   int64 n2() const { return n2_; }
   int64 height() const { return n1_; }
   int64 width() const { return n2_; }
-  int64 num_elements() const { return values_.size(); }
 
   // Low-level accessor for stuff like memcmp, handle with care. Returns pointer
   // to the underlying storage of the array (similarly to std::vector::data()).
@@ -226,28 +222,9 @@ class Array2D : public TensorArray<T>
      }
   }
 
-  void mul(T scalar)
-  {
-     for (size_t i = 0; i < values_.size(); i++)
-     {
-        values_[i] *= scalar;
-     }
-  }
-
-  const std::vector<T>& flatten() const
-  {
-     return values_;
-  }
-
-  std::vector<T>& flatten()
-  {
-     return values_;
-  }
-
  private:
   int64 n1_;
   int64 n2_;
-  std::vector<T> values_;
 };
 
 // Returns a linspace-populated Array2D in the range [from, to] (inclusive)

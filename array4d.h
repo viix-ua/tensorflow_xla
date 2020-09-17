@@ -60,32 +60,31 @@ class Array4D : public TensorArray<T>
 
   // Creates a 4D array, uninitialized values.
   Array4D(int64 planes, int64 depth, int64 height, int64 width)
-     : TensorArray<T>({ planes, depth, height, width })
-      , planes_(planes),
-        depth_(depth),
-        height_(height),
-        width_(width),
-        values_(planes * depth * height * width) {}
+     : TensorArray<T>({ planes, depth, height, width }, (planes * depth * height * width))
+     , planes_(planes)
+     , depth_(depth)
+     , height_(height)
+     , width_(width)
+  {}
 
   // Creates a 4D array, initialized to value.
   Array4D(int64 planes, int64 depth, int64 height, int64 width, T value)
-     : TensorArray<T>({ planes, depth, height, width }, value)
-     , planes_(planes),
-        depth_(depth),
-        height_(height),
-        width_(width),
-        values_(planes * depth * height * width, value) {}
+     : TensorArray<T>({ planes, depth, height, width }, (planes * depth * height * width), value)
+     , planes_(planes)
+     , depth_(depth)
+     , height_(height)
+     , width_(width)
+  {}
 
   // Creates a 4D array, initialized by specified array.
   // precondition: array.size = planes*depth*height*width
   // tf.reshape(channel, z, y, x)
   Array4D(int64 planes, int64 depth, int64 height, int64 width, const std::vector<T>& input_array)
      : TensorArray<T>({ planes, depth, height, width }, input_array)
-     , planes_(planes),
-     depth_(depth),
-     height_(height),
-     width_(width),
-     values_(input_array) 
+     , planes_(planes)
+     , depth_(depth)
+     , height_(height)
+     , width_(width)
   {
      CHECK_EQ(planes * depth * height * width, static_cast<int64>(input_array.size()));
   }
@@ -177,7 +176,6 @@ class Array4D : public TensorArray<T>
   int64 n3() const { return height_; }
   int64 n2() const { return depth_; }
   int64 n1() const { return planes_; }
-  int64 num_elements() const { return values_.size(); }
 
   const T* data() const { return const_cast<Array4D*>(this)->values_.data(); }
 
@@ -216,14 +214,6 @@ class Array4D : public TensorArray<T>
     for (int64 i = 0; i < num_elements(); ++i) {
       values_[i] = i * multiplier;
     }
-  }
-
-  void mul(float multiplier)
-  {
-     for (int64 i = 0; i < num_elements(); ++i) 
-     {
-        values_[i] *= multiplier;
-     }
   }
 
   // Invokes a callback with the (indices, value_ptr) for each cell in the 4D
@@ -315,16 +305,6 @@ class Array4D : public TensorArray<T>
     return tensorflow::str_util::Join(pieces, "");
   }
 
-  const std::vector<T>& flatten() const
-  {
-     return values_;
-  }
-
-  std::vector<T>& flatten()
-  {
-     return values_;
-  }
-
   template<typename U>
   std::unique_ptr<xla::Array4D<U>> convert() const
   {
@@ -365,7 +345,6 @@ class Array4D : public TensorArray<T>
   int64 depth_;
   int64 height_;
   int64 width_;
-  std::vector<T> values_;
 };
 
 

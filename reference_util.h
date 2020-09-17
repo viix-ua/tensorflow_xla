@@ -489,20 +489,7 @@ class ReferenceUtil {
 
 
   template <typename NativeT>
-  static NativeT ReduceMean(const xla::Array4D<NativeT>& input)
-  {
-     NativeT result = std::accumulate(
-        input.flatten().begin(), input.flatten().end(), decltype(input.flatten())::value_type(0));
-
-     if (input.num_elements() > 0)
-     {
-        result /= (NativeT)input.num_elements();
-     }
-     return result;
-  }
-
-  template <typename NativeT>
-  static NativeT ReduceMean(const xla::Array2D<NativeT>& input)
+  static NativeT ReduceMean(const xla::TensorArray<NativeT>& input)
   {
      NativeT result = std::accumulate(
         input.flatten().begin(), input.flatten().end(), decltype(input.flatten())::value_type(0));

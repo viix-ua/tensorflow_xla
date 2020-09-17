@@ -34,6 +34,9 @@ class TensorArray
 
    std::vector<int64> dimensions_;
 
+protected:
+   std::vector<T> values_;
+
 public:
 
    // Type inference can have a hard time parsing very deep initializer list
@@ -47,19 +50,25 @@ public:
 
    using value_type = T;
 
-   explicit TensorArray(const std::vector<int64>& sizes)
+   explicit TensorArray(const std::vector<int64>& sizes, int64 sz)
       : dimensions_(sizes.begin(), sizes.end())
+      , values_(sz)
    {
+      // TODO: check sz
    }
 
-   explicit TensorArray(const std::vector<int64>& sizes, T value)
+   explicit TensorArray(const std::vector<int64>& sizes, int64 sz, T value)
       : dimensions_(sizes.begin(), sizes.end())
+      , values_(sz, value)
    {
+      // TODO: check sz
    }
 
-   explicit TensorArray(const std::vector<int64>& sizes, const std::vector<T>& input_array)
+   TensorArray(const std::vector<int64>& sizes, const std::vector<T>& input_array)
       : dimensions_(sizes.begin(), sizes.end())
+      , values_(input_array)
    {
+      // TODO: check sz
    }
 
    // return num_dimension
@@ -105,6 +114,27 @@ public:
    {
       return size(rank() - 4);
    }
+
+   int64 num_elements() const { return values_.size(); }
+
+   const std::vector<T>& flatten() const
+   {
+      return values_;
+   }
+
+   std::vector<T>& flatten()
+   {
+      return values_;
+   }
+
+   void mul(T scalar)
+   {
+      for (int64 i = 0; i < num_elements(); ++i)
+      {
+         values_[i] *= scalar;
+      }
+   }
+
 };
 
 }  // namespace xla

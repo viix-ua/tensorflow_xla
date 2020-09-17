@@ -43,22 +43,19 @@ class Array3D : public TensorArray<T>
 
   // Creates an array of dimensions n1 x n2 x n3, uninitialized values.
   Array3D(const int64 n1, const int64 n2, const int64 n3)
-     : TensorArray<T>({ n1, n2, n3 })
+     : TensorArray<T>({ n1, n2, n3 }, (n1 * n2 * n3))
      , n1_(n1), n2_(n2), n3_(n3)
-     , values_(n1 * n2 * n3)
   {}
 
   // Creates an array of dimensions n1 x n2 x n3, initialized to value.
   Array3D(const int64 n1, const int64 n2, const int64 n3, const T value)
-     : TensorArray<T>({ n1, n2, n3 }, value)
+     : TensorArray<T>({ n1, n2, n3 }, (n1 * n2 * n3), value)
      , n1_(n1), n2_(n2), n3_(n3)
-     , values_(n1 * n2 * n3, value)
   {}
 
   Array3D(const int64 n1, const int64 n2, const int64 n3, const std::vector<T>& input_array)
      : TensorArray<T>({ n1, n2, n3 }, input_array)
      , n1_(n1), n2_(n2), n3_(n3)
-     , values_(input_array)
   {
      CHECK_EQ(n1 * n2 * n3, input_array.size());
   }
@@ -120,7 +117,6 @@ class Array3D : public TensorArray<T>
   int64 n1() const { return n1_; }
   int64 n2() const { return n2_; }
   int64 n3() const { return n3_; }
-  int64 num_elements() const { return values_.size(); }
 
   const T* data() const { return const_cast<Array3D*>(this)->values_.data(); }
 
@@ -144,11 +140,6 @@ class Array3D : public TensorArray<T>
     for (auto& v : values_) {
       v = static_cast<T>(distribution(g));
     }
-  }
-
-  const std::vector<T>& array() const
-  {
-     return values_;
   }
 
   string ToString() const 
@@ -179,7 +170,6 @@ class Array3D : public TensorArray<T>
   int64 n1_;   // depth
   int64 n2_;   // height
   int64 n3_;   // width
-  std::vector<T> values_;
 };
 
 
