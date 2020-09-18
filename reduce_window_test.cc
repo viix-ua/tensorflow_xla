@@ -15,22 +15,12 @@ limitations under the License.
 
 // Tests the reduce-window XLA operation.
 
-#include <limits>
-#include <memory>
-
-#include "array2d.h"
-#include "array3d.h"
-#include "array4d.h"
 #include "computation_builder.h"
 #include "arithmetic.h"
-#include "padding.h"
 #include "reference_util.h"
 #include "shape_util.h"
 #include "client_library_test_base.h"
 #include "literal_test_util.h"
-#include "xla_data.pb.h"
-#include "array_slice.h"
-#include "base.h"
 #include "test_helpers.h"
 
 namespace xla {
@@ -38,9 +28,9 @@ namespace xla {
 class ReduceWindowTest : public ClientLibraryTestBase 
 {
  public:
+
   ReduceWindowTest() : builder_(TestName()) 
   {
-     run();
   }
 
   void ReduceWindowAdd(xla::ComputationDataHandle input,

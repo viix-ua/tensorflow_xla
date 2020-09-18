@@ -25,7 +25,7 @@ class Array2dTest
 {
 public:
 
-   Array2dTest() { run(); }
+   Array2dTest() {}
 
    void DefaultCtor();
    void UninitializedDimsCtor();

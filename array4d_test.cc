@@ -27,7 +27,7 @@ class Array4dTest
 {
 public:
 
-   Array4dTest() { run(); }
+   Array4dTest() {}
 
    void UninitializedDimsCtor();
    void FillCtor();

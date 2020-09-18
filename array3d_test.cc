@@ -24,7 +24,7 @@ class Array3dTest
 {
 public:
 
-   Array3dTest() { run(); }
+   Array3dTest() {}
 
    void UninitializedDimsCtor();
    void FillCtor();

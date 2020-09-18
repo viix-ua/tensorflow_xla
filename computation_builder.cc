@@ -32,26 +32,10 @@ limitations under the License.
 
 namespace xla {
 
-//ComputationDataHandle ComputationBuilder::ParseOpResponse(
-//    const Status& status, OpResponse* response) {
-//  VLOG(2) << "done with op request";
-//
-//  if (!status.ok()) {
-//    NoteError(status);
-//    return ComputationDataHandle();
-//  }
-//
-//  if (response->output().handle() == 0) {
-//    NoteError(InternalError("No output handle"));
-//    return ComputationDataHandle();
-//  }
-//  return response->output();
-//}
 
-ComputationBuilder::ComputationBuilder(/*Client* client,*/ const string& computation_name)
+ComputationBuilder::ComputationBuilder(const string& computation_name)
     : name_(computation_name)
     , first_error_(Status::OK())
-   //, client_(client) 
 {
 }
 

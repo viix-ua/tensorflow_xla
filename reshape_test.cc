@@ -36,58 +36,58 @@ class ReshapeTest : public ClientLibraryTestBase
 {
  public:
 
-   ReshapeTest() { run(); }
+   ReshapeTest() {}
 
    ErrorSpec zero_error_spec_{0.0};
 
-   inline void Trivial1x1();
-   inline void SingleElementArrayToScalar();
-   inline void ScalarToSingleElementArray();
-   inline void Trivial0x3();
-   inline void Trivial0x3WithParameter();
-   inline void Trivial3x0();
-   inline void Trivial1x3();
-   inline void Trivial3x1();
-   inline void R1ToR2_0_To_2x0();
-   inline void R1ToR2_6_To_2x3();
-   inline void Reshape0x2To2x0();
-   inline void ReshapeRowToCol();
-   inline void TransposeAsReshape();
-   inline void Transpose0x4();
-   inline void Transpose4x3();
-   inline void ReshapeSplitNoShuffleZeroElements();
-   inline void ReshapeR4ToR2ZeroElements();
-   inline void ReshapeSplitNoShuffle();
-   inline void ReshapeSplitAndShuffleZeroElements();
-   inline void ReshapeSplitAndShuffle();
-   inline void DocR3_R1_Collapse_012();
-   inline void DocR3_R2_Collapse_012_Refine_83();
-   inline void DocR3_R1_Collapse_120();
-   inline void DocR3_R2_Collapse_120_Refine_83();
-   inline void DocR3_R3_Collapse_120_Refine_262();
-   inline void FullyConnectedCollapse();
-   inline void FullyConnectedCollapseDesugared();
-   inline void ToScalar();
-   inline void BadDimensions();
-   inline void BadNewSizes();
-   inline void R4Dim0MinorLayoutToR2Dim0MajorLayout();
-   inline void R2ToR4_3x8_To_3x2x1x4();
-   inline void R2ToR4_3x8_To_3x2x1x4_Dimensions_10();
-   inline void R4ToR2_2x1x1x1_To_2x1();
-   inline void R4ToR2_2x1x4x1_To_4x2();
-   inline void R4ToR2_5x10x2x3_To_5x60_Dimensions_0213();
-   inline void NoopReshape();
-   inline void R4ToR4Reshape_Trivial();
-   inline void R4ToR4Reshape();
-   inline void R4TwoMinorTransposeSimple();
-   inline void R4TwoMinorTransposeMajorFirstEffectiveR2();
-   inline void R4TwoMinorTransposeMajorFirstMinorEffectiveR1();
-   inline void R4TwoMinorTransposeMajorFirstMinorEffectiveR1InR2();
-   inline void R4TwoMinorTransposeTrivialR2();
+   void Trivial1x1();
+   void SingleElementArrayToScalar();
+   void ScalarToSingleElementArray();
+   void Trivial0x3();
+   void Trivial0x3WithParameter();
+   void Trivial3x0();
+   void Trivial1x3();
+   void Trivial3x1();
+   void R1ToR2_0_To_2x0();
+   void R1ToR2_6_To_2x3();
+   void Reshape0x2To2x0();
+   void ReshapeRowToCol();
+   void TransposeAsReshape();
+   void Transpose0x4();
+   void Transpose4x3();
+   void ReshapeSplitNoShuffleZeroElements();
+   void ReshapeR4ToR2ZeroElements();
+   void ReshapeSplitNoShuffle();
+   void ReshapeSplitAndShuffleZeroElements();
+   void ReshapeSplitAndShuffle();
+   void DocR3_R1_Collapse_012();
+   void DocR3_R2_Collapse_012_Refine_83();
+   void DocR3_R1_Collapse_120();
+   void DocR3_R2_Collapse_120_Refine_83();
+   void DocR3_R3_Collapse_120_Refine_262();
+   void FullyConnectedCollapse();
+   void FullyConnectedCollapseDesugared();
+   void ToScalar();
+   void BadDimensions();
+   void BadNewSizes();
+   void R4Dim0MinorLayoutToR2Dim0MajorLayout();
+   void R2ToR4_3x8_To_3x2x1x4();
+   void R2ToR4_3x8_To_3x2x1x4_Dimensions_10();
+   void R4ToR2_2x1x1x1_To_2x1();
+   void R4ToR2_2x1x4x1_To_4x2();
+   void R4ToR2_5x10x2x3_To_5x60_Dimensions_0213();
+   void NoopReshape();
+   void R4ToR4Reshape_Trivial();
+   void R4ToR4Reshape();
+   void R4TwoMinorTransposeSimple();
+   void R4TwoMinorTransposeMajorFirstEffectiveR2();
+   void R4TwoMinorTransposeMajorFirstMinorEffectiveR1();
+   void R4TwoMinorTransposeMajorFirstMinorEffectiveR1InR2();
+   void R4TwoMinorTransposeTrivialR2();
 
 ///////////////////////////////////////////////////////////
 
-   inline void run();
+   void run();
 
 };
 

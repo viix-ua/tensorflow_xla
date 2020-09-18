@@ -37,7 +37,7 @@ namespace {
    {
    public:
 
-      PoolingTest() { run(); }
+      PoolingTest() {}
       
       void MaxPool_1x2x4x4_1x1();
       void MaxPool_1x2x4x4_2x2();

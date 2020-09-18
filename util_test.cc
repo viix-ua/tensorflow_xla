@@ -27,7 +27,7 @@ class UtilTest
 {
 public:
 
-   UtilTest() { run(); }
+   UtilTest() {}
 
    void ContainersEqualDefault();
    void ContainersEqualPredicate();

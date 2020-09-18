@@ -53,7 +53,7 @@ class ConvolutionTest : public ClientLibraryTestBase
   ErrorSpec error_spec_ = ErrorSpec(1e-4f);
 #endif
 
-  ConvolutionTest() { run(); }
+  ConvolutionTest() {}
 
   void ForwardPassConvolution_3x3x256_256_OutputZ_Iota();
   void Convolve_1x1x1x2_1x1x1x2_Valid();

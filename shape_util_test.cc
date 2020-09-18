@@ -27,7 +27,7 @@ class ShapeUtilTest /* : public ::testing::Test */
 {
 public:
 
-   ShapeUtilTest() { run(); }
+   ShapeUtilTest() {}
 
    void GetDimensionHelperCanNegativeIndex();
    void GetDimensionHelperExampleInDocumentationTest();

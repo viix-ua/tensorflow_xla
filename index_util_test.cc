@@ -13,12 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include <vector>
-
 #include "index_util.h"
-
-#include <initializer_list>
-
 #include "shape_util.h"
 #include "test_helpers.h"
 #include "xla_data.pb.h"
@@ -30,7 +25,7 @@ class IndexUtilTest
 {
 public:
 
-   IndexUtilTest() { run(); }
+   IndexUtilTest() {}
 
    void VectorIndexing();
    void MatrixIndexingRowMajor();

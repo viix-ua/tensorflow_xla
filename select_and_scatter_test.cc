@@ -42,8 +42,6 @@ class SelectAndScatterTest : public ClientLibraryTestBase {
       add_f32_ = CreateScalarAddComputation(F32, &builder_);
       max_f32_ = CreateScalarMaxComputation(F32, &builder_);
       min_f32_ = CreateScalarMinComputation(F32, &builder_);
-
-      run();
    }
 
    ComputationBuilder builder_;

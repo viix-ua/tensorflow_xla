@@ -65,8 +65,6 @@ public:
             (*matrix_)(i, j) = (float)i * cols_ + j + 1;
          }
       }
-
-      run();
    }
 
 protected:

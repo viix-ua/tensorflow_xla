@@ -46,7 +46,7 @@ class ConvolutionVariantsTest : public ClientLibraryTestBase
   ErrorSpec error_spec_ = ErrorSpec(1e-4f, 1e-2f);
 #endif
 
-   ConvolutionVariantsTest() { run(); }
+   ConvolutionVariantsTest() {}
 
    void Minimal();
    void MinimalWithBatch();
