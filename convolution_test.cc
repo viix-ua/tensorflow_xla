@@ -53,7 +53,10 @@ class ConvolutionTest : public ClientLibraryTestBase
   ErrorSpec error_spec_ = ErrorSpec(1e-4f);
 #endif
 
-  ConvolutionTest() {}
+  explicit ConvolutionTest(const std::string& test_name = std::string())
+  {
+     if (test_name.empty()) run();
+  }
 
   void ForwardPassConvolution_3x3x256_256_OutputZ_Iota();
   void Convolve_1x1x1x2_1x1x1x2_Valid();

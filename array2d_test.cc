@@ -25,7 +25,10 @@ class Array2dTest
 {
 public:
 
-   Array2dTest() {}
+   explicit Array2dTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
 
    void DefaultCtor();
    void UninitializedDimsCtor();

@@ -30,7 +30,8 @@ class LiteralUtilTest
 {
  public:
 
-  LiteralUtilTest() {
+  explicit LiteralUtilTest(const std::string& test_name = std::string())
+  {
     Array4D<float> arr4d({
         // clang-format off
       {  // i0=0

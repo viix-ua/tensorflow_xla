@@ -24,7 +24,10 @@ class Array3dTest
 {
 public:
 
-   Array3dTest() {}
+   explicit Array3dTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
 
    void UninitializedDimsCtor();
    void FillCtor();

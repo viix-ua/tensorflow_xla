@@ -29,8 +29,13 @@ class ReduceWindowTest : public ClientLibraryTestBase
 {
  public:
 
-  ReduceWindowTest() : builder_(TestName()) 
+  explicit ReduceWindowTest(const std::string& test_name = std::string())
+     : builder_(TestName()) 
   {
+     if (test_name.empty())
+     {
+        run();
+     }
   }
 
   void ReduceWindowAdd(xla::ComputationDataHandle input,

@@ -37,7 +37,10 @@ namespace {
    {
    public:
 
-      PoolingTest() {}
+      explicit PoolingTest(const std::string& test_name = std::string())
+      {
+         if (test_name.empty()) run();
+      }
       
       void MaxPool_1x2x4x4_1x1();
       void MaxPool_1x2x4x4_2x2();

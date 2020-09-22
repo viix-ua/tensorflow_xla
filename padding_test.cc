@@ -150,7 +150,11 @@ inline void test_array_convolution()
 class PaddingTest : public ClientLibraryTestBase
 {
 public:
-   PaddingTest() {}
+
+   explicit PaddingTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
 
    void ValidPaddingWithStrideOne();
    void ValidPaddingWithStrideThree();

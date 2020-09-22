@@ -46,7 +46,10 @@ class ConvolutionVariantsTest : public ClientLibraryTestBase
   ErrorSpec error_spec_ = ErrorSpec(1e-4f, 1e-2f);
 #endif
 
-   ConvolutionVariantsTest() {}
+  explicit ConvolutionVariantsTest(const std::string& test_name = std::string())
+  {
+     if (test_name.empty()) run();
+  }
 
    void Minimal();
    void MinimalWithBatch();

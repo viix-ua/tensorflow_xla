@@ -29,7 +29,10 @@ class PadTest : public ClientLibraryTestBase
 {
 public:
 
-  PadTest() {
+  explicit PadTest(const std::string& test_name = std::string())
+  {
+    if (test_name.empty()) run();
+
     // Initializes the padding configuration used for R4 tests.
     // Pad only on the dimension 0 {low: 1, high: 0, interior: 2} and
     // dimension 1 {low: 0, high: 2, interior: 1}.

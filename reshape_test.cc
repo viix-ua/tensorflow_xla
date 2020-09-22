@@ -36,7 +36,10 @@ class ReshapeTest : public ClientLibraryTestBase
 {
  public:
 
-   ReshapeTest() {}
+    explicit ReshapeTest(const std::string& test_name = std::string())
+    {
+       if (test_name.empty()) run();
+    }
 
    ErrorSpec zero_error_spec_{0.0};
 
@@ -1004,7 +1007,7 @@ void ReshapeTest::run()
       v_array_for_doc_R3_tests,
       v_array_for_doc_R3_tests.data(), { 1,2,0 }, { 2,6,2 });
 
-   /*
+
    Trivial1x1();
    SingleElementArrayToScalar();
    ScalarToSingleElementArray();
@@ -1049,7 +1052,6 @@ void ReshapeTest::run()
    R4TwoMinorTransposeMajorFirstMinorEffectiveR1();
    R4TwoMinorTransposeMajorFirstMinorEffectiveR1InR2();
    R4TwoMinorTransposeTrivialR2();
-   */
 }
 
 

@@ -27,7 +27,10 @@ class UtilTest
 {
 public:
 
-   UtilTest() {}
+   explicit UtilTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
 
    void ContainersEqualDefault();
    void ContainersEqualPredicate();

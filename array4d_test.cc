@@ -27,7 +27,10 @@ class Array4dTest
 {
 public:
 
-   Array4dTest() {}
+   explicit Array4dTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
 
    void UninitializedDimsCtor();
    void FillCtor();

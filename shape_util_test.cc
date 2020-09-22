@@ -27,7 +27,10 @@ class ShapeUtilTest /* : public ::testing::Test */
 {
 public:
 
-   ShapeUtilTest() {}
+   explicit ShapeUtilTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
 
    void GetDimensionHelperCanNegativeIndex();
    void GetDimensionHelperExampleInDocumentationTest();

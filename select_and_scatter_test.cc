@@ -34,7 +34,11 @@ namespace {
 class SelectAndScatterTest : public ClientLibraryTestBase {
    public:
 
-   SelectAndScatterTest() : builder_(TestName()) {
+   explicit SelectAndScatterTest(const std::string& test_name = std::string())
+      : builder_(TestName())
+   {
+      if (test_name.empty()) run();
+
       // Create S32 GE and ADD computations for select and scatter respectively.
       ge_s32_ = CreateScalarGeComputation(S32, &builder_);
       add_s32_ = CreateScalarAddComputation(S32, &builder_);

@@ -36,6 +36,11 @@ class ReferenceUtilTest /* : public ::testing::Test */
 {
 public:
 
+   explicit ReferenceUtilTest(const std::string& test_name = std::string())
+   {
+      if (test_name.empty()) run();
+   }
+
    void TransposeArray2D();
    void MatmulArray2D();
    void ReduceToColArray2D();
