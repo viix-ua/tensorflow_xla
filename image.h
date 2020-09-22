@@ -57,11 +57,16 @@ namespace xla
       { -1.f,  -1.f,  -1.f }
    });
 
+   const xla::Array2D<float> kernel_edge_detection(
+   {
+      { 0.f,  0.f,   1.f,  0.f,  0.f },
+      { 0.f,  1.f,   2.f,  1.f,  0.f },
+      { 1.f,  2.f, -16.f,  2.f,  1.f },
+      { 0.f,  1.f,   2.f,  1.f,  0.f },
+      { 0.f,  0.f,   1.f,  0.f,  0.f }
+   });
+
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   //apply_img_filter(*img, std::string("Ferrari_488_emboss.bmp"), xla::kernel_emboss);
-   //apply_img_filter(*img, std::string("Ferrari_488_edge_excessively.bmp"), xla::kernel_edge_excessively);
-   //apply_img_filter(*img, std::string("Ferrari_488_edges_blur.bmp"), xla::kernel_edges_blur);
-   //apply_img_filter(*img, std::string("Ferrari_488_prewitt_operator.bmp"), xla::kernel_prewitt_operator_modified);
 
    void apply_img_filter(const xla::Array4D<xla::UChar8>& original, const std::string& filename, const xla::Array2D<float>& kernel);
 
