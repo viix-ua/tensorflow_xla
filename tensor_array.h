@@ -24,7 +24,7 @@ limitations under the License.
 
 namespace xla {
 
-// General N dimensional array class with arbitrary value type.
+// General N-dimensional array class with arbitrary value type.
 template <typename T>
 class TensorArray
 {
@@ -97,21 +97,25 @@ public:
 
    int64 Height() const
    {
+      CHECK_GE(rank(), 2);
       return size(rank() - 2);
    }
 
    int64 Width() const
    {
+      CHECK_GE(rank(), 2);
       return size(rank() - 1);
    }
 
    int64 Depth() const
    {
+      CHECK_GE(rank(), 3);
       return size(rank() - 3);
    }
 
    int64 Batch() const
    {
+      CHECK_GE(rank(), 4);
       return size(rank() - 4);
    }
 
