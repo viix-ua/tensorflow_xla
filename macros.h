@@ -97,6 +97,13 @@ limitations under the License.
 #define LANG_CXX11 1
 #endif
 
+#if (__cplusplus >= 201402L)
+// Define this to 1 if the code is compiled in C++14 mode; leave it
+// undefined otherwise.  Do NOT define it to 0 -- that causes
+// '#ifdef LANG_CXX14' to behave differently from '#if LANG_CXX14'.
+#define LANG_CXX14 1
+#endif
+
 #if defined(__clang__) && defined(LANG_CXX11) && defined(__has_warning)
 #if __has_feature(cxx_attributes) && __has_warning("-Wimplicit-fallthrough")
 #define TF_FALLTHROUGH_INTENDED [[clang::fallthrough]]  // NOLINT
