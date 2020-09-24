@@ -26,7 +26,7 @@ Build all
 - 
 
 ```
-git clone https://github.com/diixo/tensorflow_xla.git
+git clone https://github.com/diixo/tensorflow_xla.git -b master
 cd tensorflow_xla
 cmake -H. -Bbuild
 cmake --build build
