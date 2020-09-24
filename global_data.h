@@ -22,21 +22,23 @@ limitations under the License.
 namespace xla {
 
 // Wraps a GlobalDataHandle with a lifetime.
-class GlobalData {
- public:
-  // Gives ownership of the global data handle to this object.
-  GlobalData(/*ServiceInterface* parent, */GlobalDataHandle handle);
+class GlobalData
+{
+public:
 
-  // Unregisters the wrapped handle.
-  ~GlobalData();
+   // Gives ownership of the global data handle to this object.
+   GlobalData(GlobalDataHandle handle);
 
-  const GlobalDataHandle& handle() const { return handle_; }
+   // Unregisters the wrapped handle.
+   ~GlobalData();
 
- private:
-  GlobalDataHandle handle_;   // Handle being wrapped.
-  //ServiceInterface* parent_;  // Service used to unregister handle_.
+   const GlobalDataHandle& handle() const { return handle_; }
 
-  TF_DISALLOW_COPY_AND_ASSIGN(GlobalData);
+private:
+
+   GlobalDataHandle handle_;   // Handle being wrapped.
+
+   TF_DISALLOW_COPY_AND_ASSIGN(GlobalData);
 };
 
 }  // namespace xla

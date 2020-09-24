@@ -105,12 +105,12 @@ tensorflow::Status ClientLibraryTestBase::ComputeAndCompareLiteralWithStatus(
 {
   //TF_ASSIGN_OR_RETURN(
   //    auto actual, ExecuteAndTransfer(builder, arguments, shape_with_layout));
-  //if (ShapeUtil::ElementIsFloating(expected.shape())) {
-  //  LOG(WARNING) << "performing exact comparison of floating point numbers";
-  //} else {
-  //  TF_RET_CHECK(ShapeUtil::ElementIsIntegral(expected.shape()) ||
-  //               expected.shape().element_type() == PRED);
-  //}
+  if (ShapeUtil::ElementIsFloating(expected.shape())) {
+    LOG(WARNING) << "performing exact comparison of floating point numbers";
+  } else {
+    TF_RET_CHECK(ShapeUtil::ElementIsIntegral(expected.shape()) ||
+                 expected.shape().element_type() == PRED);
+  }
   //LiteralTestUtil::ExpectEqual(expected, *actual);
   return tensorflow::Status::OK();
 }
