@@ -77,13 +77,26 @@ class Bitmap {
 
 // Implementation details follow.  Clients should ignore.
 
-inline Bitmap::Bitmap() : nbits_(0), word_(nullptr) {}
+inline Bitmap::Bitmap()
+   : nbits_(0)
+   , word_(nullptr)
+{}
 
-inline Bitmap::Bitmap(size_t n) : Bitmap() { Reset(n); }
+inline Bitmap::Bitmap(size_t n)
+   : Bitmap()
+{ 
+   Reset(n);
+}
 
-inline Bitmap::~Bitmap() { delete[] word_; }
+inline Bitmap::~Bitmap()
+{
+   delete[] word_;
+}
 
-inline size_t Bitmap::bits() const { return nbits_; }
+inline size_t Bitmap::bits() const
+{
+   return nbits_;
+}
 
 inline bool Bitmap::get(size_t i) const {
   DCHECK_LT(i, nbits_);

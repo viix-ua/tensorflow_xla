@@ -390,18 +390,6 @@ class NearComparator {
     }
   }
 
-  // Writes the given literal to a file in the test temporary directory.
-  //void WriteLiteralToTempFile(const Literal& literal, const string& name) {
-  //  int64 now_usec = tensorflow::Env::Default()->NowMicros();
-  //  string filename = tensorflow::io::JoinPath(
-  //      tensorflow::testing::TmpDir(),
-  //      tensorflow::strings::Printf("tempfile-%s-%llx-%s", Hostname().c_str(),
-  //                                  now_usec, name.c_str()));
-  //  TF_CHECK_OK(tensorflow::WriteBinaryProto(tensorflow::Env::Default(),
-  //                                           filename, literal));
-  //  LOG(ERROR) << "wrote to " << name << " file: " << filename;
-  //}
-
   ErrorSpec error_;
 
   // Number of element miscomparisons encountered so far.
