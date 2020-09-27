@@ -57,6 +57,7 @@ public:
    void ConvGeneralDimensionsWithValidPadding();
    void BiasAdd_2x2x2x3();
    void Cross_Entropy_With_Logits();
+   void Cross_Entropy_With_Logits_2();
 
    void run();
 
@@ -97,6 +98,7 @@ void ReferenceUtilTest::run()
    ConvGeneralDimensionsWithValidPadding();
    BiasAdd_2x2x2x3();
    Cross_Entropy_With_Logits();
+   Cross_Entropy_With_Logits_2();
 }
 
 void ReferenceUtilTest::TransposeArray2D() 
@@ -544,15 +546,34 @@ void ReferenceUtilTest::BiasAdd_2x2x2x3()
 
 void ReferenceUtilTest::Cross_Entropy_With_Logits()
 {
-   const xla::Array4D<double> result(1, 1, 2, 3, { 0.5, 1.5, 0.1, 2.2, 1.3, 1.7 });
+   const xla::Array4D<double> logits(1, 1, 2, 3, { 0.5, 1.5, 0.1, 2.2, 1.3, 1.7 });
 
-   const xla::Array4D<double> y_true(1, 1, 2, 3, { 0.0, double(true), 0.0, 0.0, double(true), double(true) });
+   const xla::Array4D<double> labels(1, 1, 2, 3, { 0.0, double(true), 0.0, 0.0, double(true), double(true) });
 
-   auto softmax_cross_entropy_with_logits = xla::ReferenceUtil::SoftMax_Cross_Entropy_With_Logits(result, y_true);
+   auto softmax_cross_entropy_with_logits = xla::ReferenceUtil::SoftMax_Cross_Entropy_With_Logits(logits, labels);
 
    printf("SoftMax:%s\n", softmax_cross_entropy_with_logits->ToString().c_str());
 
    const xla::Array4D<double> check(1, 1, 2, 1, { 0.4790107, 2.79935196 });
+
+   ASSERT_EQ(*softmax_cross_entropy_with_logits, check);
+}
+
+void ReferenceUtilTest::Cross_Entropy_With_Logits_2()
+{
+   const xla::Array4D<double> logits(1, 1, 2, 6, {
+      1., 1., 2., 4., 6., 1.,
+      1., 1., 8., 10., 12., 1. });
+
+   const xla::Array4D<double> labels(1, 1, 2, 6, {
+      1., 0., 0., 0., 0., 1.,
+      1., 1., 0., 0., 0., 0. });
+
+   auto softmax_cross_entropy_with_logits = xla::ReferenceUtil::SoftMax_Cross_Entropy_With_Logits(logits, labels);
+
+   printf("SoftMax:%s\n", softmax_cross_entropy_with_logits->ToString().c_str());
+
+   const xla::Array4D<double> check(1, 1, 2, 1, { 10.320603043038073, 22.285950118655027 });
 
    ASSERT_EQ(*softmax_cross_entropy_with_logits, check);
 }

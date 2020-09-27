@@ -290,7 +290,9 @@ class Array4D : public TensorArray<T>
      return result;
   }
 
-  void operator * (const Array4D<T>& rhs)
+  // Masking, make Hadamard product, is binary operation of element-wise multiplication. 
+  // With different dimensions the result is undefined.
+  void MaskProduct (const Array4D<T>& rhs)
   {
      if (  (rhs.size(0) == this->size(0))
         && (rhs.size(1) == this->size(1))

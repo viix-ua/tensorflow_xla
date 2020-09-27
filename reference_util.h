@@ -635,8 +635,8 @@ class ReferenceUtil {
         [&](TType elem) { return std::log(elem); });
      // or: std::transform(calc.flatten().begin(), calc.flatten().end(), calc.flatten().begin(), static_cast<TType(*)(TType)>(std::log));
 
+
      // -tf.reduce_sum(y_true * tf.log(y_hat_softmax), 1)   // axis = y-axis
-     calc * logics;
 
      auto result = xla::MakeUnique <xla::Array4D<TType> >(calc.size(0), calc.size(1), calc.size(2), 1);
 
@@ -648,6 +648,7 @@ class ReferenceUtil {
            {
               for (int64 i3 = 0; i3 < calc.size(3); i3++)
               {
+                 calc(i0, i1, i2, i3) *= logics(i0, i1, i2, i3);  // masking, Hadamard-product. 
                  (*result)(i0, i1, i2, 0) -= calc(i0, i1, i2, i3);
               }
            }
