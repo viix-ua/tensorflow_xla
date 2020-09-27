@@ -18,46 +18,21 @@ limitations under the License.
 
 #include "array2d.h"
 #include "array3d.h"
-
 #include "reference_util.h"
-
 #include "test_helpers.h"
-
-//#include "padding_test.cc"
-
-
-//#include "reference_util_test.cc"
-//#include "literal_util_test.cc"
-
 #include "test_utils.h"
 #include "ptr_util.h"
-
 #include "xla_data.pb.h"
-
 #include "test_utils.h"
 /////////////////////////////////////////////
 #include "computation.h"
 #include "computation_builder.h"
 /////////////////////////////////////////////
-//#include "pad_test.cc"
 #include "client_library_test_base.h"
 #include "arithmetic.h"
-
-//#include "convolution_test.cc"
-
-////////////////////////////////////////////
-//#include "convolution_variants_test.cc"
-#include <assert.h>
-
-//#include "reduce_window_test.cc"
-
-//#include "reshape_test.cc"
-
-//#include "pooling_test.cpp"
-
 #include "image.h"
-
 #include "nnet.h"
+#include "trainer_base_lr_sgd.h"
 
 using namespace tensorflow;
 
@@ -83,10 +58,6 @@ using namespace tensorflow;
 
 // conv2d:
 // https://stackoverflow.com/questions/35565312/is-there-a-convolution-function-in-tensorflow-to-apply-a-sobel-filter
-
-
-//#include "GradientDescentOptimizer.h"
-#include "trainer_base_lr_sgd.h"
 
 
 namespace xla
