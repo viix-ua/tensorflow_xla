@@ -43,13 +43,13 @@ layer1_weights = tf.Variable(tf.truncated_normal(
       [patch_y, patch_x, channels, depth], stddev=0.1))
 layer1_biases = tf.Variable(tf.fill([depth], 1.5))
 
-###################################################################
+###################################################################################
 kernel = tf.Variable(tf.ones([patch_y, patch_x, channels, depth], name = 'kernel'))
 
 convSame = tf.nn.conv2d(x, kernel, [1, 2, 2, 1], padding = 'SAME');
 
 hidden = tf.nn.relu(convSame + layer1_biases)
-###################################################################
+###################################################################################
 
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
