@@ -1,5 +1,6 @@
 
 #include "nnet.h"
+#include "nnet_test.h"
 
 #include <functional>
 #include <algorithm>
@@ -30,6 +31,50 @@ void nnet_test_fn()
       obj);
 }
 
+
+std::unique_ptr<xla::Array2D<float>> makeLogitsSet()
+{
+   const int batch = sizeof(valueset) / sizeof(valueset[0]);
+
+   auto result = xla::MakeUnique<xla::Array2D<float>>(batch, 10);
+
+   for (int i = 0; i < batch; i++)
+   {
+      (*result)(i, valueset[i]) = 1;
+   }
+
+   return result;
+}
+
+
+std::unique_ptr<xla::Array4D<float>> makeTrainSet(int scale)
+{
+   const int batch = sizeof(dataset) / sizeof(dataset[0]);
+   const int height = sizeof(dataset[0]) / sizeof(dataset[0][0]);
+   const int width = sizeof(dataset[0][0]) / sizeof(dataset[0][0][0]);
+
+   auto result = xla::MakeUnique<xla::Array4D<float>>(batch, 1, scale*height, scale*width);
+
+   for (int b = 0; b < batch; b++)
+   {
+      for (int h = 0; h < height; h++)
+      {
+         for (int w = 0; w < width; w++)
+         {
+            for (int sh = 0; sh < scale; sh++)
+            {
+               for (int sw = 0; sw < scale; sw++)
+               {
+                  (*result)(b, 0, (h*scale + sh), (w*scale + sw)) = dataset[b][h][w];
+               }
+            }
+         }
+      }
+   }
+   return result;
+}
+
+
 }  //xla
 
 /* Layers tf.v1:
@@ -54,6 +99,42 @@ https://www.tensorflow.org/guide/intro_to_modules
 /* Udacity courses examples:
 https://github.com/tensorflow/examples/tree/master/courses/udacity_deep_learning
 */
+
+void nnet_train()
+{
+   std::unique_ptr<xla::Array4D<float>> trainDataset = xla::makeTrainSet(2);
+   std::unique_ptr<xla::Array2D<float>> trainLogits = xla::makeLogitsSet();
+
+   printf("20x28=%s\n", trainDataset->ToString().c_str());
+
+   int num_channels = 1;
+   int depth = 1;
+   int num_hidden = 64;
+   int patch_size = 5;
+
+   int image_sz_x = 20;
+   int image_sz_y = 28;
+
+   int num_labels = 10;
+
+   auto layer1_weights = xla::MakeUnique<xla::Array4D<float>>(patch_size, patch_size, num_channels, depth);
+   layer1_weights->FillRandom(1.f);
+   
+   auto layer1_biases = std::vector<float>(depth, 0.f);
+
+   auto layer2_weights = xla::MakeUnique<xla::Array4D<float>>(depth, depth, patch_size, patch_size);
+
+   auto layer2_biases = std::vector<float>(depth, 0.f);
+
+   auto layer3_weights = xla::MakeUnique<xla::Array2D<float>>(image_sz_x / 4 * image_sz_y / 4 * depth, num_hidden);
+
+   auto layer3_biases = std::vector<float>(num_hidden);
+
+   auto layer4_weights = xla::MakeUnique<xla::Array2D<float>>(num_hidden, num_labels);
+   layer4_weights->FillRandom(1.f);
+
+   auto layer4_biases = std::vector<float>(num_labels);
+}
 
 void nnet_run()
 {
