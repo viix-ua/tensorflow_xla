@@ -28,6 +28,8 @@ message ("cxx Flags: " ${CMAKE_CXX_FLAGS})
 
 # Sub-directories where more CMakeLists.txt exist
 add_subdirectory (google)
+add_subdirectory (tests)
+add_subdirectory (examples)
 
 # Set include-directory
 # include_directories(${INCLUDE_DIRS})
