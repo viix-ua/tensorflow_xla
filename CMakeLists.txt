@@ -87,7 +87,6 @@ set (SOURCE_TESTS
    index_util_test.cc 
    literal_util_test.cc 
    math_util_test.cc 
-   nnet_test.cc 
    util_test.cc 
    
    padding_test.cc 

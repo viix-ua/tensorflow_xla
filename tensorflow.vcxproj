@@ -237,7 +237,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="math_util_test.cc" />
     <ClCompile Include="nnet.cpp" />
-    <ClCompile Include="nnet_test.cc" />
     <ClCompile Include="numbers.cc" />
     <ClCompile Include="padding.cc" />
     <ClCompile Include="padding_test.cc" />
