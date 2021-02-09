@@ -37,7 +37,6 @@ public:
 
    explicit Activation(ActivationType activation)
       : mType(activation)
-      , mValue(T(0))
    {}
 
    T operator ()(T x)
@@ -56,20 +55,12 @@ public:
          xla::Swish<T>,
          xla::Tanh<T>
       };
-
-      mValue += x;
       return fn[mType](x);
-   }
-
-   operator T() const
-   {
-      return mValue;
    }
 
 private:
 
    ActivationType mType;
-   T mValue = 0.f;
 };
 
 }  // xla
