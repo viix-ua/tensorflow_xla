@@ -46,7 +46,7 @@ public:
          xla::Exponential<T>,
          xla::HardSigmoid<T>,
          xla::Linear<T>,
-         xla::Relu<T>,
+         xla::Relu<T>, 
          xla::Selu<T>,
          xla::Sigmoid<T>,
          xla::SigmoidSign<T>,
