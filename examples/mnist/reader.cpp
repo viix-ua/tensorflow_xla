@@ -56,15 +56,16 @@ int main()
 			{
 				// Image in file is stored as 28x28, so we need to pad it to 32x32
 				// So we read the image row-by-row with proper padding adjustments
-				f1.read(&buffer[imgpadx + (imgpaddedwidth)*(k + 2)], imgwidth);
+				f1.read(&buffer[imgpadx + imgpaddedwidth*(k + 2)], imgwidth);
 			}
 
          for (int k = 0; k < imgheight; k++)
          {
             for (int n = 0; n < imgwidth; n++)
             {
-               int value = int(0) | unsigned char(buffer[imgpadx + (imgpaddedwidth)*(k + 2) + n]);
-               value /= 32;
+               // Re-range from signed char to unsigned char range(0..255).
+               int value = unsigned char(buffer[imgpadx + imgpaddedwidth*(k + 2) + n]);
+               value = (value + 1) / 32;
                if (value)
                {
                   std::cout << value << ',';
@@ -74,11 +75,11 @@ int main()
             }
             std::cout << std::endl;
          }
-
-         std::cout << "**********************" << std::endl;
 	
 			// Now read the correct label from label file stream
 			f2.read(label, 1);
+
+         std::cout << int(label[0]) << " ********************************" << std::endl;
 	
 			// Check if our prediction is correct
 			//if ( label[0] != pos ) errors++;
@@ -86,7 +87,6 @@ int main()
 		
 		// Print the error rate
 		//cout << "Error rate: " << (double)100.0*errors/imgno << "%" << endl;
-		
 	}
    catch (exception &e)
 	{
