@@ -1,1 +1,2 @@
-add_subdirectory (mnist)
+
+add_executable (test-reader-mnist reader.cpp)
