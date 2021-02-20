@@ -8,56 +8,56 @@ using namespace std;
 
 typedef char byte_t;
 
-
 int main()
 {
-	// Represent MNIST datafiles as C++ file streams f1 and f2 respectively
-	ifstream f1("../../t10k-images-idx3-ubyte", ios::in | ios::binary); // image data
-	ifstream f2("../../t10k-labels-idx1-ubyte", ios::in | ios::binary); // label data
+   // Represent MNIST datafiles as C++ file streams f1 and f2 respectively
+   ifstream f1("../../t10k-images-idx3-ubyte", ios::in | ios::binary); // image data
+   ifstream f2("../../t10k-labels-idx1-ubyte", ios::in | ios::binary); // label data
 	
-	if (!f1.is_open() || !f2.is_open())
-	{
-		cerr << "ERROR: Can't open MNIST files. Please locate them in current directory" << endl;
-		return 1;
-	}
+   if (!f1.is_open() || !f2.is_open())
+   {
+	   cerr << "ERROR: Can't open MNIST files. Please locate them in current directory" << endl;
+	   return 1;
+   }
 
-	// Create buffers for image data and correct labels
-	const int BUF_SIZE = 2048;
+   // Create buffers for image data and correct labels
+   const int BUF_SIZE = 2048;
+   
    byte_t *buffer = new byte_t[BUF_SIZE]; 
    byte_t *label = new byte_t[2];
 
-	// Block for catching file exceptions
-	try
-	{
-		// Read headers
-		f1.read(buffer, 16);
-		f2.read(buffer, 8);
+   // Block for catching file exceptions
+   try
+   {
+      // Read headers
+      f1.read(buffer, 16);
+      f2.read(buffer, 8);
 	
-		// Here is our info
-		const int imgno = 10000; // 10'000 images in file
-		const int imgheight = 28; // image size
-		const int imgwidth = 28;
-		const int imgpadx = 2; // Pad images by 2 black pixels, so
-		const int imgpady = 2; // the image becomes 32x32
-		const int imgpaddedheight = imgheight + 2*imgpady; // padded image size
-		const int imgpaddedwidth = imgwidth + 2*imgpadx;
+      // Here is our info
+      const int imgno = 10000; // 10'000 images in file
+      const int imgheight = 28; // image size
+      const int imgwidth = 28;
+      const int imgpadx = 2; // Pad images by 2 black pixels, so
+      const int imgpady = 2; // the image becomes 32x32
+      const int imgpaddedheight = imgheight + 2*imgpady; // padded image size
+      const int imgpaddedwidth = imgwidth + 2*imgpadx;
 		
-		// Clean the buffer
-		memset(buffer, 0, BUF_SIZE);
+      // Clean the buffer
+      memset(buffer, 0, BUF_SIZE);
 	
-		// Initialize error counter
-		//int errors = 0;
+      // Initialize error counter
+      //int errors = 0;
 	
-		// Now cycle over all images in MNIST test dataset
-		for (int i = 0; i < imgno; i++)
-		{
-			// Load the image from file stream into img32
-			for (int k = 0; k < imgheight; k++)
-			{
-				// Image in file is stored as 28x28, so we need to pad it to 32x32
-				// So we read the image row-by-row with proper padding adjustments
-				f1.read(&buffer[imgpadx + imgpaddedwidth*(k + 2)], imgwidth);
-			}
+      // Now cycle over all images in MNIST test dataset
+      for (int i = 0; i < imgno; i++)
+      {
+         // Load the image from file stream into img32
+         for (int k = 0; k < imgheight; k++)
+         {
+            // Image in file is stored as 28x28, so we need to pad it to 32x32
+            // So we read the image row-by-row with proper padding adjustments
+            f1.read(&buffer[imgpadx + imgpaddedwidth*(k + 2)], imgwidth);
+         }
 
          for (int k = 0; k < imgheight; k++)
          {
@@ -70,34 +70,30 @@ int main()
                {
                   std::cout << value << ',';
                }
-               else
-                  std::cout << " ,";
+               else std::cout << " ,";
             }
             std::cout << std::endl;
          }
 	
-			// Now read the correct label from label file stream
-			f2.read(label, 1);
+         // Now read the correct label from label file stream
+         f2.read(label, 1);
 
          std::cout << int(label[0]) << " ********************************" << std::endl;
 	
-			// Check if our prediction is correct
-			//if ( label[0] != pos ) errors++;
-		}
+         // Check if our prediction is correct
+         //if ( label[0] != pos ) errors++;
+      }
 		
-		// Print the error rate
-		//cout << "Error rate: " << (double)100.0*errors/imgno << "%" << endl;
-	}
+      // Print the error rate
+      //cout << "Error rate: " << (double)100.0*errors/imgno << "%" << endl;
+   }
    catch (exception &e)
-	{
-		cerr << "Exception: " << e.what() << endl;
-	}
+   {
+      cerr << "Exception: " << e.what() << endl;
+   }
 
+   delete[] label;
+   delete[] buffer;
 
-	// Don't forget to free the memory
-	delete[] label;
-	delete[] buffer;
-
-	// That's it!
-	return 0;
+   return 0;
 }
