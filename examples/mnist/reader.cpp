@@ -16,8 +16,8 @@ int main()
 	
    if (!f1.is_open() || !f2.is_open())
    {
-	   cerr << "ERROR: Can't open MNIST files. Please locate them in current directory" << endl;
-	   return 1;
+      cerr << "ERROR: Can't open MNIST files. Please locate them in current directory" << endl;
+      return 1;
    }
 
    // Create buffers for image data and correct labels
