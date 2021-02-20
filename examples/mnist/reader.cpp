@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <exception>
+#include <cstring>
 
 using namespace std;
 
@@ -20,13 +21,11 @@ int main()
       return 1;
    }
 
-   // Create buffers for image data and correct labels
    const int BUF_SIZE = 2048;
    
    byte_t *buffer = new byte_t[BUF_SIZE]; 
    byte_t *label = new byte_t[2];
 
-   // Block for catching file exceptions
    try
    {
       // Read headers
@@ -38,8 +37,8 @@ int main()
       const int imgheight = 28; // image size
       const int imgwidth = 28;
       const int imgpadx = 2; // Pad images by 2 black pixels, so
-      const int imgpady = 2; // the image becomes 32x32
-      const int imgpaddedheight = imgheight + 2*imgpady; // padded image size
+      //const int imgpady = 2; // the image becomes 32x32
+      //const int imgpaddedheight = imgheight + 2*imgpady; // padded image size
       const int imgpaddedwidth = imgwidth + 2*imgpadx;
 		
       // Clean the buffer
@@ -64,7 +63,7 @@ int main()
             for (int n = 0; n < imgwidth; n++)
             {
                // Re-range from signed char to unsigned char range(0..255).
-               int value = unsigned char(buffer[imgpadx + imgpaddedwidth*(k + 2) + n]);
+               int value = (unsigned char)buffer[imgpadx + imgpaddedwidth*(k + 2) + n];
                value = (value + 1) / 32;
                if (value)
                {
@@ -78,13 +77,12 @@ int main()
          // Now read the correct label from label file stream
          f2.read(label, 1);
 
-         std::cout << int(label[0]) << " ********************************" << std::endl;
+         std::cout << (int)label[0] << " ********************************" << std::endl;
 	
          // Check if our prediction is correct
-         //if ( label[0] != pos ) errors++;
+         //if (label[0] != pos) errors++;
       }
 		
-      // Print the error rate
       //cout << "Error rate: " << (double)100.0*errors/imgno << "%" << endl;
    }
    catch (exception &e)
