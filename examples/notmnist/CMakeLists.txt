@@ -1,2 +1,2 @@
 
-#add_executable (test-reader-notmnist reader.cpp)
+add_executable (test-reader-notmnist reader.cpp)
