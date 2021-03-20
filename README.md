@@ -29,9 +29,8 @@ Build all
 git clone https://github.com/diixo/tensorflow_xla.git -b master
 cd tensorflow_xla
 
-#################
+#######################
 
-mkdir build
-cd build
+mkdir build && cd build
 cmake ..
 make -j4
