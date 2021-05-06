@@ -14,7 +14,6 @@ limitations under the License.
 ==============================================================================*/
 
 #include "str_util.h"
-//#include "tensorflow/core/lib/strings/str_util.h"
 
 #include <ctype.h>
 #include <vector>
