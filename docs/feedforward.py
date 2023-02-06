@@ -17,4 +17,4 @@ for x in inp :
     node2 = relu(([node0,node1]*weights[2]).sum())
     node3 = relu(([node0,node1]*weights[3]).sum())
     op = relu(([node2,node3]*weights[4]).sum())
-    print(x,op)
+    print(x, op)
