@@ -249,16 +249,16 @@ def train(data):
 #     print(u)
 
 def predict(l):
-    x_pred=np.array([0.0 for i in range (n)])
+    x_pred = np.array([0.0 for i in range(n)])
     for i in l:
-        x_pred=x_pred+one_hot_dict[i]
-    z=np.dot(x_pred/len(l),u)
-    a=np.dot(z,v)
-    a=np.transpose(a)
-    s=softmax(a)
+        x_pred = x_pred + one_hot_dict[i]
+    z = np.dot(x_pred / len(l), u)
+    a = np.dot(z, v)
+    a = np.transpose(a)
+    s = softmax(a)
     print(s)
     result = np.where(s == np.amax(s))
-    print("**",result)
+    print("**", result)
     print(unique[int(result[0])])
 
 train(data)
