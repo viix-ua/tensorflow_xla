@@ -199,19 +199,19 @@ def forward(x,y):
 #     forward(z,y)
 ###########################################################################
 def create_input_x(l,y):
-    print(l)
+    #print(":", l)
     #print(y)
     x = np.array([0.0 for i in range (n)])
     for i in l:
         #print(i)
         x = x + one_hot_dict[i]
     #print(x)
-    forward(x/len(l),y)
+    forward(x/len(l), y)
 ###########################################################################
 def start_training(data):
     for i in range(len(data)):
         t = len(data[i])
-        if (t == 1): return;
+        if (t <= 1): return;
         for j in range(t):
             str = data[i][j]
             y = one_hot_dict[data[i][j]]
@@ -219,7 +219,7 @@ def start_training(data):
                 find = data[i][j-window_size:j] + data[i][j+1:j+window_size+1]
             elif (j < window_size):
                 find = data[i][0:j] + data[i][j+1:j+window_size+1]           
-            elif(j+window_size >= t):
+            elif(j + window_size >= t):
                 find = data[i][j-window_size:j] + data[i][j+1:]
             create_input_x(find,y)
         
