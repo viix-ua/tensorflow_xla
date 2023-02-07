@@ -85,7 +85,7 @@ for i in col:
 ###########################################################################
 
 #embedding size
-m = 5
+m = 25
 #input vector size
 n = len(one_hot_dict)
 #matrix u with weights 
@@ -211,6 +211,7 @@ def create_input_x(l,y):
 def start_training(data):
     for i in range(len(data)):
         t = len(data[i])
+        if (t == 1): return;
         for j in range(t):
             str = data[i][j]
             y = one_hot_dict[data[i][j]]
