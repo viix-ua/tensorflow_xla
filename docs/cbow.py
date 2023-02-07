@@ -249,7 +249,8 @@ def train(data):
 #     print(u)
 
 def predict(l):
-    x_pred = np.array([0.0 for i in range(n)])
+    print(l)
+    x_pred = np.array([0.0 for i in range (n)])
     for i in l:
         x_pred = x_pred + one_hot_dict[i]
     z = np.dot(x_pred / len(l), u)
@@ -263,5 +264,5 @@ def predict(l):
 
 train(data)
 
-l=[ "taking","the","count","vectorizer"]
+l=[ "python", "programming"]
 predict(l)
