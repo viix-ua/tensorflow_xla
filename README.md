@@ -34,3 +34,10 @@ cd tensorflow_xla
 mkdir build && cd build
 cmake ..
 make -j4
+```
+
+# Useful references
+
+- [ML-From-Scratch](https://github.com/eriklindernoren/ML-From-Scratch)
+- [Fast-Neural-Style-Transfer](https://github.com/eriklindernoren/Fast-Neural-Style-Transfer)
+- [fast-neural-style](https://github.com/jcjohnson/fast-neural-style)
